@@ -1,4 +1,5 @@
-﻿using EasyRooms.Interfaces;
+﻿using EasyRooms.Extensions;
+using EasyRooms.Interfaces;
 using System.Windows;
 
 namespace EasyRooms
@@ -30,14 +31,19 @@ namespace EasyRooms
             TestApplication();
         }
 
-        //TODO extract stuff into extension methods
+        //todo probably extract this into its own service
         private void TestApplication()
         {
-            var words = _xpsWordsExtractor.ExtractWords("C:\\Users\\dadam\\Google Drive\\easyRoom\\gesamtPlan.xps");
-            var trimmedWords = _wordListTrimmer.TrimList(words);
-            var wordsWithoutPause = _pauseRowsRemover.RemovePauseRows(trimmedWords);
-            var wordsWithoutHomeVisit = _homeVisitRowsRemover.RemoveHomeVisitRows(wordsWithoutPause);
-            var rows = _rowsCreator.CreateRows(wordsWithoutHomeVisit);
+            var words = _xpsWordsExtractor
+                .ExtractWords("C:\\Users\\dadam\\Google Drive\\easyRoom\\Freitag.xps")
+                .RemoveHomeVisitRows()
+                .RemovePageEntries()
+                .RemovePauseRows()
+                .RemoveHeaders()
+                .RemoveLegend()
+                .RemoveEnd();
+            
+            var rows = _rowsCreator.CreateRows(words);
         }
     }
 }

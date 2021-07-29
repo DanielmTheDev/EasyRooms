@@ -12,7 +12,7 @@ namespace EasyRooms.Implementations
         public IEnumerable<string> TrimList(IEnumerable<string> words)
         {
             var trimmedList = words
-                .SkipWhile(entry => !string.Equals(entry, Constants.Constants.PersonalString, StringComparison.OrdinalIgnoreCase))
+                .SkipWhile(entry => !string.Equals(entry, Constants.CommonConstants.PersonalString, StringComparison.OrdinalIgnoreCase))
                 .Skip(1)
                 .ToList();
             trimmedList.RemoveRange(trimmedList.Count() - 4, 4);

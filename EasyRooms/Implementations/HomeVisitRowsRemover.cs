@@ -1,4 +1,5 @@
-﻿using EasyRooms.Interfaces;
+﻿using EasyRooms.Constants;
+using EasyRooms.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,13 @@ namespace EasyRooms.Implementations
         {
             var strings = words.ToList();
             var indicesOfHomeVisitEntries = Enumerable.Range(0, strings.Count)
-                .Where(i => string.Equals(strings[i], Constants.Constants.HomeVisit, StringComparison.OrdinalIgnoreCase))
+                .Where(i => string.Equals(strings[i], CommonConstants.HomeVisit, StringComparison.OrdinalIgnoreCase))
                 .ToList();
 
             indicesOfHomeVisitEntries
                 .OrderByDescending(i => i)
                 .ToList()
-                .ForEach(index => strings.RemoveRange(index - 2, Constants.Constants.ElementsPerRowWithHouseVisitEntry));
+                .ForEach(index => strings.RemoveRange(index - 2, CommonConstants.ElementsPerRowWithHouseVisitEntry));
             return strings;
         }
     }
