@@ -4,6 +4,6 @@ namespace EasyRooms.Interfaces
 {
     public interface IWordListTrimmer
     {
-        IEnumerable<string> TrimList(string[] words);
+        IEnumerable<string> TrimList(IEnumerable<string> words);
     }
 }
