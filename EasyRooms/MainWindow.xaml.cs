@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EasyRooms.Interfaces;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace EasyRooms
 {
@@ -20,9 +9,29 @@ namespace EasyRooms
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly IXpsWordsExtractor _xpsWordsExtractor;
+        private readonly IPauseRowsRemover _pauseRowsRemover;
+        private readonly IHomeVisitRowsRemover _homeVisitRowsRemover;
+        private readonly IRowsCreator _rowsCreator;
+        private readonly IWordListTrimmer _wordListTrimmer;
+
+        public MainWindow(
+            IXpsWordsExtractor xpsWordsExtractor, 
+            IPauseRowsRemover pauseRowsRemover,
+            IHomeVisitRowsRemover homeVisitRowsRemover,
+            IRowsCreator rowsCreator,
+            IWordListTrimmer wordListTrimmer
+            )
         {
             InitializeComponent();
+            _xpsWordsExtractor = xpsWordsExtractor;
+            _pauseRowsRemover = pauseRowsRemover;
+            _homeVisitRowsRemover = homeVisitRowsRemover;
+            _rowsCreator = rowsCreator;
+            _wordListTrimmer = wordListTrimmer;
+
+            Console.WriteLine("test");
+            Console.WriteLine("test");
         }
     }
 }
