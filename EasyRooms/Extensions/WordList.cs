@@ -21,7 +21,6 @@ namespace EasyRooms.Extensions
             return strings;
         }
 
-        //todo pause needs to delete between daystime and name of therapist
         public static IEnumerable<string> RemovePauseRows(this IEnumerable<string> words)
         {
             var enumeratedWords = words.ToList();
@@ -30,11 +29,17 @@ namespace EasyRooms.Extensions
                     && i % CommonConstants.ElementsPerRowWithoutHouseVisitEntry == 3)
                 .ToList();
 
+
             indicesOfPauseEntries
                 .OrderByDescending(i => i)
                 .ToList()
-                .ForEach(index => enumeratedWords.RemoveRange(index - 4, CommonConstants.ElementsPerRowWithoutHouseVisitEntry));
-            return enumeratedWords;
+                .ForEach(index =>
+                {
+                    var indexOfPreviousDateTime = IndexOfPreviousDateTime(enumeratedWords, index);
+                    var indexOfNextDateTime = IndexOfNextDateTime(enumeratedWords, index);
+                    enumeratedWords.RemoveRange(indexOfPreviousDateTime, indexOfNextDateTime + 1 - indexOfPreviousDateTime);
+                });
+            return enumeratedWords; 
         }
 
         public static IEnumerable<string> RemovePageEntries(this IEnumerable<string> words)
@@ -77,6 +82,30 @@ namespace EasyRooms.Extensions
             var enumeratedWords = words.ToList();
             enumeratedWords.RemoveAll(entry => string.Equals(entry, CommonConstants.Legend, StringComparison.OrdinalIgnoreCase));
             return enumeratedWords;
+        }
+
+        private static int IndexOfNextDateTime(List<string> enumeratedWords, int index)
+        {
+            for (int i = index; i < enumeratedWords.Count; i++)
+            {
+                if (DateTime.TryParse(enumeratedWords[i], out var _))
+                {
+                    return i - 1;
+                }
+            }
+            throw new ArgumentException("No DateTime found before pause");
+        }
+
+        private static int IndexOfPreviousDateTime(List<string> enumeratedWords, int index)
+        {
+            for (int i = index; i >= 0; i--)
+            {
+                if (DateTime.TryParse(enumeratedWords[i], out var _))
+                {
+                    return i;
+                }
+            }
+            throw new ArgumentException("No DateTime found before pause");
         }
     }
 }

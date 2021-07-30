@@ -1,6 +1,7 @@
 ﻿using EasyRooms.Extensions;
 using EasyRooms.Interfaces;
 using System.Windows;
+using System.Linq;
 
 namespace EasyRooms
 {
