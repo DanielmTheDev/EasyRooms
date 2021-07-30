@@ -10,24 +10,13 @@ namespace EasyRooms
     public partial class MainWindow : Window
     {
         private readonly IXpsWordsExtractor _xpsWordsExtractor;
-        private readonly IWordListTrimmer _wordListTrimmer;
-        private readonly IPauseRowsRemover _pauseRowsRemover;
-        private readonly IHomeVisitRowsRemover _homeVisitRowsRemover;
         private readonly IRowsCreator _rowsCreator;
 
-        public MainWindow(
-            IXpsWordsExtractor xpsWordsExtractor,
-            IPauseRowsRemover pauseRowsRemover,
-            IHomeVisitRowsRemover homeVisitRowsRemover,
-            IRowsCreator rowsCreator,
-            IWordListTrimmer wordListTrimmer)
+        public MainWindow(IXpsWordsExtractor xpsWordsExtractor, IRowsCreator rowsCreator)
         {
             InitializeComponent();
             _xpsWordsExtractor = xpsWordsExtractor;
-            _pauseRowsRemover = pauseRowsRemover;
-            _homeVisitRowsRemover = homeVisitRowsRemover;
             _rowsCreator = rowsCreator;
-            _wordListTrimmer = wordListTrimmer;
             TestApplication();
         }
 
@@ -42,7 +31,7 @@ namespace EasyRooms
                 .RemoveHeaders()
                 .RemoveLegend()
                 .RemoveEnd();
-            
+
             var rows = _rowsCreator.CreateRows(words);
         }
     }

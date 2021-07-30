@@ -27,11 +27,8 @@ namespace EasyRooms
 
         private void ConfigureServices(IConfiguration configuration, IServiceCollection services)
         {
-            services.AddTransient<IRowsCreator, RowsCreator>();
-            services.AddTransient<IWordListTrimmer, WordListTrimmer>();
             services.AddTransient<IXpsWordsExtractor, XpsWordsExtractor>();
-            services.AddTransient<IHomeVisitRowsRemover, HomeVisitRowsRemover>();
-            services.AddTransient<IPauseRowsRemover, PauseRowsRemover>();
+            services.AddTransient<IRowsCreator, RowsCreator>();
 
             services.AddSingleton<MainWindow>();
         }
