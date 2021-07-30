@@ -29,6 +29,7 @@ namespace EasyRooms
                 .RemoveHomeVisitRows()
                 .RemovePageEntries()
                 .RemovePauseRows()
+                .RemoveCommentaries()
                 .RemoveHeaders()
                 .RemoveLegend()
                 .RemoveEnd();

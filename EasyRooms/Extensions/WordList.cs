@@ -70,6 +70,19 @@ namespace EasyRooms.Extensions
             return enumeratedWords;
         }
 
+        public static IEnumerable<string> RemoveCommentaries(this IEnumerable<string> words)
+        {
+            var enumeratedWords = words.ToList();
+            var commentaryIndices = words
+                .Select((word, i) => (word, index: i))
+                .Where(wordWithIndex => TimeSpan.TryParse(wordWithIndex.word, out var _)
+                    && TimeSpan.TryParse(enumeratedWords[wordWithIndex.index + 3], out var _))
+                .ToList();
+            commentaryIndices
+             .ForEach(commentary => enumeratedWords.RemoveRange(commentary.index, 4));
+            return enumeratedWords;
+        }
+
         public static IEnumerable<string> RemoveEnd(this IEnumerable<string> words)
         {
             var enumeratedWords = words.ToList();
