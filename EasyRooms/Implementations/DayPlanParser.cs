@@ -28,7 +28,6 @@ namespace EasyRooms.Implementations
                 .RemoveLegend()
                 .RemoveEnd();
 
-
             return _rowsCreator.CreateRows(words);
         }
     }

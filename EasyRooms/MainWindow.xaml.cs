@@ -19,7 +19,7 @@ namespace EasyRooms
 
         private void TestApplication()
         {
-            var path = "C:\\Users\\dadam\\Google Drive\\easyRoom\\Freitag.xps";
+            var path = "C:\\Users\\dadam\\Google Drive\\easyRoom\\gesamtPlan.xps";
             var rows = _dayPlanParser.ParseDayPlan(path);
         }
     }

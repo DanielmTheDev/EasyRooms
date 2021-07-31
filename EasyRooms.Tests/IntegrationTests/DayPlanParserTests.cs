@@ -17,13 +17,16 @@ namespace EasyRooms.Tests
             _dayPlanParser = new DayPlanParser(new XpsWordsExtractor(), new RowsCreator());
         }
 
-        [Fact]
-        public void Parses_Plans()
+        [Theory]
+        [InlineData("ExpectedRows1.json", "Plan1.xps")]
+        [InlineData("ExpectedRows2.json", "Plan2.xps")]
+        [InlineData("ExpectedRows3.json", "Plan3.xps")]
+        public void Parses_Plans(string jsonFileName, string xpsFileName)
         {
-            var serializedExpectedRows = File.ReadAllText("./IntegrationTests/TestData/ExpectedRows1.json");
+            var serializedExpectedRows = File.ReadAllText($"./IntegrationTests/TestData/{jsonFileName}");
             var expectedRows = JsonConvert.DeserializeObject<IEnumerable<Row>>(serializedExpectedRows);
 
-            var resultRows = _dayPlanParser.ParseDayPlan("./IntegrationTests/TestData/Plan1.xps");
+            var resultRows = _dayPlanParser.ParseDayPlan($"./IntegrationTests/TestData/{xpsFileName}");
 
             resultRows.Should().BeEquivalentTo(expectedRows);
         }
