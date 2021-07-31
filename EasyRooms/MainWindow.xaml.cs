@@ -1,7 +1,4 @@
-﻿using EasyRooms.Extensions;
-using EasyRooms.Interfaces;
-using Newtonsoft.Json;
-using System.IO;
+﻿using EasyRooms.Interfaces;
 using System.Windows;
 
 namespace EasyRooms
@@ -11,33 +8,19 @@ namespace EasyRooms
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly IXpsWordsExtractor _xpsWordsExtractor;
-        private readonly IRowsCreator _rowsCreator;
+        private readonly IDayPlanParser _dayPlanParser;
 
-        public MainWindow(IXpsWordsExtractor xpsWordsExtractor, IRowsCreator rowsCreator)
+        public MainWindow(IDayPlanParser dayPlanParser)
         {
             InitializeComponent();
-            _xpsWordsExtractor = xpsWordsExtractor;
-            _rowsCreator = rowsCreator;
+            _dayPlanParser = dayPlanParser;
             TestApplication();
         }
 
-        //todo probably extract this into its own service
         private void TestApplication()
         {
-            var words = _xpsWordsExtractor
-                .ExtractWords("C:\\Users\\dadam\\Google Drive\\easyRoom\\Freitag.xps")
-                .RemoveHomeVisitRows()
-                .RemovePageEntries()
-                .RemovePauseRows()
-                .RemoveCommentaries()
-                .RemoveHeaders()
-                .RemoveLegend()
-                .RemoveEnd();
-
-            var rows = _rowsCreator.CreateRows(words);
-            var serializedRows = JsonConvert.SerializeObject(rows);
-            File.WriteAllText("C:\\Users\\dadam\\Google Drive\\easyRoom\\Freitag.json", serializedRows);
+            var path = "C:\\Users\\dadam\\Google Drive\\easyRoom\\Freitag.xps";
+            var rows = _dayPlanParser.ParseDayPlan(path);
         }
     }
 }

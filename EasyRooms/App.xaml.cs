@@ -27,10 +27,10 @@ namespace EasyRooms
 
         private void ConfigureServices(IConfiguration configuration, IServiceCollection services)
         {
-            services.AddTransient<IXpsWordsExtractor, XpsWordsExtractor>();
-            services.AddTransient<IRowsCreator, RowsCreator>();
-
-            services.AddSingleton<MainWindow>();
+            services.AddTransient<IXpsWordsExtractor, XpsWordsExtractor>()
+                .AddTransient<IRowsCreator, RowsCreator>()
+                .AddTransient<IDayPlanParser, DayPlanParser>()
+                .AddSingleton<MainWindow>();
         }
 
         protected override async void OnStartup(StartupEventArgs e)
