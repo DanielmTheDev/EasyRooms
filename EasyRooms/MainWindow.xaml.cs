@@ -1,7 +1,8 @@
 ﻿using EasyRooms.Extensions;
 using EasyRooms.Interfaces;
+using Newtonsoft.Json;
+using System.IO;
 using System.Windows;
-using System.Linq;
 
 namespace EasyRooms
 {
@@ -35,6 +36,8 @@ namespace EasyRooms
                 .RemoveEnd();
 
             var rows = _rowsCreator.CreateRows(words);
+            var serializedRows = JsonConvert.SerializeObject(rows);
+            File.WriteAllText("C:\\Users\\dadam\\Google Drive\\easyRoom\\Freitag.json", serializedRows);
         }
     }
 }

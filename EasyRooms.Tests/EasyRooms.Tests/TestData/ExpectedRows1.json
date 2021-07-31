@@ -1,0 +1,554 @@
+[
+  {
+    "StartTime": "11:00",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Lena Heiter",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "(11:25)",
+    "Duration": "5",
+    "TherapyShort": "VOR",
+    "TherapyLong": "Vorbereitung",
+    "Patient": "Christina Kraus",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "11:30",
+    "Duration": "10",
+    "TherapyShort": "*BÜRSTEN",
+    "TherapyLong": "Bürstenmassage",
+    "Patient": "Christina Kraus",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "11:40",
+    "Duration": "10",
+    "TherapyShort": "91100",
+    "TherapyLong": "Peeling",
+    "Patient": "Christina Kraus",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "11:50",
+    "Duration": "60",
+    "TherapyShort": "*UGMASS",
+    "TherapyLong": "UG Massage für Schwangere",
+    "Patient": "Christina Kraus",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "12:50",
+    "Duration": "10",
+    "TherapyShort": "*GESICHT",
+    "TherapyLong": "Gesichtsmassage",
+    "Patient": "Christina Kraus",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "13:00",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "BG-Fall Bernhard Riepl",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "(13:00)",
+    "Duration": "10",
+    "TherapyShort": "NACH",
+    "TherapyLong": "Nachbereitung",
+    "Patient": "Christina Kraus",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "13:20",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Lisa-Marie Duca",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "13:40",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Ewa Krüger",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "14:00",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Otto Stürzl",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "14:20",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Loewen-Maier",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "14:40",
+    "Duration": "20",
+    "TherapyShort": "MT",
+    "TherapyLong": "Manuelle Therapie",
+    "Patient": "Loewen-Maier",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "15:00",
+    "Duration": "30",
+    "TherapyShort": "RÜCK30",
+    "TherapyLong": "Massage 30 min",
+    "Patient": "Maria Dukova-Jaynes",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "16:00",
+    "Duration": "10",
+    "TherapyShort": "*BÜRSTEN",
+    "TherapyLong": "Bürstenmassage",
+    "Patient": "Claudia Hofmann",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "16:10",
+    "Duration": "20",
+    "TherapyShort": "91100",
+    "TherapyLong": "Peeling",
+    "Patient": "Claudia Hofmann",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "16:30",
+    "Duration": "30",
+    "TherapyShort": "*CELLHON",
+    "TherapyLong": "Cellulite-Honig-Massage",
+    "Patient": "Claudia Hofmann",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "17:00",
+    "Duration": "20",
+    "TherapyShort": "MT",
+    "TherapyLong": "Manuelle Therapie",
+    "Patient": "Martin Schütz",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "17:20",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Martin Schütz",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "17:40",
+    "Duration": "20",
+    "TherapyShort": "KMT",
+    "TherapyLong": "Klassische Massagetherapie (KMT)",
+    "Patient": "Petra Heider",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "18:00",
+    "Duration": "60",
+    "TherapyShort": "GANZ",
+    "TherapyLong": "Massage 60 Min.",
+    "Patient": "Katrin Zehenter",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "19:00",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Helga Lauerer",
+    "Therapist": "Veronika"
+  },
+  {
+    "StartTime": "08:40",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Stephan Muth",
+    "Therapist": "Lena"
+  },
+  {
+    "StartTime": "09:00",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Reinhard Stahl",
+    "Therapist": "Lena"
+  },
+  {
+    "StartTime": "09:20",
+    "Duration": "30",
+    "TherapyShort": "BOBATH",
+    "TherapyLong": "KG nach Bobath bei zerebralen",
+    "Patient": "Claudia Güntner",
+    "Therapist": "Lena"
+  },
+  {
+    "StartTime": "09:50",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Frieda Thanner",
+    "Therapist": "Lena"
+  },
+  {
+    "StartTime": "10:10",
+    "Duration": "20",
+    "TherapyShort": "MT",
+    "TherapyLong": "Manuelle Therapie",
+    "Patient": "Sebastian Manhart",
+    "Therapist": "Lena"
+  },
+  {
+    "StartTime": "10:30",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Erika Waxenberger",
+    "Therapist": "Lena"
+  },
+  {
+    "StartTime": "10:50",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Mahmoud Mohamed",
+    "Therapist": "Lena"
+  },
+  {
+    "StartTime": "13:00",
+    "Duration": "40",
+    "TherapyShort": "MLD45",
+    "TherapyLong": "Manuelle Lymphdrainage (45 min.)",
+    "Patient": "Elke Daniel",
+    "Therapist": "Lena"
+  },
+  {
+    "StartTime": "(14:45)",
+    "Duration": "15",
+    "TherapyShort": "WÄRME",
+    "TherapyLong": "WÄRME m. Glühlicht, Strahler, Heißluft",
+    "Patient": "Elisabeth Daminger",
+    "Therapist": "Jessica"
+  },
+  {
+    "StartTime": "15:00",
+    "Duration": "40",
+    "TherapyShort": "RÜCK40",
+    "TherapyLong": "Massage 40 min",
+    "Patient": "Elisabeth Daminger",
+    "Therapist": "Jessica"
+  },
+  {
+    "StartTime": "15:45",
+    "Duration": "65",
+    "TherapyShort": "*PARTNER",
+    "TherapyLong": "Partnermassage",
+    "Patient": "Kathrin Daschner",
+    "Therapist": "Jessica"
+  },
+  {
+    "StartTime": "(16:50)",
+    "Duration": "10",
+    "TherapyShort": "NACH",
+    "TherapyLong": "Nachbereitung",
+    "Patient": "Kathrin Daschner",
+    "Therapist": "Jessica"
+  },
+  {
+    "StartTime": "17:00",
+    "Duration": "65",
+    "TherapyShort": "*PARTNER",
+    "TherapyLong": "Partnermassage",
+    "Patient": "Simone Zechmann",
+    "Therapist": "Jessica"
+  },
+  {
+    "StartTime": "(18:05)",
+    "Duration": "10",
+    "TherapyShort": "NACH",
+    "TherapyLong": "Nachbereitung",
+    "Patient": "Simone Zechmann",
+    "Therapist": "Jessica"
+  },
+  {
+    "StartTime": "18:45",
+    "Duration": "65",
+    "TherapyShort": "*PARTNER",
+    "TherapyLong": "Partnermassage",
+    "Patient": "Ramona Ranner",
+    "Therapist": "Jessica"
+  },
+  {
+    "StartTime": "(19:50)",
+    "Duration": "10",
+    "TherapyShort": "NACH",
+    "TherapyLong": "Nachbereitung",
+    "Patient": "Ramona Ranner",
+    "Therapist": "Jessica"
+  },
+  {
+    "StartTime": "08:40",
+    "Duration": "20",
+    "TherapyShort": "MT",
+    "TherapyLong": "Manuelle Therapie",
+    "Patient": "Imer Bardi",
+    "Therapist": "Wadim"
+  },
+  {
+    "StartTime": "09:00",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Leonhard Baier",
+    "Therapist": "Wadim"
+  },
+  {
+    "StartTime": "09:20",
+    "Duration": "40",
+    "TherapyShort": "MLD45",
+    "TherapyLong": "Manuelle Lymphdrainage (45 min.)",
+    "Patient": "Christina Ockert",
+    "Therapist": "Wadim"
+  },
+  {
+    "StartTime": "10:00",
+    "Duration": "30",
+    "TherapyShort": "BOBATH",
+    "TherapyLong": "KG nach Bobath bei zerebralen",
+    "Patient": "Julia Schmid",
+    "Therapist": "Wadim"
+  },
+  {
+    "StartTime": "10:30",
+    "Duration": "20",
+    "TherapyShort": "MT",
+    "TherapyLong": "Manuelle Therapie",
+    "Patient": "Michael Liebl",
+    "Therapist": "Wadim"
+  },
+  {
+    "StartTime": "11:00",
+    "Duration": "20",
+    "TherapyShort": "MT",
+    "TherapyLong": "Manuelle Therapie",
+    "Patient": "Hristo Lavel",
+    "Therapist": "Wadim"
+  },
+  {
+    "StartTime": "11:20",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Adalbert Kuhn",
+    "Therapist": "Wadim"
+  },
+  {
+    "StartTime": "11:40",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Jürgen Heubach",
+    "Therapist": "Wadim"
+  },
+  {
+    "StartTime": "12:00",
+    "Duration": "20",
+    "TherapyShort": "MT",
+    "TherapyLong": "Manuelle Therapie",
+    "Patient": "Jürgen Heubach",
+    "Therapist": "Wadim"
+  },
+  {
+    "StartTime": "12:20",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Svetlana Tolokoncev",
+    "Therapist": "Wadim"
+  },
+  {
+    "StartTime": "12:40",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Andreas Hoffmann",
+    "Therapist": "Wadim"
+  },
+  {
+    "StartTime": "13:00",
+    "Duration": "30",
+    "TherapyShort": "BOBATH",
+    "TherapyLong": "KG nach Bobath bei zerebralen",
+    "Patient": "Lidia Maier",
+    "Therapist": "Wadim"
+  },
+  {
+    "StartTime": "13:30",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Manuela Badenberg",
+    "Therapist": "Wadim"
+  },
+  {
+    "StartTime": "13:50",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Manuela Badenberg",
+    "Therapist": "Wadim"
+  },
+  {
+    "StartTime": "14:10",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Alexander Schneider",
+    "Therapist": "Wadim"
+  },
+  {
+    "StartTime": "14:30",
+    "Duration": "20",
+    "TherapyShort": "MT",
+    "TherapyLong": "Manuelle Therapie",
+    "Patient": "Felizitas Brossmann",
+    "Therapist": "Wadim"
+  },
+  {
+    "StartTime": "15:55",
+    "Duration": "30",
+    "TherapyShort": "PAUSE30",
+    "TherapyLong": "Pause 30 Minuten",
+    "Patient": "Physiotherapie PRAXIS",
+    "Therapist": "Anna"
+  },
+  {
+    "StartTime": "16:25",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Sonja Weigert",
+    "Therapist": "Anna"
+  },
+  {
+    "StartTime": "17:00",
+    "Duration": "20",
+    "TherapyShort": "KMT",
+    "TherapyLong": "Klassische Massagetherapie (KMT)",
+    "Patient": "Eva Blasenbrey",
+    "Therapist": "Anna"
+  },
+  {
+    "StartTime": "18:05",
+    "Duration": "20",
+    "TherapyShort": "KMT",
+    "TherapyLong": "Klassische Massagetherapie (KMT)",
+    "Patient": "Eva Blasenbrey",
+    "Therapist": "Anna"
+  },
+  {
+    "StartTime": "19:10",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Karyna Adamovska",
+    "Therapist": "Anna"
+  },
+  {
+    "StartTime": "19:30",
+    "Duration": "20",
+    "TherapyShort": "KG",
+    "TherapyLong": "Krankengymnastik, auch auf",
+    "Patient": "Karyna Adamovska",
+    "Therapist": "Anna"
+  },
+  {
+    "StartTime": "(14:45)",
+    "Duration": "15",
+    "TherapyShort": "WÄRME",
+    "TherapyLong": "WÄRME m. Glühlicht, Strahler, Heißluft",
+    "Patient": "Elisabeth Daminger",
+    "Therapist": "Gabi"
+  },
+  {
+    "StartTime": "15:00",
+    "Duration": "40",
+    "TherapyShort": "RÜCK40",
+    "TherapyLong": "Massage 40 min",
+    "Patient": "Elisabeth Daminger",
+    "Therapist": "Gabi"
+  },
+  {
+    "StartTime": "15:05",
+    "Duration": "30",
+    "TherapyShort": "wintergarten",
+    "TherapyLong": "Gabi",
+    "Patient": "15:45",
+    "Therapist": "Gabi"
+  },
+  {
+    "StartTime": "(16:50)",
+    "Duration": "10",
+    "TherapyShort": "NACH",
+    "TherapyLong": "Nachbereitung",
+    "Patient": "Kathrin Daschner",
+    "Therapist": "Gabi"
+  },
+  {
+    "StartTime": "17:00",
+    "Duration": "65",
+    "TherapyShort": "*PARTNER",
+    "TherapyLong": "Partnermassage",
+    "Patient": "Simone Zechmann",
+    "Therapist": "Gabi"
+  },
+  {
+    "StartTime": "(18:05)",
+    "Duration": "10",
+    "TherapyShort": "NACH",
+    "TherapyLong": "Nachbereitung",
+    "Patient": "Simone Zechmann",
+    "Therapist": "Gabi"
+  },
+  {
+    "StartTime": "18:10",
+    "Duration": "30",
+    "TherapyShort": "RÜCK30",
+    "TherapyLong": "Massage 30 min",
+    "Patient": "Viktoria Vedorchenko",
+    "Therapist": "Gabi"
+  },
+  {
+    "StartTime": "18:45",
+    "Duration": "65",
+    "TherapyShort": "*PARTNER",
+    "TherapyLong": "Partnermassage",
+    "Patient": "Ramona Ranner",
+    "Therapist": "Gabi"
+  },
+  {
+    "StartTime": "(19:50)",
+    "Duration": "10",
+    "TherapyShort": "NACH",
+    "TherapyLong": "Nachbereitung",
+    "Patient": "Ramona Ranner",
+    "Therapist": "Gabi"
+  }
+]
