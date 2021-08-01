@@ -29,7 +29,6 @@ namespace EasyRooms.Extensions
                     && i % CommonConstants.ElementsPerRowWithoutHouseVisitEntry == 3)
                 .ToList();
 
-
             indicesOfPauseEntries
                 .OrderByDescending(i => i)
                 .ToList()
@@ -78,19 +77,20 @@ namespace EasyRooms.Extensions
                 .Where(wordWithIndex => TimeSpan.TryParse(wordWithIndex.word, out var _)
                     && TimeSpan.TryParse(enumeratedWords[wordWithIndex.index + 3], out var _))
                 .ToList();
+
             commentaryIndices
              .ForEach(commentary => enumeratedWords.RemoveRange(commentary.index, 4));
             return enumeratedWords;
         }
 
-        public static IEnumerable<string> RemoveEnd(this IEnumerable<string> words)
+        public static IEnumerable<string> RemoveEndOfListEntry(this IEnumerable<string> words)
         {
             var enumeratedWords = words.ToList();
             enumeratedWords.RemoveAll(entry => string.Equals(entry, CommonConstants.EndOfList, StringComparison.OrdinalIgnoreCase));
             return enumeratedWords;
         }
 
-        public static IEnumerable<string> RemoveLegend(this IEnumerable<string> words)
+        public static IEnumerable<string> RemoveLegendEntries(this IEnumerable<string> words)
         {
             var enumeratedWords = words.ToList();
             enumeratedWords.RemoveAll(entry => string.Equals(entry, CommonConstants.Legend, StringComparison.OrdinalIgnoreCase));

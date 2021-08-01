@@ -10,11 +10,7 @@ namespace EasyRooms.Implementations
         private readonly IRowsCreator _rowsCreator;
 
         public DayPlanParser(IXpsWordsExtractor xpsWordsExtractor, IRowsCreator rowsCreator)
-        {
-            _xpsWordsExtractor = xpsWordsExtractor;
-            _rowsCreator = rowsCreator;
-        }
-
+            => (_xpsWordsExtractor, _rowsCreator) = (xpsWordsExtractor, rowsCreator);
 
         public IEnumerable<Row> ParseDayPlan(string path)
         {
@@ -25,8 +21,8 @@ namespace EasyRooms.Implementations
                 .RemovePauseRows()
                 .RemoveCommentaries()
                 .RemoveHeaders()
-                .RemoveLegend()
-                .RemoveEnd();
+                .RemoveLegendEntries()
+                .RemoveEndOfListEntry();
 
             return _rowsCreator.CreateRows(words);
         }
