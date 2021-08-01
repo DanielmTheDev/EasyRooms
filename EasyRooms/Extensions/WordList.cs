@@ -106,7 +106,7 @@ namespace EasyRooms.Extensions
                     return i - 1;
                 }
             }
-            throw new ArgumentException("No DateTime found before pause");
+            throw new ArgumentException("No DateTime found after pause");
         }
 
         private static int IndexOfPreviousDateTime(List<string> enumeratedWords, int index)
