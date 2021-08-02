@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using EasyRooms.Models;
+using System.Collections.Generic;
 
 namespace EasyRooms.Interfaces
 {
