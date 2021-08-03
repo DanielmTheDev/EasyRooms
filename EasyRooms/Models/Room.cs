@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EasyRooms.Models
 {
@@ -7,7 +8,7 @@ namespace EasyRooms.Models
     {
         public string Name { get; set; }
         public int Priority { get; set; }
-        private IEnumerable<Occupation> Occupations { get; }
+        private List<Occupation> Occupations { get; }
 
         public Room(string name, int priority)
         {
@@ -18,12 +19,11 @@ namespace EasyRooms.Models
 
         public Room AddOccupation(Occupation occupation)
         {
-            throw new NotImplementedException();
+            Occupations.Add(occupation);
+            return this;
         }
 
-        internal bool IsEmptyAt(string startTime, string duration)
-        {
-            throw new NotImplementedException();
-        }
+        public bool IsOccupiedAt(TimeSpan startTime, TimeSpan endTime) 
+            => Occupations.Any(occupation => startTime < occupation.To && endTime < occupation.From);
     }
 }

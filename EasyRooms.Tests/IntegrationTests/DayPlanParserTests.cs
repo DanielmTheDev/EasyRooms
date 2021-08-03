@@ -1,5 +1,5 @@
 using EasyRooms.Implementations;
-using EasyRooms.Interfaces;
+using EasyRooms.Models;
 using FluentAssertions;
 using Newtonsoft.Json;
 using System.Collections.Generic;
