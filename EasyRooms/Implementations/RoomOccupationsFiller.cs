@@ -7,7 +7,7 @@ namespace EasyRooms.Implementations
 {
     public class RoomOccupationsFiller
     {
-        public static IEnumerable<Room> FillRoomOccupations(IEnumerable<Row> rows, IEnumerable<string> roomNames)
+        public IEnumerable<Room> FillRoomOccupations(IEnumerable<Row> rows, IEnumerable<string> roomNames)
         {
             var orderedRows = OrderRows(rows);
             return CreateRooms(roomNames, orderedRows);
@@ -19,10 +19,10 @@ namespace EasyRooms.Implementations
             orderedRows.ToList()
                 .ForEach(row =>
                 {
-                    var startTimeSpan = TimeSpan.Parse(row.StartTime);
-                    var endTimeSpan = startTimeSpan.Add(TimeSpan.Parse(row.Duration));
-                    rooms.First(room => !room.IsOccupiedAt(startTimeSpan, endTimeSpan))
-                        .AddOccupation(new Occupation(row));
+                    var startTime = TimeSpan.Parse(row.StartTime);
+                    var endTime = startTime.Add(TimeSpan.Parse(row.Duration));
+                    rooms.First(room => !room.IsOccupiedAt(startTime, endTime))
+                        .AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong, startTime, endTime));
                 });
             return rooms;
         }

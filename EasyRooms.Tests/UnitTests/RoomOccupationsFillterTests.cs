@@ -4,14 +4,14 @@ using FluentAssertions;
 using System;
 using Xunit;
 
-namespace EasyRooms.Tests.IntegrationTests
+namespace EasyRooms.Tests.UnitTests
 {
     public class RoomOccupationsFillterTests
     {
-        private readonly RoomOccupationsFiller _roomsManager;
+        private readonly RoomOccupationsFiller _roomsOccupationsFiller;
 
         public RoomOccupationsFillterTests()
-            => _roomsManager = new RoomOccupationsFiller();
+            => _roomsOccupationsFiller = new RoomOccupationsFiller();
 
         [Fact]
         public void Distrubutes_Overlapping_Rows_Between_Two_Rooms()
@@ -25,7 +25,7 @@ namespace EasyRooms.Tests.IntegrationTests
             var room2 = new Room("room2", 1).AddOccupation(new Occupation("Dani", "Carmen", "short", "long", new TimeSpan(10, 0, 0), new TimeSpan(14, 0, 0)));
             var expectedRooms = new[] { room1, room2 };
 
-            var resultRooms = RoomOccupationsFiller.FillRoomOccupations(rows, new[] { "room1", "room2" });
+            var resultRooms = _roomsOccupationsFiller.FillRoomOccupations(rows, new[] { "room1", "room2" });
 
             resultRooms.Should().BeEquivalentTo(expectedRooms);
         }

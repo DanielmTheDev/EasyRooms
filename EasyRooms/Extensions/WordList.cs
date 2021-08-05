@@ -69,6 +69,7 @@ namespace EasyRooms.Extensions
             return enumeratedWords;
         }
 
+        //todo uncomment all the parser tests, maybe something is wrong here
         public static IEnumerable<string> RemoveCommentaries(this IEnumerable<string> words)
         {
             var enumeratedWords = words.ToList();
