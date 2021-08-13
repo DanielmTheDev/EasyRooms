@@ -27,10 +27,8 @@ namespace EasyRooms.Implementations
             return rooms;
         }
 
-        //todo validate duation is int, maybe earlier when parsing the document
         private static IOrderedEnumerable<Row> OrderRows(IEnumerable<Row> rows) =>
-            rows
-                .OrderBy(row => DateTime.Parse(row.StartTime))
+            rows.OrderBy(row => DateTime.Parse(row.StartTime))
                 .ThenBy(row => int.Parse(row.Duration));
     }
 }

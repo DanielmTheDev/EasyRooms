@@ -15,7 +15,7 @@ namespace EasyRooms.Implementations
             var rows = new List<Row>();
             for (int i = 0; i < words.Count() - 5; i += Constants.CommonConstants.ElementsPerRow)
             {
-                //GuardDuration(enumeratedWords[i + 1]);
+                GuardDuration(enumeratedWords[i + 1]);
                 var newRow = new Row(
                 enumeratedWords[i],
                 enumeratedWords[i + 1],
