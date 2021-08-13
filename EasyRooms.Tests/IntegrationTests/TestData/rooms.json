@@ -1,0 +1,10 @@
+[
+  {
+    "Name": "room1",
+    "Priority": 0
+  },
+  {
+    "Name": "room2",
+    "Priority": 1
+  }
+]

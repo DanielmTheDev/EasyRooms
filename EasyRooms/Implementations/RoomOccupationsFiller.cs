@@ -1,11 +1,12 @@
-﻿using EasyRooms.Models;
+﻿using EasyRooms.Interfaces;
+using EasyRooms.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace EasyRooms.Implementations
 {
-    public class RoomOccupationsFiller
+    public class RoomOccupationsFiller : IRoomOccupationsFiller
     {
         public IEnumerable<Room> FillRoomOccupations(IEnumerable<Row> rows, IEnumerable<string> roomNames)
         {
@@ -19,7 +20,9 @@ namespace EasyRooms.Implementations
             orderedRows.ToList()
                 .ForEach(row =>
                 {
-                    var startTime = TimeSpan.Parse(row.StartTime);
+                    //todo this trimming is a workaround. In reality, such a case probably has to be put into the same room as the
+                    //theray that came before, since it means something like preparation. Create a story for this
+                    var startTime = TimeSpan.Parse(row.StartTime.Trim('(', ')'));
                     var endTime = startTime.Add(TimeSpan.Parse(row.Duration));
                     rooms.First(room => !room.IsOccupiedAt(startTime, endTime))
                         .AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong, startTime, endTime));
@@ -28,7 +31,7 @@ namespace EasyRooms.Implementations
         }
 
         private static IOrderedEnumerable<Row> OrderRows(IEnumerable<Row> rows) =>
-            rows.OrderBy(row => DateTime.Parse(row.StartTime))
+            rows.OrderBy(row => TimeSpan.Parse(row.StartTime.Trim('(', ')')))
                 .ThenBy(row => int.Parse(row.Duration));
     }
 }

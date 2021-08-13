@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace EasyRooms.Models
 {
-    public class Room
+    public record Room
     {
         public string Name { get; set; }
         public int Priority { get; set; }

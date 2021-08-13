@@ -30,6 +30,7 @@ namespace EasyRooms
             services.AddTransient<IXpsWordsExtractor, XpsWordsExtractor>()
                 .AddTransient<IRowsCreator, RowsCreator>()
                 .AddTransient<IDayPlanParser, DayPlanParser>()
+                .AddTransient<IRoomOccupationsFiller, RoomOccupationsFiller>()
                 .AddSingleton<MainWindow>();
         }
 

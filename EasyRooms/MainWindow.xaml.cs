@@ -1,4 +1,6 @@
 ﻿using EasyRooms.Interfaces;
+using Newtonsoft.Json;
+using System.IO;
 using System.Windows;
 
 namespace EasyRooms
@@ -9,18 +11,25 @@ namespace EasyRooms
     public partial class MainWindow : Window
     {
         private readonly IDayPlanParser _dayPlanParser;
+        private readonly IRoomOccupationsFiller _occupationsFiller;
 
-        public MainWindow(IDayPlanParser dayPlanParser)
+        public MainWindow(IDayPlanParser dayPlanParser, IRoomOccupationsFiller occupationsFiller)
         {
             InitializeComponent();
             _dayPlanParser = dayPlanParser;
+            _occupationsFiller = occupationsFiller;
             TestApplication();
         }
 
         private void TestApplication()
         {
-            var path = "C:\\Users\\dadam\\Google Drive\\easyRoom\\gesamtPlan.xps";
+            var path = @"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\Plan2.xps";
             var rows = _dayPlanParser.ParseDayPlan(path);
+            var roomsStrings = new[] { "room1", "room2" };
+            //todo this doesn't work, just run the code and see. 
+            var rooms = _occupationsFiller.FillRoomOccupations(rows, roomsStrings);
+            var serializedRooms = JsonConvert.SerializeObject(rooms, Formatting.Indented);
+            File.WriteAllText(@"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\rooms.json", serializedRooms);
         }
     }
 }
