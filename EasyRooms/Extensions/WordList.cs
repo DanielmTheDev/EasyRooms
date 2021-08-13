@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace EasyRooms.Extensions
 {
@@ -69,14 +70,14 @@ namespace EasyRooms.Extensions
             return enumeratedWords;
         }
 
-        //todo uncomment all the parser tests, maybe something is wrong here
         public static IEnumerable<string> RemoveCommentaries(this IEnumerable<string> words)
         {
             var enumeratedWords = words.ToList();
             var commentaryIndices = words
                 .Select((word, i) => (word, index: i))
-                .Where(wordWithIndex => TimeSpan.TryParse(wordWithIndex.word, out var _)
-                    && TimeSpan.TryParse(enumeratedWords[wordWithIndex.index + 3], out var _))
+                .Where(wordWithIndex => IsTimeEntry(wordWithIndex.word)
+                    && IsTimeEntry(enumeratedWords[wordWithIndex.index + 4]))
+                .OrderByDescending(wordWithIndex => wordWithIndex.index)
                 .ToList();
 
             commentaryIndices
@@ -121,5 +122,8 @@ namespace EasyRooms.Extensions
             }
             throw new ArgumentException("No DateTime found before pause");
         }
+
+        private static bool IsTimeEntry(string word)
+            => Regex.IsMatch(word, @"\d\d\:\d\d");
     }
 }
