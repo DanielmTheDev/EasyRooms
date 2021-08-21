@@ -24,6 +24,6 @@ namespace EasyRooms.Models
         }
 
         public bool IsOccupiedAt(TimeSpan startTime, TimeSpan endTime) 
-            => Occupations.Any(occupation => startTime < occupation.StartTime && endTime < occupation.EndTime);
+            => Occupations.Any(occupation => startTime < occupation.EndTime && endTime > occupation.StartTime);
     }
 }
