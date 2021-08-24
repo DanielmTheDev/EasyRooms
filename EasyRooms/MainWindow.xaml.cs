@@ -26,7 +26,6 @@ namespace EasyRooms
             var path = @"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\Plan2.xps";
             var rows = _dayPlanParser.ParseDayPlan(path);
             var roomsStrings = new[] { "room1", "room2", "room3", "room4", "room5" };
-            //todo does not serialize correctly 
             var rooms = _occupationsFiller.FillRoomOccupations(rows, roomsStrings);
             var serializedRooms = JsonConvert.SerializeObject(rooms, Formatting.Indented);
             File.WriteAllText(@"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\rooms.json", serializedRooms);

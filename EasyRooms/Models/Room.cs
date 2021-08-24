@@ -8,7 +8,7 @@ namespace EasyRooms.Models
     {
         public string Name { get; set; }
         public int Priority { get; set; }
-        private List<Occupation> Occupations { get; }
+        public IList<Occupation> Occupations { get; }
 
         public Room(string name, int priority)
         {
