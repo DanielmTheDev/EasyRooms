@@ -7,7 +7,6 @@ using System.Windows.Xps.Packaging;
 #nullable disable
 namespace EasyRooms.Implementations
 {
-    //todo refactor
     public class XpsWordsExtractor : IXpsWordsExtractor
     {
         public IEnumerable<string> ExtractWords(string filePath)

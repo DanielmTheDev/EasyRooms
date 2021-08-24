@@ -8,7 +8,6 @@ namespace EasyRooms.Implementations
 {
     public class RowsCreator : IRowsCreator
     {
-        //TODO somehow refactor
         public IEnumerable<Row> CreateRows(IEnumerable<string> words)
         {
             var enumeratedWords = words.ToList();
