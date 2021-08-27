@@ -1,7 +1,6 @@
 ﻿using EasyRooms.Implementations;
 using EasyRooms.Models;
 using FluentAssertions;
-using System;
 using Xunit;
 
 namespace EasyRooms.Tests.UnitTests
@@ -18,16 +17,16 @@ namespace EasyRooms.Tests.UnitTests
         {
             var rows = new[]
             {
-                new Row("08:00", "4", "short", "long", "Hans", "Wadim"),
-                new Row("10:00", "4", "short2", "long2", "Carmen", "Dani"),
+                new Row("08:00", "240", "short", "long", "Hans", "Wadim"),
+                new Row("10:00", "240", "short2", "long2", "Carmen", "Dani"),
             };
-            var room1 = new Room("room1", 0).AddOccupation(new Occupation("Wadim", "Hans", "short", "long", new TimeSpan(8, 0, 0), new TimeSpan(12, 0, 0)));
-            var room2 = new Room("room2", 1).AddOccupation(new Occupation("Dani", "Carmen", "short", "long", new TimeSpan(10, 0, 0), new TimeSpan(14, 0, 0)));
-            var expectedRooms = new[] { room1, room2 };
+            var expectedRoom1 = new Room("room1", 0).AddOccupation(new Occupation("Wadim", "Hans", "short", "long", new TimeSpan(8, 0, 0), new TimeSpan(12, 0, 0)));
+            var expectedRoom2 = new Room("room2", 1).AddOccupation(new Occupation("Dani", "Carmen", "short2", "long2", new TimeSpan(10, 0, 0), new TimeSpan(14, 0, 0)));
 
-            var resultRooms = _roomsOccupationsFiller.FillRoomOccupations(rows, new[] { "room1", "room2" });
+            var resultRooms = _roomsOccupationsFiller.FillRoomOccupations(rows, new[] { "room1", "room2" }).ToList();
 
-            resultRooms.Should().BeEquivalentTo(expectedRooms);
+            resultRooms[0].Occupations.Should().BeEquivalentTo(expectedRoom1.Occupations);
+            resultRooms[1].Occupations.Should().BeEquivalentTo(expectedRoom2.Occupations);
         }
     }
 }

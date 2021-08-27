@@ -2,8 +2,6 @@ using EasyRooms.Implementations;
 using EasyRooms.Models;
 using FluentAssertions;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.IO;
 using Xunit;
 
 namespace EasyRooms.Tests
