@@ -8,7 +8,7 @@ namespace EasyRooms.Tests
 {
     public class DayPlanParserTests
     {
-        private DayPlanParser _dayPlanParser;
+        private readonly DayPlanParser _dayPlanParser;
 
         public DayPlanParserTests()
         {

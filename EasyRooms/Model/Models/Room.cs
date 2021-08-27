@@ -9,7 +9,7 @@ namespace EasyRooms.Models
         public string Name { get; set; }
         public int Priority { get; set; }
         public IList<Occupation> Occupations { get; }
-
+        
         public Room(string name, int priority)
         {
             Name = name;
