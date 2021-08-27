@@ -23,7 +23,15 @@ namespace EasyRooms.Models
             return this;
         }
 
-        public bool IsOccupiedAt(TimeSpan startTime, TimeSpan endTime) 
-            => Occupations.Any(occupation => startTime < occupation.EndTime && endTime > occupation.StartTime);
+        public bool IsOccupiedAt(TimeSpan startTime, TimeSpan endTime, int bufferInMinutes)
+            => Occupations.Any(occupation => 
+            startTime < GetEndTimeWithBuffer(occupation.EndTime, bufferInMinutes) 
+            && endTime > occupation.StartTime);
+
+        private static TimeSpan GetEndTimeWithBuffer(TimeSpan endTime, int bufferInMinutes)
+        {
+            var minutes = TimeSpan.FromMinutes(bufferInMinutes);
+            return endTime.Add(minutes);
+        }
     }
 }

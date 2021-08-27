@@ -5,6 +5,6 @@ namespace EasyRooms.Interfaces
 {
     public interface IRoomOccupationsFiller
     {
-        IEnumerable<Room> FillRoomOccupations(IEnumerable<Row> rows, IEnumerable<string> roomNames);
+        IEnumerable<Room> FillRoomOccupations(IEnumerable<Row> rows, IEnumerable<string> roomNames, int bufferInMinutes = 0);
     }
 }
