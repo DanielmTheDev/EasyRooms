@@ -10,8 +10,7 @@
         <local:XpsUploadViewModel/>
     </UserControl.DataContext>
     <Grid>
-        <ListBox ItemsSource="{Binding RoomNames}">
-            
-        </ListBox>
+        <TextBox Text="{Binding RoomsString}" Margin="144,30,567,341"></TextBox>
+        <Button Click="SelectFile_Click" Margin="122,152,495,259">Datei Auswählen</Button>
     </Grid>
 </UserControl>
