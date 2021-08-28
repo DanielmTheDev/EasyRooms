@@ -6,7 +6,7 @@
 
         public XpsUploadViewModel()
         {
-            RoomsString = "Hallo\nDu";
+            RoomsString = "Raum1\nRaum2\nRaum3\nRaum4\nRaum5\n";
         }
     }   
 }

@@ -9,8 +9,9 @@
     <UserControl.DataContext>
         <local:XpsUploadViewModel/>
     </UserControl.DataContext>
-    <Grid>
-        <TextBox Text="{Binding RoomsString}" Margin="144,30,567,341"></TextBox>
-        <Button Click="SelectFile_Click" Margin="122,152,495,259">Datei Auswählen</Button>
+    <Grid Margin="0,0,0,-63">
+        <TextBox AcceptsReturn="True" Text="{Binding RoomsString}" Margin="40,23,671,101"></TextBox>
+        <Button Click="SelectFile_Click" Margin="257,22,360,389" RenderTransformOrigin="0.126,5.296">Datei Auswählen</Button>
+        <!--<Button Command="{Binding CalculateCommand}" Margin="257,100,360,306">Berechnen</Button>-->
     </Grid>
 </UserControl>
