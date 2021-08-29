@@ -15,21 +15,5 @@ namespace EasyRooms.View
         {
             InitializeComponent();
         }
-
-        private void SelectFile_Click(object sender, RoutedEventArgs e)
-        {
-            var dialog = new OpenFileDialog
-            {
-                DefaultExt = ".xps",
-                Filter = "XPS Files (*.xps)|*.xps"
-            };
-
-            var result = dialog.ShowDialog();
-
-            if (result == true)
-            {
-                var filename = dialog.FileName;
-            }
-        }
     }
 }

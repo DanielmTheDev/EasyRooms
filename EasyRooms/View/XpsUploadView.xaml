@@ -11,7 +11,7 @@
     </UserControl.DataContext>
     <Grid Margin="0,0,0,-63">
         <TextBox AcceptsReturn="True" Text="{Binding RoomsString}" Margin="40,23,671,101"></TextBox>
-        <Button Click="SelectFile_Click" Margin="257,22,360,389" RenderTransformOrigin="0.126,5.296">Datei Auswählen</Button>
-        <!--<Button Command="{Binding CalculateCommand}" Margin="257,100,360,306">Berechnen</Button>-->
+        <Button Command="{Binding ChooseFileCommand}" Margin="257,22,360,389" RenderTransformOrigin="0.126,5.296">Datei Auswählen</Button>
+        <Button Command="{Binding CalculateOccupationsCommand}" Margin="257,100,360,306">Berechnen</Button>
     </Grid>
 </UserControl>
