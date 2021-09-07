@@ -6,7 +6,7 @@ namespace EasyRooms.ViewModel
 {
     public class XpsUploadViewModel
     {
-        public string RoomsString { get; private set; }
+        public string RoomsString { get; set; }
         public RelayCommand CalculateOccupationsCommand { get; private set; }
         public RelayCommand ChooseFileCommand { get; private set; }
 
