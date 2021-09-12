@@ -1,10 +1,9 @@
-﻿using EasyRooms.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using EasyRooms.Model.Models;
 
-namespace EasyRooms.Interfaces
+namespace EasyRooms.Model.Interfaces;
+
+public interface IRoomOccupationsFiller
 {
-    public interface IRoomOccupationsFiller
-    {
-        IEnumerable<Room> FillRoomOccupations(IEnumerable<Row> rows, IEnumerable<string> roomNames, int bufferInMinutes = 0);
-    }
+    IEnumerable<Room> FillRoomOccupations(IEnumerable<Row> rows, IEnumerable<string> roomNames, int bufferInMinutes = 0);
 }

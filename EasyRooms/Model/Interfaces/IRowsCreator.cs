@@ -1,10 +1,9 @@
-﻿using EasyRooms.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using EasyRooms.Model.Models;
 
-namespace EasyRooms.Interfaces
+namespace EasyRooms.Model.Interfaces;
+
+public interface IRowsCreator
 {
-    public interface IRowsCreator
-    {
-        IEnumerable<Row> CreateRows(IEnumerable<string> words);
-    }
+    IEnumerable<Row> CreateRows(IEnumerable<string> words);
 }

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace EasyRooms.Interfaces
+namespace EasyRooms.Model.Interfaces;
+
+public interface IXpsWordsExtractor
 {
-    public interface IXpsWordsExtractor
-    {
-        IEnumerable<string> ExtractWords(string filePath);
-    }
+    IEnumerable<string> ExtractWords(string filePath);
 }

@@ -1,10 +1,9 @@
-﻿using EasyRooms.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using EasyRooms.Model.Models;
 
-namespace EasyRooms.Interfaces
+namespace EasyRooms.Model.Interfaces;
+
+public interface IDayPlanParser
 {
-    public interface IDayPlanParser
-    {
-        IEnumerable<Row> ParseDayPlan(string path);
-    }
+    IEnumerable<Row> ParseDayPlan(string path);
 }
