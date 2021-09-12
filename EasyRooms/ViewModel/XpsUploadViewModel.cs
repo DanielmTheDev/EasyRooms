@@ -50,7 +50,7 @@ namespace EasyRooms.ViewModel
 
         private void CalculateOccupations()
         {
-            _ = _fileName ?? throw new NullReferenceException(nameof(_fileName));
+            _ = _fileName ?? throw new ArgumentNullException(nameof(_fileName));
             var rows = _dayPlanParser.ParseDayPlan(_fileName);
             var roomNames = RoomsString.Split('\n');
             var filledRooms = _occupationsFiller.FillRoomOccupations(rows, roomNames, _buffer);
