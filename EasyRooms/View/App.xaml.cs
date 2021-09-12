@@ -15,17 +15,14 @@ namespace EasyRooms
     /// </summary>
     public partial class App : Application
     {
-        public IServiceProvider Services { get; set; }
+
+        public IServiceProvider Services => _host.Services;
         private readonly IHost _host;
 
         public App()
         {
-            _host = Host.CreateDefaultBuilder()
-                .ConfigureServices((context, services) =>
-                   {
-                       ConfigureServices(context.Configuration, services);
-                   })
-                   .Build();
+            _host = Host.CreateDefaultBuilder().ConfigureServices((context, services) =>               
+                   ConfigureServices(context.Configuration, services)).Build();
         }
 
         private void ConfigureServices(IConfiguration _, IServiceCollection services)
@@ -37,7 +34,6 @@ namespace EasyRooms
                 .AddSingleton<XpsUploadView>()
                 .AddSingleton<XpsUploadViewModel>()
                 .AddSingleton<MainWindow>();
-            Services = services.BuildServiceProvider();
         }
 
         protected override async void OnStartup(StartupEventArgs e)
