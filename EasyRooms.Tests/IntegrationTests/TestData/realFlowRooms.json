@@ -1,0 +1,414 @@
+[
+  {
+    "Name": "Raum1",
+    "Priority": 0,
+    "Occupations": [
+      {
+        "Therapist": "Lena",
+        "Patient": "Volodymyr Plyatskovsky",
+        "TherapyShort": "BOBATH",
+        "TherapyLong": "KG nach Bobath bei zerebralen",
+        "StartTime": "08:30:00",
+        "EndTime": "09:00:00"
+      },
+      {
+        "Therapist": "Lena",
+        "Patient": "Elfriede Kaunzner",
+        "TherapyShort": "MLD45",
+        "TherapyLong": "Manuelle Lymphdrainage (45 min.)",
+        "StartTime": "10:00:00",
+        "EndTime": "10:40:00"
+      },
+      {
+        "Therapist": "Lena",
+        "Patient": "Rosemarie Isic",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "11:00:00",
+        "EndTime": "11:20:00"
+      },
+      {
+        "Therapist": "Wadim",
+        "Patient": "Renato Zgorelec",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "11:30:00",
+        "EndTime": "11:50:00"
+      },
+      {
+        "Therapist": "Lena",
+        "Patient": "Stefan Schechs",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "12:00:00",
+        "EndTime": "12:20:00"
+      },
+      {
+        "Therapist": "Wadim",
+        "Patient": "Cornelia Brunnbauer",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "12:40:00",
+        "EndTime": "13:00:00"
+      },
+      {
+        "Therapist": "Franziska",
+        "Patient": "Caroline Kappler",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "13:20:00",
+        "EndTime": "13:40:00"
+      },
+      {
+        "Therapist": "Wadim",
+        "Patient": "BG Fall Mohammad Al Ali",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "14:00:00",
+        "EndTime": "14:20:00"
+      },
+      {
+        "Therapist": "Wadim",
+        "Patient": "Jürgen Heubach",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "14:40:00",
+        "EndTime": "15:00:00"
+      },
+      {
+        "Therapist": "Wadim",
+        "Patient": "Adalbert Kuhn",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "15:20:00",
+        "EndTime": "15:40:00"
+      },
+      {
+        "Therapist": "Wadim",
+        "Patient": "Vera Käfer",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "16:00:00",
+        "EndTime": "16:20:00"
+      },
+      {
+        "Therapist": "Wadim",
+        "Patient": "Michaela Grüner",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "16:40:00",
+        "EndTime": "17:00:00"
+      },
+      {
+        "Therapist": "Franziska",
+        "Patient": "Ingrid Seidl",
+        "TherapyShort": "RÜCK30",
+        "TherapyLong": "Massage 30 min",
+        "StartTime": "17:10:00",
+        "EndTime": "17:40:00"
+      },
+      {
+        "Therapist": "Franziska",
+        "Patient": "Katharina Ziegler",
+        "TherapyShort": "GANZ",
+        "TherapyLong": "Massage 60 Min.",
+        "StartTime": "18:00:00",
+        "EndTime": "19:00:00"
+      }
+    ]
+  },
+  {
+    "Name": "Raum2",
+    "Priority": 1,
+    "Occupations": [
+      {
+        "Therapist": "Lena",
+        "Patient": "Jutta Reitmeier",
+        "TherapyShort": "MLD60",
+        "TherapyLong": "Manuelle Lymphdrainage (60 min.)",
+        "StartTime": "09:00:00",
+        "EndTime": "10:00:00"
+      },
+      {
+        "Therapist": "Lena",
+        "Patient": "Elfriede Kaunzner",
+        "TherapyShort": "KMT",
+        "TherapyLong": "Klassische Massagetherapie (KMT)",
+        "StartTime": "10:40:00",
+        "EndTime": "11:00:00"
+      },
+      {
+        "Therapist": "Anna",
+        "Patient": "Gabriele Eckstein",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "11:10:00",
+        "EndTime": "11:30:00"
+      },
+      {
+        "Therapist": "Lena",
+        "Patient": "Ingeborg Doblinger",
+        "TherapyShort": "MT",
+        "TherapyLong": "Manuelle Therapie",
+        "StartTime": "11:40:00",
+        "EndTime": "12:00:00"
+      },
+      {
+        "Therapist": "Wadim",
+        "Patient": "Liselotte Gianni-Geigenfeind",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "12:20:00",
+        "EndTime": "12:40:00"
+      },
+      {
+        "Therapist": "Franziska",
+        "Patient": "Caroline Kappler",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "13:00:00",
+        "EndTime": "13:20:00"
+      },
+      {
+        "Therapist": "Wadim",
+        "Patient": "BG Fall Mohammad Al Ali",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "13:40:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Therapist": "Wadim",
+        "Patient": "Andreas Hoffmann",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "14:20:00",
+        "EndTime": "14:40:00"
+      },
+      {
+        "Therapist": "Wadim",
+        "Patient": "Jürgen Heubach",
+        "TherapyShort": "MT",
+        "TherapyLong": "Manuelle Therapie",
+        "StartTime": "15:00:00",
+        "EndTime": "15:20:00"
+      },
+      {
+        "Therapist": "Wadim",
+        "Patient": "Leonhard Baier",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "15:40:00",
+        "EndTime": "16:00:00"
+      },
+      {
+        "Therapist": "Wadim",
+        "Patient": "Polina Belakovskaya",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "16:20:00",
+        "EndTime": "16:40:00"
+      },
+      {
+        "Therapist": "Wadim",
+        "Patient": "Julia Schmid",
+        "TherapyShort": "BOBATH",
+        "TherapyLong": "KG nach Bobath bei zerebralen",
+        "StartTime": "17:00:00",
+        "EndTime": "17:30:00"
+      },
+      {
+        "Therapist": "Franziska",
+        "Patient": "Martin Klein",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "17:40:00",
+        "EndTime": "18:00:00"
+      }
+    ]
+  },
+  {
+    "Name": "Raum3",
+    "Priority": 2,
+    "Occupations": [
+      {
+        "Therapist": "Wadim",
+        "Patient": "Marlene Waldthaler",
+        "TherapyShort": "GANZ",
+        "TherapyLong": "Massage 60 Min.",
+        "StartTime": "10:00:00",
+        "EndTime": "11:00:00"
+      },
+      {
+        "Therapist": "Lena",
+        "Patient": "Theresia Zach",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "11:20:00",
+        "EndTime": "11:40:00"
+      },
+      {
+        "Therapist": "Wadim",
+        "Patient": "Liselotte Gianni-Geigenfeind",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "12:00:00",
+        "EndTime": "12:20:00"
+      },
+      {
+        "Therapist": "Franziska",
+        "Patient": "Franz Stelzl",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "13:40:00",
+        "EndTime": "14:00:00"
+      },
+      {
+        "Therapist": "Franziska",
+        "Patient": "Christina Schrepfer",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "14:40:00",
+        "EndTime": "15:00:00"
+      },
+      {
+        "Therapist": "Franziska",
+        "Patient": "Susanne Wirth",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "15:20:00",
+        "EndTime": "15:40:00"
+      },
+      {
+        "Therapist": "Franziska",
+        "Patient": "Lukas Weisser",
+        "TherapyShort": "KMT",
+        "TherapyLong": "Klassische Massagetherapie (KMT)",
+        "StartTime": "16:00:00",
+        "EndTime": "16:20:00"
+      },
+      {
+        "Therapist": "Franziska",
+        "Patient": "Imer Bardi",
+        "TherapyShort": "MT",
+        "TherapyLong": "Manuelle Therapie",
+        "StartTime": "16:40:00",
+        "EndTime": "17:00:00"
+      },
+      {
+        "Therapist": "Anna",
+        "Patient": "Sandra Fenske",
+        "TherapyShort": "REFLEX45",
+        "TherapyLong": "Fußreflex 45 min",
+        "StartTime": "17:20:00",
+        "EndTime": "18:05:00"
+      }
+    ]
+  },
+  {
+    "Name": "Raum4",
+    "Priority": 3,
+    "Occupations": [
+      {
+        "Therapist": "Wadim",
+        "Patient": "Renato Zgorelec",
+        "TherapyShort": "MLD30",
+        "TherapyLong": "Manuelle Lymphdrainage (30 min.)",
+        "StartTime": "11:00:00",
+        "EndTime": "11:30:00"
+      },
+      {
+        "Therapist": "Franziska",
+        "Patient": "Theresa Wilhelm",
+        "TherapyShort": "MLD45",
+        "TherapyLong": "Manuelle Lymphdrainage (45 min.)",
+        "StartTime": "14:00:00",
+        "EndTime": "14:40:00"
+      },
+      {
+        "Therapist": "Franziska",
+        "Patient": "Markus-Alois Stoeckle",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "15:00:00",
+        "EndTime": "15:20:00"
+      },
+      {
+        "Therapist": "Franziska",
+        "Patient": "Susanne Wirth",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "15:40:00",
+        "EndTime": "16:00:00"
+      },
+      {
+        "Therapist": "Franziska",
+        "Patient": "Lukas Weisser",
+        "TherapyShort": "MT",
+        "TherapyLong": "Manuelle Therapie",
+        "StartTime": "16:20:00",
+        "EndTime": "16:40:00"
+      },
+      {
+        "Therapist": "Anna",
+        "Patient": "Sonja Weigert",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "18:05:00",
+        "EndTime": "18:25:00"
+      }
+    ]
+  },
+  {
+    "Name": "Raum5",
+    "Priority": 4,
+    "Occupations": [
+      {
+        "Therapist": "Franziska",
+        "Patient": "Markus-Alois Stoeckle",
+        "TherapyShort": "FANGO",
+        "TherapyLong": "Warmpackungen einschl. Nachruhe (Fango)",
+        "StartTime": "14:40:00",
+        "EndTime": "15:00:00"
+      },
+      {
+        "Therapist": "Anna",
+        "Patient": "Steffi Huber",
+        "TherapyShort": "MT",
+        "TherapyLong": "Manuelle Therapie",
+        "StartTime": "15:40:00",
+        "EndTime": "16:00:00"
+      },
+      {
+        "Therapist": "Anna",
+        "Patient": "Gina Winklhofer",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "16:20:00",
+        "EndTime": "16:40:00"
+      }
+    ]
+  },
+  {
+    "Name": "",
+    "Priority": 5,
+    "Occupations": [
+      {
+        "Therapist": "Anna",
+        "Patient": "Sarah Zschörner",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "16:00:00",
+        "EndTime": "16:20:00"
+      },
+      {
+        "Therapist": "Anna",
+        "Patient": "Eva Fröbel",
+        "TherapyShort": "RÜCK40",
+        "TherapyLong": "Massage 40 min",
+        "StartTime": "16:40:00",
+        "EndTime": "17:20:00"
+      }
+    ]
+  }
+]

@@ -1,7 +1,9 @@
-﻿using Microsoft.Win32;
+﻿using System;
+using System.IO;
 using EasyRooms.Interfaces;
 using EasyRooms.ViewModel.Commands;
-
+using Microsoft.Win32;
+using Newtonsoft.Json;
 
 namespace EasyRooms.ViewModel
 {
@@ -48,9 +50,12 @@ namespace EasyRooms.ViewModel
 
         private void CalculateOccupations()
         {
+            _ = _fileName ?? throw new NullReferenceException(nameof(_fileName));
             var rows = _dayPlanParser.ParseDayPlan(_fileName);
-            var rooms = RoomsString.Split('\n');
-            var occupations = _occupationsFiller.FillRoomOccupations(rows, rooms, _buffer);
+            var roomNames = RoomsString.Split('\n');
+            var filledRooms = _occupationsFiller.FillRoomOccupations(rows, roomNames, _buffer);
+            var serializedRooms = JsonConvert.SerializeObject(filledRooms, Formatting.Indented);
+            File.WriteAllText(@"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\realFlowRooms.json", serializedRooms);
         }
     }
 }
