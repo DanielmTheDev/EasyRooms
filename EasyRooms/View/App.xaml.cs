@@ -15,6 +15,7 @@ namespace EasyRooms
     /// </summary>
     public partial class App : Application
     {
+        public IServiceProvider Services { get; set; }
         private readonly IHost _host;
 
         public App()
@@ -27,7 +28,7 @@ namespace EasyRooms
                    .Build();
         }
 
-        private static void ConfigureServices(IConfiguration _, IServiceCollection services)
+        private void ConfigureServices(IConfiguration _, IServiceCollection services)
         {
             services.AddTransient<IXpsWordsExtractor, XpsWordsExtractor>()
                 .AddTransient<IRowsCreator, RowsCreator>()
@@ -36,6 +37,7 @@ namespace EasyRooms
                 .AddSingleton<XpsUploadView>()
                 .AddSingleton<XpsUploadViewModel>()
                 .AddSingleton<MainWindow>();
+            Services = services.BuildServiceProvider();
         }
 
         protected override async void OnStartup(StartupEventArgs e)

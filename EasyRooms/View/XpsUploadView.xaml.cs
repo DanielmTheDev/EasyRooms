@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using EasyRooms.ViewModel;
 
 namespace EasyRooms.View
 {
@@ -10,6 +11,7 @@ namespace EasyRooms.View
         public XpsUploadView()
         {
             InitializeComponent();
+            DataContext = ((App)System.Windows.Application.Current).Services.GetService(typeof(XpsUploadViewModel));
         }
     }
 }
