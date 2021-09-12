@@ -24,7 +24,7 @@ namespace EasyRooms.Implementations
         private static void AddOccupation(Row row, List<Room> rooms, int bufferInMinutes)
         {
             //todo this trimming is a workaround. In reality, such a case probably has to be put into the same room as the
-            //theray that came before, since it means something like preparation. Create a story for this
+            //theray that came before, since it means something like preparation
             var startTime = TimeSpan.Parse(row.StartTime.Trim('(', ')'));
             var endTime = AddDurationAsMinutes(row.Duration, startTime);
             rooms.First(room => !room.IsOccupiedAt(startTime, endTime, bufferInMinutes))
