@@ -53,11 +53,11 @@ namespace EasyRooms.Tests.UnitTests
             {
                 new Row("09:00", "60", "short2", "long2", "Carmen", "Dani"),
                 new Row("09:00", "60", "*PARTNER", "long", "PartnerPatient", "Partner1"),
-                new Row("09:00", "60", "*PARTNER", "longg", "PartnerPatient", "Partner2")
+                new Row("09:00", "60", "*PARTNER", "long", "PartnerPatient", "Partner2")
             };
             var expectedRoom1 = new Room("room1", 0)
                 .AddOccupation(new Occupation("Partner1", "PartnerPatient", "*PARTNER", "long", new TimeSpan(9, 0, 0), new TimeSpan(10, 0, 0)))
-                .AddOccupation(new Occupation("Partner2", "PartnerPatient", "*PARTNER", "long", new TimeSpan(9, 0, 0), new TimeSpan(8, 0, 0)));
+                .AddOccupation(new Occupation("Partner2", "PartnerPatient", "*PARTNER", "long", new TimeSpan(9, 0, 0), new TimeSpan(10, 0, 0)));
             var expectedRoom2 = new Room("room2", 1).AddOccupation(new Occupation("Dani", "Carmen", "short2", "long2", new TimeSpan(9, 0, 0), new TimeSpan(10, 0, 0)));
 
             var resultRooms = _roomsOccupationsFiller.FillRoomOccupations(rows, new[] { "room1", "room2" }, 10).ToList();

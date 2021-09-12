@@ -1,8 +1,9 @@
-﻿using EasyRooms.Interfaces;
-using EasyRooms.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using EasyRooms.Interfaces;
+using EasyRooms.Models;
+
 
 namespace EasyRooms.Implementations
 {
@@ -10,20 +11,38 @@ namespace EasyRooms.Implementations
     {
         public IEnumerable<Room> FillRoomOccupations(IEnumerable<Row> rows, IEnumerable<string> roomNames, int bufferInMinutes = 0)
         {
-            //todo partner massage
-            //1. find all rows with *partner as therapy and pair them up
-            //2. stick them into the prioritized room (either passing one or taking the highest)
-            //3. remove those rows from from the total ones
-            //4. start filling with normal algorithm
-            var orderedRows = OrderRows(rows);
+            var orderedRows = OrderRows(rows).ToList();
             return CreateRooms(roomNames, orderedRows, bufferInMinutes);
         }
 
-        private static IEnumerable<Room> CreateRooms(IEnumerable<string> roomNames, IOrderedEnumerable<Row> orderedRows, int bufferInMinutes)
+        private static IEnumerable<Room> CreateRooms(IEnumerable<string> roomNames, List<Row> orderedRows, int bufferInMinutes)
         {
             var rooms = roomNames.Select((name, i) => new Room(name, i)).ToList();
-            orderedRows.ToList().ForEach(row => AddOccupation(row, rooms, bufferInMinutes));
+            AddPartnerTherapies(rooms, orderedRows, bufferInMinutes);
+            AddNormalTherapies(rooms, orderedRows, bufferInMinutes);
             return rooms;
+        }
+
+        private static void AddPartnerTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
+        {
+            var partnerTherapies = orderedRows
+                .Where(row => string.Equals(row.TherapyShort, "*partner", StringComparison.OrdinalIgnoreCase))
+                .GroupBy(row => new { row.StartTime, row.Duration })
+                .ToList();
+            partnerTherapies.ForEach(grouping =>
+            {
+                //todo this logic is the same as in AddOccupation, refactor 
+                var startTime = TimeSpan.Parse(grouping.Key.StartTime.Trim('(', ')'));
+                var endTime = AddDurationAsMinutes(grouping.Key.Duration, startTime);
+                var freeRoom = rooms.First(room => !room.IsOccupiedAt(startTime, endTime, bufferInMinutes));
+                grouping.ToList().ForEach(row => freeRoom.AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong, startTime, endTime)));
+                grouping.ToList().ForEach(row => orderedRows.Remove(row));
+            });
+        }
+
+        private static void AddNormalTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
+        {
+            orderedRows.ForEach(row => AddOccupation(row, rooms, bufferInMinutes));
         }
 
         private static void AddOccupation(Row row, List<Room> rooms, int bufferInMinutes)
