@@ -8,8 +8,9 @@ namespace EasyRooms.Models
     {
         public string Name { get; set; }
         public int Priority { get; set; }
+        //todo encapsulate this list
         public IList<Occupation> Occupations { get; }
-        
+
         public Room(string name, int priority)
         {
             Name = name;
@@ -24,8 +25,8 @@ namespace EasyRooms.Models
         }
 
         public bool IsOccupiedAt(TimeSpan startTime, TimeSpan endTime, int bufferInMinutes)
-            => Occupations.Any(occupation => 
-            startTime < GetEndTimeWithBuffer(occupation.EndTime, bufferInMinutes) 
+            => Occupations.Any(occupation =>
+            startTime < GetEndTimeWithBuffer(occupation.EndTime, bufferInMinutes)
             && endTime > occupation.StartTime);
 
         private static TimeSpan GetEndTimeWithBuffer(TimeSpan endTime, int bufferInMinutes)

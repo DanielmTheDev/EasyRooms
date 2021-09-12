@@ -10,6 +10,11 @@ namespace EasyRooms.Implementations
     {
         public IEnumerable<Room> FillRoomOccupations(IEnumerable<Row> rows, IEnumerable<string> roomNames, int bufferInMinutes = 0)
         {
+            //todo partner massage
+            //1. find all rows with *partner as therapy and pair them up
+            //2. stick them into the prioritized room (either passing one or taking the highest)
+            //3. remove those rows from from the total ones
+            //4. start filling with normal algorithm
             var orderedRows = OrderRows(rows);
             return CreateRooms(roomNames, orderedRows, bufferInMinutes);
         }

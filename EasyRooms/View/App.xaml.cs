@@ -21,11 +21,11 @@ namespace EasyRooms
 
         public App()
         {
-            _host = Host.CreateDefaultBuilder().ConfigureServices((context, services) =>               
+            _host = Host.CreateDefaultBuilder().ConfigureServices((context, services) =>
                    ConfigureServices(context.Configuration, services)).Build();
         }
 
-        private void ConfigureServices(IConfiguration _, IServiceCollection services)
+        private static void ConfigureServices(IConfiguration _, IServiceCollection services)
         {
             services.AddTransient<IXpsWordsExtractor, XpsWordsExtractor>()
                 .AddTransient<IRowsCreator, RowsCreator>()
