@@ -1,8 +1,4 @@
-﻿using EasyRooms.ViewModel;
-using Microsoft.Win32;
-using System;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace EasyRooms.View
 {

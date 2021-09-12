@@ -1,5 +1,7 @@
 ﻿using EasyRooms.Implementations;
 using EasyRooms.Interfaces;
+using EasyRooms.View;
+using EasyRooms.ViewModel;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,6 +33,8 @@ namespace EasyRooms
                 .AddTransient<IRowsCreator, RowsCreator>()
                 .AddTransient<IDayPlanParser, DayPlanParser>()
                 .AddTransient<IRoomOccupationsFiller, RoomOccupationsFiller>()
+                .AddSingleton<XpsUploadView>()
+                .AddSingleton<XpsUploadViewModel>()
                 .AddSingleton<MainWindow>();
         }
 

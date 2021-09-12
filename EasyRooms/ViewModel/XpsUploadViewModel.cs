@@ -1,6 +1,7 @@
-﻿using EasyRooms.ViewModel.Commands;
-using Microsoft.Win32;
-using System;
+﻿using Microsoft.Win32;
+using EasyRooms.Interfaces;
+using EasyRooms.ViewModel.Commands;
+
 
 namespace EasyRooms.ViewModel
 {
@@ -10,13 +11,19 @@ namespace EasyRooms.ViewModel
         public RelayCommand CalculateOccupationsCommand { get; private set; }
         public RelayCommand ChooseFileCommand { get; private set; }
 
-        private string? _fileName;
+        private readonly IDayPlanParser _dayPlanParser;
+        private readonly IRoomOccupationsFiller _occupationsFiller;
 
-        public XpsUploadViewModel()
+        private string? _fileName;
+        private readonly int _buffer = 10;
+
+        public XpsUploadViewModel(IRoomOccupationsFiller occupationsFiller, IDayPlanParser dayPlanParser)
         {
             RoomsString = "Raum1\nRaum2\nRaum3\nRaum4\nRaum5\n";
             CalculateOccupationsCommand = new RelayCommand(CalculateOccupations, CanCalculateOccupations);
             ChooseFileCommand = new RelayCommand(OpenFileDialog);
+            _occupationsFiller = occupationsFiller;
+            _dayPlanParser = dayPlanParser;
         }
 
         private void OpenFileDialog()
@@ -41,7 +48,9 @@ namespace EasyRooms.ViewModel
 
         private void CalculateOccupations()
         {
-            throw new NotImplementedException();
+            var rows = _dayPlanParser.ParseDayPlan(_fileName);
+            var rooms = RoomsString.Split('\n');
+            var occupations = _occupationsFiller.FillRoomOccupations(rows, rooms, _buffer);
         }
     }
 }
