@@ -31,10 +31,7 @@ public class RoomOccupationsFiller : IRoomOccupationsFiller
             .ToList();
         partnerTherapies.ForEach(grouping =>
         {
-            //todo this logic is the same as in AddOccupation, refactor 
-            var startTime = TimeSpan.Parse(grouping.Key.StartTime.Trim('(', ')'));
-            var endTime = AddDurationAsMinutes(grouping.Key.Duration, startTime);
-            var freeRoom = rooms.First(room => !room.IsOccupiedAt(startTime, endTime, bufferInMinutes));
+            var (startTime, endTime, freeRoom) = GetOccupationInformation(grouping.Key.StartTime, grouping.Key.Duration, bufferInMinutes, rooms);
             grouping.ToList().ForEach(row => freeRoom.AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong, startTime, endTime)));
             grouping.ToList().ForEach(row => orderedRows.Remove(row));
         });
@@ -45,12 +42,18 @@ public class RoomOccupationsFiller : IRoomOccupationsFiller
 
     private static void AddOccupation(Row row, List<Room> rooms, int bufferInMinutes)
     {
+        var (startTime, endTime, freeRoom) = GetOccupationInformation(row.StartTime, row.Duration, bufferInMinutes, rooms);
+        freeRoom.AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong, startTime, endTime));
+    }
+
+    private static (TimeSpan startTime, TimeSpan endTime, Room freeRoom) GetOccupationInformation(string startTimeString, string duration, int bufferInMinutes, List<Room> rooms)
+    {
         //todo this trimming is a workaround. In reality, such a case probably has to be put into the same room as the
         //theray that came before, since it means something like preparation
-        var startTime = TimeSpan.Parse(row.StartTime.Trim('(', ')'));
-        var endTime = AddDurationAsMinutes(row.Duration, startTime);
-        rooms.First(room => !room.IsOccupiedAt(startTime, endTime, bufferInMinutes))
-            .AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong, startTime, endTime));
+        var startTime = TimeSpan.Parse(startTimeString.Trim('(', ')'));
+        var endTime = AddDurationAsMinutes(duration, startTime);
+        var freeRoom = rooms.First(room => !room.IsOccupiedAt(startTime, endTime, bufferInMinutes));
+        return (startTime, endTime, freeRoom);
     }
 
     private static TimeSpan AddDurationAsMinutes(string duration, TimeSpan startTime)
@@ -59,7 +62,7 @@ public class RoomOccupationsFiller : IRoomOccupationsFiller
         return startTime.Add(minutes);
     }
 
-    private static IOrderedEnumerable<Row> OrderRows(IEnumerable<Row> rows) =>
-        rows.OrderBy(row => TimeSpan.Parse(row.StartTime.Trim('(', ')')))
+    private static IOrderedEnumerable<Row> OrderRows(IEnumerable<Row> rows) 
+        => rows.OrderBy(row => TimeSpan.Parse(row.StartTime.Trim('(', ')')))
             .ThenBy(row => int.Parse(row.Duration));
 }
