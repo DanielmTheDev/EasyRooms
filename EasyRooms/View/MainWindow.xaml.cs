@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using EasyRooms.ViewModel;
 
 namespace EasyRooms
 {
@@ -7,7 +8,6 @@ namespace EasyRooms
     /// </summary>
     public partial class MainWindow : Window
     {
-
         public MainWindow()
         {
             InitializeComponent();

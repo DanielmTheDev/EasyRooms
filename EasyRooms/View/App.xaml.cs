@@ -33,6 +33,7 @@ public partial class App : Application
             .AddTransient<IRoomOccupationsFiller, RoomOccupationsFiller>()
             .AddSingleton<XpsUploadView>()
             .AddSingleton<XpsUploadViewModel>()
+            .AddSingleton<TestViewModel>()
             .AddSingleton<MainWindow>();
     }
 
