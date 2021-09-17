@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace EasyRooms.ViewModel;
 
-public class XpsUploadViewModel
+public class XpsUploadViewModel : BindableBase
 {
     public string RoomsString { get; set; }
     public RelayCommand CalculateOccupationsCommand { get; private set; }
