@@ -1,4 +1,6 @@
-﻿using EasyRooms.Model.Implementations;
+﻿using System;
+using System.Linq;
+using EasyRooms.Model.Implementations;
 using EasyRooms.Model.Models;
 using FluentAssertions;
 using Xunit;

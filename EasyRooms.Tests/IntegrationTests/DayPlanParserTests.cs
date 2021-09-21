@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.IO;
 using EasyRooms.Model.Implementations;
 using EasyRooms.Model.Models;
 using FluentAssertions;
