@@ -7,7 +7,7 @@ public class MainWindowViewModel : BindableBase
 
     private BindableBase _currentViewModel;
 
-    public BindableBase BindableBase
+    public BindableBase CurrentViewModel
     {
         get => _currentViewModel;
         set => SetProperty(ref _currentViewModel, value);
