@@ -10,6 +10,7 @@ namespace EasyRooms.ViewModel;
 public class XpsUploadViewModel : BindableBase
 {
     public string RoomsString { get; set; }
+    public string PartnerRoomString { get; set; }
     public RelayCommand CalculateOccupationsCommand { get; private set; }
     public RelayCommand ChooseFileCommand { get; private set; }
 
@@ -53,6 +54,7 @@ public class XpsUploadViewModel : BindableBase
         _ = _fileName ?? throw new ArgumentNullException(nameof(_fileName));
         var rows = _dayPlanParser.ParseDayPlan(_fileName);
         var roomNames = RoomsString.Split('\n');
+        var partnerRoomNames = PartnerRoomString.Split('n');
         var filledRooms = _occupationsFiller.FillRoomOccupations(rows, roomNames, _buffer);
         var serializedRooms = JsonConvert.SerializeObject(filledRooms, Formatting.Indented);
         File.WriteAllText(@"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\realFlowRooms.json", serializedRooms);

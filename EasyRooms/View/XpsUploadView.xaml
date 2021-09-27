@@ -8,6 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin="0,0,0,-63">
         <TextBox AcceptsReturn="True" Text="{Binding RoomsString}" Margin="40,23,671,101"></TextBox>
+        <TextBox AcceptsReturn="True" Text="{Binding PartnerRoomStrings}" Margin="487,22,224,102"></TextBox>
         <Button Command="{Binding ChooseFileCommand}" Margin="257,22,360,389" RenderTransformOrigin="0.126,5.296">Datei Auswählen</Button>
         <Button Command="{Binding CalculateOccupationsCommand}" Margin="257,100,360,306">Berechnen</Button>
     </Grid>
