@@ -7,7 +7,7 @@ public class MainWindowViewModel : BindableBase
 
     private BindableBase _currentViewModel;
 
-    public BindableBase BindableBase
+    public BindableBase CurrentViewModel
     {
         get => _currentViewModel;
         set => SetProperty(ref _currentViewModel, value);
@@ -17,5 +17,6 @@ public class MainWindowViewModel : BindableBase
     {
         _xpsUploadViewModel = (XpsUploadViewModel)((App)System.Windows.Application.Current).Services.GetService(typeof(XpsUploadViewModel));
         _testViewModel = (TestViewModel)((App)System.Windows.Application.Current).Services.GetService(typeof(TestViewModel));
+        CurrentViewModel = _xpsUploadViewModel;
     }
 }
