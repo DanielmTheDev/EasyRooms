@@ -2,6 +2,7 @@
 using System.Linq;
 using EasyRooms.Model.Implementations;
 using EasyRooms.Model.Models;
+using EasyRooms.ViewModel;
 using FluentAssertions;
 using Xunit;
 
@@ -24,8 +25,9 @@ public class RoomOccupationsFillterTests
             };
         var expectedRoom1 = new Room("room1", 0).AddOccupation(new Occupation("Wadim", "Hans", "short", "long", new TimeSpan(8, 0, 0), new TimeSpan(12, 0, 0)));
         var expectedRoom2 = new Room("room2", 1).AddOccupation(new Occupation("Dani", "Carmen", "short2", "long2", new TimeSpan(10, 0, 0), new TimeSpan(14, 0, 0)));
+        var roomNames = new RoomNames { RoomsString = "room1\nroom2" };
 
-        var resultRooms = _roomsOccupationsFiller.FillRoomOccupations(rows, new[] { "room1", "room2" }).ToList();
+        var resultRooms = _roomsOccupationsFiller.FillRoomOccupations(rows, roomNames).ToList();
 
         resultRooms[0].Occupations.Should().BeEquivalentTo(expectedRoom1.Occupations);
         resultRooms[1].Occupations.Should().BeEquivalentTo(expectedRoom2.Occupations);
@@ -41,8 +43,9 @@ public class RoomOccupationsFillterTests
             };
         var expectedRoom1 = new Room("room1", 0).AddOccupation(new Occupation("Wadim", "Hans", "short", "long", new TimeSpan(8, 0, 0), new TimeSpan(8, 55, 0)));
         var expectedRoom2 = new Room("room2", 1).AddOccupation(new Occupation("Dani", "Carmen", "short2", "long2", new TimeSpan(9, 0, 0), new TimeSpan(10, 0, 0)));
+        var roomNames = new RoomNames { RoomsString = "room1\nroom2" };
 
-        var resultRooms = _roomsOccupationsFiller.FillRoomOccupations(rows, new[] { "room1", "room2" }, 10).ToList();
+        var resultRooms = _roomsOccupationsFiller.FillRoomOccupations(rows, roomNames, 10).ToList();
 
         resultRooms[0].Occupations.Should().BeEquivalentTo(expectedRoom1.Occupations);
         resultRooms[1].Occupations.Should().BeEquivalentTo(expectedRoom2.Occupations);
@@ -61,8 +64,9 @@ public class RoomOccupationsFillterTests
             .AddOccupation(new Occupation("Partner1", "PartnerPatient", "*PARTNER", "long", new TimeSpan(9, 0, 0), new TimeSpan(10, 0, 0)))
             .AddOccupation(new Occupation("Partner2", "PartnerPatient", "*PARTNER", "long", new TimeSpan(9, 0, 0), new TimeSpan(10, 0, 0)));
         var expectedRoom2 = new Room("room2", 1).AddOccupation(new Occupation("Dani", "Carmen", "short2", "long2", new TimeSpan(9, 0, 0), new TimeSpan(10, 0, 0)));
+        var roomNames = new RoomNames { RoomsString = "room1\nroom2" };
 
-        var resultRooms = _roomsOccupationsFiller.FillRoomOccupations(rows, new[] { "room1", "room2" }, 10).ToList();
+        var resultRooms = _roomsOccupationsFiller.FillRoomOccupations(rows, roomNames, 10).ToList();
 
         resultRooms[0].Occupations.Should().BeEquivalentTo(expectedRoom1.Occupations);
         resultRooms[1].Occupations.Should().BeEquivalentTo(expectedRoom2.Occupations);

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using EasyRooms.Model.Interfaces;
 using EasyRooms.Model.Models;
-
+using EasyRooms.ViewModel;
 
 namespace EasyRooms.Model.Implementations;
 
 public class RoomOccupationsFiller : IRoomOccupationsFiller
 {
-    public IEnumerable<Room> FillRoomOccupations(IEnumerable<Row> rows, IEnumerable<string> roomNames, int bufferInMinutes = 0)
+    public IEnumerable<Room> FillRoomOccupations(IEnumerable<Row> rows, RoomNames roomNames, int bufferInMinutes = 0)
     {
         var orderedRows = OrderRows(rows).ToList();
-        return CreateRooms(roomNames, orderedRows, bufferInMinutes);
+        return CreateRooms(roomNames.RoomsAsList, orderedRows, bufferInMinutes);
     }
 
     private static IEnumerable<Room> CreateRooms(IEnumerable<string> roomNames, List<Row> orderedRows, int bufferInMinutes)
@@ -27,7 +27,7 @@ public class RoomOccupationsFiller : IRoomOccupationsFiller
     {
         var partnerTherapies = orderedRows
             .Where(row => string.Equals(row.TherapyShort, "*partner", StringComparison.OrdinalIgnoreCase))
-            .GroupBy(row => new { row.StartTime, row.Duration })
+            .GroupBy(row => (row.StartTime, row.Duration))
             .ToList();
         partnerTherapies.ForEach(grouping =>
         {
@@ -37,7 +37,7 @@ public class RoomOccupationsFiller : IRoomOccupationsFiller
         });
     }
 
-    private static void AddNormalTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes) 
+    private static void AddNormalTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
         => orderedRows.ForEach(row => AddOccupation(row, rooms, bufferInMinutes));
 
     private static void AddOccupation(Row row, List<Room> rooms, int bufferInMinutes)
@@ -62,7 +62,7 @@ public class RoomOccupationsFiller : IRoomOccupationsFiller
         return startTime.Add(minutes);
     }
 
-    private static IOrderedEnumerable<Row> OrderRows(IEnumerable<Row> rows) 
+    private static IOrderedEnumerable<Row> OrderRows(IEnumerable<Row> rows)
         => rows.OrderBy(row => TimeSpan.Parse(row.StartTime.Trim('(', ')')))
             .ThenBy(row => int.Parse(row.Duration));
 }
