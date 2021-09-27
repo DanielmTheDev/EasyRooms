@@ -2,7 +2,6 @@
 using System.IO;
 using EasyRooms.Model.Interfaces;
 using EasyRooms.ViewModel.Commands;
-using Microsoft.Win32;
 using Newtonsoft.Json;
 
 namespace EasyRooms.ViewModel;
@@ -14,33 +13,30 @@ public class XpsUploadViewModel : BindableBase
     public RelayCommand ChooseFileCommand { get; private set; }
 
     private readonly IDayPlanParser _dayPlanParser;
+    private readonly IFileDialogOpener _fileDialogOpener;
     private readonly IRoomOccupationsFiller _occupationsFiller;
 
     private string? _fileName;
-    private readonly int _buffer = 10;
+    private readonly int _buffer = 1;
 
-    public XpsUploadViewModel(IRoomOccupationsFiller occupationsFiller, IDayPlanParser dayPlanParser)
+    public XpsUploadViewModel(IRoomOccupationsFiller occupationsFiller, IDayPlanParser dayPlanParser, IFileDialogOpener fileDialogOpener)
+    {
+        HookUpCommands();
+        Rooms = new RoomNames();
+        _occupationsFiller = occupationsFiller;
+        _dayPlanParser = dayPlanParser;
+        _fileDialogOpener = fileDialogOpener;
+    }
+
+    private void HookUpCommands()
     {
         CalculateOccupationsCommand = new RelayCommand(CalculateOccupations, CanCalculateOccupations);
         ChooseFileCommand = new RelayCommand(OpenFileDialog);
-        _occupationsFiller = occupationsFiller;
-        _dayPlanParser = dayPlanParser;
     }
 
     private void OpenFileDialog()
     {
-        var dialog = new OpenFileDialog
-        {
-            DefaultExt = ".xps",
-            Filter = "XPS Files (*.xps)|*.xps"
-        };
-
-        var result = dialog.ShowDialog();
-
-        if (result == true)
-        {
-            _fileName = dialog.FileName;
-        }
+        _fileName = _fileDialogOpener.GetFileNameFromDialog();
         CalculateOccupationsCommand.RaiseCanExecuteChanged();
     }
 
