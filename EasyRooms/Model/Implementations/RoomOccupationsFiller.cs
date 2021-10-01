@@ -11,12 +11,12 @@ public class RoomOccupationsFiller : IRoomOccupationsFiller
     public IEnumerable<Room> FillRoomOccupations(IEnumerable<Row> rows, RoomNames roomNames, int bufferInMinutes = 0)
     {
         var orderedRows = OrderRows(rows).ToList();
-        return CreateRooms(roomNames.RoomsAsList, orderedRows, bufferInMinutes);
+        return CreateRooms(roomNames, orderedRows, bufferInMinutes);
     }
 
-    private static IEnumerable<Room> CreateRooms(IEnumerable<string> roomNames, List<Row> orderedRows, int bufferInMinutes)
+    private static IEnumerable<Room> CreateRooms(RoomNames roomNames, List<Row> orderedRows, int bufferInMinutes)
     {
-        var rooms = roomNames.Select((name, i) => new Room(name, i)).ToList();
+        var rooms = roomNames.AllRoomsAsList.Select((name, i) => new Room(name, i)).ToList();
         AddPartnerTherapies(rooms, orderedRows, bufferInMinutes);
         AddNormalTherapies(rooms, orderedRows, bufferInMinutes);
         return rooms;
