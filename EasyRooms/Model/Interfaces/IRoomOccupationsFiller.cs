@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using EasyRooms.Model.Models;
-using EasyRooms.ViewModel;
 
 namespace EasyRooms.Model.Interfaces;
 

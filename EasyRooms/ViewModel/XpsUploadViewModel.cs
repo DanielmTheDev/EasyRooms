@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using EasyRooms.Model.Interfaces;
+using EasyRooms.Model.Models;
 using EasyRooms.ViewModel.Commands;
 using Newtonsoft.Json;
 

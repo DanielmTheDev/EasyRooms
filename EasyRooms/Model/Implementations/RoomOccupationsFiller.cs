@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using EasyRooms.Model.Interfaces;
 using EasyRooms.Model.Models;
-using EasyRooms.ViewModel;
 
 namespace EasyRooms.Model.Implementations;
 
