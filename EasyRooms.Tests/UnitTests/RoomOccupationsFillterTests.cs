@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq;
 using EasyRooms.Model.Implementations;
+using EasyRooms.Model.Interfaces;
 using EasyRooms.Model.Models;
 using FluentAssertions;
+using NSubstitute;
 using Xunit;
 
 namespace EasyRooms.Tests.UnitTests;
@@ -10,9 +12,15 @@ namespace EasyRooms.Tests.UnitTests;
 public class RoomOccupationsFillterTests
 {
     private readonly RoomOccupationsFiller _roomsOccupationsFiller;
+    private readonly IOccupationKeyInformationExtractor _occupationKeyInformationExtractor;
+    private readonly IPartnerRoomFiller _partnerRoomFiller;
 
     public RoomOccupationsFillterTests()
-        => _roomsOccupationsFiller = new RoomOccupationsFiller();
+    {
+        _occupationKeyInformationExtractor = Substitute.For<IOccupationKeyInformationExtractor>();
+        _partnerRoomFiller = Substitute.For<PartnerRoomFiller>();
+        _roomsOccupationsFiller = new RoomOccupationsFiller(_occupationKeyInformationExtractor, _partnerRoomFiller);
+    }
 
     [Fact]
     public void Distrubutes_Overlapping_Rows_Between_Two_Rooms()
