@@ -8,7 +8,6 @@ public class RoomNames
 {
     public string RoomsString { get; set; }
     public string PartnerRoomString { get; set; }
-
     public IEnumerable<string> AllRoomsAsList => RoomsString.Split('\n');
     public IEnumerable<string> PartnerRoomsRoomsAsList => RoomsString.Split('\n');
 

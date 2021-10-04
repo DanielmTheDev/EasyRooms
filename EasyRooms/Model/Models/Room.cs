@@ -7,6 +7,7 @@ namespace EasyRooms.Model.Models;
 public record Room
 {
     public string Name { get; set; }
+    public bool IsPartnerRoom { get; set; } 
     public int Priority { get; set; }
     //todo encapsulate this list
     public IList<Occupation> Occupations { get; }

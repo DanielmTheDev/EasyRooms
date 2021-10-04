@@ -2,7 +2,6 @@
 using System.Linq;
 using EasyRooms.Model.Implementations;
 using EasyRooms.Model.Models;
-using EasyRooms.ViewModel;
 using FluentAssertions;
 using Xunit;
 
@@ -20,9 +19,9 @@ public class RoomOccupationsFillterTests
     {
         var rows = new[]
         {
-                new Row("08:00", "240", "short", "long", "Hans", "Wadim"),
-                new Row("10:00", "240", "short2", "long2", "Carmen", "Dani"),
-            };
+            new Row("08:00", "240", "short", "long", "Hans", "Wadim"),
+            new Row("10:00", "240", "short2", "long2", "Carmen", "Dani"),
+        };
         var expectedRoom1 = new Room("room1", 0).AddOccupation(new Occupation("Wadim", "Hans", "short", "long", new TimeSpan(8, 0, 0), new TimeSpan(12, 0, 0)));
         var expectedRoom2 = new Room("room2", 1).AddOccupation(new Occupation("Dani", "Carmen", "short2", "long2", new TimeSpan(10, 0, 0), new TimeSpan(14, 0, 0)));
         var roomNames = new RoomNames { RoomsString = "room1\nroom2" };
@@ -56,10 +55,10 @@ public class RoomOccupationsFillterTests
     {
         var rows = new[]
         {
-                new Row("09:00", "60", "short2", "long2", "Carmen", "Dani"),
-                new Row("09:00", "60", "*PARTNER", "long", "PartnerPatient", "Partner1"),
-                new Row("09:00", "60", "*PARTNER", "long", "PartnerPatient", "Partner2")
-            };
+            new Row("09:00", "60", "short2", "long2", "Carmen", "Dani"),
+            new Row("09:00", "60", "*PARTNER", "long", "PartnerPatient", "Partner1"),
+            new Row("09:00", "60", "*PARTNER", "long", "PartnerPatient", "Partner2")
+        };
         var expectedRoom1 = new Room("room1", 0)
             .AddOccupation(new Occupation("Partner1", "PartnerPatient", "*PARTNER", "long", new TimeSpan(9, 0, 0), new TimeSpan(10, 0, 0)))
             .AddOccupation(new Occupation("Partner2", "PartnerPatient", "*PARTNER", "long", new TimeSpan(9, 0, 0), new TimeSpan(10, 0, 0)));

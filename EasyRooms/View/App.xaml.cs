@@ -32,6 +32,8 @@ public partial class App : Application
             .AddTransient<IDayPlanParser, DayPlanParser>()
             .AddTransient<IRoomOccupationsFiller, RoomOccupationsFiller>()
             .AddTransient<IFileDialogOpener, FileDialogOpener>()
+            .AddTransient<IRoomOccupationsFiller, RoomOccupationsFiller>()
+            .AddTransient<IPartnerRoomFiller, PartnerRoomFiller>()
             .AddSingleton<XpsUploadView>()
             .AddSingleton<XpsUploadViewModel>()
             .AddSingleton<TestViewModel>()
