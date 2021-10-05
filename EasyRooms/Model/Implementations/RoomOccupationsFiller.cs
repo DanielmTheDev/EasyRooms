@@ -8,12 +8,12 @@ namespace EasyRooms.Model.Implementations;
 
 public class RoomOccupationsFiller : IRoomOccupationsFiller
 {
-    private readonly IOccupationKeyInformationExtractor _occupationKeyInformationExtractor;
+    private readonly IOccupationCreationDataProvider _occupationCreationDataProvider;
     private readonly IPartnerRoomFiller _partnerRoomFiller;
 
-    public RoomOccupationsFiller(IOccupationKeyInformationExtractor occupationKeyInformationExtractor, IPartnerRoomFiller partnerRoomFiller)
+    public RoomOccupationsFiller(IOccupationCreationDataProvider occupationKeyInformationExtractor, IPartnerRoomFiller partnerRoomFiller)
     {
-        _occupationKeyInformationExtractor = occupationKeyInformationExtractor;
+        _occupationCreationDataProvider = occupationKeyInformationExtractor;
         _partnerRoomFiller = partnerRoomFiller;
     }
 
@@ -42,8 +42,10 @@ public class RoomOccupationsFiller : IRoomOccupationsFiller
 
     private void AddOccupation(Row row, List<Room> rooms, int bufferInMinutes)
     {
-        var (startTime, endTime, freeRoom) = _occupationKeyInformationExtractor.GetOccupationInformation(row.StartTime, row.Duration, bufferInMinutes, rooms);
-        freeRoom.AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong, startTime, endTime));
+        var occupationCreationData = _occupationCreationDataProvider
+            .GetOccupationCreationData(row.StartTime, row.Duration, bufferInMinutes, rooms);
+        occupationCreationData.FreeRoom
+            .AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong, occupationCreationData.StartTime, occupationCreationData.EndTime));
     }
 
     private static IOrderedEnumerable<Row> OrderRows(IEnumerable<Row> rows)

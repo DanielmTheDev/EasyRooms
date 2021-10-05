@@ -8,10 +8,10 @@ namespace EasyRooms.Model.Implementations;
 
 public class PartnerRoomFiller : IPartnerRoomFiller
 {
-    private readonly IOccupationKeyInformationExtractor _occupationKeyInformationExtractor;
+    private readonly IOccupationCreationDataProvider _occupationCreationDataProvider;
 
-    public PartnerRoomFiller(IOccupationKeyInformationExtractor occupationKeyInformationExtractor) 
-        => _occupationKeyInformationExtractor = occupationKeyInformationExtractor;
+    public PartnerRoomFiller(IOccupationCreationDataProvider occupationKeyInformationExtractor) 
+        => _occupationCreationDataProvider = occupationKeyInformationExtractor;
 
     public void AddPartnerTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
     {
@@ -21,8 +21,8 @@ public class PartnerRoomFiller : IPartnerRoomFiller
             .ToList();
         partnerTherapies.ForEach(grouping =>
         {
-            var (startTime, endTime, freeRoom) = _occupationKeyInformationExtractor.GetOccupationInformation(grouping.Key.StartTime, grouping.Key.Duration, bufferInMinutes, rooms);
-            grouping.ToList().ForEach(row => freeRoom.AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong, startTime, endTime)));
+            var occupationCreationData = _occupationCreationDataProvider.GetOccupationCreationData(grouping.Key.StartTime, grouping.Key.Duration, bufferInMinutes, rooms);
+            grouping.ToList().ForEach(row => occupationCreationData.FreeRoom.AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong, occupationCreationData.StartTime, occupationCreationData.EndTime)));
             grouping.ToList().ForEach(row => orderedRows.Remove(row));
         });
     }
