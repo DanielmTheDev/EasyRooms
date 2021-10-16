@@ -13,15 +13,15 @@ public class RoomOccupationsFillterTests
 {
     private readonly RoomOccupationsFiller _roomsOccupationsFiller;
     private readonly IOccupationCreationDataProvider _occupationKeyInformationExtractor;
-    private readonly IPartnerRoomFiller _partnerRoomFiller;
+    private readonly ITherapyFiller _therapyFiller;
     private readonly IRoomListCreator _roomListCreator;
 
     public RoomOccupationsFillterTests()
     {
         _occupationKeyInformationExtractor = Substitute.For<IOccupationCreationDataProvider>();
-        _partnerRoomFiller = Substitute.For<IPartnerRoomFiller>();
+        _therapyFiller = Substitute.For<ITherapyFiller>();
         _roomListCreator = Substitute.For<IRoomListCreator>();
-        _roomsOccupationsFiller = new RoomOccupationsFiller(_occupationKeyInformationExtractor, _partnerRoomFiller, _roomListCreator);
+        _roomsOccupationsFiller = new RoomOccupationsFiller(_occupationKeyInformationExtractor, _therapyFiller, _roomListCreator);
     }
 
     [Fact]

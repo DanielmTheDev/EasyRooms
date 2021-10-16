@@ -9,16 +9,16 @@ namespace EasyRooms.Model.Implementations;
 public class RoomOccupationsFiller : IRoomOccupationsFiller
 {
     private readonly IOccupationCreationDataProvider _occupationCreationDataProvider;
-    private readonly IPartnerRoomFiller _partnerRoomFiller;
+    private readonly ITherapyFiller _therapyFiller;
     private readonly IRoomListCreator _roomListCreator;
 
     public RoomOccupationsFiller(
         IOccupationCreationDataProvider occupationKeyInformationExtractor,
-        IPartnerRoomFiller partnerRoomFiller,
+        ITherapyFiller therapyFiller,
         IRoomListCreator roomListCreator)
     {
         _occupationCreationDataProvider = occupationKeyInformationExtractor;
-        _partnerRoomFiller = partnerRoomFiller;
+        _therapyFiller = therapyFiller;
         _roomListCreator = roomListCreator;
     }
 
@@ -31,21 +31,9 @@ public class RoomOccupationsFiller : IRoomOccupationsFiller
     private IEnumerable<Room> CreateRooms(RoomNames roomNames, List<Row> orderedRows, int bufferInMinutes)
     {
         var rooms = _roomListCreator.CreateRooms(roomNames);
-        _partnerRoomFiller.AddPartnerTherapies(rooms, orderedRows, bufferInMinutes);
-        AddNormalTherapies(rooms, orderedRows, bufferInMinutes);
+        _therapyFiller.AddPartnerTherapies(rooms, orderedRows, bufferInMinutes);
+        _therapyFiller.AddNormalTherapies(rooms, orderedRows, bufferInMinutes);
         return rooms;
-    }
-
-    private void AddNormalTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
-        => orderedRows.ForEach(row => AddOccupation(row, rooms, bufferInMinutes));
-
-    private void AddOccupation(Row row, List<Room> rooms, int bufferInMinutes)
-    {
-        var occupationCreationData = _occupationCreationDataProvider
-            .CalculateOccupationCreationData(row.StartTime, row.Duration, bufferInMinutes, rooms);
-        occupationCreationData.FreeRoom
-            .AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong,
-                occupationCreationData.StartTime, occupationCreationData.EndTime));
     }
 
     private static IOrderedEnumerable<Row> OrderRows(IEnumerable<Row> rows)
