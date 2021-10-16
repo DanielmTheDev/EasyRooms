@@ -1,6 +1,7 @@
 ﻿using System;
+using EasyRooms.Model.Rows.Models;
 
-namespace EasyRooms.Model.Models;
+namespace EasyRooms.Model.Rooms.Models;
 
 public record Occupation(string Therapist, string Patient, string TherapyShort, string TherapyLong, TimeSpan StartTime, TimeSpan EndTime)
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using EasyRooms.Model.Implementations;
-using EasyRooms.Model.Models;
+using EasyRooms.Model.Rooms;
+using EasyRooms.Model.Rooms.Models;
 using FluentAssertions;
 using Xunit;
 

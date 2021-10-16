@@ -1,9 +1,10 @@
-﻿using EasyRooms.Model.Extensions;
-using EasyRooms.Model.Interfaces;
-using EasyRooms.Model.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using EasyRooms.Model.DayPlan.Extensions;
+using EasyRooms.Model.Rows;
+using EasyRooms.Model.Rows.Models;
+using EasyRooms.Model.XpsExtracting;
 
-namespace EasyRooms.Model.Implementations;
+namespace EasyRooms.Model.DayPlan;
 
 public class DayPlanParser : IDayPlanParser
 {

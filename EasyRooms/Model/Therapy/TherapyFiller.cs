@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using EasyRooms.Model.Interfaces;
-using EasyRooms.Model.Models;
+using EasyRooms.Model.Rooms;
+using EasyRooms.Model.Rooms.Models;
+using EasyRooms.Model.Rows.Models;
 
-namespace EasyRooms.Model.Implementations;
+namespace EasyRooms.Model.Therapy;
 
 public class TherapyFiller : ITherapyFiller
 {

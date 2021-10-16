@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EasyRooms.Model.Models;
+namespace EasyRooms.Model.Rooms.Models;
 
 public class RoomNames
 {

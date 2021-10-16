@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Microsoft.Win32;
 
-namespace EasyRooms.Model.Interfaces;
+namespace EasyRooms.Model.FileDialog;
 
 public class FileDialogOpener : IFileDialogOpener
 {

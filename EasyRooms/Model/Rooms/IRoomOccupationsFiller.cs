@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using EasyRooms.Model.Models;
+using EasyRooms.Model.Rooms.Models;
+using EasyRooms.Model.Rows.Models;
 
-namespace EasyRooms.Model.Interfaces;
+namespace EasyRooms.Model.Rooms;
 
 public interface IRoomOccupationsFiller
 {

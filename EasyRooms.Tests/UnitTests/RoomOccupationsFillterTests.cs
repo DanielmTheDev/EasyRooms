@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Linq;
-using EasyRooms.Model.Implementations;
-using EasyRooms.Model.Interfaces;
-using EasyRooms.Model.Models;
+using EasyRooms.Model.Rooms;
+using EasyRooms.Model.Rooms.Models;
+using EasyRooms.Model.Rows.Models;
+using EasyRooms.Model.Therapy;
 using FluentAssertions;
 using NSubstitute;
 using Xunit;

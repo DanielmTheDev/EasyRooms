@@ -1,4 +1,6 @@
-﻿namespace EasyRooms.ViewModel;
+﻿using EasyRooms.View;
+
+namespace EasyRooms.ViewModel;
 
 public class MainWindowViewModel : BindableBase
 {

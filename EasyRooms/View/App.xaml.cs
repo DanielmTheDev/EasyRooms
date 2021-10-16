@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Windows;
-using EasyRooms.Model.Implementations;
-using EasyRooms.Model.Interfaces;
-using EasyRooms.View;
+using EasyRooms.Model.DayPlan;
+using EasyRooms.Model.FileDialog;
+using EasyRooms.Model.Rooms;
+using EasyRooms.Model.Rows;
+using EasyRooms.Model.Therapy;
+using EasyRooms.Model.XpsExtracting;
 using EasyRooms.ViewModel;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace EasyRooms;
+namespace EasyRooms.View;
 
 /// <summary>
 /// Interaction logic for App.xaml

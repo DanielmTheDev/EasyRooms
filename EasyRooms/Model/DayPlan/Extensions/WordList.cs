@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using EasyRooms.Model.Constants;
 
-namespace EasyRooms.Model.Extensions;
+namespace EasyRooms.Model.DayPlan.Extensions;
 
 public static class WordList
 {

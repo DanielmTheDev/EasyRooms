@@ -1,4 +1,4 @@
-﻿namespace EasyRooms.Model.Interfaces;
+﻿namespace EasyRooms.Model.FileDialog;
 
 public interface IFileDialogOpener
 {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using EasyRooms.Model.Models;
+using EasyRooms.Model.Rooms.Models;
 
-namespace EasyRooms.Model.Interfaces;
+namespace EasyRooms.Model.Rooms;
 
 public interface IFreeRoomFinder
 {

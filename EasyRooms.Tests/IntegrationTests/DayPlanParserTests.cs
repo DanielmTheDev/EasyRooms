@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.IO;
-using EasyRooms.Model.Implementations;
-using EasyRooms.Model.Models;
+using EasyRooms.Model.DayPlan;
+using EasyRooms.Model.Rows;
+using EasyRooms.Model.Rows.Models;
+using EasyRooms.Model.XpsExtracting;
 using FluentAssertions;
 using Newtonsoft.Json;
 using Xunit;

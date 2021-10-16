@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using EasyRooms.Model.Models;
+using EasyRooms.Model.Rows.Models;
 
-namespace EasyRooms.Model.Interfaces;
+namespace EasyRooms.Model.DayPlan;
 
 public interface IDayPlanParser
 {

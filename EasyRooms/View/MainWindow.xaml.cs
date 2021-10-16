@@ -1,7 +1,6 @@
 ﻿using System.Windows;
-using EasyRooms.ViewModel;
 
-namespace EasyRooms
+namespace EasyRooms.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

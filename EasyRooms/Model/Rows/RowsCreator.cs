@@ -1,11 +1,10 @@
-﻿using EasyRooms.Model.Constants;
-using EasyRooms.Model.Interfaces;
-using EasyRooms.Model.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using EasyRooms.Model.Constants;
+using EasyRooms.Model.Rows.Models;
 
-namespace EasyRooms.Model.Implementations;
+namespace EasyRooms.Model.Rows;
 
 public class RowsCreator : IRowsCreator
 {

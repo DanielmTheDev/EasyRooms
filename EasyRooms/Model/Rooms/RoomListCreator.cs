@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using EasyRooms.Model.Interfaces;
-using EasyRooms.Model.Models;
+using EasyRooms.Model.Rooms.Models;
 
-namespace EasyRooms.Model.Implementations
+namespace EasyRooms.Model.Rooms
 {
     public class RoomListCreator : IRoomListCreator
     {

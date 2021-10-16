@@ -1,7 +1,9 @@
 ﻿using System;
 using System.IO;
-using EasyRooms.Model.Interfaces;
-using EasyRooms.Model.Models;
+using EasyRooms.Model.DayPlan;
+using EasyRooms.Model.FileDialog;
+using EasyRooms.Model.Rooms;
+using EasyRooms.Model.Rooms.Models;
 using EasyRooms.ViewModel.Commands;
 using Newtonsoft.Json;
 

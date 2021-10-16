@@ -2,10 +2,9 @@
 using System.IO;
 using System.Linq;
 using System.Windows.Xps.Packaging;
-using EasyRooms.Model.Interfaces;
 
 #nullable disable
-namespace EasyRooms.Model.Implementations;
+namespace EasyRooms.Model.XpsExtracting;
 
 public class XpsWordsExtractor : IXpsWordsExtractor
 {
