@@ -28,15 +28,8 @@ public class TherapyFiller : ITherapyFiller
 
         partnerTherapies.ForEach(grouping =>
         {
-            var freeRoom = _freeRoomFinder.CalculateOccupationCreationData(grouping.Key.StartTime,
-                grouping.Key.Duration, bufferInMinutes, rooms);
-            //todo add occupation constructor that takes row
-            grouping.ToList()
-                .ForEach(row => freeRoom.FreeRoom
-                    .AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong,
-                        freeRoom.StartTime, freeRoom.EndTime)));
-            grouping.ToList()
-                .ForEach(row => orderedRows.Remove(row));
+            grouping.ToList().ForEach(row => AddOccupation(row, rooms, bufferInMinutes));
+            grouping.ToList().ForEach(row => orderedRows.Remove(row));
         });
     }
 
@@ -45,10 +38,11 @@ public class TherapyFiller : ITherapyFiller
 
     private void AddOccupation(Row row, List<Room> rooms, int bufferInMinutes)
     {
-        var occupationCreationData = _freeRoomFinder
+        var freeRoom = _freeRoomFinder
             .CalculateOccupationCreationData(row.StartTime, row.Duration, bufferInMinutes, rooms);
-        occupationCreationData.FreeRoom
+        //todo add occupation constructor that takes row
+        freeRoom.FreeRoom
             .AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong,
-                occupationCreationData.StartTime, occupationCreationData.EndTime));
+                freeRoom.StartTime, freeRoom.EndTime));
     }
 }
