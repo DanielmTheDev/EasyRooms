@@ -6,7 +6,7 @@ using EasyRooms.Model.Models;
 
 namespace EasyRooms.Model.Implementations;
 
-public class OccupationCreationDataProvider : IOccupationCreationDataProvider
+public class FreeRoomFinder : IFreeRoomFinder
 {
     public FreeRoomWithTime CalculateOccupationCreationData(string startTimeString, string duration, int bufferInMinutes, List<Room> rooms)
     {

@@ -395,7 +395,7 @@
     ]
   },
   {
-    "Name": "",
+    "Name": "Raum6",
     "IsPartnerRoom": true,
     "Priority": 5,
     "Occupations": [
@@ -416,5 +416,23 @@
         "EndTime": "17:20:00"
       }
     ]
+  },
+  {
+    "Name": "Raum7",
+    "IsPartnerRoom": true,
+    "Priority": 6,
+    "Occupations": []
+  },
+  {
+    "Name": "Raum8",
+    "IsPartnerRoom": true,
+    "Priority": 7,
+    "Occupations": []
+  },
+  {
+    "Name": "",
+    "IsPartnerRoom": true,
+    "Priority": 8,
+    "Occupations": []
   }
 ]

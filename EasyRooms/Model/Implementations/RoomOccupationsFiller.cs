@@ -8,16 +8,16 @@ namespace EasyRooms.Model.Implementations;
 
 public class RoomOccupationsFiller : IRoomOccupationsFiller
 {
-    private readonly IOccupationCreationDataProvider _occupationCreationDataProvider;
+    private readonly IFreeRoomFinder _freeRoomFinder;
     private readonly ITherapyFiller _therapyFiller;
     private readonly IRoomListCreator _roomListCreator;
 
     public RoomOccupationsFiller(
-        IOccupationCreationDataProvider occupationKeyInformationExtractor,
+        IFreeRoomFinder occupationKeyInformationExtractor,
         ITherapyFiller therapyFiller,
         IRoomListCreator roomListCreator)
     {
-        _occupationCreationDataProvider = occupationKeyInformationExtractor;
+        _freeRoomFinder = occupationKeyInformationExtractor;
         _therapyFiller = therapyFiller;
         _roomListCreator = roomListCreator;
     }
@@ -31,8 +31,7 @@ public class RoomOccupationsFiller : IRoomOccupationsFiller
     private IEnumerable<Room> CreateRooms(RoomNames roomNames, List<Row> orderedRows, int bufferInMinutes)
     {
         var rooms = _roomListCreator.CreateRooms(roomNames);
-        _therapyFiller.AddPartnerTherapies(rooms, orderedRows, bufferInMinutes);
-        _therapyFiller.AddNormalTherapies(rooms, orderedRows, bufferInMinutes);
+        _therapyFiller.AddAllTherapies(rooms, orderedRows, bufferInMinutes);
         return rooms;
     }
 

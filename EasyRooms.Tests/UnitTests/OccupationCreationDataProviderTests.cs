@@ -9,10 +9,10 @@ namespace EasyRooms.Tests.UnitTests
 {
     public class OccupationCreationDataProviderTests
     {
-        private OccupationCreationDataProvider _provider;
+        private FreeRoomFinder _provider;
 
         public OccupationCreationDataProviderTests() 
-            => _provider = new OccupationCreationDataProvider();
+            => _provider = new FreeRoomFinder();
 
         [Fact]
         public void Calculates_Occupation_Data_With_Free_Room()

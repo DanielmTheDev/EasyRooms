@@ -13,7 +13,7 @@ public class RoomNames
 
     public RoomNames()
     {
-        RoomsString = "Raum1\nRaum2\nRaum3\nRaum4\nRaum5\n";
+        RoomsString = "Raum1\nRaum2\nRaum3\nRaum4\nRaum5\nRaum6\nRaum7\nRaum8\n";
         PartnerRoomString = "Raum1\nRoom2";
         GuardPartnerRooms();
     }

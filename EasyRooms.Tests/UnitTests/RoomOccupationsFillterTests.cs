@@ -12,13 +12,13 @@ namespace EasyRooms.Tests.UnitTests;
 public class RoomOccupationsFillterTests
 {
     private readonly RoomOccupationsFiller _roomsOccupationsFiller;
-    private readonly IOccupationCreationDataProvider _occupationKeyInformationExtractor;
+    private readonly IFreeRoomFinder _occupationKeyInformationExtractor;
     private readonly ITherapyFiller _therapyFiller;
     private readonly IRoomListCreator _roomListCreator;
 
     public RoomOccupationsFillterTests()
     {
-        _occupationKeyInformationExtractor = Substitute.For<IOccupationCreationDataProvider>();
+        _occupationKeyInformationExtractor = Substitute.For<IFreeRoomFinder>();
         _therapyFiller = Substitute.For<ITherapyFiller>();
         _roomListCreator = Substitute.For<IRoomListCreator>();
         _roomsOccupationsFiller = new RoomOccupationsFiller(_occupationKeyInformationExtractor, _therapyFiller, _roomListCreator);

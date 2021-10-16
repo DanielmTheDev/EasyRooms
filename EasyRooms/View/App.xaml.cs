@@ -32,7 +32,7 @@ public partial class App : Application
             .AddTransient<IDayPlanParser, DayPlanParser>()
             .AddTransient<IRoomOccupationsFiller, RoomOccupationsFiller>()
             .AddTransient<IFileDialogOpener, FileDialogOpener>()
-            .AddTransient<IOccupationCreationDataProvider, OccupationCreationDataProvider>()
+            .AddTransient<IFreeRoomFinder, FreeRoomFinder>()
             .AddTransient<ITherapyFiller, TherapyFiller>()
             .AddTransient<IRoomListCreator, RoomListCreator>()
             .AddSingleton<XpsUploadView>()

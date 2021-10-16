@@ -8,35 +8,44 @@ namespace EasyRooms.Model.Implementations;
 
 public class TherapyFiller : ITherapyFiller
 {
-    private readonly IOccupationCreationDataProvider _occupationCreationDataProvider;
+    private readonly IFreeRoomFinder _freeRoomFinder;
 
-    public TherapyFiller(IOccupationCreationDataProvider occupationCreationDataProvider) 
-        => _occupationCreationDataProvider = occupationCreationDataProvider;
+    public TherapyFiller(IFreeRoomFinder freeRoomFinder)
+        => _freeRoomFinder = freeRoomFinder;
 
-    public void AddPartnerTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
+    public void AddAllTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
+    {
+        AddPartnerTherapies(rooms, orderedRows, bufferInMinutes);
+        AddNormalTherapies(rooms, orderedRows, bufferInMinutes);
+    }
+
+    private void AddPartnerTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
     {
         var partnerTherapies = orderedRows
             .Where(row => string.Equals(row.TherapyShort, "*partner", StringComparison.OrdinalIgnoreCase))
             .GroupBy(row => (row.StartTime, row.Duration))
             .ToList();
+
         partnerTherapies.ForEach(grouping =>
         {
-            var occupationCreationData = _occupationCreationDataProvider.CalculateOccupationCreationData(grouping.Key.StartTime, grouping.Key.Duration, bufferInMinutes, rooms);
+            var freeRoom = _freeRoomFinder.CalculateOccupationCreationData(grouping.Key.StartTime,
+                grouping.Key.Duration, bufferInMinutes, rooms);
             //todo add occupation constructor that takes row
             grouping.ToList()
-                .ForEach(row => occupationCreationData.FreeRoom
-                    .AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong, occupationCreationData.StartTime, occupationCreationData.EndTime)));
+                .ForEach(row => freeRoom.FreeRoom
+                    .AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong,
+                        freeRoom.StartTime, freeRoom.EndTime)));
             grouping.ToList()
                 .ForEach(row => orderedRows.Remove(row));
         });
     }
 
-    public void AddNormalTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
+    private void AddNormalTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
         => orderedRows.ForEach(row => AddOccupation(row, rooms, bufferInMinutes));
 
     private void AddOccupation(Row row, List<Room> rooms, int bufferInMinutes)
     {
-        var occupationCreationData = _occupationCreationDataProvider
+        var occupationCreationData = _freeRoomFinder
             .CalculateOccupationCreationData(row.StartTime, row.Duration, bufferInMinutes, rooms);
         occupationCreationData.FreeRoom
             .AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong,
