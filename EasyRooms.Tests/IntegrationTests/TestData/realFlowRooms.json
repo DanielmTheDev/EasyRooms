@@ -1,6 +1,7 @@
 [
   {
     "Name": "Raum1",
+    "IsPartnerRoom": true,
     "Priority": 0,
     "Occupations": [
       {
@@ -119,6 +120,7 @@
   },
   {
     "Name": "Raum2",
+    "IsPartnerRoom": true,
     "Priority": 1,
     "Occupations": [
       {
@@ -237,6 +239,7 @@
   },
   {
     "Name": "Raum3",
+    "IsPartnerRoom": true,
     "Priority": 2,
     "Occupations": [
       {
@@ -315,6 +318,7 @@
   },
   {
     "Name": "Raum4",
+    "IsPartnerRoom": true,
     "Priority": 3,
     "Occupations": [
       {
@@ -361,6 +365,7 @@
   },
   {
     "Name": "Raum5",
+    "IsPartnerRoom": true,
     "Priority": 4,
     "Occupations": [
       {
@@ -391,6 +396,7 @@
   },
   {
     "Name": "",
+    "IsPartnerRoom": true,
     "Priority": 5,
     "Occupations": [
       {

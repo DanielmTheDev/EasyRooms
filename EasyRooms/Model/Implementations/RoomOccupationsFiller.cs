@@ -10,11 +10,16 @@ public class RoomOccupationsFiller : IRoomOccupationsFiller
 {
     private readonly IOccupationCreationDataProvider _occupationCreationDataProvider;
     private readonly IPartnerRoomFiller _partnerRoomFiller;
+    private readonly IRoomListCreator _roomListCreator;
 
-    public RoomOccupationsFiller(IOccupationCreationDataProvider occupationKeyInformationExtractor, IPartnerRoomFiller partnerRoomFiller)
+    public RoomOccupationsFiller(
+        IOccupationCreationDataProvider occupationKeyInformationExtractor,
+        IPartnerRoomFiller partnerRoomFiller,
+        IRoomListCreator roomListCreator)
     {
         _occupationCreationDataProvider = occupationKeyInformationExtractor;
         _partnerRoomFiller = partnerRoomFiller;
+        _roomListCreator = roomListCreator;
     }
 
     public IEnumerable<Room> FillRoomOccupations(IEnumerable<Row> rows, RoomNames roomNames, int bufferInMinutes = 0)
@@ -25,17 +30,11 @@ public class RoomOccupationsFiller : IRoomOccupationsFiller
 
     private IEnumerable<Room> CreateRooms(RoomNames roomNames, List<Row> orderedRows, int bufferInMinutes)
     {
-        var rooms = roomNames.AllRoomsAsList.Select((name, i) => new Room(name, i)).ToList();
-        SetPartnerRoomProperty(roomNames, rooms);
+        var rooms = _roomListCreator.CreateRooms(roomNames);
         _partnerRoomFiller.AddPartnerTherapies(rooms, orderedRows, bufferInMinutes);
         AddNormalTherapies(rooms, orderedRows, bufferInMinutes);
         return rooms;
     }
-
-    private static void SetPartnerRoomProperty(RoomNames roomNames, List<Room> rooms)
-        => roomNames.PartnerRoomsRoomsAsList.ToList()
-            .ForEach(partnerRoom => rooms
-                .Single(room => string.Equals(room.Name, partnerRoom, StringComparison.OrdinalIgnoreCase)).IsPartnerRoom = true);
 
     private void AddNormalTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
         => orderedRows.ForEach(row => AddOccupation(row, rooms, bufferInMinutes));
@@ -45,7 +44,8 @@ public class RoomOccupationsFiller : IRoomOccupationsFiller
         var occupationCreationData = _occupationCreationDataProvider
             .CalculateOccupationCreationData(row.StartTime, row.Duration, bufferInMinutes, rooms);
         occupationCreationData.FreeRoom
-            .AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong, occupationCreationData.StartTime, occupationCreationData.EndTime));
+            .AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong,
+                occupationCreationData.StartTime, occupationCreationData.EndTime));
     }
 
     private static IOrderedEnumerable<Row> OrderRows(IEnumerable<Row> rows)

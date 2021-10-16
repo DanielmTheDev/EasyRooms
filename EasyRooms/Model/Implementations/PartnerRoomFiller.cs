@@ -10,8 +10,8 @@ public class PartnerRoomFiller : IPartnerRoomFiller
 {
     private readonly IOccupationCreationDataProvider _occupationCreationDataProvider;
 
-    public PartnerRoomFiller(IOccupationCreationDataProvider occupationKeyInformationExtractor) 
-        => _occupationCreationDataProvider = occupationKeyInformationExtractor;
+    public PartnerRoomFiller(IOccupationCreationDataProvider occupationCreationDataProvider) 
+        => _occupationCreationDataProvider = occupationCreationDataProvider;
 
     public void AddPartnerTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
     {
