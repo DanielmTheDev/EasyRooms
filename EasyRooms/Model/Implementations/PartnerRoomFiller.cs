@@ -21,9 +21,13 @@ public class PartnerRoomFiller : IPartnerRoomFiller
             .ToList();
         partnerTherapies.ForEach(grouping =>
         {
-            var occupationCreationData = _occupationCreationDataProvider.GetOccupationCreationData(grouping.Key.StartTime, grouping.Key.Duration, bufferInMinutes, rooms);
-            grouping.ToList().ForEach(row => occupationCreationData.FreeRoom.AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong, occupationCreationData.StartTime, occupationCreationData.EndTime)));
-            grouping.ToList().ForEach(row => orderedRows.Remove(row));
+            var occupationCreationData = _occupationCreationDataProvider.CalculateOccupationCreationData(grouping.Key.StartTime, grouping.Key.Duration, bufferInMinutes, rooms);
+            //todo add occupation constructor that takes row
+            grouping.ToList()
+                .ForEach(row => occupationCreationData.FreeRoom
+                    .AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong, occupationCreationData.StartTime, occupationCreationData.EndTime)));
+            grouping.ToList()
+                .ForEach(row => orderedRows.Remove(row));
         });
     }
 }

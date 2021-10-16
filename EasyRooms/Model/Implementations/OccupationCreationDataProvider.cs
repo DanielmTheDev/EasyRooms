@@ -8,7 +8,7 @@ namespace EasyRooms.Model.Implementations;
 
 public class OccupationCreationDataProvider : IOccupationCreationDataProvider
 {
-    public OccupationCreationData GetOccupationCreationData(string startTimeString, string duration, int bufferInMinutes, List<Room> rooms)
+    public OccupationCreationData CalculateOccupationCreationData(string startTimeString, string duration, int bufferInMinutes, List<Room> rooms)
     {
         //todo this trimming is a workaround. In reality, such a case probably has to be put into the same room as the
         //theray that came before, since it means something like preparation
