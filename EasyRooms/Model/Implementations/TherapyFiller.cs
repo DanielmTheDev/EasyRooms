@@ -38,11 +38,7 @@ public class TherapyFiller : ITherapyFiller
 
     private void AddOccupation(Row row, List<Room> rooms, int bufferInMinutes)
     {
-        var freeRoom = _freeRoomFinder
-            .CalculateOccupationCreationData(row.StartTime, row.Duration, bufferInMinutes, rooms);
-        //todo add occupation constructor that takes row
-        freeRoom.FreeRoom
-            .AddOccupation(new Occupation(row.Therapist, row.Patient, row.TherapyShort, row.TherapyLong,
-                freeRoom.StartTime, freeRoom.EndTime));
+        var freeRoom = _freeRoomFinder.CalculateOccupationCreationData(row.StartTime, row.Duration, bufferInMinutes, rooms);
+        freeRoom.FreeRoom.AddOccupation(new Occupation(row, freeRoom.StartTime, freeRoom.EndTime));
     }
 }
