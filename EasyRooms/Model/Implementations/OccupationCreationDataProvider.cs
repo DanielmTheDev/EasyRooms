@@ -8,14 +8,14 @@ namespace EasyRooms.Model.Implementations;
 
 public class OccupationCreationDataProvider : IOccupationCreationDataProvider
 {
-    public OccupationCreationData CalculateOccupationCreationData(string startTimeString, string duration, int bufferInMinutes, List<Room> rooms)
+    public FreeRoomWithTime CalculateOccupationCreationData(string startTimeString, string duration, int bufferInMinutes, List<Room> rooms)
     {
         //todo this trimming is a workaround. In reality, such a case probably has to be put into the same room as the
         //theray that came before, since it means something like preparation
         var startTime = TimeSpan.Parse(startTimeString.Trim('(', ')'));
         var endTime = AddDurationAsMinutes(duration, startTime);
         var freeRoom = rooms.First(room => !room.IsOccupiedAt(startTime, endTime, bufferInMinutes));
-        return new OccupationCreationData(startTime, endTime, freeRoom);
+        return new FreeRoomWithTime(startTime, endTime, freeRoom);
     }
 
     private static TimeSpan AddDurationAsMinutes(string duration, TimeSpan startTime)

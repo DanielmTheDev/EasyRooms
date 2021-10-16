@@ -5,5 +5,5 @@ namespace EasyRooms.Model.Interfaces;
 
 public interface IOccupationCreationDataProvider
 {
-    OccupationCreationData CalculateOccupationCreationData(string startTimeString, string duration, int bufferInMinutes, List<Room> rooms);
+    FreeRoomWithTime CalculateOccupationCreationData(string startTimeString, string duration, int bufferInMinutes, List<Room> rooms);
 }

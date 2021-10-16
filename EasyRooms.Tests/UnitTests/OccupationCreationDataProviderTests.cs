@@ -22,7 +22,7 @@ namespace EasyRooms.Tests.UnitTests
             var room2 = new Room("room2", 1);
             var rooms = new List<Room> { room1, room2 };
             var expectedOccupationData =
-                new OccupationCreationData(new TimeSpan(9, 0, 0), new TimeSpan(11, 0, 0), room2);
+                new FreeRoomWithTime(new TimeSpan(9, 0, 0), new TimeSpan(11, 0, 0), room2);
 
             var occupationData = _provider.CalculateOccupationCreationData("09:00", "120", 5, rooms);
 
