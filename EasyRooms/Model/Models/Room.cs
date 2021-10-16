@@ -4,20 +4,12 @@ using System.Linq;
 
 namespace EasyRooms.Model.Models;
 
-public record Room
+public record Room(string Name, int Priority)
 {
-    public string Name { get; set; }
-    public bool IsPartnerRoom { get; set; } 
-    public int Priority { get; set; }
-    //todo encapsulate this list
-    public IList<Occupation> Occupations { get; }
+    public bool IsPartnerRoom { get; set; }
 
-    public Room(string name, int priority)
-    {
-        Name = name;
-        Priority = priority;
-        Occupations = new List<Occupation>();
-    }
+    //todo encapsulate this list
+    public IList<Occupation> Occupations { get; } = new List<Occupation>();
 
     public Room AddOccupation(Occupation occupation)
     {
@@ -27,8 +19,8 @@ public record Room
 
     public bool IsOccupiedAt(TimeSpan startTime, TimeSpan endTime, int bufferInMinutes)
         => Occupations.Any(occupation =>
-        startTime < GetEndTimeWithBuffer(occupation.EndTime, bufferInMinutes)
-        && endTime > occupation.StartTime);
+            startTime < GetEndTimeWithBuffer(occupation.EndTime, bufferInMinutes)
+            && endTime > occupation.StartTime);
 
     private static TimeSpan GetEndTimeWithBuffer(TimeSpan endTime, int bufferInMinutes)
     {
