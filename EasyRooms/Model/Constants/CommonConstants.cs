@@ -12,4 +12,5 @@ public static class CommonConstants
     public static string DayPlan => "Tagesplan Gesamt";
     public static string EndOfList => "Ende der Liste";
     public static string Legend => "HB = Hausbesuch    () = passiv";
+    public static string PartnerString => "*partner";
 }

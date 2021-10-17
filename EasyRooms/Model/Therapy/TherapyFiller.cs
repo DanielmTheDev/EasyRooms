@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using EasyRooms.Model.Constants;
 using EasyRooms.Model.Rooms;
 using EasyRooms.Model.Rooms.Models;
 using EasyRooms.Model.Rows.Models;
@@ -23,7 +24,7 @@ public class TherapyFiller : ITherapyFiller
     private void AddPartnerTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
     {
         var partnerTherapies = orderedRows
-            .Where(row => string.Equals(row.TherapyShort, "*partner", StringComparison.OrdinalIgnoreCase))
+            .Where(row => string.Equals(row.TherapyShort, CommonConstants.PartnerString, StringComparison.OrdinalIgnoreCase))
             .GroupBy(row => (row.StartTime, row.Duration))
             .ToList();
 
