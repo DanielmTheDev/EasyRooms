@@ -4,55 +4,57 @@ using System.Linq;
 using System.Windows.Xps.Packaging;
 
 #nullable disable
-namespace EasyRooms.Model.XpsExtracting;
-
-public class XpsWordsExtractor : IXpsWordsExtractor
+namespace EasyRooms.Model.XpsExtracting
 {
-    public IEnumerable<string> ExtractWords(string filePath)
+
+    public class XpsWordsExtractor : IXpsWordsExtractor
     {
-        var xpsDocument = new XpsDocument(filePath, FileAccess.Read);
-        var fixedDocSeqReader = xpsDocument.FixedDocumentSequenceReader;
-        if (fixedDocSeqReader == null)
+        public IEnumerable<string> ExtractWords(string filePath)
         {
-            return null;
-        }
-
-        const string UnicodeString = "UnicodeString";
-        const string GlyphsString = "Glyphs";
-
-        var textLists = new List<List<string>>();
-        foreach (var fixedDocumentReader in fixedDocSeqReader.FixedDocuments)
-        {
-            foreach (var pageReader in fixedDocumentReader.FixedPages)
+            var xpsDocument = new XpsDocument(filePath, FileAccess.Read);
+            var fixedDocSeqReader = xpsDocument.FixedDocumentSequenceReader;
+            if (fixedDocSeqReader == null)
             {
-                var pageContentReader = pageReader.XmlReader;
-                if (pageContentReader == null)
-                {
-                    continue;
-                }
-
-                var texts = new List<string>();
-                while (pageContentReader.Read())
-                {
-                    if (pageContentReader.Name != GlyphsString)
-                    {
-                        continue;
-                    }
-
-                    if (!pageContentReader.HasAttributes)
-                    {
-                        continue;
-                    }
-
-                    if (pageContentReader.GetAttribute(UnicodeString) != null)
-                    {
-                        texts.Add(pageContentReader.GetAttribute(UnicodeString));
-                    }
-                }
-                textLists.Add(texts);
+                return null;
             }
+
+            const string UnicodeString = "UnicodeString";
+            const string GlyphsString = "Glyphs";
+
+            var textLists = new List<List<string>>();
+            foreach (var fixedDocumentReader in fixedDocSeqReader.FixedDocuments)
+            {
+                foreach (var pageReader in fixedDocumentReader.FixedPages)
+                {
+                    var pageContentReader = pageReader.XmlReader;
+                    if (pageContentReader == null)
+                    {
+                        continue;
+                    }
+
+                    var texts = new List<string>();
+                    while (pageContentReader.Read())
+                    {
+                        if (pageContentReader.Name != GlyphsString)
+                        {
+                            continue;
+                        }
+
+                        if (!pageContentReader.HasAttributes)
+                        {
+                            continue;
+                        }
+
+                        if (pageContentReader.GetAttribute(UnicodeString) != null)
+                        {
+                            texts.Add(pageContentReader.GetAttribute(UnicodeString));
+                        }
+                    }
+                    textLists.Add(texts);
+                }
+            }
+            xpsDocument.Close();
+            return textLists.Aggregate((accumulated, current) => accumulated.Concat(current).ToList());
         }
-        xpsDocument.Close();
-        return textLists.Aggregate((accumulated, current) => accumulated.Concat(current).ToList());
     }
 }

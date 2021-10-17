@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using EasyRooms.Model.Rooms.Models;
 
-namespace EasyRooms.Model.Rooms;
-
-public interface IFreeRoomFinder
+namespace EasyRooms.Model.Rooms
 {
-    FreeRoomWithTime CalculateOccupationCreationData(string startTimeString, string duration, int bufferInMinutes, IEnumerable<Room> rooms);
+    public interface IFreeRoomFinder
+    {
+        FreeRoomWithTime CalculateOccupationCreationData(string startTimeString, string duration, int bufferInMinutes, IEnumerable<Room> rooms);
+    }
 }
