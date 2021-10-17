@@ -14,7 +14,7 @@ namespace EasyRooms.Model.Rooms
             return rooms;
         }
 
-        private static void SetPartnerRoomProperty(RoomNames roomNames, List<Room> rooms)
+        private static void SetPartnerRoomProperty(RoomNames roomNames, IReadOnlyCollection<Room> rooms)
             => roomNames.PartnerRoomsRoomsAsList.ToList()
                 .ForEach(partnerRoom => rooms
                     .Single(room => string.Equals(room.Name, partnerRoom, StringComparison.OrdinalIgnoreCase))

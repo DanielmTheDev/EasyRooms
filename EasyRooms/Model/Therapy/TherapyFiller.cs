@@ -21,7 +21,7 @@ public class TherapyFiller : ITherapyFiller
         AddNormalTherapies(rooms, orderedRows, bufferInMinutes);
     }
 
-    private void AddPartnerTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
+    private void AddPartnerTherapies(IEnumerable<Room> rooms, ICollection<Row> orderedRows, int bufferInMinutes)
     {
         var partnerTherapies = orderedRows
             .Where(row => string.Equals(row.TherapyShort, CommonConstants.PartnerString, StringComparison.OrdinalIgnoreCase))
@@ -35,10 +35,10 @@ public class TherapyFiller : ITherapyFiller
         });
     }
 
-    private void AddNormalTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
+    private void AddNormalTherapies(IReadOnlyCollection<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
         => orderedRows.ForEach(row => AddOccupation(row, rooms, bufferInMinutes));
 
-    private void AddOccupation(Row row, List<Room> rooms, int bufferInMinutes)
+    private void AddOccupation(Row row, IEnumerable<Room> rooms, int bufferInMinutes)
     {
         var freeRoom = _freeRoomFinder.CalculateOccupationCreationData(row.StartTime, row.Duration, bufferInMinutes, rooms);
         freeRoom.FreeRoom.AddOccupation(new Occupation(row, freeRoom.StartTime, freeRoom.EndTime));

@@ -36,7 +36,7 @@ public class RoomOccupationsFiller : IRoomOccupationsFiller
         return rooms;
     }
 
-    private static IOrderedEnumerable<Row> OrderRows(IEnumerable<Row> rows)
+    private static IEnumerable<Row> OrderRows(IEnumerable<Row> rows)
         => rows.OrderBy(row => TimeSpan.Parse(row.StartTime.Trim('(', ')')))
             .ThenBy(row => int.Parse(row.Duration));
 }

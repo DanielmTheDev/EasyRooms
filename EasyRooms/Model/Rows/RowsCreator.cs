@@ -12,7 +12,7 @@ public class RowsCreator : IRowsCreator
     {
         var enumeratedWords = words.ToList();
         var rows = new List<Row>();
-        for (var i = 0; i < words.Count() - 5; i += CommonConstants.ElementsPerRow)
+        for (var i = 0; i < enumeratedWords.Count - 5; i += CommonConstants.ElementsPerRow)
         {
             GuardDuration(enumeratedWords[i + 1]);
             var newRow = new Row(
@@ -29,7 +29,7 @@ public class RowsCreator : IRowsCreator
 
     private void GuardDuration(string duration)
     {
-        if (!int.TryParse(duration, out var _))
+        if (!int.TryParse(duration, out _))
         {
             throw new ArgumentException("Duration is not a number");
         }
