@@ -10,16 +10,11 @@ namespace EasyRooms.Model.Rooms
 
     public class RoomOccupationsFiller : IRoomOccupationsFiller
     {
-        private readonly IFreeRoomFinder _freeRoomFinder;
         private readonly ITherapyFiller _therapyFiller;
         private readonly IRoomListCreator _roomListCreator;
 
-        public RoomOccupationsFiller(
-            IFreeRoomFinder occupationKeyInformationExtractor,
-            ITherapyFiller therapyFiller,
-            IRoomListCreator roomListCreator)
+        public RoomOccupationsFiller(ITherapyFiller therapyFiller,  IRoomListCreator roomListCreator)
         {
-            _freeRoomFinder = occupationKeyInformationExtractor;
             _therapyFiller = therapyFiller;
             _roomListCreator = roomListCreator;
         }
