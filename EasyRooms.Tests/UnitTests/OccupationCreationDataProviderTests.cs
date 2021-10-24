@@ -24,7 +24,7 @@ namespace EasyRooms.Tests.UnitTests
             var expectedOccupationData =
                 new FreeRoomWithTime(new TimeSpan(9, 0, 0), new TimeSpan(11, 0, 0), room2);
 
-            var occupationData = _provider.CalculateOccupationCreationData("09:00", "120", 5, rooms);
+            var occupationData = _provider.FindFreeRoom("09:00", "120", 5, rooms);
 
             occupationData.Should().BeEquivalentTo(expectedOccupationData);
         }

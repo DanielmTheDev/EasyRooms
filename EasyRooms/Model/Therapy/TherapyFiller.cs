@@ -40,7 +40,7 @@ namespace EasyRooms.Model.Therapy
 
         private void AddOccupation(Row row, IEnumerable<Room> rooms, int bufferInMinutes)
         {
-            var freeRoom = _freeRoomFinder.CalculateOccupationCreationData(row.StartTime, row.Duration, bufferInMinutes, rooms);
+            var freeRoom = _freeRoomFinder.FindFreeRoom(row.StartTime, row.Duration, bufferInMinutes, rooms);
             freeRoom.FreeRoom.AddOccupation(new Occupation(row, freeRoom.StartTime, freeRoom.EndTime));
         }
     }

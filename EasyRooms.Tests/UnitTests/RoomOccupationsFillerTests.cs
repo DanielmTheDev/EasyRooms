@@ -10,14 +10,14 @@ using Xunit;
 
 namespace EasyRooms.Tests.UnitTests
 {
-    public class RoomOccupationsFillterTests
+    public class RoomOccupationsFillerTests
     {
         private readonly RoomOccupationsFiller _roomsOccupationsFiller;
         private readonly IFreeRoomFinder _occupationKeyInformationExtractor;
         private readonly ITherapyFiller _therapyFiller;
         private readonly IRoomListCreator _roomListCreator;
 
-        public RoomOccupationsFillterTests()
+        public RoomOccupationsFillerTests()
         {
             _occupationKeyInformationExtractor = Substitute.For<IFreeRoomFinder>();
             _therapyFiller = Substitute.For<ITherapyFiller>();
@@ -47,7 +47,7 @@ namespace EasyRooms.Tests.UnitTests
         }
 
         [Fact]
-        public void Distrubutes_Overlapping_Rows_Between_Two_Rooms_With_Buffer()
+        public void Distributes_Overlapping_Rows_Between_Two_Rooms_With_Buffer()
         {
             var rows = new[]
             {

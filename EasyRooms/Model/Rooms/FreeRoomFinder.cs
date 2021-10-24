@@ -7,7 +7,7 @@ namespace EasyRooms.Model.Rooms
 {
     public class FreeRoomFinder : IFreeRoomFinder
     {
-        public FreeRoomWithTime CalculateOccupationCreationData(string startTimeString, string duration, int bufferInMinutes, IEnumerable<Room> rooms)
+        public FreeRoomWithTime FindFreeRoom(string startTimeString, string duration, int bufferInMinutes, IEnumerable<Room> rooms)
         {
             //todo this trimming is a workaround. In reality, such a case probably has to be put into the same room as the
             //therapy that came before, since it means something like preparation

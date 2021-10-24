@@ -5,6 +5,6 @@ namespace EasyRooms.Model.Rooms
 {
     public interface IFreeRoomFinder
     {
-        FreeRoomWithTime CalculateOccupationCreationData(string startTimeString, string duration, int bufferInMinutes, IEnumerable<Room> rooms);
+        FreeRoomWithTime FindFreeRoom(string startTimeString, string duration, int bufferInMinutes, IEnumerable<Room> rooms);
     }
 }
