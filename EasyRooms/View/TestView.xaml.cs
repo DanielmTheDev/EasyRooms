@@ -13,14 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace EasyRooms.View;
-/// <summary>
-/// Interaction logic for TestView.xaml
-/// </summary>
-public partial class TestView : UserControl
+namespace EasyRooms.View
 {
-    public TestView()
+    /// <summary>
+    /// Interaction logic for TestView.xaml
+    /// </summary>
+    public partial class TestView : UserControl
     {
-        InitializeComponent();
+        public TestView()
+        {
+            InitializeComponent();
+        }
     }
 }

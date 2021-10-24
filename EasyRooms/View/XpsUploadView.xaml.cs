@@ -1,16 +1,18 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 using EasyRooms.ViewModel;
 
-namespace EasyRooms.View;
-
-/// <summary>
-/// Interaction logic for XpsUploadView.xaml
-/// </summary>
-public partial class XpsUploadView : UserControl
+namespace EasyRooms.View
 {
-    public XpsUploadView()
+    /// <summary>
+    /// Interaction logic for XpsUploadView.xaml
+    /// </summary>
+    public partial class XpsUploadView : UserControl
     {
-        InitializeComponent();
-        DataContext = ((App)System.Windows.Application.Current).Services.GetService(typeof(XpsUploadViewModel));
+        public XpsUploadView()
+        {
+            InitializeComponent();
+            DataContext = ((App) Application.Current).Services.GetService(typeof(XpsUploadViewModel));
+        }
     }
 }

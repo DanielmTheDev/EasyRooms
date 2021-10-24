@@ -1,24 +1,28 @@
-﻿using EasyRooms.View;
+﻿using System.Windows;
+using EasyRooms.View;
 
-namespace EasyRooms.ViewModel;
+namespace EasyRooms.ViewModel
 
-public class MainWindowViewModel : BindableBase
 {
-    private readonly XpsUploadViewModel _xpsUploadViewModel;
-    private readonly TestViewModel _testViewModel;
-
-    private BindableBase _currentViewModel;
-
-    public BindableBase CurrentViewModel
+    public class MainWindowViewModel : BindableBase
     {
-        get => _currentViewModel;
-        set => SetProperty(ref _currentViewModel, value);
-    }
+        private readonly XpsUploadViewModel _xpsUploadViewModel;
+        private readonly TestViewModel _testViewModel;
 
-    public MainWindowViewModel()
-    {
-        _xpsUploadViewModel = (XpsUploadViewModel)((App)System.Windows.Application.Current).Services.GetService(typeof(XpsUploadViewModel));
-        _testViewModel = (TestViewModel)((App)System.Windows.Application.Current).Services.GetService(typeof(TestViewModel));
-        CurrentViewModel = _xpsUploadViewModel;
+        private BindableBase _currentViewModel;
+
+        public BindableBase CurrentViewModel
+        {
+            get => _currentViewModel;
+            set => SetProperty(ref _currentViewModel, value);
+        }
+
+        public MainWindowViewModel()
+        {
+            _xpsUploadViewModel =
+                (XpsUploadViewModel) ((App) Application.Current).Services.GetService(typeof(XpsUploadViewModel));
+            _testViewModel = (TestViewModel) ((App) Application.Current).Services.GetService(typeof(TestViewModel));
+            CurrentViewModel = _xpsUploadViewModel;
+        }
     }
 }
