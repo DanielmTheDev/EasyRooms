@@ -7,9 +7,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin="0,0,0,-63">
+        <Label Content="Rooms" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Top"/>
         <TextBox AcceptsReturn="True" Text="{Binding Rooms.RoomsString}" Margin="40,23,671,101"></TextBox>
-        <TextBox AcceptsReturn="True" Text="{Binding Rooms.PartnerRoomString}" Margin="487,22,224,102"></TextBox>
-        <Button Command="{Binding ChooseFileCommand}" Margin="257,22,360,389" RenderTransformOrigin="0.126,5.296">Datei Auswählen</Button>
-        <Button Command="{Binding CalculateOccupationsCommand}" Margin="257,100,360,306">Berechnen</Button>
+        <Label Content="PartnerRooms" HorizontalAlignment="Left" Margin="358,-5,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.179,0.262"/>
+        <TextBox AcceptsReturn="True" Text="{Binding Rooms.PartnerRoomString}" Margin="356,23,355,101"></TextBox>
+        <Label Content="RoomSpecific massages" HorizontalAlignment="Left" Margin="447,0,0,0" VerticalAlignment="Top"/>
+        <TextBox AcceptsReturn="True" Text="{Binding Rooms.PartnerRoomString}" Margin="464,23,247,101"></TextBox>
+        <Button Command="{Binding ChooseFileCommand}" Margin="152,32,465,379" RenderTransformOrigin="0.126,5.296">Datei Auswählen</Button>
+        <Button Command="{Binding CalculateOccupationsCommand}" Margin="152,110,465,297">Berechnen</Button>
     </Grid>
 </UserControl>
