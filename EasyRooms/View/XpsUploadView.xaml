@@ -3,16 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:EasyRooms.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin="0,0,0,-63">
         <Label Content="Rooms" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Top"/>
         <TextBox AcceptsReturn="True" Text="{Binding Rooms.RoomsString}" Margin="40,23,671,101"></TextBox>
+        
         <Label Content="PartnerRooms" HorizontalAlignment="Left" Margin="358,-5,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.179,0.262"/>
         <TextBox AcceptsReturn="True" Text="{Binding Rooms.PartnerRoomString}" Margin="356,23,355,101"></TextBox>
-        <Label Content="RoomSpecific massages" HorizontalAlignment="Left" Margin="447,0,0,0" VerticalAlignment="Top"/>
-        <TextBox AcceptsReturn="True" Text="{Binding Rooms.PartnerRoomString}" Margin="464,23,247,101"></TextBox>
+        
+        <Label Content="MassagesForSpecificRooms" HorizontalAlignment="Left" Margin="447,0,0,0" VerticalAlignment="Top"/>
+        <TextBox AcceptsReturn="True" Text="{Binding Rooms.MassagesForSpecificRooms}" Margin="464,23,247,101"></TextBox>
+        
+        <Label Content="RoomsForSpecificMassages" HorizontalAlignment="Left" Margin="447,0,0,0" VerticalAlignment="Top"/>
+        <TextBox AcceptsReturn="True" Text="{Binding Rooms.RoomsForSpecificMassages}" Margin="588,23,123,101"></TextBox>
+        
         <Button Command="{Binding ChooseFileCommand}" Margin="152,32,465,379" RenderTransformOrigin="0.126,5.296">Datei Auswählen</Button>
         <Button Command="{Binding CalculateOccupationsCommand}" Margin="152,110,465,297">Berechnen</Button>
     </Grid>
