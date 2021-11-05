@@ -8,6 +8,7 @@ namespace EasyRooms.Model.Rooms.Models
     public record Room(string Name, int Priority)
     {
         public bool IsPartnerRoom { get; set; }
+        public bool IsMassageSpecificRoom { get; set; }
 
         //todo encapsulate this list
         public IList<Occupation> Occupations { get; } = new List<Occupation>();

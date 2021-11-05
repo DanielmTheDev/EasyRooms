@@ -11,11 +11,18 @@ namespace EasyRooms.Model.Rooms
         {
             var rooms = roomNames.AllRoomsAsList.Select((name, i) => new Room(name, i)).ToList();
             SetPartnerRoomProperty(roomNames, rooms);
+            SetMassageSpecificRoomProperty(roomNames, rooms);
             return rooms;
         }
 
+        private static void SetMassageSpecificRoomProperty(RoomNames roomNames, IReadOnlyCollection<Room> rooms)
+            => roomNames.RoomsForSpecificMassagesAsList
+                .ForEach(messageSpecificRoom => rooms
+                    .Single(room => string.Equals(room.Name, messageSpecificRoom, StringComparison.OrdinalIgnoreCase))
+                    .IsMassageSpecificRoom = true);
+
         private static void SetPartnerRoomProperty(RoomNames roomNames, IReadOnlyCollection<Room> rooms)
-            => roomNames.PartnerRoomsRoomsAsList.ToList()
+            => roomNames.PartnerRoomsRoomsAsList
                 .ForEach(partnerRoom => rooms
                     .Single(room => string.Equals(room.Name, partnerRoom, StringComparison.OrdinalIgnoreCase))
                     .IsPartnerRoom = true);

@@ -18,6 +18,7 @@ namespace EasyRooms.Model.Therapy
         public void AddAllTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
         {
             AddPartnerTherapies(rooms, orderedRows, bufferInMinutes);
+            AddRoomSpecificMassages(rooms, orderedRows, bufferInMinutes);
             AddNormalTherapies(rooms, orderedRows, bufferInMinutes);
         }
 
@@ -33,6 +34,11 @@ namespace EasyRooms.Model.Therapy
                 grouping.ToList().ForEach(row => AddOccupation(row, rooms, bufferInMinutes));
                 grouping.ToList().ForEach(row => orderedRows.Remove(row));
             });
+        }
+
+        private void AddRoomSpecificMassages(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
+        {
+           
         }
 
         private void AddNormalTherapies(IReadOnlyCollection<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
