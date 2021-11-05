@@ -33,7 +33,7 @@ namespace EasyRooms.Tests.UnitTests
             var _ = _roomsOccupationsFiller.FillRoomOccupations(rows, roomNames, 1);
 
             _roomListCreator.Received().CreateRooms(roomNames);
-            _therapyFiller.Received().AddAllTherapies(expectedRooms, Arg.Is<List<Row>>(list => list.SequenceEqual(CreateExpectedRows())), 1);
+            _therapyFiller.Received().AddAllTherapies(expectedRooms, Arg.Is<List<Row>>(list => list.SequenceEqual(CreateExpectedRows())), 1, roomNames);
         }
 
         private static RoomNames CreateRoomNames() 

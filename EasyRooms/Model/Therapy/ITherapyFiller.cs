@@ -6,6 +6,6 @@ namespace EasyRooms.Model.Therapy
 {
     public interface ITherapyFiller
     {
-        void AddAllTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes);
+        void AddAllTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames);
     }
 }

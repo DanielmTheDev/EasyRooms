@@ -8,6 +8,7 @@ using EasyRooms.Model.Rows.Models;
 
 namespace EasyRooms.Model.Therapy
 {
+    //Continue here: manual test, unit test and then refactoring this
     public class TherapyFiller : ITherapyFiller
     {
         private readonly IFreeRoomFinder _freeRoomFinder;
@@ -15,10 +16,10 @@ namespace EasyRooms.Model.Therapy
         public TherapyFiller(IFreeRoomFinder freeRoomFinder)
             => _freeRoomFinder = freeRoomFinder;
 
-        public void AddAllTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
+        public void AddAllTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
         {
             AddPartnerTherapies(rooms, orderedRows, bufferInMinutes);
-            AddRoomSpecificMassages(rooms, orderedRows, bufferInMinutes);
+            AddRoomSpecificMassages(rooms, orderedRows, bufferInMinutes, roomNames);
             AddNormalTherapies(rooms, orderedRows, bufferInMinutes);
         }
 
@@ -36,9 +37,18 @@ namespace EasyRooms.Model.Therapy
             });
         }
 
-        private void AddRoomSpecificMassages(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
+        private void AddRoomSpecificMassages(IEnumerable<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
         {
-           
+            var roomSpecificMassages = orderedRows
+                .Where(row => roomNames.MassagesForSpecificRoomsAsList.Contains(row.TherapyShort))
+                .GroupBy(row => (row.StartTime, row.Duration))
+                .ToList();
+            var specificRooms = rooms.Where(room => room.IsMassageSpecificRoom);
+            roomSpecificMassages.ForEach(grouping =>
+            {
+                grouping.ToList().ForEach(row => AddOccupation(row, specificRooms, bufferInMinutes));
+                grouping.ToList().ForEach(row => orderedRows.Remove(row));
+            });
         }
 
         private void AddNormalTherapies(IReadOnlyCollection<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
