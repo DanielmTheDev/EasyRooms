@@ -16,15 +16,27 @@ namespace EasyRooms.Model.Rooms
         }
 
         private static void SetMassageSpecificRoomProperty(RoomNames roomNames, IReadOnlyCollection<Room> rooms)
-            => roomNames.RoomsForSpecificMassagesAsList
-                .ForEach(messageSpecificRoom => rooms
-                    .Single(room => string.Equals(room.Name, messageSpecificRoom, StringComparison.OrdinalIgnoreCase))
-                    .IsMassageSpecificRoom = true);
+        {
+            roomNames.RoomsForSpecificMassagesAsList
+                .ForEach(messageSpecificRoom =>
+                {
+                    var room = rooms
+                        .SingleOrDefault(room =>
+                            string.Equals(room.Name, messageSpecificRoom, StringComparison.OrdinalIgnoreCase));
+                    if (room is { })
+                        room.IsMassageSpecificRoom = true;
+                });
+        }
 
         private static void SetPartnerRoomProperty(RoomNames roomNames, IReadOnlyCollection<Room> rooms)
             => roomNames.PartnerRoomsRoomsAsList
-                .ForEach(partnerRoom => rooms
-                    .Single(room => string.Equals(room.Name, partnerRoom, StringComparison.OrdinalIgnoreCase))
-                    .IsPartnerRoom = true);
+                .ForEach(partnerRoom =>
+                {
+                    var room = rooms
+                        .SingleOrDefault(room =>
+                            string.Equals(room.Name, partnerRoom, StringComparison.OrdinalIgnoreCase));
+                    if (room is { })
+                        room.IsPartnerRoom = true;
+                });
     }
 }
