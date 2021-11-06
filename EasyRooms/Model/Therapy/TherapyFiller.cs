@@ -43,7 +43,9 @@ namespace EasyRooms.Model.Therapy
                 .Where(row => roomNames.MassagesForSpecificRoomsAsList.Contains(row.TherapyShort))
                 .GroupBy(row => (row.StartTime, row.Duration))
                 .ToList();
+            
             var specificRooms = rooms.Where(room => room.IsMassageSpecificRoom);
+            
             roomSpecificMassages.ForEach(grouping =>
             {
                 grouping.ToList().ForEach(row => AddOccupation(row, specificRooms, bufferInMinutes));
