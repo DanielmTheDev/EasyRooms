@@ -8,7 +8,6 @@ using EasyRooms.Model.Rows.Models;
 
 namespace EasyRooms.Model.Therapy
 {
-    //Continue here: manual test, unit test and then refactoring this
     public class TherapyFiller : ITherapyFiller
     {
         private readonly IFreeRoomFinder _freeRoomFinder;
