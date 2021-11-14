@@ -9,12 +9,18 @@ namespace EasyRooms.Model.Validation
     {
         public bool Validate(IEnumerable<Room> rooms, RoomNames roomNames)
         {
-            rooms.All(room => room.Occupations.All(occupation =>
+            return rooms.All(room => room.Occupations.All(occupation =>
             {
-                if(occupation.TherapyShort == CommonConstants.PartnerString)
-                    return roomNames.
-                
+                if (occupation.TherapyShort == CommonConstants.PartnerString)
+                    return ValidatePartnerMassages(occupation, roomNames, room);
+                else
+                    return true;
             }));
+        }
+
+        private static bool ValidatePartnerMassages(Occupation occupation, RoomNames roomNames, Room room)
+        {
+            return roomNames.PartnerRoomsRoomsAsList.Contains(room.Name);
         }
     }
 }

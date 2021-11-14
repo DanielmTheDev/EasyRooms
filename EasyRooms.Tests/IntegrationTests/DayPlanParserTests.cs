@@ -15,10 +15,8 @@ namespace EasyRooms.Tests.IntegrationTests
     {
         private readonly DayPlanParser _dayPlanParser;
 
-        public DayPlanParserTests()
-        {
-            _dayPlanParser = new DayPlanParser(new XpsWordsExtractor(), new RowsCreator());
-        }
+        public DayPlanParserTests() 
+            => _dayPlanParser = new DayPlanParser(new XpsWordsExtractor(), new RowsCreator());
 
         [Theory]
         [InlineData("ExpectedRows1.json", "Plan1.xps")]
