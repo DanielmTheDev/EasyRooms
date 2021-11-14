@@ -7,7 +7,7 @@ namespace EasyRooms.Model.Validation
 {
     public class RoomsValidator
     {
-        public bool Validate(IEnumerable<Room> rooms, RoomNames roomNames)
+        public bool IsValid(IEnumerable<Room> rooms, RoomNames roomNames)
         {
             return rooms.All(room => room.Occupations.All(occupation =>
             {

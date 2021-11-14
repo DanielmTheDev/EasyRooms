@@ -1,5 +1,6 @@
 ﻿using System;
 using EasyRooms.Model.Rows.Models;
+using Newtonsoft.Json;
 
 namespace EasyRooms.Model.Rooms.Models
 
