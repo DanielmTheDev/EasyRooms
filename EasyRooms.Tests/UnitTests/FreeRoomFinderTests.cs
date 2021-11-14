@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using EasyRooms.Model.Rooms;
 using EasyRooms.Model.Rooms.Models;
 using EasyRooms.Model.Rows.Models;
-using EasyRooms.Model.Therapy;
 using FluentAssertions;
-using NSubstitute;
 using Xunit;
 
 namespace EasyRooms.Tests.UnitTests
