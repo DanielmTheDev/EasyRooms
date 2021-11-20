@@ -350,12 +350,5 @@
         "EndTime": "13:00:00"
       }
     ]
-  },
-  {
-    "Name": "",
-    "Priority": 8,
-    "IsPartnerRoom": false,
-    "IsMassageSpecificRoom": true,
-    "Occupations": []
   }
 ]
