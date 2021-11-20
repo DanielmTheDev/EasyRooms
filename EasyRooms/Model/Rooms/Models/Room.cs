@@ -10,7 +10,7 @@ namespace EasyRooms.Model.Rooms.Models
         public bool IsPartnerRoom { get; set; }
         public bool IsMassageSpecificRoom { get; set; }
 
-        public IList<Occupation> Occupations { get; } = new List<Occupation>();
+        public IList<Occupation> Occupations { get; set; } = new List<Occupation>();
 
         public Room AddOccupation(Occupation occupation)
         {
@@ -27,6 +27,11 @@ namespace EasyRooms.Model.Rooms.Models
         {
             var minutes = TimeSpan.FromMinutes(bufferInMinutes);
             return endTime.Add(minutes);
+        }
+
+        public void OrderOccupations()
+        {
+            Occupations = Occupations.OrderBy(occupation => occupation.StartTime).ToList();
         }
     }
 }

@@ -29,6 +29,7 @@ namespace EasyRooms.Model.Rooms
         {
             var rooms = _roomListCreator.CreateRooms(roomNames);
             _therapyFiller.AddAllTherapies(rooms, orderedRows, bufferInMinutes, roomNames);
+            rooms.ForEach(room => room.OrderOccupations());
             return rooms;
         }
 
