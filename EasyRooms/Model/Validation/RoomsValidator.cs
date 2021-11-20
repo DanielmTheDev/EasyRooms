@@ -11,14 +11,10 @@ namespace EasyRooms.Model.Validation
         {
             return rooms.All(room =>
             {
-                if (OccupationsOverlap(room))
-                    return false;
-                return room.Occupations.All(occupation =>
-                {
-                    if (occupation.TherapyShort == CommonConstants.PartnerString)
-                        return ValidatePartnerMassages(roomNames, room);
-                    return true;
-                });
+                return !OccupationsOverlap(room)
+                       && room.Occupations.All(occupation =>
+                           occupation.TherapyShort != CommonConstants.PartnerString ||
+                           ValidatePartnerMassages(roomNames, room));
             });
         }
 

@@ -53,6 +53,9 @@
     <None Update="IntegrationTests\TestData\validationInputRooms.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="IntegrationTests\TestData\PlanWithPartnerMassages.xps">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

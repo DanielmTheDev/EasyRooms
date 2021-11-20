@@ -20,7 +20,7 @@ namespace EasyRooms.Tests.IntegrationTests
 
         [Theory]
         [InlineData("ExpectedRows1.json", "Plan1.xps")]
-        [InlineData("ExpectedRows2.json", "Plan2.xps")]
+        [InlineData("ExpectedRows2.json", "PlanWithPartnerMassages.xps")]
         [InlineData("ExpectedRows3.json", "Plan3.xps")]
         public void Parses_Plans(string jsonFileName, string xpsFileName)
         {
