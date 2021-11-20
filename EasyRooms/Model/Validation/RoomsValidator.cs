@@ -22,7 +22,6 @@ namespace EasyRooms.Model.Validation
             });
         }
 
-        //continue here, doesn't work
         private static bool OccupationsOverlap(Room room)
             => room.Occupations.All(occupation1 => !room.Occupations
                 .Any(occupation2 => occupation1.StartTime < occupation2.EndTime
