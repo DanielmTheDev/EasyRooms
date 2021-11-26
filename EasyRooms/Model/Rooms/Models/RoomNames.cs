@@ -6,10 +6,10 @@ namespace EasyRooms.Model.Rooms.Models
 {
     public class RoomNames
     {
-        public string PartnerRoomString { get; init; }
-        private string RoomsString { get; }
-        private string RoomsForSpecificMassages { get; }
-        private string MassagesForSpecificRooms { get; }
+        public string PartnerRoomString { get; set; }
+        public string RoomsString { get; set; }
+        public string RoomsForSpecificMassages { get; set; }
+        public string MassagesForSpecificRooms { get; set; }
 
         public List<string> AllRoomsAsList => RoomsString.Split('\n').ToList();
         public List<string> PartnerRoomsRoomsAsList => PartnerRoomString.Split('\n').ToList();

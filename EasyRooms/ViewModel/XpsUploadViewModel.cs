@@ -23,7 +23,9 @@ namespace EasyRooms.ViewModel
         private string? _fileName;
         private readonly int _buffer = 1;
 
-        public XpsUploadViewModel(IRoomOccupationsFiller occupationsFiller, IDayPlanParser dayPlanParser,
+        public XpsUploadViewModel(
+            IRoomOccupationsFiller occupationsFiller,
+            IDayPlanParser dayPlanParser,
             IFileDialogOpener fileDialogOpener)
         {
             HookUpCommands();

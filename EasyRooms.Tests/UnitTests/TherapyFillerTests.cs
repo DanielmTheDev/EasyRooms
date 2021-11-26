@@ -16,7 +16,7 @@
 //         private readonly IFreeRoomFinder _freeRoomFinder;
 //
 //         public TherapyFillerTests()
-//         {
+//         {    
 //             _freeRoomFinder = Substitute.For<IFreeRoomFinder>();
 //             _therapyFiller = new TherapyFiller(_freeRoomFinder);
 //         }
