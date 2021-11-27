@@ -36,7 +36,7 @@ namespace EasyRooms.Model.Therapy
             });
         }
 
-        private void AddRoomSpecificMassages(IEnumerable<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
+        private void AddRoomSpecificMassages(IEnumerable<Room> rooms, ICollection<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
         {
             var roomSpecificMassages = orderedRows
                 .Where(row => roomNames.MassagesForSpecificRoomsAsList.Contains(row.TherapyShort))

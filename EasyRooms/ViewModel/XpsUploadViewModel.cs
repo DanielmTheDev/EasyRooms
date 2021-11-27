@@ -56,8 +56,7 @@ namespace EasyRooms.ViewModel
             var rows = _dayPlanParser.ParseDayPlan(_fileName);
             var filledRooms = _occupationsFiller.FillRoomOccupations(rows, Rooms, _buffer);
             var serializedRooms = JsonConvert.SerializeObject(filledRooms, Formatting.Indented);
-            File.WriteAllText(@"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\realFlowRooms.json",
-                serializedRooms);
+            File.WriteAllText(@"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\realFlowRooms.json", serializedRooms);
         }
     }
 }

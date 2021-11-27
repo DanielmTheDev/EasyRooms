@@ -37,7 +37,7 @@ namespace EasyRooms.Tests.UnitTests
         }
 
         private static RoomNames CreateRoomNames() 
-            => new("room1\nroom2", "room2");
+            => new("room1\nroom2", "room2", "room1");
 
         private static IEnumerable<Row> CreateRows()
             => new List<Row>

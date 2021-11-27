@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using EasyRooms.Model.Rooms;
 using EasyRooms.Model.Rooms.Models;
 using FluentAssertions;
@@ -20,7 +18,7 @@ namespace EasyRooms.Tests.UnitTests
         {
             const string roomString = "room1\nroom2\nroom3";
             const string partnerString = "room2\nroom3";
-            var roomNames = new RoomNames(roomString, partnerString);
+            var roomNames = new RoomNames(roomString, partnerString, "room1");
             var expectedRooms = CreateExpectedPartnerRooms();
             
             var rooms = _roomListCreator.CreateRooms(roomNames);
@@ -63,6 +61,7 @@ namespace EasyRooms.Tests.UnitTests
                 new("room2", 1),
                 new("room3", 2),
             };
+            expectedRooms[0].IsMassageSpecificRoom = true;
             expectedRooms[1].IsPartnerRoom = true;
             expectedRooms[2].IsPartnerRoom = true;
             return expectedRooms;
