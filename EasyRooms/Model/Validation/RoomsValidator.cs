@@ -5,7 +5,7 @@ using EasyRooms.Model.Rooms.Models;
 
 namespace EasyRooms.Model.Validation
 {
-    public class RoomsValidator
+    public class RoomsValidator : IRoomsValidator
     {
         public bool IsValid(IEnumerable<Room> rooms, RoomNames roomNames)
         {

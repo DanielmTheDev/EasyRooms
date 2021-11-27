@@ -5,6 +5,7 @@ using EasyRooms.Model.FileDialog;
 using EasyRooms.Model.Rooms;
 using EasyRooms.Model.Rows;
 using EasyRooms.Model.Therapy;
+using EasyRooms.Model.Validation;
 using EasyRooms.Model.XpsExtracting;
 using EasyRooms.ViewModel;
 using Microsoft.Extensions.Configuration;
@@ -18,7 +19,6 @@ namespace EasyRooms.View
     /// </summary>
     public partial class App : Application
     {
-
         public IServiceProvider Services => _host.Services;
         private readonly IHost _host;
 
@@ -38,6 +38,7 @@ namespace EasyRooms.View
                 .AddTransient<IFreeRoomFinder, FreeRoomFinder>()
                 .AddTransient<ITherapyFiller, TherapyFiller>()
                 .AddTransient<IRoomListCreator, RoomListCreator>()
+                .AddTransient<IRoomsValidator, RoomsValidator>()
                 .AddSingleton<XpsUploadView>()
                 .AddSingleton<XpsUploadViewModel>()
                 .AddSingleton<TestViewModel>()
