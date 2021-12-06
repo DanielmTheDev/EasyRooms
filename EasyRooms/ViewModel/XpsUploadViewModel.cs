@@ -36,6 +36,7 @@ namespace EasyRooms.ViewModel
         {
             HookUpCommands();
             Rooms = new RoomNames();
+            _fileName = @"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\PlanWithPartnerMassages.xps";
             _occupationsFiller = occupationsFiller;
             _dayPlanParser = dayPlanParser;
             _fileDialogOpener = fileDialogOpener;

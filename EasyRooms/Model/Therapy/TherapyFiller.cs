@@ -31,7 +31,7 @@ namespace EasyRooms.Model.Therapy
 
             partnerTherapies.ForEach(grouping =>
             {
-                grouping.ToList().ForEach(row => AddOccupation(row, rooms, bufferInMinutes));
+                AddOccupation(rooms, bufferInMinutes, grouping.ToArray());
                 grouping.ToList().ForEach(row => orderedRows.Remove(row));
             });
         }
@@ -42,23 +42,26 @@ namespace EasyRooms.Model.Therapy
                 .Where(row => roomNames.MassagesForSpecificRoomsAsList.Contains(row.TherapyShort))
                 .GroupBy(row => (row.StartTime, row.Duration))
                 .ToList();
-            
+
             var specificRooms = rooms.Where(room => room.IsMassageSpecificRoom);
-            
+
             roomSpecificMassages.ForEach(grouping =>
             {
-                grouping.ToList().ForEach(row => AddOccupation(row, specificRooms, bufferInMinutes));
+                grouping.ToList().ForEach(row => AddOccupation(specificRooms, bufferInMinutes, row));
                 grouping.ToList().ForEach(row => orderedRows.Remove(row));
             });
         }
 
         private void AddNormalTherapies(IReadOnlyCollection<Room> rooms, List<Row> orderedRows, int bufferInMinutes)
-            => orderedRows.ForEach(row => AddOccupation(row, rooms, bufferInMinutes));
+            => orderedRows.ForEach(row => AddOccupation(rooms, bufferInMinutes, row));
 
-        private void AddOccupation(Row row, IEnumerable<Room> rooms, int bufferInMinutes)
+        private void AddOccupation(IEnumerable<Room> rooms, int bufferInMinutes, params Row[] rows)
         {
-            var freeRoom = _freeRoomFinder.FindFreeRoom(row.StartTime, row.Duration, bufferInMinutes, rooms);
-            freeRoom.FreeRoom.AddOccupation(new Occupation(row, freeRoom.StartTime, freeRoom.EndTime));
+            var (startTime, timeSpan, freeRoom) = _freeRoomFinder.FindFreeRoom(rows.First().StartTime, rows.First().Duration, bufferInMinutes, rooms);
+            foreach (var row in rows)
+            {
+                freeRoom.AddOccupation(new Occupation(row, startTime, timeSpan));
+            }
         }
     }
 }
