@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using EasyRooms.ViewModel;
 
 namespace EasyRooms.View
@@ -7,7 +6,7 @@ namespace EasyRooms.View
     /// <summary>
     /// Interaction logic for XpsUploadView.xaml
     /// </summary>
-    public partial class XpsUploadView : UserControl
+    public partial class XpsUploadView
     {
         public XpsUploadView()
         {

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using EasyRooms.Model.DayPlan;
 using EasyRooms.Model.FileDialog;
+using EasyRooms.Model.Pdf;
 using EasyRooms.Model.Rooms;
 using EasyRooms.Model.Rooms.Models;
 using EasyRooms.Model.Validation;
@@ -24,6 +25,7 @@ namespace EasyRooms.ViewModel
         private readonly IFileDialogOpener _fileDialogOpener;
         private readonly IRoomOccupationsFiller _occupationsFiller;
         private readonly IRoomsValidator _validator;
+        private readonly IPdfWriter _pdfWriter;
 
         private string? _fileName;
         private readonly int _buffer = 1;
@@ -32,21 +34,18 @@ namespace EasyRooms.ViewModel
             IRoomOccupationsFiller occupationsFiller,
             IDayPlanParser dayPlanParser,
             IFileDialogOpener fileDialogOpener,
-            IRoomsValidator validator)
+            IRoomsValidator validator,
+            IPdfWriter pdfWriter)
         {
-            HookUpCommands();
+            CalculateOccupationsCommand = new RelayCommand(CalculateOccupations, CanCalculateOccupations);
+            ChooseFileCommand = new RelayCommand(OpenFileDialog);
             Rooms = new RoomNames();
             _fileName = @"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\PlanWithPartnerMassages.xps";
             _occupationsFiller = occupationsFiller;
             _dayPlanParser = dayPlanParser;
             _fileDialogOpener = fileDialogOpener;
             _validator = validator;
-        }
-
-        private void HookUpCommands()
-        {
-            CalculateOccupationsCommand = new RelayCommand(CalculateOccupations, CanCalculateOccupations);
-            ChooseFileCommand = new RelayCommand(OpenFileDialog);
+            _pdfWriter = pdfWriter;
         }
 
         private void OpenFileDialog()
@@ -64,6 +63,7 @@ namespace EasyRooms.ViewModel
             var rows = _dayPlanParser.ParseDayPlan(_fileName);
             var filledRooms = _occupationsFiller.FillRoomOccupations(rows, Rooms, _buffer).ToList();
             _ = _validator.IsValid(filledRooms, Rooms) ? default(object) : throw new RoomsValidationException();
+            _pdfWriter.Write(filledRooms);
             WriteJson(filledRooms);
         }
 

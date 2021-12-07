@@ -8,7 +8,7 @@ namespace EasyRooms.ViewModel
     {
         public event PropertyChangedEventHandler? PropertyChanged = delegate { };
 
-        protected virtual void SetProperty<T>(ref T member, T value, [CallerMemberName] string propertyName = null)
+        protected void SetProperty<T>(ref T member, T value, [CallerMemberName] string propertyName = null!)
         {
             if (Equals(member, value))
             {
@@ -16,10 +16,10 @@ namespace EasyRooms.ViewModel
             }
 
             member = value;
-            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         protected virtual void OnPropertyChanged(string propertyName)
-            => PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
