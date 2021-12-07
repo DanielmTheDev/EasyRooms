@@ -18,8 +18,8 @@ namespace EasyRooms.Model.XpsExtracting
                 return null;
             }
 
-            const string UnicodeString = "UnicodeString";
-            const string GlyphsString = "Glyphs";
+            const string unicodeString = "UnicodeString";
+            const string glyphsString = "Glyphs";
 
             var textLists = new List<List<string>>();
             foreach (var fixedDocumentReader in fixedDocSeqReader.FixedDocuments)
@@ -35,7 +35,7 @@ namespace EasyRooms.Model.XpsExtracting
                     var texts = new List<string>();
                     while (pageContentReader.Read())
                     {
-                        if (pageContentReader.Name != GlyphsString)
+                        if (pageContentReader.Name != glyphsString)
                         {
                             continue;
                         }
@@ -45,9 +45,9 @@ namespace EasyRooms.Model.XpsExtracting
                             continue;
                         }
 
-                        if (pageContentReader.GetAttribute(UnicodeString) != null)
+                        if (pageContentReader.GetAttribute(unicodeString) != null)
                         {
-                            texts.Add(pageContentReader.GetAttribute(UnicodeString));
+                            texts.Add(pageContentReader.GetAttribute(unicodeString));
                         }
                     }
                     textLists.Add(texts);

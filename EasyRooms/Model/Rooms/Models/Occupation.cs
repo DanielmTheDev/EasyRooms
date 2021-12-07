@@ -1,21 +1,22 @@
 ﻿using System;
 using EasyRooms.Model.Rows.Models;
 
+#nullable disable
 namespace EasyRooms.Model.Rooms.Models
 
 {
     public class Occupation
     {
-        public string Therapist { get; init; }
-        public string Patient { get; init; }
-        public string TherapyShort { get; init; }
-        public string TherapyLong { get; init; }
-        public TimeSpan StartTime { get; init; }
-        public TimeSpan EndTime { get; init; }
+        public string Therapist { get; }
+        public string Patient { get; }
+        public string TherapyShort { get; }
+        public string TherapyLong { get; }
+        public TimeSpan StartTime { get; }
+        public TimeSpan EndTime { get; }
 
+        // ReSharper disable once UnusedMember.Global
         public Occupation()
         {
-            
         }
         
         public Occupation(Row row, TimeSpan startTime, TimeSpan endTime) : this(row.Therapist,row.Patient, row.TherapyShort, row.TherapyLong, startTime, endTime)

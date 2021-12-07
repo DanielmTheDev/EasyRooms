@@ -1,12 +1,14 @@
 ﻿using System.Windows;
 using EasyRooms.View;
 
+#nullable disable
 namespace EasyRooms.ViewModel
-
 {
     public class MainWindowViewModel : BindableBase
     {
+        // ReSharper disable once PrivateFieldCanBeConvertedToLocalVariable
         private readonly XpsUploadViewModel _xpsUploadViewModel;
+        // ReSharper disable once NotAccessedField.Local
         private readonly TestViewModel _testViewModel;
 
         private BindableBase _currentViewModel;

@@ -9,7 +9,6 @@ namespace EasyRooms.Model.Rooms.Models
     {
         public bool IsPartnerRoom { get; set; }
         public bool IsMassageSpecificRoom { get; set; }
-
         public IList<Occupation> Occupations { get; set; } = new List<Occupation>();
 
         public Room AddOccupation(Occupation occupation)

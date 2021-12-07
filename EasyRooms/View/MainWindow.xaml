@@ -3,9 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:EasyRooms"
         xmlns:vm="clr-namespace:EasyRooms.ViewModel"
-        xmlns:View="clr-namespace:EasyRooms.View" x:Class="EasyRooms.View.MainWindow"
+        xmlns:view="clr-namespace:EasyRooms.View" x:Class="EasyRooms.View.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.DataContext>
@@ -13,13 +12,13 @@
     </Window.DataContext>
     <Window.Resources>
         <DataTemplate DataType="{x:Type vm:TestViewModel}">
-            <View:TestView/>
+            <view:TestView/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:XpsUploadViewModel}">
-            <View:XpsUploadView/>
+            <view:XpsUploadView/>
         </DataTemplate>
     </Window.Resources>
     <Grid>
-        <ContentControl Content="{Binding CurrentViewModel}"></ContentControl>
+        <ContentControl Content="{Binding CurrentViewModel}" />
     </Grid>
 </Window>

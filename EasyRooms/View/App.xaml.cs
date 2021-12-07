@@ -2,13 +2,13 @@
 using System.Windows;
 using EasyRooms.Model.DayPlan;
 using EasyRooms.Model.FileDialog;
+using EasyRooms.Model.Pdf;
 using EasyRooms.Model.Rooms;
 using EasyRooms.Model.Rows;
 using EasyRooms.Model.Therapy;
 using EasyRooms.Model.Validation;
 using EasyRooms.Model.XpsExtracting;
 using EasyRooms.ViewModel;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -17,18 +17,18 @@ namespace EasyRooms.View
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
-    public partial class App : Application
+    public partial class App
     {
         public IServiceProvider Services => _host.Services;
         private readonly IHost _host;
 
         public App()
         {
-            _host = Host.CreateDefaultBuilder().ConfigureServices((context, services) =>
-                ConfigureServices(context.Configuration, services)).Build();
+            _host = Host.CreateDefaultBuilder().ConfigureServices((_, services) =>
+                ConfigureServices(services)).Build();
         }
 
-        private static void ConfigureServices(IConfiguration _, IServiceCollection services)
+        private static void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IXpsWordsExtractor, XpsWordsExtractor>()
                 .AddTransient<IRowsCreator, RowsCreator>()
@@ -39,6 +39,10 @@ namespace EasyRooms.View
                 .AddTransient<ITherapyFiller, TherapyFiller>()
                 .AddTransient<IRoomListCreator, RoomListCreator>()
                 .AddTransient<IRoomsValidator, RoomsValidator>()
+                .AddTransient<IPdfWriter, PdfWriter>()
+                .AddTransient<ITherapyPlanCreator, TherapyPlanCreator>()
+                .AddTransient<ITherapyPlanRowsPrinter, TherapyPlanRowsPrinter>()
+                .AddTransient<ITherapyPlanHeadersPrinter, TherapyPlanHeadersPrinter>()
                 .AddSingleton<XpsUploadView>()
                 .AddSingleton<XpsUploadViewModel>()
                 .AddSingleton<TestViewModel>()

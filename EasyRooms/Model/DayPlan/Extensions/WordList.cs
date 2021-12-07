@@ -73,7 +73,7 @@ namespace EasyRooms.Model.DayPlan.Extensions
         public static IEnumerable<string> RemoveCommentaries(this IEnumerable<string> words)
         {
             var enumeratedWords = words.ToList();
-            var commentaryIndices = words
+            var commentaryIndices = enumeratedWords
                 .Select((word, i) => (word, index: i))
                 .Where(wordWithIndex => IsTimeEntry(wordWithIndex.word)
                                         && IsTimeEntry(enumeratedWords[wordWithIndex.index + 4]))
