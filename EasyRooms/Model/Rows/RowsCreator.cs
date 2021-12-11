@@ -28,7 +28,7 @@ namespace EasyRooms.Model.Rows
             return rows;
         }
 
-        private void GuardDuration(string duration)
+        private static void GuardDuration(string duration)
         {
             if (!int.TryParse(duration, out _))
             {
