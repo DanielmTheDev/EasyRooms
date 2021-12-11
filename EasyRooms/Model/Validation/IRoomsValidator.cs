@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using EasyRooms.Model.Rooms.Models;
 
-namespace EasyRooms.Model.Validation
+namespace EasyRooms.Model.Validation;
+
+public interface IRoomsValidator
 {
-    public interface IRoomsValidator
-    {
-        bool IsValid(IEnumerable<Room> rooms, RoomNames roomNames);
-    }
+    bool IsValid(IEnumerable<Room> rooms, RoomNames roomNames);
 }

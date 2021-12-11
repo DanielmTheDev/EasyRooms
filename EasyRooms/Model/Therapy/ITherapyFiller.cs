@@ -2,10 +2,9 @@
 using EasyRooms.Model.Rooms.Models;
 using EasyRooms.Model.Rows.Models;
 
-namespace EasyRooms.Model.Therapy
+namespace EasyRooms.Model.Therapy;
+
+public interface ITherapyFiller
 {
-    public interface ITherapyFiller
-    {
-        void AddAllTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames);
-    }
+    void AddAllTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames);
 }

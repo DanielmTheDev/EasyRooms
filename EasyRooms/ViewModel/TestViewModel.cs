@@ -1,11 +1,9 @@
-﻿namespace EasyRooms.ViewModel
+﻿namespace EasyRooms.ViewModel;
 
+public class TestViewModel : BindableBase
 {
-    public class TestViewModel : BindableBase
+    // ReSharper disable once EmptyConstructor
+    public TestViewModel()
     {
-        // ReSharper disable once EmptyConstructor
-        public TestViewModel()
-        {
-        }
     }
 }

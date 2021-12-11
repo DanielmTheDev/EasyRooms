@@ -1,13 +1,12 @@
-﻿namespace EasyRooms.View
+﻿namespace EasyRooms.View;
+
+/// <summary>
+/// Interaction logic for TestView.xaml
+/// </summary>
+public partial class TestView
 {
-    /// <summary>
-    /// Interaction logic for TestView.xaml
-    /// </summary>
-    public partial class TestView
+    public TestView()
     {
-        public TestView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

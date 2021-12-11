@@ -2,10 +2,9 @@ using System.Collections.Generic;
 using EasyRooms.Model.Pdf.Models;
 using EasyRooms.Model.Rooms.Models;
 
-namespace EasyRooms.Model.Pdf
+namespace EasyRooms.Model.Pdf;
+
+public interface ITherapyPlanCreator
 {
-    public interface ITherapyPlanCreator
-    {
-        TherapyPlan Create(IEnumerable<Room> rooms);
-    }
+    TherapyPlan Create(IEnumerable<Room> rooms);
 }

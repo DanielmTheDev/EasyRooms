@@ -1,24 +1,22 @@
 ﻿using System.IO;
 using Microsoft.Win32;
 
-namespace EasyRooms.Model.FileDialog
+namespace EasyRooms.Model.FileDialog;
+
+public class FileDialogOpener : IFileDialogOpener
 {
-    public class FileDialogOpener : IFileDialogOpener
+    public string GetFileNameFromDialog()
     {
-        public string GetFileNameFromDialog()
+        var dialog = new OpenFileDialog
         {
-            var dialog = new OpenFileDialog
-            {
-                DefaultExt = ".xps",
-                Filter = "XPS Files (*.xps)|*.xps"
-            };
+            DefaultExt = ".xps",
+            Filter = "XPS Files (*.xps)|*.xps"
+        };
 
-            var result = dialog.ShowDialog();
+        var result = dialog.ShowDialog();
 
-            return result == true
-                ? dialog.FileName
-                : throw new FileNotFoundException();
-        }
+        return result == true
+            ? dialog.FileName
+            : throw new FileNotFoundException();
     }
-    
 }

@@ -1,7 +1,6 @@
-﻿namespace EasyRooms.Model.FileDialog
+﻿namespace EasyRooms.Model.FileDialog;
+
+public interface IFileDialogOpener
 {
-    public interface IFileDialogOpener
-    {
-        string GetFileNameFromDialog();
-    }
+    string GetFileNameFromDialog();
 }

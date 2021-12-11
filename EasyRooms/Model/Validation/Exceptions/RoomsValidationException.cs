@@ -1,8 +1,7 @@
 using System;
 
-namespace EasyRooms.Model.Validation.Exceptions
+namespace EasyRooms.Model.Validation.Exceptions;
+
+internal class RoomsValidationException : Exception
 {
-    internal class RoomsValidationException : Exception
-    {
-    }
 }

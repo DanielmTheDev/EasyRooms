@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace EasyRooms.Model.XpsExtracting
+namespace EasyRooms.Model.XpsExtracting;
+
+public interface IXpsWordsExtractor
 {
-    public interface IXpsWordsExtractor
-    {
-        IEnumerable<string> ExtractWords(string filePath);
-    }
-    
+    IEnumerable<string> ExtractWords(string filePath);
 }

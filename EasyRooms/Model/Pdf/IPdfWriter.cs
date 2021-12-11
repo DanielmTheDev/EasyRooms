@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using EasyRooms.Model.Rooms.Models;
 
-namespace EasyRooms.Model.Pdf
+namespace EasyRooms.Model.Pdf;
+
+public interface IPdfWriter
 {
-    public interface IPdfWriter
-    {
-        void Write(IEnumerable<Room> filledRooms);
-    }
+    void Write(IEnumerable<Room> filledRooms);
 }

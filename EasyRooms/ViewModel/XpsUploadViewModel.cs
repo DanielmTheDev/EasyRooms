@@ -12,65 +12,63 @@ using EasyRooms.Model.Validation.Exceptions;
 using EasyRooms.ViewModel.Commands;
 using Newtonsoft.Json;
 
-namespace EasyRooms.ViewModel
+namespace EasyRooms.ViewModel;
 
+public class XpsUploadViewModel : BindableBase
 {
-    public class XpsUploadViewModel : BindableBase
+    public RoomNames Rooms { get; set; }
+    public RelayCommand CalculateOccupationsCommand { get; private set; }
+    public RelayCommand ChooseFileCommand { get; private set; }
+
+    private readonly IDayPlanParser _dayPlanParser;
+    private readonly IFileDialogOpener _fileDialogOpener;
+    private readonly IRoomOccupationsFiller _occupationsFiller;
+    private readonly IRoomsValidator _validator;
+    private readonly IPdfWriter _pdfWriter;
+
+    private string? _fileName;
+    private readonly int _buffer = 1;
+
+    public XpsUploadViewModel(
+        IRoomOccupationsFiller occupationsFiller,
+        IDayPlanParser dayPlanParser,
+        IFileDialogOpener fileDialogOpener,
+        IRoomsValidator validator,
+        IPdfWriter pdfWriter)
     {
-        public RoomNames Rooms { get; set; }
-        public RelayCommand CalculateOccupationsCommand { get; private set; }
-        public RelayCommand ChooseFileCommand { get; private set; }
+        CalculateOccupationsCommand = new RelayCommand(CalculateOccupations, CanCalculateOccupations);
+        ChooseFileCommand = new RelayCommand(OpenFileDialog);
+        Rooms = new RoomNames();
+        _fileName = @"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\PlanWithPartnerMassages.xps";
+        _occupationsFiller = occupationsFiller;
+        _dayPlanParser = dayPlanParser;
+        _fileDialogOpener = fileDialogOpener;
+        _validator = validator;
+        _pdfWriter = pdfWriter;
+    }
 
-        private readonly IDayPlanParser _dayPlanParser;
-        private readonly IFileDialogOpener _fileDialogOpener;
-        private readonly IRoomOccupationsFiller _occupationsFiller;
-        private readonly IRoomsValidator _validator;
-        private readonly IPdfWriter _pdfWriter;
+    private void OpenFileDialog()
+    {
+        _fileName = _fileDialogOpener.GetFileNameFromDialog();
+        CalculateOccupationsCommand.RaiseCanExecuteChanged();
+    }
 
-        private string? _fileName;
-        private readonly int _buffer = 1;
+    private bool CanCalculateOccupations()
+        => !string.IsNullOrEmpty(_fileName);
 
-        public XpsUploadViewModel(
-            IRoomOccupationsFiller occupationsFiller,
-            IDayPlanParser dayPlanParser,
-            IFileDialogOpener fileDialogOpener,
-            IRoomsValidator validator,
-            IPdfWriter pdfWriter)
-        {
-            CalculateOccupationsCommand = new RelayCommand(CalculateOccupations, CanCalculateOccupations);
-            ChooseFileCommand = new RelayCommand(OpenFileDialog);
-            Rooms = new RoomNames();
-            _fileName = @"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\PlanWithPartnerMassages.xps";
-            _occupationsFiller = occupationsFiller;
-            _dayPlanParser = dayPlanParser;
-            _fileDialogOpener = fileDialogOpener;
-            _validator = validator;
-            _pdfWriter = pdfWriter;
-        }
+    private void CalculateOccupations()
+    {
+        _ = _fileName ?? throw new ArgumentNullException(nameof(_fileName));
+        var rows = _dayPlanParser.ParseDayPlan(_fileName);
+        var filledRooms = _occupationsFiller.FillRoomOccupations(rows, Rooms, _buffer).ToList();
+        _ = _validator.IsValid(filledRooms, Rooms) ? default(object) : throw new RoomsValidationException();
+        _pdfWriter.Write(filledRooms);
+        WriteJson(filledRooms);
+    }
 
-        private void OpenFileDialog()
-        {
-            _fileName = _fileDialogOpener.GetFileNameFromDialog();
-            CalculateOccupationsCommand.RaiseCanExecuteChanged();
-        }
-
-        private bool CanCalculateOccupations()
-            => !string.IsNullOrEmpty(_fileName);
-
-        private void CalculateOccupations()
-        {
-            _ = _fileName ?? throw new ArgumentNullException(nameof(_fileName));
-            var rows = _dayPlanParser.ParseDayPlan(_fileName);
-            var filledRooms = _occupationsFiller.FillRoomOccupations(rows, Rooms, _buffer).ToList();
-            _ = _validator.IsValid(filledRooms, Rooms) ? default(object) : throw new RoomsValidationException();
-            _pdfWriter.Write(filledRooms);
-            WriteJson(filledRooms);
-        }
-
-        private static void WriteJson(IEnumerable<Room>? filledRooms)
-        {
-            var serializedRooms = JsonConvert.SerializeObject(filledRooms, Formatting.Indented);
-            File.WriteAllText(@"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\realFlowRooms.json", serializedRooms);
-        }
+    private static void WriteJson(IEnumerable<Room>? filledRooms)
+    {
+        var serializedRooms = JsonConvert.SerializeObject(filledRooms, Formatting.Indented);
+        File.WriteAllText(@"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\realFlowRooms.json", serializedRooms);
     }
 }
