@@ -46,28 +46,20 @@
         "EndTime": "12:20:00"
       },
       {
-        "Therapist": "Gabi",
-        "Patient": "Antje Rohde",
-        "TherapyShort": "91006",
-        "TherapyLong": "Hot Stone vorbereiten",
-        "StartTime": "12:30:00",
-        "EndTime": "12:45:00"
-      },
-      {
         "Therapist": "Patrick",
-        "Patient": "Physiotherapie PRAXIS",
-        "TherapyShort": "PAUSE30",
-        "TherapyLong": "Pause 30 Minuten",
-        "StartTime": "13:00:00",
-        "EndTime": "13:30:00"
+        "Patient": "Alice Winter",
+        "TherapyShort": "RÜCK30",
+        "TherapyLong": "Massage 30 min",
+        "StartTime": "12:30:00",
+        "EndTime": "13:00:00"
       },
       {
         "Therapist": "Veronika",
-        "Patient": "Andrea Bayer",
-        "TherapyShort": "MT",
-        "TherapyLong": "Manuelle Therapie",
-        "StartTime": "13:35:00",
-        "EndTime": "13:55:00"
+        "Patient": "Karolina Zeisler",
+        "TherapyShort": "BOBATH",
+        "TherapyLong": "KG nach Bobath bei zerebralen",
+        "StartTime": "13:05:00",
+        "EndTime": "13:35:00"
       },
       {
         "Therapist": "Gabi",
@@ -126,7 +118,7 @@
         "EndTime": "12:20:00"
       },
       {
-        "Therapist": "Patrick",
+        "Therapist": "Gabi",
         "Patient": "Alice Winter",
         "TherapyShort": "RÜCK30",
         "TherapyLong": "Massage 30 min",
@@ -134,12 +126,12 @@
         "EndTime": "13:00:00"
       },
       {
-        "Therapist": "Veronika",
-        "Patient": "Karolina Zeisler",
-        "TherapyShort": "BOBATH",
-        "TherapyLong": "KG nach Bobath bei zerebralen",
-        "StartTime": "13:05:00",
-        "EndTime": "13:35:00"
+        "Therapist": "Jessica",
+        "Patient": "Eva Thamm",
+        "TherapyShort": "*HOTSTON",
+        "TherapyLong": "Hot Stone",
+        "StartTime": "13:30:00",
+        "EndTime": "14:30:00"
       },
       {
         "Therapist": "Jessica",
@@ -172,14 +164,6 @@
         "TherapyLong": "Fußreflex 45 min",
         "StartTime": "10:50:00",
         "EndTime": "11:35:00"
-      },
-      {
-        "Therapist": "Jessica",
-        "Patient": "Eva Thamm",
-        "TherapyShort": "91006",
-        "TherapyLong": "Hot Stone vorbereiten",
-        "StartTime": "12:00:00",
-        "EndTime": "12:15:00"
       },
       {
         "Therapist": "Jessica",
@@ -246,12 +230,20 @@
         "EndTime": "12:35:00"
       },
       {
-        "Therapist": "Gabi",
+        "Therapist": "Patrick",
         "Patient": "Physiotherapie PRAXIS",
         "TherapyShort": "PAUSE30",
         "TherapyLong": "Pause 30 Minuten",
         "StartTime": "13:00:00",
         "EndTime": "13:30:00"
+      },
+      {
+        "Therapist": "Veronika",
+        "Patient": "Andrea Bayer",
+        "TherapyShort": "MT",
+        "TherapyLong": "Manuelle Therapie",
+        "StartTime": "13:35:00",
+        "EndTime": "13:55:00"
       },
       {
         "Therapist": "Patrick",
@@ -294,12 +286,12 @@
         "EndTime": "12:30:00"
       },
       {
-        "Therapist": "Jessica",
-        "Patient": "Eva Thamm",
-        "TherapyShort": "*HOTSTON",
-        "TherapyLong": "Hot Stone",
-        "StartTime": "13:30:00",
-        "EndTime": "14:30:00"
+        "Therapist": "Gabi",
+        "Patient": "Physiotherapie PRAXIS",
+        "TherapyShort": "PAUSE30",
+        "TherapyLong": "Pause 30 Minuten",
+        "StartTime": "13:00:00",
+        "EndTime": "13:30:00"
       },
       {
         "Therapist": "Gabi",
@@ -332,16 +324,7 @@
     "Priority": 6,
     "IsPartnerRoom": false,
     "IsMassageSpecificRoom": false,
-    "Occupations": [
-      {
-        "Therapist": "Gabi",
-        "Patient": "Alice Winter",
-        "TherapyShort": "RÜCK30",
-        "TherapyLong": "Massage 30 min",
-        "StartTime": "12:30:00",
-        "EndTime": "13:00:00"
-      }
-    ]
+    "Occupations": []
   },
   {
     "Name": "Raum8",
@@ -349,5 +332,29 @@
     "IsPartnerRoom": false,
     "IsMassageSpecificRoom": false,
     "Occupations": []
+  },
+  {
+    "Name": "",
+    "Priority": 8,
+    "IsPartnerRoom": false,
+    "IsMassageSpecificRoom": false,
+    "Occupations": [
+      {
+        "Therapist": "Jessica",
+        "Patient": "Eva Thamm",
+        "TherapyShort": "91006",
+        "TherapyLong": "Hot Stone vorbereiten",
+        "StartTime": "12:00:00",
+        "EndTime": "12:15:00"
+      },
+      {
+        "Therapist": "Gabi",
+        "Patient": "Antje Rohde",
+        "TherapyShort": "91006",
+        "TherapyLong": "Hot Stone vorbereiten",
+        "StartTime": "12:30:00",
+        "EndTime": "12:45:00"
+      }
+    ]
   }
 ]

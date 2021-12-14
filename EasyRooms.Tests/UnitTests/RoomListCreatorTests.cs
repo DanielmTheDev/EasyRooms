@@ -10,7 +10,7 @@ public class RoomListCreatorTests
 {
     private readonly RoomListCreator _roomListCreator;
 
-    public RoomListCreatorTests() 
+    public RoomListCreatorTests()
         => _roomListCreator = new RoomListCreator();
 
     [Fact]
@@ -20,12 +20,12 @@ public class RoomListCreatorTests
         const string partnerString = "room2\nroom3";
         var roomNames = new RoomNames(roomString, partnerString, "room1");
         var expectedRooms = CreateExpectedPartnerRooms();
-            
+
         var rooms = _roomListCreator.CreateRooms(roomNames);
-            
+
         rooms.Should().BeEquivalentTo(expectedRooms, config => config.ComparingByMembers<Room>());
     }
-        
+
     [Fact]
     public void Creates_Room_With_MassageSpecificRoom_Properties()
     {
@@ -33,19 +33,20 @@ public class RoomListCreatorTests
         const string roomSpecificRooms = "room2\nroom3";
         var roomNames = new RoomNames(roomString, "room1", roomSpecificRooms);
         var expectedRooms = CreateExpectedMassageSpecificRooms();
-            
+
         var rooms = _roomListCreator.CreateRooms(roomNames);
-            
+
         rooms.Should().BeEquivalentTo(expectedRooms, config => config.ComparingByMembers<Room>());
     }
 
-    private IEnumerable<Room> CreateExpectedMassageSpecificRooms()
+    private static IEnumerable<Room> CreateExpectedMassageSpecificRooms()
     {
         var expectedRooms = new List<Room>
         {
             new("room1", 0),
             new("room2", 1),
             new("room3", 2),
+            new(string.Empty, 3)
         };
         expectedRooms[0].IsPartnerRoom = true;
         expectedRooms[1].IsMassageSpecificRoom = true;
@@ -60,6 +61,7 @@ public class RoomListCreatorTests
             new("room1", 0),
             new("room2", 1),
             new("room3", 2),
+            new(string.Empty, 3)
         };
         expectedRooms[0].IsMassageSpecificRoom = true;
         expectedRooms[1].IsPartnerRoom = true;

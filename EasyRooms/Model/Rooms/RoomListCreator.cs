@@ -9,10 +9,19 @@ public class RoomListCreator : IRoomListCreator
 {
     public List<Room> CreateRooms(RoomNames roomNames)
     {
-        var rooms = roomNames.AllRoomsAsList.Select((name, i) => new Room(name, i)).ToList();
+        var rooms = GetRoomsWithAddedEmptyOne(roomNames);
         SetPartnerRoomProperty(roomNames, rooms);
         SetMassageSpecificRoomProperty(roomNames, rooms);
         return rooms;
+    }
+
+    private static List<Room> GetRoomsWithAddedEmptyOne(RoomNames roomNames)
+    {
+        var roomsAsListWithEmpty = roomNames.AllRoomsAsList;
+        roomsAsListWithEmpty.Add(string.Empty);
+        return roomsAsListWithEmpty
+            .Select((name, i) => new Room(name, i))
+            .ToList();
     }
 
     private static void SetMassageSpecificRoomProperty(RoomNames roomNames, IReadOnlyCollection<Room> rooms)

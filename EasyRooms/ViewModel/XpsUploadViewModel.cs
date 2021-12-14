@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using EasyRooms.Model.DayPlan;
 using EasyRooms.Model.FileDialog;
+using EasyRooms.Model.Json;
 using EasyRooms.Model.Pdf;
 using EasyRooms.Model.Rooms;
 using EasyRooms.Model.Rooms.Models;
 using EasyRooms.Model.Validation;
 using EasyRooms.Model.Validation.Exceptions;
 using EasyRooms.ViewModel.Commands;
-using Newtonsoft.Json;
 
 namespace EasyRooms.ViewModel;
 
@@ -61,14 +60,13 @@ public class XpsUploadViewModel : BindableBase
         _ = _fileName ?? throw new ArgumentNullException(nameof(_fileName));
         var rows = _dayPlanParser.ParseDayPlan(_fileName);
         var filledRooms = _occupationsFiller.FillRoomOccupations(rows, Rooms, _buffer).ToList();
-        _ = _validator.IsValid(filledRooms, Rooms) ? default(object) : throw new RoomsValidationException();
+        Validate(filledRooms);
         _pdfWriter.Write(filledRooms);
-        WriteJson(filledRooms);
+        JsonWriter.WriteJson(filledRooms);
     }
 
-    private static void WriteJson(IEnumerable<Room>? filledRooms)
-    {
-        var serializedRooms = JsonConvert.SerializeObject(filledRooms, Formatting.Indented);
-        File.WriteAllText(@"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\realFlowRooms.json", serializedRooms);
-    }
+    private void Validate(IEnumerable<Room> filledRooms)
+        => _ = _validator.IsValid(filledRooms, Rooms)
+            ? default(object)
+            : throw new RoomsValidationException();
 }

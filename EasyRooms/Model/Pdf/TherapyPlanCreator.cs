@@ -23,5 +23,6 @@ public class TherapyPlanCreator : ITherapyPlanCreator
                     occupation.Patient,
                     room.Name,
                     occupation.Therapist)))
-            .OrderBy(row => row.Therapist);
+            .OrderBy(row => row.Therapist)
+            .ThenBy(row => row.StartTime);
 }

@@ -2,10 +2,15 @@
 using System.Windows;
 using EasyRooms.Model.DayPlan;
 using EasyRooms.Model.FileDialog;
+using EasyRooms.Model.Occupations;
 using EasyRooms.Model.Pdf;
 using EasyRooms.Model.Rooms;
 using EasyRooms.Model.Rows;
-using EasyRooms.Model.Therapy;
+using EasyRooms.Model.Therapies;
+using EasyRooms.Model.Therapies.NormalTherapies;
+using EasyRooms.Model.Therapies.PartnerTherapies;
+using EasyRooms.Model.Therapies.Preparations;
+using EasyRooms.Model.Therapies.RoomSpecificTherapies;
 using EasyRooms.Model.Validation;
 using EasyRooms.Model.XpsExtracting;
 using EasyRooms.ViewModel;
@@ -43,6 +48,11 @@ public partial class App
             .AddTransient<ITherapyPlanCreator, TherapyPlanCreator>()
             .AddTransient<ITherapyPlanRowsPrinter, TherapyPlanRowsPrinter>()
             .AddTransient<ITherapyPlanHeadersPrinter, TherapyPlanHeadersPrinter>()
+            .AddTransient<IOccupationsAdder, OccupationsAdder>()
+            .AddTransient<IPartnerTherapiesAdder, PartnerTherapiesAdder>()
+            .AddTransient<IRoomSpecificMassagesAdder, RoomSpecificMassagesAdder>()
+            .AddTransient<INormalTherapiesAdder, NormalTherapiesAdder>()
+            .AddTransient<IPreparationsAdder, PreparationsAdder>()
             .AddSingleton<XpsUploadView>()
             .AddSingleton<XpsUploadViewModel>()
             .AddSingleton<TestViewModel>()

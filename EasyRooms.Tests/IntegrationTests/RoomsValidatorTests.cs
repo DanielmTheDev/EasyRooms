@@ -12,7 +12,7 @@ public class RoomsValidatorTests
 {
     private readonly RoomsValidator _validator;
 
-    public RoomsValidatorTests() 
+    public RoomsValidatorTests()
         => _validator = new RoomsValidator();
 
     [Fact]

@@ -2,7 +2,7 @@
 using EasyRooms.Model.Rooms.Models;
 using EasyRooms.Model.Rows.Models;
 
-namespace EasyRooms.Model.Therapy;
+namespace EasyRooms.Model.Therapies;
 
 public interface ITherapyFiller
 {
