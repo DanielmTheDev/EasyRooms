@@ -4,7 +4,7 @@ using EasyRooms.Model.Rows.Models;
 
 namespace EasyRooms.Model.Therapies.RoomSpecificTherapies;
 
-public interface IRoomSpecificMassagesAdder
+public interface IMassagesAdder
 {
-    void AddRoomSpecificMassages(IEnumerable<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames);
+    void Add(IEnumerable<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames);
 }

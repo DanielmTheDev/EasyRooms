@@ -6,14 +6,14 @@ using EasyRooms.Model.Rows.Models;
 
 namespace EasyRooms.Model.Therapies.RoomSpecificTherapies;
 
-public class RoomSpecificMassagesAdder : IRoomSpecificMassagesAdder
+public class RoomSpecificMassagesAdder : IMassagesAdder
 {
     private readonly IOccupationsAdder _occupationsAdder;
 
     public RoomSpecificMassagesAdder(IOccupationsAdder occupationsAdder)
         => _occupationsAdder = occupationsAdder;
 
-    public void AddRoomSpecificMassages(IEnumerable<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
+    public void Add(IEnumerable<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
     {
         var roomSpecificMassages = orderedRows
             .Where(row => roomNames.MassagesForSpecificRoomsAsList.Contains(row.TherapyShort))
