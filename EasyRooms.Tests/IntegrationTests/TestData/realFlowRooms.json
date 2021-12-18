@@ -31,18 +31,26 @@
       },
       {
         "Therapist": "Jessica",
-        "Patient": "Enny Hoyer",
-        "TherapyShort": "*PARTNER",
-        "TherapyLong": "Partnermassage",
-        "StartTime": "11:15:00",
-        "EndTime": "12:20:00"
+        "Patient": "Susanne Ascherl",
+        "TherapyShort": "NACH",
+        "TherapyLong": "Nachbereitung",
+        "StartTime": "11:05:00",
+        "EndTime": "11:15:00"
       },
       {
         "Therapist": "Gabi",
-        "Patient": "Enny Hoyer",
-        "TherapyShort": "*PARTNER",
-        "TherapyLong": "Partnermassage",
-        "StartTime": "11:15:00",
+        "Patient": "Susanne Ascherl",
+        "TherapyShort": "NACH",
+        "TherapyLong": "Nachbereitung",
+        "StartTime": "11:05:00",
+        "EndTime": "11:15:00"
+      },
+      {
+        "Therapist": "Patrick",
+        "Patient": "Carmen Mulders",
+        "TherapyShort": "GANZ",
+        "TherapyLong": "Massage 60 Min.",
+        "StartTime": "11:20:00",
         "EndTime": "12:20:00"
       },
       {
@@ -103,35 +111,59 @@
       },
       {
         "Therapist": "Jessica",
-        "Patient": "Susanne Ascherl",
-        "TherapyShort": "NACH",
-        "TherapyLong": "Nachbereitung",
-        "StartTime": "11:05:00",
-        "EndTime": "11:15:00"
-      },
-      {
-        "Therapist": "Patrick",
-        "Patient": "Carmen Mulders",
-        "TherapyShort": "GANZ",
-        "TherapyLong": "Massage 60 Min.",
-        "StartTime": "11:20:00",
+        "Patient": "Enny Hoyer",
+        "TherapyShort": "*PARTNER",
+        "TherapyLong": "Partnermassage",
+        "StartTime": "11:15:00",
         "EndTime": "12:20:00"
       },
       {
         "Therapist": "Gabi",
-        "Patient": "Alice Winter",
-        "TherapyShort": "RÜCK30",
-        "TherapyLong": "Massage 30 min",
-        "StartTime": "12:30:00",
-        "EndTime": "13:00:00"
+        "Patient": "Enny Hoyer",
+        "TherapyShort": "*PARTNER",
+        "TherapyLong": "Partnermassage",
+        "StartTime": "11:15:00",
+        "EndTime": "12:20:00"
       },
       {
         "Therapist": "Jessica",
-        "Patient": "Eva Thamm",
-        "TherapyShort": "*HOTSTON",
-        "TherapyLong": "Hot Stone",
-        "StartTime": "13:30:00",
-        "EndTime": "14:30:00"
+        "Patient": "Enny Hoyer",
+        "TherapyShort": "NACH",
+        "TherapyLong": "Nachbereitung",
+        "StartTime": "12:20:00",
+        "EndTime": "12:30:00"
+      },
+      {
+        "Therapist": "Gabi",
+        "Patient": "Enny Hoyer",
+        "TherapyShort": "NACH",
+        "TherapyLong": "Nachbereitung",
+        "StartTime": "12:20:00",
+        "EndTime": "12:30:00"
+      },
+      {
+        "Therapist": "Veronika",
+        "Patient": "Bernd Edtmaier",
+        "TherapyShort": "KOPF",
+        "TherapyLong": "Kopfmassage",
+        "StartTime": "12:35:00",
+        "EndTime": "12:50:00"
+      },
+      {
+        "Therapist": "Patrick",
+        "Patient": "Physiotherapie PRAXIS",
+        "TherapyShort": "PAUSE30",
+        "TherapyLong": "Pause 30 Minuten",
+        "StartTime": "13:00:00",
+        "EndTime": "13:30:00"
+      },
+      {
+        "Therapist": "Veronika",
+        "Patient": "Andrea Bayer",
+        "TherapyShort": "MT",
+        "TherapyLong": "Manuelle Therapie",
+        "StartTime": "13:35:00",
+        "EndTime": "13:55:00"
       },
       {
         "Therapist": "Jessica",
@@ -167,19 +199,11 @@
       },
       {
         "Therapist": "Jessica",
-        "Patient": "Enny Hoyer",
-        "TherapyShort": "NACH",
-        "TherapyLong": "Nachbereitung",
+        "Patient": "Gabriele Schiestl",
+        "TherapyShort": "RÜCK20",
+        "TherapyLong": "Massage 20 min",
         "StartTime": "12:20:00",
-        "EndTime": "12:30:00"
-      },
-      {
-        "Therapist": "Veronika",
-        "Patient": "Bernd Edtmaier",
-        "TherapyShort": "KOPF",
-        "TherapyLong": "Kopfmassage",
-        "StartTime": "12:35:00",
-        "EndTime": "12:50:00"
+        "EndTime": "12:40:00"
       },
       {
         "Therapist": "Veronika",
@@ -230,20 +254,12 @@
         "EndTime": "12:35:00"
       },
       {
-        "Therapist": "Patrick",
+        "Therapist": "Gabi",
         "Patient": "Physiotherapie PRAXIS",
         "TherapyShort": "PAUSE30",
         "TherapyLong": "Pause 30 Minuten",
         "StartTime": "13:00:00",
         "EndTime": "13:30:00"
-      },
-      {
-        "Therapist": "Veronika",
-        "Patient": "Andrea Bayer",
-        "TherapyShort": "MT",
-        "TherapyLong": "Manuelle Therapie",
-        "StartTime": "13:35:00",
-        "EndTime": "13:55:00"
       },
       {
         "Therapist": "Patrick",
@@ -271,27 +287,19 @@
     "Occupations": [
       {
         "Therapist": "Gabi",
-        "Patient": "Susanne Ascherl",
-        "TherapyShort": "NACH",
-        "TherapyLong": "Nachbereitung",
-        "StartTime": "11:05:00",
-        "EndTime": "11:15:00"
+        "Patient": "Alice Winter",
+        "TherapyShort": "RÜCK30",
+        "TherapyLong": "Massage 30 min",
+        "StartTime": "12:30:00",
+        "EndTime": "13:00:00"
       },
       {
-        "Therapist": "Gabi",
-        "Patient": "Enny Hoyer",
-        "TherapyShort": "NACH",
-        "TherapyLong": "Nachbereitung",
-        "StartTime": "12:20:00",
-        "EndTime": "12:30:00"
-      },
-      {
-        "Therapist": "Gabi",
-        "Patient": "Physiotherapie PRAXIS",
-        "TherapyShort": "PAUSE30",
-        "TherapyLong": "Pause 30 Minuten",
-        "StartTime": "13:00:00",
-        "EndTime": "13:30:00"
+        "Therapist": "Jessica",
+        "Patient": "Eva Thamm",
+        "TherapyShort": "*HOTSTON",
+        "TherapyLong": "Hot Stone",
+        "StartTime": "13:30:00",
+        "EndTime": "14:30:00"
       },
       {
         "Therapist": "Gabi",
@@ -308,16 +316,7 @@
     "Priority": 5,
     "IsPartnerRoom": false,
     "IsMassageSpecificRoom": false,
-    "Occupations": [
-      {
-        "Therapist": "Jessica",
-        "Patient": "Gabriele Schiestl",
-        "TherapyShort": "RÜCK20",
-        "TherapyLong": "Massage 20 min",
-        "StartTime": "12:20:00",
-        "EndTime": "12:40:00"
-      }
-    ]
+    "Occupations": []
   },
   {
     "Name": "Raum7",

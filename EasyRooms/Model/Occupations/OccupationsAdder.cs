@@ -16,10 +16,10 @@ public class OccupationsAdder : IOccupationsAdder
 
     public void AddToFreeRoom(IEnumerable<Room> rooms, int bufferInMinutes, params Row[] rows)
     {
-        var (startTime, timeSpan, freeRoom) = _freeRoomFinder.FindFreeRoom(rows.First().StartTime, rows.First().Duration, bufferInMinutes, rooms);
+        var freeRoom = _freeRoomFinder.FindFreeRoom(rows.First().StartTimeAsTimeSpan, rows.First().EndTimeAsTimeSpan, bufferInMinutes, rooms);
         foreach (var row in rows)
         {
-            freeRoom.AddOccupation(new Occupation(row, startTime, timeSpan));
+            freeRoom.AddOccupation(new Occupation(row, row.StartTimeAsTimeSpan, row.EndTimeAsTimeSpan));
         }
     }
 
@@ -28,9 +28,7 @@ public class OccupationsAdder : IOccupationsAdder
         var specificRoom = rooms.Single(room => string.Equals(room.Name, roomName, StringComparison.OrdinalIgnoreCase));
         foreach (var row in rows)
         {
-            var startTime = TimeSpan.Parse(row.StartTime.Trim('(', ')'));
-            var endTime = startTime + TimeSpan.FromMinutes(int.Parse(row.Duration));
-            specificRoom.AddOccupation(new Occupation(row, startTime, endTime));
+            specificRoom.AddOccupation(new Occupation(row, row.StartTimeAsTimeSpan, row.EndTimeAsTimeSpan));
         }
     }
 }

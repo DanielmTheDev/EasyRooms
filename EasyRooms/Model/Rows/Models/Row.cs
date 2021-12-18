@@ -1,4 +1,10 @@
-﻿namespace EasyRooms.Model.Rows.Models;
+﻿using System;
 
-//todo either have start and end here as fields or  duration in occupations
-public record Row(string StartTime, string Duration, string TherapyShort, string TherapyLong, string Patient, string Therapist);
+namespace EasyRooms.Model.Rows.Models;
+
+public record Row(string StartTime, string Duration, string TherapyShort, string TherapyLong, string Patient, string Therapist)
+{
+    public string EndTime => TimeOnly.Parse(StartTime).AddMinutes(double.Parse(Duration)).ToString();
+    public TimeSpan StartTimeAsTimeSpan => TimeSpan.Parse(StartTime);
+    public TimeSpan EndTimeAsTimeSpan => TimeSpan.Parse(EndTime);
+}

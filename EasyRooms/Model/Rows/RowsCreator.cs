@@ -16,7 +16,7 @@ public class RowsCreator : IRowsCreator
         {
             GuardDuration(enumeratedWords[i + 1]);
             var newRow = new Row(
-                enumeratedWords[i],
+                enumeratedWords[i].Trim('(', ')'),
                 enumeratedWords[i + 1],
                 enumeratedWords[i + 2],
                 enumeratedWords[i + 3],
