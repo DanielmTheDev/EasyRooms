@@ -10,14 +10,16 @@ using EasyRooms.Model.Rooms.Models;
 using EasyRooms.Model.Validation;
 using EasyRooms.Model.Validation.Exceptions;
 using EasyRooms.ViewModel.Commands;
+// ReSharper disable MemberCanBePrivate.Global
+// ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
 
 namespace EasyRooms.ViewModel;
 
 public class XpsUploadViewModel : BindableBase
 {
     public RoomNames Rooms { get; set; }
-    public RelayCommand CalculateOccupationsCommand { get; private set; }
-    public RelayCommand ChooseFileCommand { get; private set; }
+    public RelayCommand CalculateOccupationsCommand { get; set; }
+    public RelayCommand ChooseFileCommand { get; set;}
 
     private readonly IDayPlanParser _dayPlanParser;
     private readonly IFileDialogOpener _fileDialogOpener;

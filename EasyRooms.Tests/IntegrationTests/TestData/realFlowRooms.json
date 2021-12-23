@@ -1,9 +1,9 @@
 [
   {
-    "Name": "Raum1",
+    "Name": "Wintergarten",
     "Priority": 0,
     "IsPartnerRoom": true,
-    "IsMassageSpecificRoom": false,
+    "IsMassageSpecificRoom": true,
     "Occupations": [
       {
         "Therapist": "Veronika",
@@ -88,10 +88,10 @@
     ]
   },
   {
-    "Name": "Raum2",
+    "Name": "Kosmetikraum",
     "Priority": 1,
-    "IsPartnerRoom": true,
-    "IsMassageSpecificRoom": false,
+    "IsPartnerRoom": false,
+    "IsMassageSpecificRoom": true,
     "Occupations": [
       {
         "Therapist": "Patrick",
@@ -166,6 +166,14 @@
         "EndTime": "13:55:00"
       },
       {
+        "Therapist": "Patrick",
+        "Patient": "Sina Schneider - Wittmann",
+        "TherapyShort": "FUSS",
+        "TherapyLong": "Fußmassage",
+        "StartTime": "14:10:00",
+        "EndTime": "14:25:00"
+      },
+      {
         "Therapist": "Jessica",
         "Patient": "Elias Nasri",
         "TherapyShort": "SPORT",
@@ -176,10 +184,10 @@
     ]
   },
   {
-    "Name": "Raum3",
+    "Name": "Raum1",
     "Priority": 2,
     "IsPartnerRoom": false,
-    "IsMassageSpecificRoom": true,
+    "IsMassageSpecificRoom": false,
     "Occupations": [
       {
         "Therapist": "Veronika",
@@ -232,10 +240,10 @@
     ]
   },
   {
-    "Name": "Raum4",
+    "Name": "Raum2",
     "Priority": 3,
     "IsPartnerRoom": false,
-    "IsMassageSpecificRoom": true,
+    "IsMassageSpecificRoom": false,
     "Occupations": [
       {
         "Therapist": "Patrick",
@@ -263,14 +271,6 @@
       },
       {
         "Therapist": "Patrick",
-        "Patient": "Sina Schneider - Wittmann",
-        "TherapyShort": "FUSS",
-        "TherapyLong": "Fußmassage",
-        "StartTime": "14:10:00",
-        "EndTime": "14:25:00"
-      },
-      {
-        "Therapist": "Patrick",
         "Patient": "Roma Munday",
         "TherapyShort": "SALZ60",
         "TherapyLong": "Salz-Öl 60 min",
@@ -280,7 +280,7 @@
     ]
   },
   {
-    "Name": "Raum5",
+    "Name": "Fußpflegeraum",
     "Priority": 4,
     "IsPartnerRoom": false,
     "IsMassageSpecificRoom": false,
@@ -312,29 +312,8 @@
     ]
   },
   {
-    "Name": "Raum6",
-    "Priority": 5,
-    "IsPartnerRoom": false,
-    "IsMassageSpecificRoom": false,
-    "Occupations": []
-  },
-  {
-    "Name": "Raum7",
-    "Priority": 6,
-    "IsPartnerRoom": false,
-    "IsMassageSpecificRoom": false,
-    "Occupations": []
-  },
-  {
-    "Name": "Raum8",
-    "Priority": 7,
-    "IsPartnerRoom": false,
-    "IsMassageSpecificRoom": false,
-    "Occupations": []
-  },
-  {
     "Name": "",
-    "Priority": 8,
+    "Priority": 5,
     "IsPartnerRoom": false,
     "IsMassageSpecificRoom": false,
     "Occupations": [

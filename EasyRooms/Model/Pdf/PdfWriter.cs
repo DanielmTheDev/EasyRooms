@@ -22,7 +22,7 @@ public class PdfWriter : IPdfWriter
         var pdfBuilderAggregate = PdfBuilderAggregateCreator.Create();
         PrintHeaders(pdfBuilderAggregate);
         PrintRows(pdfBuilderAggregate, rooms);
-        const string path = @"C:\Users\MuckelbauerD\Downloads\test.pdf";
+        const string path = @"C:\Users\dadam\Downloads\test.pdf";
         File.WriteAllBytes(path, pdfBuilderAggregate.Builder.Build());
         OpenPdf(path);
     }
