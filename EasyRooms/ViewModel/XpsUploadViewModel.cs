@@ -28,7 +28,7 @@ public class XpsUploadViewModel : BindableBase
     private readonly IPdfWriter _pdfWriter;
 
     private string? _fileName;
-    private readonly int _buffer = 1;
+    private readonly int _buffer = 0;
 
     public XpsUploadViewModel(
         IRoomOccupationsFiller occupationsFiller,

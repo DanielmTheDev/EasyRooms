@@ -25,7 +25,8 @@ public class PartnerTherapiesAdder : IMassagesAdder
         groupedPartnerTherapies.ForEach(partnerGroup =>
         {
             var allRows = GetAllRowsToAdd(partnerGroup, groupedAfterTherapies);
-            _occupationsAdder.AddToFreeRoom(rooms, bufferInMinutes, allRows.ToArray());
+            var partnerRooms = rooms.Where(room => room.IsPartnerRoom);
+            _occupationsAdder.AddToFreeRoom(partnerRooms, bufferInMinutes, allRows.ToArray());
             allRows.ForEach(row => orderedRows.Remove(row));
         });
     }
