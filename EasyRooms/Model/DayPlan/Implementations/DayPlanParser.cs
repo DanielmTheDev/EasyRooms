@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using EasyRooms.Model.DayPlan.Extensions;
+﻿using EasyRooms.Model.DayPlan.Extensions;
 using EasyRooms.Model.DayPlan.Interfaces;
 using EasyRooms.Model.Rows.Interfaces;
-using EasyRooms.Model.Rows.Models;
 using EasyRooms.Model.XpsExtracting.Interfaces;
 
 namespace EasyRooms.Model.DayPlan.Implementations;

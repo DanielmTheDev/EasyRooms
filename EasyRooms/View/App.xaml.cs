@@ -1,30 +1,18 @@
 ﻿using System;
 using System.Windows;
-using EasyRooms.Model.DayPlan;
 using EasyRooms.Model.DayPlan.Implementations;
 using EasyRooms.Model.DayPlan.Interfaces;
-using EasyRooms.Model.FileDialog;
 using EasyRooms.Model.FileDialog.Implementations;
 using EasyRooms.Model.FileDialog.Interfaces;
-using EasyRooms.Model.Occupations;
 using EasyRooms.Model.Occupations.Implementations;
-using EasyRooms.Model.Occupations.Interfaces;
-using EasyRooms.Model.Pdf;
 using EasyRooms.Model.Pdf.Implementations;
 using EasyRooms.Model.Pdf.Interfaces;
-using EasyRooms.Model.Rooms;
 using EasyRooms.Model.Rooms.Implementations;
 using EasyRooms.Model.Rooms.Interfaces;
-using EasyRooms.Model.Rows;
 using EasyRooms.Model.Rows.Implementations;
 using EasyRooms.Model.Rows.Interfaces;
-using EasyRooms.Model.Therapies;
 using EasyRooms.Model.Therapies.Implementations;
-using EasyRooms.Model.Therapies.Interfaces;
-using EasyRooms.Model.Validation;
-using EasyRooms.Model.Validation.Implementations;
 using EasyRooms.Model.Validation.Interfaces;
-using EasyRooms.Model.XpsExtracting;
 using EasyRooms.Model.XpsExtracting.Implementations;
 using EasyRooms.Model.XpsExtracting.Interfaces;
 using EasyRooms.ViewModel;
@@ -63,10 +51,11 @@ public partial class App
             .AddTransient<ITherapyPlanRowsPrinter, TherapyPlanRowsPrinter>()
             .AddTransient<ITherapyPlanHeadersPrinter, TherapyPlanHeadersPrinter>()
             .AddTransient<IOccupationsAdder, OccupationsAdder>()
-            .AddTransient<IMassagesAdder, PreparationsAdder>()
-            .AddTransient<IMassagesAdder, PartnerTherapiesAdder>()
-            .AddTransient<IMassagesAdder, RoomSpecificMassagesAdder>()
-            .AddTransient<IMassagesAdder, NormalTherapiesAdder>()
+            .AddTransient<ITherapiesAdder, PreparationsAdder>()
+            .AddTransient<ITherapiesAdder, PartnerTherapiesAdder>()
+            .AddTransient<ITherapiesAdder, RoomSpecificTherapiesAdder>()
+            .AddTransient<ITherapiesAdder, LongTherapiesAdder>()
+            .AddTransient<ITherapiesAdder, NormalTherapiesAdder>()
             .AddSingleton<XpsUploadView>()
             .AddSingleton<XpsUploadViewModel>()
             .AddSingleton<TestViewModel>()

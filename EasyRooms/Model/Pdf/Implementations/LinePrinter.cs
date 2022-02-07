@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using EasyRooms.Model.Pdf.Models;
 using UglyToad.PdfPig.Core;
 using UglyToad.PdfPig.Writer;

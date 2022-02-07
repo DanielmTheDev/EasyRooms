@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using EasyRooms.Model.Rooms.Models;
 
 namespace EasyRooms.Model.Rooms.Interfaces;
 

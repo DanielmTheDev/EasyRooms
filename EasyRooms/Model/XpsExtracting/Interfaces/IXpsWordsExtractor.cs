@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace EasyRooms.Model.XpsExtracting.Interfaces;
+﻿namespace EasyRooms.Model.XpsExtracting.Interfaces;
 
 public interface IXpsWordsExtractor
 {

@@ -1,17 +1,10 @@
-using System.Collections.Generic;
-using System.Linq;
-using EasyRooms.Model.Occupations.Interfaces;
-using EasyRooms.Model.Rooms.Models;
-using EasyRooms.Model.Rows.Models;
-using EasyRooms.Model.Therapies.Interfaces;
-
 namespace EasyRooms.Model.Therapies.Implementations;
 
-public class RoomSpecificMassagesAdder : IMassagesAdder
+public class RoomSpecificTherapiesAdder : ITherapiesAdder
 {
     private readonly IOccupationsAdder _occupationsAdder;
 
-    public RoomSpecificMassagesAdder(IOccupationsAdder occupationsAdder)
+    public RoomSpecificTherapiesAdder(IOccupationsAdder occupationsAdder)
         => _occupationsAdder = occupationsAdder;
 
     public void Add(IEnumerable<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)

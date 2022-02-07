@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
 // ReSharper disable PropertyCanBeMadeInitOnly.Global
@@ -23,7 +22,7 @@ public class RoomNames
     public RoomNames(
         string roomsString = "Wintergarten\nKosmetikraum\nRaum1\nRaum2\nFußpflegeraum",
         string partnerRoomString = "Wintergarten",
-        string roomsForSpecificMassages = "Wintergarten\nKosmetikraum",
+        string roomsForSpecificMassages = "Wintergarten\nKosmetikraum\nRaum1\nRaum2\nFußpflegeraum",
         string massagesForSpecificRooms = "KRÄUTER\nSTONE")
     {
         RoomsString = roomsString;

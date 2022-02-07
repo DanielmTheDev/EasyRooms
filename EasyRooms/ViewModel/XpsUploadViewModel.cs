@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using EasyRooms.Model.DayPlan;
 using EasyRooms.Model.DayPlan.Interfaces;
-using EasyRooms.Model.FileDialog;
 using EasyRooms.Model.FileDialog.Interfaces;
 using EasyRooms.Model.Json;
-using EasyRooms.Model.Pdf;
 using EasyRooms.Model.Pdf.Interfaces;
-using EasyRooms.Model.Rooms;
 using EasyRooms.Model.Rooms.Interfaces;
-using EasyRooms.Model.Rooms.Models;
-using EasyRooms.Model.Validation;
 using EasyRooms.Model.Validation.Exceptions;
 using EasyRooms.Model.Validation.Interfaces;
 using EasyRooms.ViewModel.Commands;
+
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
 

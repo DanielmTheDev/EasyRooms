@@ -1,8 +1,5 @@
-using System.Collections.Generic;
-using System.Linq;
 using EasyRooms.Model.Pdf.Interfaces;
 using EasyRooms.Model.Pdf.Models;
-using EasyRooms.Model.Rooms.Models;
 
 namespace EasyRooms.Model.Pdf.Implementations;
 

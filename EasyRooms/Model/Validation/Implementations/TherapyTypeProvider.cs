@@ -13,4 +13,7 @@ public static class TherapyTypeProvider
 
     public static bool IsAfterTherapy(string therapyShort)
         => string.Equals(therapyShort, CommonConstants.AfterString, StringComparison.InvariantCultureIgnoreCase);
+
+    public static bool IsLongTherapy(TimeSpan duration)
+        => duration >= TimeSpan.FromMinutes(60);
 }

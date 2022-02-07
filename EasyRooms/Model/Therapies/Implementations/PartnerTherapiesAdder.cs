@@ -1,16 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using EasyRooms.Model.Occupations.Interfaces;
-using EasyRooms.Model.Rooms.Models;
-using EasyRooms.Model.Rows.Models;
-using EasyRooms.Model.Therapies.Interfaces;
 using EasyRooms.Model.Therapies.Models;
-using EasyRooms.Model.Validation.Implementations;
 
 namespace EasyRooms.Model.Therapies.Implementations;
 
-public class PartnerTherapiesAdder : IMassagesAdder
+public class PartnerTherapiesAdder : ITherapiesAdder
 {
     private readonly IOccupationsAdder _occupationsAdder;
 

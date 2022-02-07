@@ -1,7 +1,3 @@
-using System.Collections.Generic;
-using EasyRooms.Model.Rooms.Models;
-using EasyRooms.Model.Rows.Models;
-
 namespace EasyRooms.Model.Occupations.Interfaces;
 
 public interface IOccupationsAdder
