@@ -1,9 +1,9 @@
-﻿using System;
-using EasyRooms.Model.DayPlan.Interfaces;
+﻿using EasyRooms.Model.DayPlan.Interfaces;
 using EasyRooms.Model.FileDialog.Interfaces;
 using EasyRooms.Model.Json;
 using EasyRooms.Model.Pdf.Interfaces;
 using EasyRooms.Model.Rooms.Interfaces;
+using EasyRooms.Model.TimeWindow.Interfaces;
 using EasyRooms.Model.Validation.Exceptions;
 using EasyRooms.Model.Validation.Interfaces;
 using EasyRooms.ViewModel.Commands;
@@ -16,6 +16,7 @@ namespace EasyRooms.ViewModel;
 public class XpsUploadViewModel : BindableBase
 {
     public RoomNames Rooms { get; set; }
+    public ITimeWindowValueHolder Times { get; set; }
     public RelayCommand CalculateOccupationsCommand { get; set; }
     public RelayCommand ChooseFileCommand { get; set;}
 
@@ -33,10 +34,12 @@ public class XpsUploadViewModel : BindableBase
         IDayPlanParser dayPlanParser,
         IFileDialogOpener fileDialogOpener,
         IRoomsValidator validator,
-        IPdfWriter pdfWriter)
+        IPdfWriter pdfWriter,
+        ITimeWindowValueHolder times)
     {
         CalculateOccupationsCommand = new RelayCommand(CalculateOccupations, CanCalculateOccupations);
         ChooseFileCommand = new RelayCommand(OpenFileDialog);
+        Times = times;
         Rooms = new RoomNames();
         _fileName = @"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\PlanWithPartnerMassages.xps";
         _occupationsFiller = occupationsFiller;

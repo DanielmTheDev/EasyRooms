@@ -1,22 +1,26 @@
 ﻿<UserControl x:Class="EasyRooms.View.XpsUploadView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin="0,0,0,-63">
         <Label Content="Rooms" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Top"/>
-        <TextBox AcceptsReturn="True" Text="{Binding Rooms.RoomsString}" Margin="40,23,671,101"></TextBox>
+        <TextBox AcceptsReturn="True" Text="{Binding Rooms.RoomsString}" Margin="40,23,671,101" />
 
         <Label Content="PartnerRooms" HorizontalAlignment="Left" Margin="358,-5,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.179,0.262"/>
-        <TextBox AcceptsReturn="True" Text="{Binding Rooms.PartnerRoomString}" Margin="356,23,355,101"></TextBox>
+        <TextBox AcceptsReturn="True" Text="{Binding Rooms.PartnerRoomString}" Margin="356,23,355,101" />
 
         <Label Content="MassagesForSpecificRooms" HorizontalAlignment="Left" Margin="447,0,0,0" VerticalAlignment="Top"/>
-        <TextBox AcceptsReturn="True" Text="{Binding Rooms.MassagesForSpecificRooms}" Margin="464,23,247,101"></TextBox>
+        <TextBox AcceptsReturn="True" Text="{Binding Rooms.MassagesForSpecificRooms}" Margin="464,23,247,101" />
 
         <Label Content="RoomsForSpecificMassages" HorizontalAlignment="Left" Margin="615,0,0,0" VerticalAlignment="Top"/>
-        <TextBox AcceptsReturn="True" Text="{Binding Rooms.RoomsForSpecificMassages}" Margin="638,23,87,101"></TextBox>
+        <TextBox AcceptsReturn="True" Text="{Binding Rooms.RoomsForSpecificMassages}" Margin="638,23,87,101" />
+
+        <Label Content="TimeWindow" HorizontalAlignment="Left" Margin="215,220,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Times.StartTime}" Margin="152,246,556,210" />
+        <TextBox Text="{Binding Times.EndTime}" Margin="249,246,459,210" />
 
         <Button Command="{Binding ChooseFileCommand}" Margin="152,32,465,379" RenderTransformOrigin="0.126,5.296">Datei Auswählen</Button>
         <Button Command="{Binding CalculateOccupationsCommand}" Margin="152,110,465,297">Berechnen</Button>

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace EasyRooms.Model.Rooms.Interfaces;
+﻿namespace EasyRooms.Model.Rooms.Interfaces;
 
 public interface IFreeRoomFinder
 {

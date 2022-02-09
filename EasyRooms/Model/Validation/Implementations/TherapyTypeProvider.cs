@@ -1,4 +1,3 @@
-using System;
 using EasyRooms.Model.Constants;
 
 namespace EasyRooms.Model.Validation.Implementations;
@@ -16,4 +15,7 @@ public static class TherapyTypeProvider
 
     public static bool IsLongTherapy(TimeSpan duration)
         => duration >= TimeSpan.FromMinutes(60);
+
+    public static bool IsTimeSpecificTherapy(TimeOnly startTime, TimeOnly endTime, TimeOnly startTimeLimit, TimeOnly endTimeLimit)
+        => startTime >= startTimeLimit && endTime <= endTimeLimit;
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using EasyRooms.Model.DayPlan.Implementations;
 using EasyRooms.Model.DayPlan.Interfaces;
 using EasyRooms.Model.FileDialog.Implementations;
@@ -12,6 +11,8 @@ using EasyRooms.Model.Rooms.Interfaces;
 using EasyRooms.Model.Rows.Implementations;
 using EasyRooms.Model.Rows.Interfaces;
 using EasyRooms.Model.Therapies.Implementations;
+using EasyRooms.Model.TimeWindow.Implementations;
+using EasyRooms.Model.TimeWindow.Interfaces;
 using EasyRooms.Model.Validation.Interfaces;
 using EasyRooms.Model.XpsExtracting.Implementations;
 using EasyRooms.Model.XpsExtracting.Interfaces;
@@ -54,8 +55,10 @@ public partial class App
             .AddTransient<ITherapiesAdder, PreparationsAdder>()
             .AddTransient<ITherapiesAdder, PartnerTherapiesAdder>()
             .AddTransient<ITherapiesAdder, RoomSpecificTherapiesAdder>()
+            .AddTransient<ITherapiesAdder, TimeSpecificTherapiesAdder>()
             .AddTransient<ITherapiesAdder, LongTherapiesAdder>()
             .AddTransient<ITherapiesAdder, NormalTherapiesAdder>()
+            .AddSingleton<ITimeWindowValueHolder, TimeWindowValueHolder>()
             .AddSingleton<XpsUploadView>()
             .AddSingleton<XpsUploadViewModel>()
             .AddSingleton<TestViewModel>()

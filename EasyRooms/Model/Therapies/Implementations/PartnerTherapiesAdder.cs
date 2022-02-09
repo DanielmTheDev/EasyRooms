@@ -1,4 +1,3 @@
-using System;
 using EasyRooms.Model.Therapies.Models;
 
 namespace EasyRooms.Model.Therapies.Implementations;

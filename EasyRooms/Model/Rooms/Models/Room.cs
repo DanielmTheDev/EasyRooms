@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace EasyRooms.Model.Rooms.Models;
+﻿namespace EasyRooms.Model.Rooms.Models;
 
 public record Room(string Name, int Priority)
 {

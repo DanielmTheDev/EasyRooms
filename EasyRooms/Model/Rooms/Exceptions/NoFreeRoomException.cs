@@ -1,5 +1,3 @@
-using System;
-
 namespace EasyRooms.Model.Rooms.Exceptions;
 
 public class NoFreeRoomException : Exception

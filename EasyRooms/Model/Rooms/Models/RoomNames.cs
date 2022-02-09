@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
@@ -20,9 +20,9 @@ public class RoomNames
 
 
     public RoomNames(
-        string roomsString = "Wintergarten\nKosmetikraum\nRaum1\nRaum2\nFußpflegeraum",
+        string roomsString = "Wintergarten\nKosmetikraum\nRaum1\nRaum2\nFußpflegeraum\nSpecialRoom1\nSpecialRoom2\nSpecialRoom3\nSpecialRoom4",
         string partnerRoomString = "Wintergarten",
-        string roomsForSpecificMassages = "Wintergarten\nKosmetikraum\nRaum1\nRaum2\nFußpflegeraum",
+        string roomsForSpecificMassages = "SpecialRoom1\nSpecialRoom2\nSpecialRoom3\nSpecialRoom4",
         string massagesForSpecificRooms = "KRÄUTER\nSTONE")
     {
         RoomsString = roomsString;
