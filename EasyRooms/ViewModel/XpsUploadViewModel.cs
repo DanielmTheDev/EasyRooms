@@ -8,6 +8,7 @@ using EasyRooms.Model.Validation.Exceptions;
 using EasyRooms.Model.Validation.Interfaces;
 using EasyRooms.ViewModel.Commands;
 
+// ReSharper disable UnusedAutoPropertyAccessor.Global
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
 
@@ -19,6 +20,7 @@ public class XpsUploadViewModel : BindableBase
     public ITimeWindowValueHolder Times { get; set; }
     public RelayCommand CalculateOccupationsCommand { get; set; }
     public RelayCommand ChooseFileCommand { get; set;}
+    public string Buffer { get; set;}
 
     private readonly IDayPlanParser _dayPlanParser;
     private readonly IFileDialogOpener _fileDialogOpener;
@@ -27,7 +29,6 @@ public class XpsUploadViewModel : BindableBase
     private readonly IPdfWriter _pdfWriter;
 
     private string? _fileName;
-    private readonly int _buffer = 1;
 
     public XpsUploadViewModel(
         IRoomOccupationsFiller occupationsFiller,
@@ -40,6 +41,7 @@ public class XpsUploadViewModel : BindableBase
         CalculateOccupationsCommand = new RelayCommand(CalculateOccupations, CanCalculateOccupations);
         ChooseFileCommand = new RelayCommand(OpenFileDialog);
         Times = times;
+        Buffer = "1";
         Rooms = new RoomNames();
         _fileName = @"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\PlanWithPartnerMassages.xps";
         _occupationsFiller = occupationsFiller;
@@ -62,7 +64,7 @@ public class XpsUploadViewModel : BindableBase
     {
         _ = _fileName ?? throw new ArgumentNullException(nameof(_fileName));
         var rows = _dayPlanParser.ParseDayPlan(_fileName);
-        var filledRooms = _occupationsFiller.FillRoomOccupations(rows, Rooms, _buffer).ToList();
+        var filledRooms = _occupationsFiller.FillRoomOccupations(rows, Rooms, int.Parse(Buffer)).ToList();
         Validate(filledRooms);
         _pdfWriter.Write(filledRooms);
         JsonWriter.WriteJson(filledRooms);
