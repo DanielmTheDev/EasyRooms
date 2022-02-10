@@ -5,9 +5,10 @@ namespace EasyRooms.Model.Json;
 
 public static class JsonWriter
 {
-    public static void WriteJson(IEnumerable<Room>? filledRooms)
+    public static void Write(object filledRooms, string path)
     {
         var serializedRooms = JsonConvert.SerializeObject(filledRooms, Formatting.Indented);
-        File.WriteAllText(@"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\realFlowRooms.json", serializedRooms);
+        Directory.CreateDirectory(Path.GetDirectoryName(path) ?? string.Empty);
+        File.WriteAllText(path, serializedRooms);
     }
 }

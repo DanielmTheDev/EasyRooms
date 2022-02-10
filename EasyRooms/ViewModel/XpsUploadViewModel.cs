@@ -1,12 +1,14 @@
-﻿using EasyRooms.Model.DayPlan.Interfaces;
+﻿using System.IO;
+using EasyRooms.Model.DayPlan.Interfaces;
 using EasyRooms.Model.FileDialog.Interfaces;
-using EasyRooms.Model.Json;
 using EasyRooms.Model.Pdf.Interfaces;
 using EasyRooms.Model.Rooms.Interfaces;
 using EasyRooms.Model.TimeWindow.Interfaces;
 using EasyRooms.Model.Validation.Exceptions;
 using EasyRooms.Model.Validation.Interfaces;
 using EasyRooms.ViewModel.Commands;
+using Newtonsoft.Json;
+using JsonWriter = EasyRooms.Model.Json.JsonWriter;
 
 // ReSharper disable UnusedAutoPropertyAccessor.Global
 // ReSharper disable MemberCanBePrivate.Global
@@ -19,9 +21,11 @@ public class XpsUploadViewModel : BindableBase
     public RoomNames Rooms { get; set; }
     public ITimeWindowValueHolder Times { get; set; }
     public RelayCommand CalculateOccupationsCommand { get; set; }
-    public RelayCommand ChooseFileCommand { get; set;}
-    public string Buffer { get; set;}
+    public RelayCommand ChooseFileCommand { get; set; }
+    public RelayCommand SaveRoomsCommand { get; set; }
+    public string Buffer { get; set; }
 
+    private const string SaveRoomsPath = @".\saved_data\serializedRooms.json";
     private readonly IDayPlanParser _dayPlanParser;
     private readonly IFileDialogOpener _fileDialogOpener;
     private readonly IRoomOccupationsFiller _occupationsFiller;
@@ -40,9 +44,10 @@ public class XpsUploadViewModel : BindableBase
     {
         CalculateOccupationsCommand = new RelayCommand(CalculateOccupations, CanCalculateOccupations);
         ChooseFileCommand = new RelayCommand(OpenFileDialog);
+        SaveRoomsCommand = new RelayCommand(SaveRooms);
         Times = times;
         Buffer = "1";
-        Rooms = new RoomNames();
+        Rooms = LoadRooms();
         _fileName = @"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\PlanWithPartnerMassages.xps";
         _occupationsFiller = occupationsFiller;
         _dayPlanParser = dayPlanParser;
@@ -50,6 +55,11 @@ public class XpsUploadViewModel : BindableBase
         _validator = validator;
         _pdfWriter = pdfWriter;
     }
+
+    private static RoomNames LoadRooms()
+        => File.Exists(SaveRoomsPath)
+            ? JsonConvert.DeserializeObject<RoomNames>(File.ReadAllText(SaveRoomsPath)) ?? new RoomNames()
+            : new RoomNames();
 
     private void OpenFileDialog()
     {
@@ -60,6 +70,9 @@ public class XpsUploadViewModel : BindableBase
     private bool CanCalculateOccupations()
         => !string.IsNullOrEmpty(_fileName);
 
+    private void SaveRooms()
+        => JsonWriter.Write(Rooms, SaveRoomsPath);
+
     private void CalculateOccupations()
     {
         _ = _fileName ?? throw new ArgumentNullException(nameof(_fileName));
@@ -67,7 +80,7 @@ public class XpsUploadViewModel : BindableBase
         var filledRooms = _occupationsFiller.FillRoomOccupations(rows, Rooms, int.Parse(Buffer)).ToList();
         Validate(filledRooms);
         _pdfWriter.Write(filledRooms);
-        JsonWriter.WriteJson(filledRooms);
+        JsonWriter.Write(filledRooms, @"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\realFlowRooms.json");
     }
 
     private void Validate(IEnumerable<Room> filledRooms)

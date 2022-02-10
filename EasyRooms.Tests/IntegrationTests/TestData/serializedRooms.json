@@ -1,0 +1,10 @@
+{
+  "PartnerRoomString": "Wintergarten",
+  "RoomsString": "Wintergarten\r\nKosmetikraum\r\nRaum1\r\nRaum2\r\nFußpflegeraum\r\nSpecialRoom1\r\nSpecialRoom2\r\nSpecialRoom3\r\nSpecialRoom4\r\nSpecialRoom5",
+  "RoomsForSpecificMassages": "SpecialRoom1\r\nSpecialRoom2\r\nSpecialRoom3\r\nSpecialRoom4",
+  "MassagesForSpecificRooms": "KRÄUTER\r\nSTONE",
+  "MassagesForSpecificRoomsAsList": [
+    "KRÄUTER",
+    "STONE"
+  ]
+}

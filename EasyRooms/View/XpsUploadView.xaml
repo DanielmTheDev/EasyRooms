@@ -25,7 +25,8 @@
         <Label Content="Buffer" HorizontalAlignment="Left" Margin="223,303,0,0" VerticalAlignment="Top" Height="24" HorizontalContentAlignment="Center"/>
         <TextBox Text="{Binding Buffer}" Margin="215,327,514,130" />
 
-        <Button Command="{Binding ChooseFileCommand}" Margin="152,32,465,379" RenderTransformOrigin="0.126,5.296">Datei Auswählen</Button>
-        <Button Command="{Binding CalculateOccupationsCommand}" Margin="152,110,465,297">Berechnen</Button>
+        <Button Command="{Binding ChooseFileCommand}" Margin="152,10,465,443" RenderTransformOrigin="0.126,5.296">Datei Auswählen</Button>
+        <Button Command="{Binding CalculateOccupationsCommand}" Margin="152,75,465,373">Berechnen</Button>
+        <Button Command="{Binding SaveRoomsCommand}" Margin="152,145,465,298" Content="Räume Speichern"/>
     </Grid>
 </UserControl>
