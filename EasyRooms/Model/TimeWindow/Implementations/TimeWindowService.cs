@@ -2,12 +2,12 @@ using EasyRooms.Model.TimeWindow.Interfaces;
 
 namespace EasyRooms.Model.TimeWindow.Implementations;
 
-public class TimeWindowValueHolder : ITimeWindowValueHolder
+public class TimeWindowService : ITimeWindowService
 {
     public string StartTime { get; set; }
     public string EndTime { get; set; }
 
-    public TimeWindowValueHolder()
+    public TimeWindowService()
     {
         StartTime = "14:00";
         EndTime = "16:00";

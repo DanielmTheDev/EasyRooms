@@ -1,6 +1,6 @@
 namespace EasyRooms.Model.TimeWindow.Interfaces;
 
-public interface ITimeWindowValueHolder
+public interface ITimeWindowService
 {
     string StartTime { get; set; }
     string EndTime { get; set; }

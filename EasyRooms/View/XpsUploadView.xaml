@@ -6,27 +6,16 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin="0,0,0,-63">
-        <Label Content="Rooms" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Top"/>
-        <TextBox AcceptsReturn="True" Text="{Binding Rooms.RoomsString}" Margin="10,23,662,101" />
-
-        <Label Content="PartnerRooms" HorizontalAlignment="Left" Margin="358,-5,0,0" VerticalAlignment="Top" RenderTransformOrigin="7.179,0.262"/>
-        <TextBox AcceptsReturn="True" Text="{Binding Rooms.PartnerRoomString}" Margin="356,23,347,101" />
-
-        <Label Content="MassagesForSpecificRooms" HorizontalAlignment="Left" Margin="453,0,0,0" VerticalAlignment="Top"/>
-        <TextBox AcceptsReturn="True" Text="{Binding Rooms.MassagesForSpecificRooms}" Margin="474,23,214,101" />
-
-        <Label Content="RoomsForSpecificMassages" HorizontalAlignment="Left" Margin="615,0,0,0" VerticalAlignment="Top"/>
-        <TextBox AcceptsReturn="True" Text="{Binding Rooms.RoomsForSpecificMassages}" Margin="640,23,54,101" />
-
-        <Label Content="TimeWindow" HorizontalAlignment="Left" Margin="215,220,0,0" VerticalAlignment="Top"/>
-        <TextBox Text="{Binding Times.StartTime}" Margin="152,246,556,210" />
-        <TextBox Text="{Binding Times.EndTime}" Margin="249,246,459,210" />
-
-        <Label Content="Buffer" HorizontalAlignment="Left" Margin="223,303,0,0" VerticalAlignment="Top" Height="24" HorizontalContentAlignment="Center"/>
-        <TextBox Text="{Binding Buffer}" Margin="215,327,514,130" />
-
-        <Button Command="{Binding ChooseFileCommand}" Margin="152,10,465,443" RenderTransformOrigin="0.126,5.296">Datei Auswählen</Button>
-        <Button Command="{Binding CalculateOccupationsCommand}" Margin="152,75,465,373">Berechnen</Button>
-        <Button Command="{Binding SaveRoomsCommand}" Margin="152,145,465,298" Content="Räume Speichern"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Button Command="{Binding ChooseFileCommand}" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Margin="0, 0, 0, 20"
+                    Height="30"
+                    MinWidth="120">Datei Auswählen</Button>
+            <Button Command="{Binding CalculateOccupationsCommand}" 
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Height="30"
+                    MinWidth="120">Berechnen</Button>
+        </StackPanel>
     </Grid>
 </UserControl>

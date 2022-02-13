@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using EasyRooms.Model.Buffer.Implementations;
+using EasyRooms.Model.Buffer.Interfaces;
 using EasyRooms.Model.DayPlan.Implementations;
 using EasyRooms.Model.DayPlan.Interfaces;
 using EasyRooms.Model.FileDialog.Implementations;
@@ -58,10 +60,12 @@ public partial class App
             .AddTransient<ITherapiesAdder, TimeSpecificTherapiesAdder>()
             .AddTransient<ITherapiesAdder, LongTherapiesAdder>()
             .AddTransient<ITherapiesAdder, NormalTherapiesAdder>()
-            .AddSingleton<ITimeWindowValueHolder, TimeWindowValueHolder>()
+            .AddSingleton<ITimeWindowService, TimeWindowService>()
+            .AddSingleton<IRoomNamesService, RoomNamesService>()
+            .AddSingleton<IBufferService, BufferService>()
             .AddSingleton<XpsUploadView>()
             .AddSingleton<XpsUploadViewModel>()
-            .AddSingleton<TestViewModel>()
+            .AddSingleton<OptionsViewModel>()
             .AddSingleton<MainWindow>();
     }
 

@@ -6,19 +6,25 @@
         xmlns:vm="clr-namespace:EasyRooms.ViewModel"
         xmlns:view="clr-namespace:EasyRooms.View" x:Class="EasyRooms.View.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="950">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
     <Window.Resources>
-        <DataTemplate DataType="{x:Type vm:TestViewModel}">
-            <view:TestView/>
+        <DataTemplate DataType="{x:Type vm:OptionsViewModel}">
+            <view:OptionsView/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type vm:XpsUploadViewModel}">
             <view:XpsUploadView/>
         </DataTemplate>
     </Window.Resources>
-    <Grid>
-        <ContentControl Content="{Binding CurrentViewModel}" />
+    <Grid Margin="0,0,0,36">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Command="{Binding SwitchToOptionsCommand}" Margin="0,0,20,0" MinWidth="120"
+                VerticalAlignment="Center" HorizontalAlignment="Right" Content="{Binding NavigationButtonContent}" />
+        <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}" />
     </Grid>
 </Window>

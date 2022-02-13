@@ -5,9 +5,9 @@ namespace EasyRooms.Model.Therapies.Implementations;
 public class TimeSpecificTherapiesAdder : ITherapiesAdder
 {
     private readonly IOccupationsAdder _occupationsAdder;
-    private readonly ITimeWindowValueHolder _times;
+    private readonly ITimeWindowService _times;
 
-    public TimeSpecificTherapiesAdder(IOccupationsAdder occupationsAdder, ITimeWindowValueHolder times)
+    public TimeSpecificTherapiesAdder(IOccupationsAdder occupationsAdder, ITimeWindowService times)
     {
         _occupationsAdder = occupationsAdder;
         _times = times;
