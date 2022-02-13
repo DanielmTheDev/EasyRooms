@@ -39,6 +39,19 @@ public static class WordList
         return enumeratedWords;
     }
 
+    public static IEnumerable<string> RemoveAlmostEmptyRows(this IEnumerable<string> words)
+    {
+        var enumeratedWords = words.ToList();
+        var indicesOfAlmostEmptyRows = Enumerable.Range(0, enumeratedWords.Count)
+            .Where(i => IsTimeEntry(enumeratedWords[i]) && IsTimeEntry(enumeratedWords[i + 3])).ToList();
+
+        indicesOfAlmostEmptyRows
+            .OrderByDescending(i => i)
+            .ToList()
+            .ForEach(index => enumeratedWords.RemoveRange(index, 3));
+        return enumeratedWords;
+    }
+
     public static IEnumerable<string> RemovePageEntries(this IEnumerable<string> words)
     {
         var enumeratedWords = words.ToList();

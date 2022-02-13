@@ -10,9 +10,25 @@ public static class LinePrinter
     {
         for (var i = 0; i < rowStrings.Count; i++)
         {
-            var calculatedOffset = TherapyPlanConstants.InitialXOffset + TherapyPlanConstants.XOffset * i;
-            var point = new PdfPoint(calculatedOffset, pdfBuilderAggregate.Page.PageSize.Top - yOffset);
+            var calculatedXOffset = CalculateXOffset(i);
+            var point = new PdfPoint(calculatedXOffset, pdfBuilderAggregate.Page.PageSize.Top - yOffset);
             pdfBuilderAggregate.Page.AddText(rowStrings[i], 5, point, font);
         }
+    }
+
+    private static double CalculateXOffset(int i)
+    {
+        var offset = TherapyPlanConstants.InitialXOffset + TherapyPlanConstants.XOffset * i;
+        switch (i)
+        {
+            case 5:
+                offset += 70d;
+                break;
+            case 6:
+                offset += 90d;
+                break;
+        }
+
+        return offset;
     }
 }

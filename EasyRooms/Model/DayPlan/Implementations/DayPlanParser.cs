@@ -20,6 +20,7 @@ public class DayPlanParser : IDayPlanParser
             .RemoveHomeVisitRows()
             .RemovePageEntries()
             .RemovePauseRows()
+            .RemoveAlmostEmptyRows()
             .RemoveCommentaries()
             .RemoveHeaders()
             .RemoveLegendEntries()

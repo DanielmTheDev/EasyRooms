@@ -1,5 +1,4 @@
-﻿using System.IO;
-using EasyRooms.Model.FileDialog.Interfaces;
+﻿using EasyRooms.Model.FileDialog.Interfaces;
 using Microsoft.Win32;
 
 namespace EasyRooms.Model.FileDialog.Implementations;
@@ -18,6 +17,6 @@ public class FileDialogOpener : IFileDialogOpener
 
         return result == true
             ? dialog.FileName
-            : throw new FileNotFoundException();
+            : string.Empty;
     }
 }

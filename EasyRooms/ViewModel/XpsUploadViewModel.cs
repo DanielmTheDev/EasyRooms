@@ -41,7 +41,7 @@ public class XpsUploadViewModel : BindableBase
         ChooseFileCommand = new RelayCommand(OpenFileDialog);
         _roomNamesService = roomNamesService;
         _bufferService = bufferService;
-        _fileName = @"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\PlanWithPartnerMassages.xps";
+        _fileName = @"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\16.07ultimativer Test.xps";
         _occupationsFiller = occupationsFiller;
         _dayPlanParser = dayPlanParser;
         _fileDialogOpener = fileDialogOpener;
@@ -60,12 +60,20 @@ public class XpsUploadViewModel : BindableBase
 
     private void CalculateOccupations()
     {
-        _ = _fileName ?? throw new ArgumentNullException(nameof(_fileName));
-        var rows = _dayPlanParser.ParseDayPlan(_fileName);
+        GuardFileName();
+        var rows = _dayPlanParser.ParseDayPlan(_fileName!);
         var filledRooms = _occupationsFiller.FillRoomOccupations(rows, _roomNamesService.Rooms, int.Parse(_bufferService.Buffer)).ToList();
         Validate(filledRooms);
         _pdfWriter.Write(filledRooms);
         JsonWriter.Write(filledRooms, @"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\realFlowRooms.json");
+    }
+
+    private void GuardFileName()
+    {
+        if (_fileName is "" or null)
+        {
+            throw new ArgumentNullException(nameof(_fileName));
+        }
     }
 
     private void Validate(IEnumerable<Room> filledRooms)
