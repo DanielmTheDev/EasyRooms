@@ -23,8 +23,7 @@ public static class WordList
     {
         var enumeratedWords = words.ToList();
         var indicesOfPauseEntries = Enumerable.Range(0, enumeratedWords.Count)
-            .Where(i => enumeratedWords[i].ToUpperInvariant().Contains(CommonConstants.Pause)
-                        && i % CommonConstants.ElementsPerRowWithoutHouseVisitEntry == 3)
+            .Where(i => enumeratedWords[i].Contains(CommonConstants.Pause))
             .ToList();
 
         indicesOfPauseEntries
