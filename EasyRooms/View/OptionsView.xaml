@@ -20,32 +20,32 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Column="0">
-            <Label Margin="7, 0, 0, 0" Content="Räume"/>
-            <TextBox MinHeight="200" Margin="10, 0, 10, 0" AcceptsReturn="True" Text="{Binding RoomsString}"/>
+            <Label Style="{StaticResource OptionsLabel}" Content="Räume"/>
+            <TextBox Style="{StaticResource BigOptionsTextBox}" AcceptsReturn="True" Text="{Binding RoomsString}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1">
-            <Label Margin="7, 0, 0, 0" Content="Partner Räume" />
-            <TextBox MinHeight="200" Margin="10, 0, 10, 0" AcceptsReturn="True" Text="{Binding PartnerRoomsString}"/>
+            <Label Style="{StaticResource OptionsLabel}" Content="Partner Räume" />
+            <TextBox Style="{StaticResource BigOptionsTextBox}" AcceptsReturn="True" Text="{Binding PartnerRoomsString}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="2">
-            <Label Margin="7, 0, 0, 0" Content="Spezielle Massagen" />
-            <TextBox MinHeight="200" Margin="10, 0, 10, 0" AcceptsReturn="True" Text="{Binding MassagesForSpecificRooms}"/>
+            <Label Style="{StaticResource OptionsLabel}" Content="Spezielle Massagen" />
+            <TextBox Style="{StaticResource BigOptionsTextBox}" AcceptsReturn="True" Text="{Binding MassagesForSpecificRooms}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="3">
-            <Label Margin="7, 0, 0, 0" Content="Räume für spezielle Massagen"/>
-            <TextBox MinHeight="200" Margin="10, 0, 10, 0" AcceptsReturn="True" Text="{Binding RoomsForSpecificMassages}"/>
+            <Label Style="{StaticResource OptionsLabel}" Content="Räume für spezielle Massagen"/>
+            <TextBox Style="{StaticResource BigOptionsTextBox}" AcceptsReturn="True" Text="{Binding RoomsForSpecificMassages}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="4">
-            <Label Margin="7, 0, 0, 0" Content="Start Zeit" />
-            <TextBox Margin="10, 0, 10, 0" Text="{Binding StartTime}" />
-            <Label Margin="7, 0, 0, 0" Content="End Zeit" />
-            <TextBox Margin="10, 0, 10, 0" Text="{Binding EndTime}" />
-            <Label Margin="7, 0, 0, 0" Content="Puffer"/>
-            <TextBox Margin="10, 0, 10, 0" Text="{Binding Buffer}"/>
+            <Label Style="{StaticResource OptionsLabel}" Content="Start Zeit" />
+            <TextBox Style="{StaticResource SmallOptionsTextBox}" Text="{Binding StartTime}" />
+            <Label Style="{StaticResource OptionsLabel}" Content="End Zeit" />
+            <TextBox Style="{StaticResource SmallOptionsTextBox}" Text="{Binding EndTime}" />
+            <Label Style="{StaticResource OptionsLabel}" Content="Puffer"/>
+            <TextBox Style="{StaticResource SmallOptionsTextBox}" Text="{Binding Buffer}"/>
         </StackPanel>
 
         <Button Grid.Column="4" Grid.Row="1" Command="{Binding SaveRoomsCommand}" Content="Räume Speichern"

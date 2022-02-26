@@ -2,6 +2,15 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Application.Resources>
-         
+        <Style x:Key="BigOptionsTextBox" TargetType="TextBox">
+            <Setter Property="Margin" Value="10, 0, 10, 0" />
+            <Setter Property="MinHeight" Value="150" />
+        </Style>
+        <Style x:Key="SmallOptionsTextBox" TargetType="TextBox">
+            <Setter Property="Margin" Value="10, 0, 10, 0" />
+        </Style>
+        <Style x:Key="OptionsLabel" TargetType="Label">
+            <Setter Property="Margin" Value="7, 0, 0, 0" />
+        </Style>
     </Application.Resources>
 </Application>
