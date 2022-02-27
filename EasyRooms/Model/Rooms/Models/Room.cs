@@ -1,16 +1,12 @@
 ﻿namespace EasyRooms.Model.Rooms.Models;
 
-public record Room(string Name, int Priority)
+public record Room(string Name)
 {
     public bool IsPartnerRoom { get; set; }
-    public bool IsMassageSpecificRoom { get; set; }
     public IList<Occupation> Occupations { get; set; } = new List<Occupation>();
 
-    public Room AddOccupation(Occupation occupation)
-    {
-        Occupations.Add(occupation);
-        return this;
-    }
+    public void AddOccupation(Occupation occupation)
+        => Occupations.Add(occupation);
 
     public bool IsOccupiedAt(TimeSpan startTime, TimeSpan endTime, int bufferInMinutes)
         => Occupations.Any(occupation =>

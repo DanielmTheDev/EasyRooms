@@ -8,7 +8,6 @@ public class RoomListCreator : IRoomListCreator
     {
         var rooms = GetRoomsWithAddedEmptyOne(roomNames);
         SetPartnerRoomProperty(roomNames, rooms);
-        SetMassageSpecificRoomProperty(roomNames, rooms);
         return rooms;
     }
 
@@ -17,21 +16,8 @@ public class RoomListCreator : IRoomListCreator
         var roomsAsListWithEmpty = roomNames.AllRoomsAsList;
         roomsAsListWithEmpty.Add(string.Empty);
         return roomsAsListWithEmpty
-            .Select((name, i) => new Room(name, i))
+            .Select((name, i) => new Room(name))
             .ToList();
-    }
-
-    private static void SetMassageSpecificRoomProperty(RoomNames roomNames, IReadOnlyCollection<Room> rooms)
-    {
-        roomNames.RoomsForSpecificMassagesAsList
-            .ForEach(messageSpecificRoom =>
-            {
-                var room = rooms
-                    .SingleOrDefault(room =>
-                        string.Equals(room.Name, messageSpecificRoom, StringComparison.OrdinalIgnoreCase));
-                if (room is { })
-                    room.IsMassageSpecificRoom = true;
-            });
     }
 
     private static void SetPartnerRoomProperty(RoomNames roomNames, IReadOnlyCollection<Room> rooms)

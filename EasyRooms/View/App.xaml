@@ -4,13 +4,22 @@
     <Application.Resources>
         <Style x:Key="BigOptionsTextBox" TargetType="TextBox">
             <Setter Property="Margin" Value="10, 0, 10, 0" />
-            <Setter Property="MinHeight" Value="150" />
+            <Setter Property="MinHeight" Value="120" />
         </Style>
-        <Style x:Key="SmallOptionsTextBox" TargetType="TextBox">
+        <Style x:Key="BufferTextBox" TargetType="TextBox">
             <Setter Property="Margin" Value="10, 0, 10, 0" />
+            <Setter Property="Width" Value="20" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="AcceptsReturn" Value="False" />
         </Style>
         <Style x:Key="OptionsLabel" TargetType="Label">
             <Setter Property="Margin" Value="7, 0, 0, 0" />
+        </Style>
+        <Style x:Key="SaveButton" TargetType="Button">
+            <Setter Property="Margin" Value="0, 20, 0, 0" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="MinWidth" Value="120" />
         </Style>
     </Application.Resources>
 </Application>

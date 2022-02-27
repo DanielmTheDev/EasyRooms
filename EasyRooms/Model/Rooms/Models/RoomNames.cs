@@ -10,7 +10,6 @@ public class RoomNames
 {
     public string PartnerRoomsString { get; set; }
     public string RoomsString { get; set; }
-    public string RoomsForSpecificMassages { get; set; }
     public string MassagesForSpecificRooms { get; set; }
 
     [JsonIgnore]
@@ -18,19 +17,16 @@ public class RoomNames
     [JsonIgnore]
     public List<string> PartnerRoomsRoomsAsList => PartnerRoomsString.Split("\r\n").ToList();
     [JsonIgnore]
-    public List<string> RoomsForSpecificMassagesAsList => RoomsForSpecificMassages.Split("\r\n").ToList();
     public List<string> MassagesForSpecificRoomsAsList => MassagesForSpecificRooms.Split("\r\n").ToList();
 
 
     public RoomNames(
         string roomsString = "Wintergarten\r\nKosmetikraum\r\nRaum1\r\nRaum2\r\nFußpflegeraum\r\nSpecialRoom1\r\nSpecialRoom2\r\nSpecialRoom3\r\nSpecialRoom4",
         string partnerRoomsString = "Wintergarten",
-        string roomsForSpecificMassages = "SpecialRoom1\r\nSpecialRoom2\r\nSpecialRoom3\r\nSpecialRoom4",
         string massagesForSpecificRooms = "KRÄUTER\r\nSTONE")
     {
         RoomsString = roomsString;
         PartnerRoomsString = partnerRoomsString;
-        RoomsForSpecificMassages = roomsForSpecificMassages;
         MassagesForSpecificRooms = massagesForSpecificRooms;
         GuardRooms();
     }
@@ -40,8 +36,5 @@ public class RoomNames
         _ = PartnerRoomsRoomsAsList.All(partnerRoom => AllRoomsAsList.Contains(partnerRoom))
             ? default(object)
             : throw new ArgumentException(nameof(PartnerRoomsString));
-        _ = RoomsForSpecificMassagesAsList.All(specificRoom => AllRoomsAsList.Contains(specificRoom))
-            ? default(object)
-            : throw new ArgumentException(nameof(RoomsForSpecificMassages));
     }
 }

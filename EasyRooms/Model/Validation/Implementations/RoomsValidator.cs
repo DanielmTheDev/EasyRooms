@@ -15,7 +15,7 @@ public class RoomsValidator : IRoomsValidator
 
     private static Room RemoveDoublePartnerMassages(Room room)
     {
-        var clonedRoom = new Room("cloned", 0);
+        var clonedRoom = new Room("cloned");
         var unevenPartnerOccupations = room.Occupations
             .Where(occupation => TherapyTypeProvider.IsPartnerTherapy(occupation.TherapyShort))
             .Where((_, i) => i % 2 == 1);

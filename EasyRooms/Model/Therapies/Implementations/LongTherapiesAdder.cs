@@ -13,11 +13,9 @@ public class LongTherapiesAdder : ITherapiesAdder
             .Where(row => TherapyTypeProvider.IsLongTherapy(row.DurationAsTimeSpan))
             .ToList();
 
-        var longTherapyRooms = rooms.Where(room => room.IsMassageSpecificRoom);
-
         longTherapyRows.ForEach(therapy =>
         {
-            _occupationsAdder.AddToFreeRoom(longTherapyRooms, bufferInMinutes, therapy);
+            _occupationsAdder.AddToFreeRoom(rooms, bufferInMinutes, therapy);
             orderedRows.Remove(therapy);
         });
     }

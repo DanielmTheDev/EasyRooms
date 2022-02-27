@@ -43,14 +43,12 @@ public class RoomListCreatorTests
     {
         var expectedRooms = new List<Room>
         {
-            new("room1", 0),
-            new("room2", 1),
-            new("room3", 2),
-            new(string.Empty, 3)
+            new("room1"),
+            new("room2"),
+            new("room3"),
+            new(string.Empty)
         };
         expectedRooms[0].IsPartnerRoom = true;
-        expectedRooms[1].IsMassageSpecificRoom = true;
-        expectedRooms[2].IsMassageSpecificRoom = true;
         return expectedRooms;
     }
 
@@ -58,12 +56,11 @@ public class RoomListCreatorTests
     {
         var expectedRooms = new List<Room>
         {
-            new("room1", 0),
-            new("room2", 1),
-            new("room3", 2),
-            new(string.Empty, 3)
+            new("room1"),
+            new("room2"),
+            new("room3"),
+            new(string.Empty)
         };
-        expectedRooms[0].IsMassageSpecificRoom = true;
         expectedRooms[1].IsPartnerRoom = true;
         expectedRooms[2].IsPartnerRoom = true;
         return expectedRooms;

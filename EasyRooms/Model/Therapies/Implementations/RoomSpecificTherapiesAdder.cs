@@ -14,11 +14,9 @@ public class RoomSpecificTherapiesAdder : ITherapiesAdder
             .GroupBy(row => (row.StartTime, row.Duration))
             .ToList();
 
-        var specificRooms = rooms.Where(room => room.IsMassageSpecificRoom);
-
         roomSpecificMassages.ForEach(grouping =>
         {
-            grouping.ToList().ForEach(row => _occupationsAdder.AddToFreeRoom(specificRooms, bufferInMinutes, row));
+            grouping.ToList().ForEach(row => _occupationsAdder.AddToFreeRoom(rooms, bufferInMinutes, row));
             grouping.ToList().ForEach(row => orderedRows.Remove(row));
         });
     }
