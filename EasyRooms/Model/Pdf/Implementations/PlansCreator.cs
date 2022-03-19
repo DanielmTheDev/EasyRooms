@@ -3,12 +3,14 @@ using EasyRooms.Model.Pdf.Models;
 
 namespace EasyRooms.Model.Pdf.Implementations;
 
-public class TherapyPlanCreator : ITherapyPlanCreator
+public class PlansCreator : IPlansCreator
 {
-    public TherapyPlan Create(IEnumerable<Room> rooms)
+    public IEnumerable<TherapyPlan> Create(IEnumerable<Room> rooms)
     {
-        var rows = ExtractTherapyRows(rooms);
-        return new TherapyPlan(rows);
+        var groupedRows = ExtractTherapyRows(rooms)
+            .GroupBy(row => row.Therapist);
+
+        return groupedRows.Select(grouping => new TherapyPlan(grouping.Key, grouping.ToList()));
     }
 
     private static IEnumerable<TherapyPlanRow> ExtractTherapyRows(IEnumerable<Room> rooms)

@@ -70,7 +70,7 @@ public class XpsUploadViewModel : BindableBase
 
     private void GuardFileName()
     {
-        if (_fileName is "" or null)
+        if (string.IsNullOrEmpty(_fileName))
         {
             throw new ArgumentNullException(nameof(_fileName));
         }

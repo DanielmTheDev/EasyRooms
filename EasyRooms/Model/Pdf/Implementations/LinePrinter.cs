@@ -6,13 +6,13 @@ namespace EasyRooms.Model.Pdf.Implementations;
 
 public static class LinePrinter
 {
-    public static void PrintLine(PdfBuilderAggregate pdfBuilderAggregate, IReadOnlyList<string> rowStrings, PdfDocumentBuilder.AddedFont font, double yOffset)
+    public static void PrintLine(PdfData pdfData, IReadOnlyList<string> rowStrings, PdfDocumentBuilder.AddedFont font, double yOffset)
     {
         for (var i = 0; i < rowStrings.Count; i++)
         {
             var calculatedXOffset = CalculateXOffset(i);
-            var point = new PdfPoint(calculatedXOffset, pdfBuilderAggregate.Page.PageSize.Top - yOffset);
-            pdfBuilderAggregate.Page.AddText(rowStrings[i], 5, point, font);
+            var point = new PdfPoint(calculatedXOffset, pdfData.Page.PageSize.Top - yOffset);
+            pdfData.Page.AddText(rowStrings[i], 5, point, font);
         }
     }
 

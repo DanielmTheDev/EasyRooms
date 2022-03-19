@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.IO;
+using EasyRooms.Model.CommonExtensions;
 using EasyRooms.Model.Pdf.Interfaces;
 using EasyRooms.Model.Pdf.Models;
 
@@ -7,35 +8,21 @@ namespace EasyRooms.Model.Pdf.Implementations;
 
 public class PdfWriter : IPdfWriter
 {
-    private readonly ITherapyPlanRowsPrinter _therapyPlanRowsPrinter;
-    private readonly ITherapyPlanHeadersPrinter _therapyPlanHeadersPrinter;
+    private readonly IPdfCreator _pdfCreator;
 
-    public PdfWriter(ITherapyPlanCreator therapyPlanCreator, ITherapyPlanHeadersPrinter therapyPlanHeadersPrinter)
-    {
-        _therapyPlanHeadersPrinter = therapyPlanHeadersPrinter;
-        _therapyPlanRowsPrinter = new TherapyPlanRowsPrinter(therapyPlanCreator);
-    }
+    public PdfWriter(IPdfCreator pdfCreator)
+        => _pdfCreator = pdfCreator;
 
     public void Write(IEnumerable<Room> rooms)
+        => _pdfCreator
+            .Create(rooms)
+            .ForEach(CreateAndOpenFile);
+
+    private static void CreateAndOpenFile(PdfData pdf)
     {
-        var pdfBuilderAggregate = PdfBuilderAggregateCreator.Create();
-        PrintHeaders(pdfBuilderAggregate);
-        PrintRows(pdfBuilderAggregate, rooms);
-        const string path = @"C:\Users\dadam\Downloads\test.pdf";
-        File.WriteAllBytes(path, pdfBuilderAggregate.Builder.Build());
+        var path = $@"C:\Users\dadam\Downloads\{pdf.Name}.pdf";
+        File.WriteAllBytes(path, pdf.Builder.Build());
         OpenPdf(path);
-    }
-
-    private void PrintHeaders(PdfBuilderAggregate pdfBuilderAggregate)
-    {
-        const double headersYOffset = 10d;
-        _therapyPlanHeadersPrinter.PrintHeaders(pdfBuilderAggregate, headersYOffset);
-    }
-
-    private void PrintRows(PdfBuilderAggregate pdfBuilderAggregate, IEnumerable<Room> rooms)
-    {
-        const double rowsYOffset = 25d;
-        _therapyPlanRowsPrinter.PrintRows(rooms, pdfBuilderAggregate, rowsYOffset);
     }
 
     private static void OpenPdf(string filePath)
