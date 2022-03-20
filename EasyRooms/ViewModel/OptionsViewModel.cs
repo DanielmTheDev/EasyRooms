@@ -1,5 +1,4 @@
-﻿using EasyRooms.Model.Buffer.Implementations;
-using EasyRooms.Model.Rooms.Interfaces;
+﻿using EasyRooms.Model.Persistence.Interfaces;
 using EasyRooms.ViewModel.Commands;
 
 // ReSharper disable UnusedAutoPropertyAccessor.Global
@@ -10,39 +9,37 @@ namespace EasyRooms.ViewModel;
 
 public class OptionsViewModel : BindableBase
 {
-    private readonly IRoomNamesService _roomNamesService;
-    private readonly IBufferService _bufferService;
+    private readonly IPersistenceService _persistenceService;
 
     public string RoomsString
     {
-        get => _roomNamesService.Rooms.RoomsString;
-        set => _roomNamesService.Rooms.RoomsString = value;
+        get => _persistenceService.SavedOptions.Rooms.Rooms;
+        set => _persistenceService.SavedOptions.Rooms.Rooms = value;
     }
     public string PartnerRoomsString
     {
-        get => _roomNamesService.Rooms.PartnerRoomsString;
-        set => _roomNamesService.Rooms.PartnerRoomsString = value;
+        get => _persistenceService.SavedOptions.Rooms.PartnerRooms;
+        set => _persistenceService.SavedOptions.Rooms.PartnerRooms = value;
     }
     public string MassagesForSpecificRooms
     {
-        get => _roomNamesService.Rooms.MassagesForSpecificRooms;
-        set => _roomNamesService.Rooms.MassagesForSpecificRooms = value;
+        get => _persistenceService.SavedOptions.Rooms.MassagesForSpecificRooms;
+        set => _persistenceService.SavedOptions.Rooms.MassagesForSpecificRooms = value;
     }
     public string Buffer
     {
-        get => _bufferService.Buffer;
-        set => _bufferService.Buffer = value;
+        get => _persistenceService.SavedOptions.Buffer.ToString();
+        set => _persistenceService.SavedOptions.Buffer = int.Parse(value);
     }
 
     public RelayCommand SaveRoomsCommand { get; }
 
-    public OptionsViewModel(IRoomNamesService roomNamesService, IBufferService bufferService)
+    public OptionsViewModel(IPersistenceService persistenceService)
     {
-        _roomNamesService = roomNamesService;
-        _bufferService = bufferService;
+        _persistenceService = persistenceService;
         SaveRoomsCommand = new RelayCommand(SaveRooms);
     }
 
     private void SaveRooms()
-        => _roomNamesService.SaveRooms();
+        => _persistenceService.SaveOptions();
 }

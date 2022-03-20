@@ -1,8 +1,9 @@
-﻿using EasyRooms.Model.Buffer.Implementations;
-using EasyRooms.Model.DayPlan.Interfaces;
+﻿using EasyRooms.Model.DayPlan.Interfaces;
 using EasyRooms.Model.FileDialog.Interfaces;
 using EasyRooms.Model.Json;
 using EasyRooms.Model.Pdf.Interfaces;
+using EasyRooms.Model.Persistence.Extensions;
+using EasyRooms.Model.Persistence.Interfaces;
 using EasyRooms.Model.Rooms.Interfaces;
 using EasyRooms.Model.Validation.Exceptions;
 using EasyRooms.Model.Validation.Interfaces;
@@ -24,8 +25,7 @@ public class XpsUploadViewModel : BindableBase
     private readonly IRoomOccupationsFiller _occupationsFiller;
     private readonly IRoomsValidator _validator;
     private readonly IPdfWriter _pdfWriter;
-    private readonly IRoomNamesService _roomNamesService;
-    private readonly IBufferService _bufferService;
+    private readonly IPersistenceService _persistenceService;
 
     private string? _fileName;
 
@@ -35,12 +35,11 @@ public class XpsUploadViewModel : BindableBase
         IFileDialogOpener fileDialogOpener,
         IRoomsValidator validator,
         IPdfWriter pdfWriter,
-        IRoomNamesService roomNamesService, IBufferService bufferService)
+        IPersistenceService persistenceService)
     {
         CalculateOccupationsCommand = new RelayCommand(CalculateOccupations, CanCalculateOccupations);
         ChooseFileCommand = new RelayCommand(OpenFileDialog);
-        _roomNamesService = roomNamesService;
-        _bufferService = bufferService;
+        _persistenceService = persistenceService;
         _fileName = @"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\16.07ultimativer Test.xps";
         _occupationsFiller = occupationsFiller;
         _dayPlanParser = dayPlanParser;
@@ -62,7 +61,9 @@ public class XpsUploadViewModel : BindableBase
     {
         GuardFileName();
         var rows = _dayPlanParser.ParseDayPlan(_fileName!);
-        var filledRooms = _occupationsFiller.FillRoomOccupations(rows, _roomNamesService.Rooms, int.Parse(_bufferService.Buffer)).ToList();
+        var roomNames = _persistenceService.SavedOptions.Rooms.ToRoomNames();
+        var savedOptionsBuffer = _persistenceService.SavedOptions.Buffer;
+        var filledRooms = _occupationsFiller.FillRoomOccupations(rows, roomNames, savedOptionsBuffer).ToList();
         Validate(filledRooms);
         _pdfWriter.Write(filledRooms);
         JsonWriter.Write(filledRooms, @"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\realFlowRooms.json");
@@ -77,7 +78,7 @@ public class XpsUploadViewModel : BindableBase
     }
 
     private void Validate(IEnumerable<Room> filledRooms)
-        => _ = _validator.IsValid(filledRooms, _roomNamesService.Rooms)
+        => _ = _validator.IsValid(filledRooms, _persistenceService.SavedOptions.Rooms.ToRoomNames())
             ? default(object)
             : throw new RoomsValidationException();
 }

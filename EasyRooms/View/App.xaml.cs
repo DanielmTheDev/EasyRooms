@@ -1,6 +1,4 @@
 ﻿using System.Windows;
-using EasyRooms.Model.Buffer.Implementations;
-using EasyRooms.Model.Buffer.Interfaces;
 using EasyRooms.Model.DayPlan.Implementations;
 using EasyRooms.Model.DayPlan.Interfaces;
 using EasyRooms.Model.FileDialog.Implementations;
@@ -8,6 +6,8 @@ using EasyRooms.Model.FileDialog.Interfaces;
 using EasyRooms.Model.Occupations.Implementations;
 using EasyRooms.Model.Pdf.Implementations;
 using EasyRooms.Model.Pdf.Interfaces;
+using EasyRooms.Model.Persistence.Implementations;
+using EasyRooms.Model.Persistence.Interfaces;
 using EasyRooms.Model.Rooms.Implementations;
 using EasyRooms.Model.Rooms.Interfaces;
 using EasyRooms.Model.Rows.Implementations;
@@ -57,8 +57,7 @@ public partial class App
             .AddTransient<ITherapiesAdder, RoomSpecificTherapiesAdder>()
             .AddTransient<ITherapiesAdder, LongTherapiesAdder>()
             .AddTransient<ITherapiesAdder, NormalTherapiesAdder>()
-            .AddSingleton<IRoomNamesService, RoomNamesService>()
-            .AddSingleton<IBufferService, BufferService>()
+            .AddSingleton<IPersistenceService, PersistenceService>()
             .AddSingleton<XpsUploadView>()
             .AddSingleton<XpsUploadViewModel>()
             .AddSingleton<OptionsViewModel>()
