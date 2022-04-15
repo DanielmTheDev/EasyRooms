@@ -2,5 +2,5 @@
 
 public interface ITherapyFiller
 {
-    void AddAllTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames);
+    void AddAllTherapies(IList<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames);
 }

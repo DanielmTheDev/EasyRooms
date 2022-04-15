@@ -1,3 +1,5 @@
+using EasyRooms.Model.CommonExtensions;
+
 namespace EasyRooms.Model.Therapies.Implementations;
 
 internal class PreparationsAdder : ITherapiesAdder
@@ -9,14 +11,12 @@ internal class PreparationsAdder : ITherapiesAdder
 
     public void Add(IEnumerable<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
     {
-        var preparations = orderedRows
+        orderedRows
             .Where(row => TherapyTypeProvider.IsPreparation(row.TherapyShort))
-            .ToList();
-
-        preparations.ForEach(preparation =>
-        {
-            _occupationsAdder.AddToSpecificRoom(rooms, string.Empty, preparation);
-            orderedRows.Remove(preparation);
-        });
+            .ForEach(preparation =>
+            {
+                _occupationsAdder.AddToSpecificRoom(rooms, string.Empty, preparation);
+                orderedRows.Remove(preparation);
+            });
     }
 }

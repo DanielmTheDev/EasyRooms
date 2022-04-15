@@ -1,4 +1,3 @@
-using EasyRooms.Model.CommonExtensions;
 using EasyRooms.Model.Pdf.Interfaces;
 using EasyRooms.Model.Pdf.Models;
 
@@ -37,16 +36,16 @@ public class PdfCreator : IPdfCreator
     private static void PrintRows(TherapyPlan plan, PdfData pdf)
     {
         var rowsOffset = InitialRowsOffset;
-        plan.Rows.ForEach(row =>
+        for (var i = 0; i < plan.Rows.Count; i++)
         {
-            PrintRow(row, rowsOffset, pdf);
+            PrintRow(plan.Rows[i], i, rowsOffset, pdf);
             rowsOffset += TherapyPlanConstants.LineHeight;
-        });
+        }
     }
 
-    private static void PrintRow(TherapyPlanRow row, double yOffset, PdfData pdfData)
+    private static void PrintRow(TherapyPlanRow row, int rowIndex, double yOffset, PdfData pdfData)
     {
-        var rowStrings = new[] {row.StartTime, row.Duration, row.Room, row.TherapyShort, row.TherapyLong, row.Patient, row.Therapist};
-        LinePrinter.PrintLine(pdfData, rowStrings, pdfData.Font, yOffset);
+        var rowStrings = new[] {row.StartTime, row.Duration, row.Room, row.TherapyShort, row.TherapyLong, row.Patient};
+        LinePrinter.PrintLine(pdfData, rowIndex, rowStrings, pdfData.Font, yOffset);
     }
 }

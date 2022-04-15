@@ -2,5 +2,5 @@
 
 public interface IRoomListCreator
 {
-    List<Room> CreateRooms(RoomNames roomNames);
+    IList<Room> CreateRooms(RoomNames roomNames);
 }

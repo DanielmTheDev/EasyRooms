@@ -1,4 +1,5 @@
-﻿using EasyRooms.Model.Rooms.Interfaces;
+﻿using EasyRooms.Model.CommonExtensions;
+using EasyRooms.Model.Rooms.Interfaces;
 
 namespace EasyRooms.Model.Rooms.Implementations;
 

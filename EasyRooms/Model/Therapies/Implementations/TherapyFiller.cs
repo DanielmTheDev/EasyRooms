@@ -7,7 +7,7 @@ public class TherapyFiller : ITherapyFiller
     public TherapyFiller(IEnumerable<ITherapiesAdder> therapyAdders)
         => _therapyAdders = therapyAdders;
 
-    public void AddAllTherapies(List<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
+    public void AddAllTherapies(IList<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
     {
         foreach (var massageAdder in _therapyAdders)
         {
