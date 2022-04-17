@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using EasyRooms.Model.DayPlan.Implementations;
 using EasyRooms.Model.DayPlan.Interfaces;
+using EasyRooms.Model.Dialogs.Implementations;
+using EasyRooms.Model.Dialogs.Interfaces;
 using EasyRooms.Model.FileDialog.Implementations;
 using EasyRooms.Model.FileDialog.Interfaces;
 using EasyRooms.Model.Occupations.Implementations;
@@ -58,6 +60,7 @@ public partial class App
             .AddTransient<ITherapiesAdder, LongTherapiesAdder>()
             .AddTransient<ITherapiesAdder, NormalTherapiesAdder>()
             .AddSingleton<IPersistenceService, PersistenceService>()
+            .AddSingleton<IMessageBoxShower, MessageBoxShower>()
             .AddSingleton<XpsUploadView>()
             .AddSingleton<XpsUploadViewModel>()
             .AddSingleton<OptionsViewModel>()

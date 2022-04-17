@@ -1,4 +1,5 @@
 ﻿using EasyRooms.Model.DayPlan.Interfaces;
+using EasyRooms.Model.Dialogs.Interfaces;
 using EasyRooms.Model.FileDialog.Interfaces;
 using EasyRooms.Model.Json;
 using EasyRooms.Model.Pdf.Interfaces;
@@ -26,6 +27,7 @@ public class XpsUploadViewModel : BindableBase
     private readonly IRoomsValidator _validator;
     private readonly IPdfWriter _pdfWriter;
     private readonly IPersistenceService _persistenceService;
+    private readonly IMessageBoxShower _messageBoxShower;
 
     private string? _fileName;
 
@@ -35,11 +37,13 @@ public class XpsUploadViewModel : BindableBase
         IFileDialogOpener fileDialogOpener,
         IRoomsValidator validator,
         IPdfWriter pdfWriter,
-        IPersistenceService persistenceService)
+        IPersistenceService persistenceService,
+        IMessageBoxShower messageBoxShower)
     {
         CalculateOccupationsCommand = new RelayCommand(CalculateOccupations, CanCalculateOccupations);
         ChooseFileCommand = new RelayCommand(OpenFileDialog);
         _persistenceService = persistenceService;
+        _messageBoxShower = messageBoxShower;
         _fileName = @"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\16.07ultimativer Test.xps";
         _occupationsFiller = occupationsFiller;
         _dayPlanParser = dayPlanParser;
@@ -65,6 +69,7 @@ public class XpsUploadViewModel : BindableBase
         var savedOptionsBuffer = _persistenceService.SavedOptions.Buffer;
         var filledRooms = _occupationsFiller.FillRoomOccupations(rows, roomNames, savedOptionsBuffer).ToList();
         Validate(filledRooms);
+        _messageBoxShower.ShowSuccessMessage();
         _pdfWriter.Write(filledRooms);
         JsonWriter.Write(filledRooms, @"C:\Repos\EasyRooms\EasyRooms.Tests\IntegrationTests\TestData\realFlowRooms.json");
     }

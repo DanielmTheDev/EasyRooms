@@ -20,14 +20,38 @@
         "EndTime": "10:10:00"
       },
       {
+        "Therapist": "Lena",
+        "Patient": "Stefan Schechs",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "10:30:00",
+        "EndTime": "10:50:00"
+      },
+      {
         "Therapist": "Franziska",
-        "Patient": "Imer Bardi",
-        "TherapyShort": "MT",
-        "TherapyLong": "Manuelle Therapie",
+        "Patient": "Markus-Alois Stoeckle",
+        "TherapyShort": "FANGO",
+        "TherapyLong": "Warmpackungen einschl. Nachruhe (Fango)",
         "StartTime": "11:00:00",
         "EndTime": "11:20:00"
       },
       {
+        "Therapist": "Franziska",
+        "Patient": "Augusta Hammer-Burgstaller",
+        "TherapyShort": "MT",
+        "TherapyLong": "Manuelle Therapie",
+        "StartTime": "11:40:00",
+        "EndTime": "12:00:00"
+      },
+      {
+        "Therapist": "Lena",
+        "Patient": "Elke Daniel",
+        "TherapyShort": "MLD45",
+        "TherapyLong": "Manuelle Lymphdrainage (45 min.)",
+        "StartTime": "12:20:00",
+        "EndTime": "13:00:00"
+      },
+      {
         "Therapist": "Jessica",
         "Patient": "Petra Zach",
         "TherapyShort": "*PARTNER",
@@ -60,20 +84,20 @@
         "EndTime": "16:15:00"
       },
       {
-        "Therapist": "Jessica",
-        "Patient": "Anja Kink",
-        "TherapyShort": "AROMA30",
-        "TherapyLong": "Aromamassage 30 min",
-        "StartTime": "16:50:00",
+        "Therapist": "Gabi",
+        "Patient": "Gertraud Brandl",
+        "TherapyShort": "GANZ",
+        "TherapyLong": "Massage 60 Min.",
+        "StartTime": "16:20:00",
         "EndTime": "17:20:00"
       },
       {
-        "Therapist": "Jessica",
-        "Patient": "Emma Lepiorz",
-        "TherapyShort": "RÜCK30",
-        "TherapyLong": "Massage 30 min",
-        "StartTime": "17:20:00",
-        "EndTime": "17:50:00"
+        "Therapist": "Patrick",
+        "Patient": "Laura Tauschek",
+        "TherapyShort": "GANZ",
+        "TherapyLong": "Massage 60 Min.",
+        "StartTime": "17:30:00",
+        "EndTime": "18:30:00"
       },
       {
         "Therapist": "Jessica",
@@ -122,20 +146,36 @@
         "EndTime": "09:10:00"
       },
       {
-        "Therapist": "Lena",
-        "Patient": "Theresia Zach",
-        "TherapyShort": "KG",
-        "TherapyLong": "Krankengymnastik, auch auf",
-        "StartTime": "10:10:00",
-        "EndTime": "10:30:00"
+        "Therapist": "Franziska",
+        "Patient": "Andrea Bayer",
+        "TherapyShort": "MT",
+        "TherapyLong": "Manuelle Therapie",
+        "StartTime": "09:20:00",
+        "EndTime": "09:40:00"
       },
       {
         "Therapist": "Franziska",
-        "Patient": "Markus-Alois Stoeckle",
+        "Patient": "Christina Ockert",
+        "TherapyShort": "MLD45",
+        "TherapyLong": "Manuelle Lymphdrainage (45 min.)",
+        "StartTime": "10:00:00",
+        "EndTime": "10:40:00"
+      },
+      {
+        "Therapist": "Franziska",
+        "Patient": "Imer Bardi",
+        "TherapyShort": "MT",
+        "TherapyLong": "Manuelle Therapie",
+        "StartTime": "11:00:00",
+        "EndTime": "11:20:00"
+      },
+      {
+        "Therapist": "Franziska",
+        "Patient": "BG-Fall Pia Kiener",
         "TherapyShort": "KG",
         "TherapyLong": "Krankengymnastik, auch auf",
-        "StartTime": "11:20:00",
-        "EndTime": "11:40:00"
+        "StartTime": "12:00:00",
+        "EndTime": "12:20:00"
       },
       {
         "Therapist": "Patrick",
@@ -147,27 +187,35 @@
       },
       {
         "Therapist": "Jessica",
-        "Patient": "Sabine Hörath",
-        "TherapyShort": "RÜCK30",
-        "TherapyLong": "Massage 30 min",
-        "StartTime": "16:20:00",
-        "EndTime": "16:50:00"
-      },
-      {
-        "Therapist": "Patrick",
-        "Patient": "Verena Auburger",
-        "TherapyShort": "RÜCK30",
-        "TherapyLong": "Massage 30 min",
-        "StartTime": "17:00:00",
-        "EndTime": "17:30:00"
+        "Patient": "Petra Zach",
+        "TherapyShort": "FUSS",
+        "TherapyLong": "Fußmassage",
+        "StartTime": "16:05:00",
+        "EndTime": "16:20:00"
       },
       {
         "Therapist": "Jessica",
-        "Patient": "Romy Griffith",
-        "TherapyShort": "AROMA60",
-        "TherapyLong": "Aromamassage 60 min",
-        "StartTime": "17:50:00",
-        "EndTime": "18:50:00"
+        "Patient": "Anja Kink",
+        "TherapyShort": "AROMA30",
+        "TherapyLong": "Aromamassage 30 min",
+        "StartTime": "16:50:00",
+        "EndTime": "17:20:00"
+      },
+      {
+        "Therapist": "Gabi",
+        "Patient": "Gisela Hammer",
+        "TherapyShort": "GANZ",
+        "TherapyLong": "Massage 60 Min.",
+        "StartTime": "17:20:00",
+        "EndTime": "18:20:00"
+      },
+      {
+        "Therapist": "Patrick",
+        "Patient": "Heidi-Rose Mayer",
+        "TherapyShort": "RÜCK30",
+        "TherapyLong": "Massage 30 min",
+        "StartTime": "18:30:00",
+        "EndTime": "19:00:00"
       },
       {
         "Therapist": "Patrick",
@@ -192,20 +240,36 @@
         "EndTime": "09:20:00"
       },
       {
+        "Therapist": "Franziska",
+        "Patient": "Andrea Bayer",
+        "TherapyShort": "MT",
+        "TherapyLong": "Manuelle Therapie",
+        "StartTime": "09:40:00",
+        "EndTime": "10:00:00"
+      },
+      {
         "Therapist": "Lena",
-        "Patient": "Stefan Schechs",
+        "Patient": "Theresia Zach",
         "TherapyShort": "KG",
         "TherapyLong": "Krankengymnastik, auch auf",
-        "StartTime": "10:30:00",
-        "EndTime": "10:50:00"
+        "StartTime": "10:10:00",
+        "EndTime": "10:30:00"
       },
       {
         "Therapist": "Franziska",
-        "Patient": "BG-Fall Pia Kiener",
+        "Patient": "Pavlo Adamovskyy",
         "TherapyShort": "KG",
         "TherapyLong": "Krankengymnastik, auch auf",
-        "StartTime": "12:00:00",
-        "EndTime": "12:20:00"
+        "StartTime": "10:40:00",
+        "EndTime": "11:00:00"
+      },
+      {
+        "Therapist": "Franziska",
+        "Patient": "Markus-Alois Stoeckle",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "11:20:00",
+        "EndTime": "11:40:00"
       },
       {
         "Therapist": "Patrick",
@@ -224,12 +288,20 @@
         "EndTime": "17:40:00"
       },
       {
-        "Therapist": "Anna",
-        "Patient": "Vero Lopes",
-        "TherapyShort": "GANZ",
-        "TherapyLong": "Massage 60 Min.",
-        "StartTime": "18:00:00",
-        "EndTime": "19:00:00"
+        "Therapist": "Jessica",
+        "Patient": "Romy Griffith",
+        "TherapyShort": "AROMA60",
+        "TherapyLong": "Aromamassage 60 min",
+        "StartTime": "17:50:00",
+        "EndTime": "18:50:00"
+      },
+      {
+        "Therapist": "Patrick",
+        "Patient": "Heidi-Rose Mayer",
+        "TherapyShort": "FUSS",
+        "TherapyLong": "Fußmassage",
+        "StartTime": "19:00:00",
+        "EndTime": "19:15:00"
       },
       {
         "Therapist": "Anna",
@@ -246,30 +318,6 @@
     "IsPartnerRoom": false,
     "Occupations": [
       {
-        "Therapist": "Franziska",
-        "Patient": "Andrea Bayer",
-        "TherapyShort": "MT",
-        "TherapyLong": "Manuelle Therapie",
-        "StartTime": "09:20:00",
-        "EndTime": "09:40:00"
-      },
-      {
-        "Therapist": "Franziska",
-        "Patient": "Pavlo Adamovskyy",
-        "TherapyShort": "KG",
-        "TherapyLong": "Krankengymnastik, auch auf",
-        "StartTime": "10:40:00",
-        "EndTime": "11:00:00"
-      },
-      {
-        "Therapist": "Lena",
-        "Patient": "Elke Daniel",
-        "TherapyShort": "MLD45",
-        "TherapyLong": "Manuelle Lymphdrainage (45 min.)",
-        "StartTime": "12:20:00",
-        "EndTime": "13:00:00"
-      },
-      {
         "Therapist": "Anna",
         "Patient": "Gülcan Capar",
         "TherapyShort": "KMT",
@@ -278,27 +326,27 @@
         "EndTime": "16:20:00"
       },
       {
-        "Therapist": "Gabi",
-        "Patient": "Gertraud Brandl",
-        "TherapyShort": "GANZ",
-        "TherapyLong": "Massage 60 Min.",
-        "StartTime": "16:20:00",
+        "Therapist": "Anna",
+        "Patient": "Inessa Anochina",
+        "TherapyShort": "KG",
+        "TherapyLong": "Krankengymnastik, auch auf",
+        "StartTime": "17:00:00",
         "EndTime": "17:20:00"
       },
       {
-        "Therapist": "Anna",
-        "Patient": "Walter Schmoll",
-        "TherapyShort": "KG",
-        "TherapyLong": "Krankengymnastik, auch auf",
-        "StartTime": "17:40:00",
-        "EndTime": "18:00:00"
-      },
-      {
-        "Therapist": "Patrick",
-        "Patient": "Heidi-Rose Mayer",
+        "Therapist": "Jessica",
+        "Patient": "Emma Lepiorz",
         "TherapyShort": "RÜCK30",
         "TherapyLong": "Massage 30 min",
-        "StartTime": "18:30:00",
+        "StartTime": "17:20:00",
+        "EndTime": "17:50:00"
+      },
+      {
+        "Therapist": "Anna",
+        "Patient": "Vero Lopes",
+        "TherapyShort": "GANZ",
+        "TherapyLong": "Massage 60 Min.",
+        "StartTime": "18:00:00",
         "EndTime": "19:00:00"
       },
       {
@@ -316,98 +364,28 @@
     "IsPartnerRoom": false,
     "Occupations": [
       {
-        "Therapist": "Franziska",
-        "Patient": "Andrea Bayer",
-        "TherapyShort": "MT",
-        "TherapyLong": "Manuelle Therapie",
-        "StartTime": "09:40:00",
-        "EndTime": "10:00:00"
-      },
-      {
-        "Therapist": "Franziska",
-        "Patient": "Markus-Alois Stoeckle",
-        "TherapyShort": "FANGO",
-        "TherapyLong": "Warmpackungen einschl. Nachruhe (Fango)",
-        "StartTime": "11:00:00",
-        "EndTime": "11:20:00"
-      },
-      {
-        "Therapist": "Jessica",
+        "Therapist": "Gabi",
         "Patient": "Petra Zach",
         "TherapyShort": "FUSS",
         "TherapyLong": "Fußmassage",
         "StartTime": "16:05:00",
         "EndTime": "16:20:00"
+      },
+      {
+        "Therapist": "Gabi",
+        "Patient": "Gisela Hammer",
+        "TherapyShort": "FANGO",
+        "TherapyLong": "Warmpackungen einschl. Nachruhe (Fango)",
+        "StartTime": "17:00:00",
+        "EndTime": "17:20:00"
       },
       {
         "Therapist": "Anna",
-        "Patient": "Inessa Anochina",
+        "Patient": "Walter Schmoll",
         "TherapyShort": "KG",
         "TherapyLong": "Krankengymnastik, auch auf",
-        "StartTime": "17:00:00",
-        "EndTime": "17:20:00"
-      },
-      {
-        "Therapist": "Gabi",
-        "Patient": "Gisela Hammer",
-        "TherapyShort": "GANZ",
-        "TherapyLong": "Massage 60 Min.",
-        "StartTime": "17:20:00",
-        "EndTime": "18:20:00"
-      },
-      {
-        "Therapist": "Patrick",
-        "Patient": "Heidi-Rose Mayer",
-        "TherapyShort": "FUSS",
-        "TherapyLong": "Fußmassage",
-        "StartTime": "19:00:00",
-        "EndTime": "19:15:00"
-      }
-    ]
-  },
-  {
-    "Name": "",
-    "IsPartnerRoom": false,
-    "Occupations": [
-      {
-        "Therapist": "Franziska",
-        "Patient": "Christina Ockert",
-        "TherapyShort": "MLD45",
-        "TherapyLong": "Manuelle Lymphdrainage (45 min.)",
-        "StartTime": "10:00:00",
-        "EndTime": "10:40:00"
-      },
-      {
-        "Therapist": "Franziska",
-        "Patient": "Augusta Hammer-Burgstaller",
-        "TherapyShort": "MT",
-        "TherapyLong": "Manuelle Therapie",
-        "StartTime": "11:40:00",
-        "EndTime": "12:00:00"
-      },
-      {
-        "Therapist": "Gabi",
-        "Patient": "Petra Zach",
-        "TherapyShort": "FUSS",
-        "TherapyLong": "Fußmassage",
-        "StartTime": "16:05:00",
-        "EndTime": "16:20:00"
-      },
-      {
-        "Therapist": "Gabi",
-        "Patient": "Gisela Hammer",
-        "TherapyShort": "FANGO",
-        "TherapyLong": "Warmpackungen einschl. Nachruhe (Fango)",
-        "StartTime": "17:00:00",
-        "EndTime": "17:20:00"
-      },
-      {
-        "Therapist": "Patrick",
-        "Patient": "Laura Tauschek",
-        "TherapyShort": "GANZ",
-        "TherapyLong": "Massage 60 Min.",
-        "StartTime": "17:30:00",
-        "EndTime": "18:30:00"
+        "StartTime": "17:40:00",
+        "EndTime": "18:00:00"
       },
       {
         "Therapist": "Anna",
@@ -416,6 +394,28 @@
         "TherapyLong": "Manuelle Therapie",
         "StartTime": "19:00:00",
         "EndTime": "19:20:00"
+      }
+    ]
+  },
+  {
+    "Name": "",
+    "IsPartnerRoom": false,
+    "Occupations": [
+      {
+        "Therapist": "Jessica",
+        "Patient": "Sabine Hörath",
+        "TherapyShort": "RÜCK30",
+        "TherapyLong": "Massage 30 min",
+        "StartTime": "16:20:00",
+        "EndTime": "16:50:00"
+      },
+      {
+        "Therapist": "Patrick",
+        "Patient": "Verena Auburger",
+        "TherapyShort": "RÜCK30",
+        "TherapyLong": "Massage 30 min",
+        "StartTime": "17:00:00",
+        "EndTime": "17:30:00"
       }
     ]
   }

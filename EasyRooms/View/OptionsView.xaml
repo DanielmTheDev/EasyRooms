@@ -28,7 +28,7 @@
             <Label Style="{StaticResource OptionsLabel}" Content="Spezielle Massagen" />
             <TextBox Style="{StaticResource BigOptionsTextBox}" AcceptsReturn="True" Text="{Binding MassagesForSpecificRooms}"/>
 
-            <Button Command="{Binding SaveRoomsCommand}" Content="Räume Speichern" Style="{StaticResource SaveButton}" />
+            <Button Command="{Binding SaveRoomsCommand}" Content="Speichern" Style="{StaticResource SaveButton}" />
         </StackPanel>
     </Grid>
 </UserControl>
