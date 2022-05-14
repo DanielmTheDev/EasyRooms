@@ -28,16 +28,10 @@ public static class LinePrinter
         {
             var calculatedXOffset = CalculateXOffset(i);
             var point = new PdfPoint(calculatedXOffset, pdfData.Page.PageSize.Top - yOffset);
-            pdfData.Page.AddText(wordsInRow[i], 5, point, font);
+            pdfData.Page.AddText(wordsInRow[i], TherapyPlanConstants.FontSize, point, font);
         }
     }
 
     private static double CalculateXOffset(int columnIndex)
-    {
-        var offset = TherapyPlanConstants.InitialXOffset + TherapyPlanConstants.ColumnWidth * columnIndex;
-        if (columnIndex == 5)
-            offset += 70d;
-
-        return offset;
-    }
+        => TherapyPlanConstants.InitialXOffset + TherapyPlanConstants.ColumnWidth * columnIndex;
 }

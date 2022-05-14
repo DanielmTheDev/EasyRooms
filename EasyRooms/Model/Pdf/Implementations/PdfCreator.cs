@@ -6,16 +6,16 @@ namespace EasyRooms.Model.Pdf.Implementations;
 public class PdfCreator : IPdfCreator
 {
     private readonly IPlansCreator _plansCreator;
-    private readonly IPlanPrinter _planPrinter;
+    private readonly IHeaderPrinter _headerPrinter;
 
     private const double PageHeaderOffset = 40d;
     private const double ColumnsHeaderOffset = 60d;
     private const double InitialRowsOffset = 75d;
 
-    public PdfCreator(IPlansCreator plansCreator, IPlanPrinter planPrinter)
+    public PdfCreator(IPlansCreator plansCreator, IHeaderPrinter headerPrinter)
     {
         _plansCreator = plansCreator;
-        _planPrinter = planPrinter;
+        _headerPrinter = headerPrinter;
     }
 
     public IEnumerable<PdfData> Create(IEnumerable<Room> rooms)
@@ -27,8 +27,8 @@ public class PdfCreator : IPdfCreator
     private PdfData WritePdf(TherapyPlan plan)
     {
         var pdf = Pdf.Create(plan.Therapist);
-        _planPrinter.PrintPageHeader(pdf, plan.Therapist, PageHeaderOffset);
-        _planPrinter.PrintHeaders(pdf, ColumnsHeaderOffset);
+        _headerPrinter.PrintPageHeader(pdf, plan.Therapist, PageHeaderOffset);
+        _headerPrinter.PrintColumnHeaders(pdf, ColumnsHeaderOffset);
         PrintRows(plan, pdf);
         return pdf;
     }
@@ -45,7 +45,7 @@ public class PdfCreator : IPdfCreator
 
     private static void PrintRow(TherapyPlanRow row, int rowIndex, double yOffset, PdfData pdfData)
     {
-        var rowStrings = new[] {row.StartTime, row.Duration, row.Room, row.TherapyShort, row.TherapyLong, row.Patient};
+        var rowStrings = new[] {row.StartTime, row.Duration, row.Comment, row.Room, row.TherapyShort, row.Patient};
         LinePrinter.PrintLine(pdfData, rowIndex, rowStrings, pdfData.Font, yOffset);
     }
 }

@@ -2,8 +2,8 @@ using EasyRooms.Model.Pdf.Models;
 
 namespace EasyRooms.Model.Pdf.Interfaces;
 
-public interface IPlanPrinter
+public interface IHeaderPrinter
 {
-    void PrintHeaders(Models.PdfData pdfData, double yOffset);
+    void PrintColumnHeaders(Models.PdfData pdfData, double yOffset);
     void PrintPageHeader(PdfData pdfData, string content, double headersYOffset);
 }
