@@ -52,7 +52,7 @@ public partial class App
             .AddTransient<IPdfWriter, PdfWriter>()
             .AddTransient<IPlansCreator, PlansCreator>()
             .AddTransient<IPdfCreator, PdfCreator>()
-            .AddTransient<IPlanPrinter, PlanPrinter>()
+            .AddTransient<IHeaderPrinter, HeaderPrinter>()
             .AddTransient<IOccupationsAdder, OccupationsAdder>()
             .AddTransient<ITherapiesAdder, PreparationsAdder>()
             .AddTransient<ITherapiesAdder, PartnerTherapiesAdder>()

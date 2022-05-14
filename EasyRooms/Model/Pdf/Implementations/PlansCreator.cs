@@ -18,6 +18,7 @@ public class PlansCreator : IPlansCreator
                 .Select(occupation => new TherapyPlanRow(
                     occupation.StartTime.ToString(),
                     (occupation.EndTime - occupation.StartTime).ToString(),
+                    occupation.Comment,
                     occupation.TherapyShort,
                     occupation.TherapyLong,
                     occupation.Patient,

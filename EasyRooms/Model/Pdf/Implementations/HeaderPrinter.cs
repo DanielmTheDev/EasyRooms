@@ -4,11 +4,11 @@ using UglyToad.PdfPig.Core;
 
 namespace EasyRooms.Model.Pdf.Implementations;
 
-public class PlanPrinter : IPlanPrinter
+public class HeaderPrinter : IHeaderPrinter
 {
-    public void PrintHeaders(PdfData pdfData, double yOffset)
+    public void PrintColumnHeaders(PdfData pdfData, double yOffset)
     {
-        var headerStrings = new [] { "Beginn", "Dauer", "Raum", "Behandlung", string.Empty, "Patient" };
+        var headerStrings = new [] { "Beginn", "Dauer", "Zusatz", "Raum", "Behandlung", "Patient" };
         LinePrinter.PrintLine(pdfData, 0, headerStrings, pdfData.BoldFont, yOffset);
     }
 
@@ -17,6 +17,6 @@ public class PlanPrinter : IPlanPrinter
         var contentPoint = new PdfPoint(250d, pdfData.Page.PageSize.Top - headersYOffset);
         pdfData.Page.AddText(content, 15, contentPoint, pdfData.BoldFont);
         var datePoint = new PdfPoint(40d, pdfData.Page.PageSize.Top - headersYOffset);
-        pdfData.Page.AddText(DateOnly.FromDateTime(DateTime.Now).ToString(), 8, datePoint, pdfData.Font);
+        pdfData.Page.AddText(DateOnly.FromDateTime(DateTime.Now).ToString(), TherapyPlanConstants.FontSize, datePoint, pdfData.Font);
     }
 }

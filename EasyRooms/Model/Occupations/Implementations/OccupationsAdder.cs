@@ -14,7 +14,7 @@ public class OccupationsAdder : IOccupationsAdder
         var freeRoom = _freeRoomFinder.FindFreeRoom(rows.First().StartTimeAsTimeSpan, rows.First().EndTimeAsTimeSpan, bufferInMinutes, rooms);
             foreach (var row in rows)
         {
-            freeRoom.AddOccupation(new Occupation(row, row.StartTimeAsTimeSpan, row.EndTimeAsTimeSpan));
+            freeRoom.AddOccupation(new(row, row.StartTimeAsTimeSpan, row.EndTimeAsTimeSpan));
         }
     }
 
@@ -24,7 +24,7 @@ public class OccupationsAdder : IOccupationsAdder
         var specificRoom = rooms.Single(room => string.Equals(room.Name, roomName, StringComparison.OrdinalIgnoreCase));
         foreach (var row in rows)
         {
-            specificRoom.AddOccupation(new Occupation(row, row.StartTimeAsTimeSpan, row.EndTimeAsTimeSpan));
+            specificRoom.AddOccupation(new(row, row.StartTimeAsTimeSpan, row.EndTimeAsTimeSpan));
         }
     }
 }
