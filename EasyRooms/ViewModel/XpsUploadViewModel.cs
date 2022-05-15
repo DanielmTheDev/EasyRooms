@@ -4,6 +4,7 @@ using EasyRooms.Model.FileDialog.Interfaces;
 using EasyRooms.Model.Pdf.Interfaces;
 using EasyRooms.Model.Persistence.Extensions;
 using EasyRooms.Model.Persistence.Interfaces;
+using EasyRooms.Model.Rooms.Exceptions;
 using EasyRooms.Model.Rooms.Interfaces;
 using EasyRooms.Model.Validation.Exceptions;
 using EasyRooms.Model.Validation.Interfaces;
@@ -49,7 +50,7 @@ public class XpsUploadViewModel : BindableBase
         _fileDialogOpener = fileDialogOpener;
         _validator = validator;
         _pdfWriter = pdfWriter;
-        _fileName = "C:\\Users\\dadam\\Downloads\\Test_neu.xps";
+        _fileName = "C:\\Users\\dadam\\Downloads\\Plan_Vom_9.05.xps";
     }
 
     private void OpenFileDialog()
@@ -67,10 +68,20 @@ public class XpsUploadViewModel : BindableBase
         var rows = _dayPlanParser.ParseDayPlan(_fileName!);
         var roomNames = _persistenceService.SavedOptions.Rooms.ToRoomNames();
         var savedOptionsBuffer = _persistenceService.SavedOptions.Buffer;
-        var filledRooms = _occupationsFiller.FillRoomOccupations(rows, roomNames, savedOptionsBuffer).ToList();
-        Validate(filledRooms);
-        _messageBoxShower.ShowSuccessMessage();
-        _pdfWriter.Write(filledRooms);
+        try
+        {
+            var filledRooms = _occupationsFiller
+                .FillRoomOccupations(rows, roomNames, savedOptionsBuffer)
+                .ToList();
+            Validate(filledRooms);
+            _messageBoxShower.ShowSuccessMessage();
+            _pdfWriter.Write(filledRooms);
+        }
+        catch (NoFreeRoomException exception)
+        {
+            Console.WriteLine(exception);
+            throw;
+        }
     }
 
     private void GuardFileName()

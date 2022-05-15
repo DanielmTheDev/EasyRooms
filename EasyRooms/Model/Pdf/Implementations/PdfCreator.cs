@@ -8,10 +8,6 @@ public class PdfCreator : IPdfCreator
     private readonly IPlansCreator _plansCreator;
     private readonly IHeaderPrinter _headerPrinter;
 
-    private const double PageHeaderOffset = 40d;
-    private const double ColumnsHeaderOffset = 60d;
-    private const double InitialRowsOffset = 75d;
-
     public PdfCreator(IPlansCreator plansCreator, IHeaderPrinter headerPrinter)
     {
         _plansCreator = plansCreator;
@@ -27,15 +23,15 @@ public class PdfCreator : IPdfCreator
     private PdfData WritePdf(TherapyPlan plan)
     {
         var pdf = Pdf.Create(plan.Therapist);
-        _headerPrinter.PrintPageHeader(pdf, plan.Therapist, PageHeaderOffset);
-        _headerPrinter.PrintColumnHeaders(pdf, ColumnsHeaderOffset);
+        _headerPrinter.PrintPageHeader(pdf, plan.Therapist, TherapyPlanConstants.PageHeaderOffset);
+        _headerPrinter.PrintColumnHeaders(pdf, TherapyPlanConstants.ColumnsHeaderOffset);
         PrintRows(plan, pdf);
         return pdf;
     }
 
     private static void PrintRows(TherapyPlan plan, PdfData pdf)
     {
-        var rowsOffset = InitialRowsOffset;
+        var rowsOffset = TherapyPlanConstants.InitialRowsOffset;
         for (var i = 0; i < plan.Rows.Count; i++)
         {
             PrintRow(plan.Rows[i], i, rowsOffset, pdf);

@@ -10,7 +10,9 @@ public class FreeRoomFinder : IFreeRoomFinder
         var enumeratedRooms = rooms.ToList();
         for (; bufferInMinutes >= 0; bufferInMinutes--)
         {
-            var freeRoom = enumeratedRooms.FirstOrDefault(room => !room.IsOccupiedAt(startTime, endTime, bufferInMinutes));
+            var freeRoom = enumeratedRooms
+                .FirstOrDefault(room => !room.IsOccupiedAt(startTime, endTime, bufferInMinutes)
+                                        && !string.IsNullOrEmpty(room.Name));
             if (freeRoom is { })
             {
                 return freeRoom;

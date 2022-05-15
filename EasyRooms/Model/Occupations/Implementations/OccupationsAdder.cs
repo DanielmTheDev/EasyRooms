@@ -12,7 +12,7 @@ public class OccupationsAdder : IOccupationsAdder
     public void AddToFreeRoom(IEnumerable<Room> rooms, int bufferInMinutes, params Row[] rows)
     {
         var freeRoom = _freeRoomFinder.FindFreeRoom(rows.First().StartTimeAsTimeSpan, rows.First().EndTimeAsTimeSpan, bufferInMinutes, rooms);
-            foreach (var row in rows)
+        foreach (var row in rows)
         {
             freeRoom.AddOccupation(new(row, row.StartTimeAsTimeSpan, row.EndTimeAsTimeSpan));
         }
