@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using System.IO;
 using EasyRooms.Model.CommonExtensions;
 using EasyRooms.Model.Pdf.Interfaces;
@@ -16,21 +15,12 @@ public class PdfWriter : IPdfWriter
     public void Write(IEnumerable<Room> rooms)
         => _pdfCreator
             .Create(rooms)
-            .ForEach(CreateAndOpenFile);
+            .ForEach(WriteFile);
 
-    private static void CreateAndOpenFile(PdfData pdf)
+    private static void WriteFile(PdfData pdf)
     {
         var path = $@".\Pläne\{pdf.Name}.pdf";
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
         File.WriteAllBytes(path, pdf.Builder.Build());
-        // OpenPdf(path);
-    }
-
-    private static void OpenPdf(string filePath)
-    {
-        var process = new Process();
-        process.StartInfo.FileName = @"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe";
-        process.StartInfo.Arguments = filePath;
-        process.Start();
     }
 }

@@ -13,4 +13,13 @@ public class MessageBoxShower : IMessageBoxShower
         const MessageBoxImage icon = MessageBoxImage.None;
         MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
     }
+
+    public void ShowNoFreeRoomFoundMessage()
+    {
+        const string messageBoxText = "Es konnte keine Lösung gefunden werden. Versuchen Sie bitte, die Pufferzeit in den Optionen zu verringern.";
+        const string caption = "Fehler";
+        const MessageBoxButton button = MessageBoxButton.OK;
+        const MessageBoxImage icon = MessageBoxImage.None;
+        MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
+    }
 }
