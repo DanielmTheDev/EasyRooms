@@ -1,5 +1,7 @@
 using EasyRooms.Model.Pdf.Interfaces;
 using EasyRooms.Model.Pdf.Models;
+using UglyToad.PdfPig.Content;
+using UglyToad.PdfPig.Writer;
 
 namespace EasyRooms.Model.Pdf.Implementations;
 
@@ -14,34 +16,34 @@ public class PdfCreator : IPdfCreator
         _headerPrinter = headerPrinter;
     }
 
-    public IEnumerable<PdfData> Create(IEnumerable<Room> rooms)
+    public IEnumerable<PdfAggregate> Create(IEnumerable<Room> rooms, PdfAggregate pdf)
     {
         var therapyPlans = _plansCreator.Create(rooms);
-        return therapyPlans.Select(WritePdf);
+        return therapyPlans.Select(plan => WritePdf(plan, pdf));
     }
 
-    private PdfData WritePdf(TherapyPlan plan)
+    private PdfAggregate WritePdf(TherapyPlan plan, PdfAggregate pdf)
     {
-        var pdf = Pdf.Create(plan.Therapist);
-        _headerPrinter.PrintPageHeader(pdf, plan.Therapist, TherapyPlanConstants.PageHeaderOffset);
-        _headerPrinter.PrintColumnHeaders(pdf, TherapyPlanConstants.ColumnsHeaderOffset);
-        PrintRows(plan, pdf);
+        var page = pdf.Builder.AddPage(PageSize.A4);
+        _headerPrinter.PrintPageHeader(pdf, plan.Therapist, TherapyPlanConstants.PageHeaderOffset, page);
+        _headerPrinter.PrintColumnHeaders(pdf, TherapyPlanConstants.ColumnsHeaderOffset, page);
+        PrintRows(plan, pdf, page);
         return pdf;
     }
 
-    private static void PrintRows(TherapyPlan plan, PdfData pdf)
+    private static void PrintRows(TherapyPlan plan, PdfAggregate pdf, PdfPageBuilder page)
     {
         var rowsOffset = TherapyPlanConstants.InitialRowsOffset;
         for (var i = 0; i < plan.Rows.Count; i++)
         {
-            PrintRow(plan.Rows[i], i, rowsOffset, pdf);
+            PrintRow(plan.Rows[i], i, rowsOffset, pdf, page);
             rowsOffset += TherapyPlanConstants.LineHeight;
         }
     }
 
-    private static void PrintRow(TherapyPlanRow row, int rowIndex, double yOffset, PdfData pdfData)
+    private static void PrintRow(TherapyPlanRow row, int rowIndex, double yOffset, PdfAggregate pdfAggregate, PdfPageBuilder page)
     {
         var rowStrings = new[] {row.StartTime, row.Duration, row.Comment, row.Room, row.TherapyShort, row.Patient};
-        LinePrinter.PrintLine(pdfData, rowIndex, rowStrings, pdfData.Font, yOffset);
+        LinePrinter.PrintLine(rowIndex, rowStrings, pdfAggregate.Font, yOffset, page);
     }
 }

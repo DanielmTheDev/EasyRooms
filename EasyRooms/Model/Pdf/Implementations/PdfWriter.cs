@@ -14,10 +14,10 @@ public class PdfWriter : IPdfWriter
 
     public void Write(IEnumerable<Room> rooms)
         => _pdfCreator
-            .Create(rooms)
+            .Create(rooms, PdfAggregateCreator.Create("Gesamtplan"))
             .ForEach(WriteFile);
 
-    private static void WriteFile(PdfData pdf)
+    private static void WriteFile(PdfAggregate pdf)
     {
         var path = $@".\Pläne\{pdf.Name}.pdf";
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
