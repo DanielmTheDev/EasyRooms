@@ -77,7 +77,7 @@ public class XpsUploadViewModel : BindableBase
             _messageBoxShower.ShowSuccessMessage();
             _pdfWriter.Write(filledRooms);
         }
-        catch (NoFreeRoomException _)
+        catch (NoFreeRoomException)
         {
             _messageBoxShower.ShowNoFreeRoomFoundMessage();
         }

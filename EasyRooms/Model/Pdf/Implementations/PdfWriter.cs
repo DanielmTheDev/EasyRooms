@@ -13,14 +13,22 @@ public class PdfWriter : IPdfWriter
         => _pdfCreator = pdfCreator;
 
     public void Write(IEnumerable<Room> rooms)
-        => _pdfCreator
-            .Create(rooms)
-            .ForEach(WriteFile);
-
-    private static void WriteFile(PdfData pdf)
     {
-        var path = $@".\Pläne\{pdf.Name}.pdf";
+        var pdf = _pdfCreator.Create(rooms);
+        const string path = @".\Pläne";
+        DeleteDirectoryContents(path);
+        WriteFile(pdf, path);
+    }
+
+    private static void DeleteDirectoryContents(string path)
+        => new DirectoryInfo(path)
+            .EnumerateFiles()
+            .ForEach(file => file.Delete());
+
+    private static void WriteFile(PdfAggregate pdf, string path)
+    {
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
-        File.WriteAllBytes(path, pdf.Builder.Build());
+        var build = pdf.Builder.Build();
+        File.WriteAllBytes($@"{path}\{pdf.Name}.pdf", build);
     }
 }
