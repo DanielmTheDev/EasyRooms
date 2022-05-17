@@ -1,3 +1,4 @@
+using EasyRooms.Model.CommonExtensions;
 using EasyRooms.Model.Pdf.Interfaces;
 using EasyRooms.Model.Pdf.Models;
 using UglyToad.PdfPig.Content;
@@ -16,19 +17,20 @@ public class PdfCreator : IPdfCreator
         _headerPrinter = headerPrinter;
     }
 
-    public IEnumerable<PdfAggregate> Create(IEnumerable<Room> rooms, PdfAggregate pdf)
+    public PdfAggregate Create(IEnumerable<Room> rooms)
     {
+        var pdf = PdfAggregateCreator.Create("Gesamtplan");
         var therapyPlans = _plansCreator.Create(rooms);
-        return therapyPlans.Select(plan => WritePdf(plan, pdf));
+        therapyPlans.ForEach(plan => WritePdf(plan, pdf));
+        return pdf;
     }
 
-    private PdfAggregate WritePdf(TherapyPlan plan, PdfAggregate pdf)
+    private void WritePdf(TherapyPlan plan, PdfAggregate pdf)
     {
         var page = pdf.Builder.AddPage(PageSize.A4);
         _headerPrinter.PrintPageHeader(pdf, plan.Therapist, TherapyPlanConstants.PageHeaderOffset, page);
         _headerPrinter.PrintColumnHeaders(pdf, TherapyPlanConstants.ColumnsHeaderOffset, page);
         PrintRows(plan, pdf, page);
-        return pdf;
     }
 
     private static void PrintRows(TherapyPlan plan, PdfAggregate pdf, PdfPageBuilder page)

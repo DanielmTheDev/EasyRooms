@@ -4,5 +4,5 @@ namespace EasyRooms.Model.Pdf.Interfaces;
 
 public interface IPdfCreator
 {
-    IEnumerable<PdfAggregate> Create(IEnumerable<Room> rooms, PdfAggregate pdf);
+    PdfAggregate Create(IEnumerable<Room> rooms);
 }
