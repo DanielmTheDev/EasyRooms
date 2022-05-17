@@ -9,7 +9,7 @@ public class HeaderPrinter : IHeaderPrinter
 {
     public void PrintColumnHeaders(PdfAggregate pdfAggregate, double yOffset, PdfPageBuilder page)
     {
-        var headerStrings = new [] { "Beginn", "Dauer", "Zusatz", "Raum", "Behandlung", "Patient" };
+        var headerStrings = new [] { "Beginn", "Dauer", "Zusatz", "Raum", "Behandlung", "Patient*in" };
         LinePrinter.PrintLine(0, headerStrings, pdfAggregate.BoldFont, yOffset, page);
     }
 
