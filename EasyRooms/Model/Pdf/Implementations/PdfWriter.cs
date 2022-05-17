@@ -21,6 +21,11 @@ public class PdfWriter : IPdfWriter
     {
         var path = $@".\Pläne\{pdf.Name}.pdf";
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
-        File.WriteAllBytes(path, pdf.Builder.Build());
+        try
+        {
+            var build = pdf.Builder.Build();
+            File.WriteAllBytes(path, build);
+        }
+        catch (ArgumentException) { }
     }
 }
