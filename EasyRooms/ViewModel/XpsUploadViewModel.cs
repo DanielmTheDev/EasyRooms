@@ -50,7 +50,6 @@ public class XpsUploadViewModel : BindableBase
         _fileDialogOpener = fileDialogOpener;
         _validator = validator;
         _pdfWriter = pdfWriter;
-        _fileName = "C:\\Users\\dadam\\Downloads\\Plan_Vom_9.05.xps";
     }
 
     private void OpenFileDialog()
