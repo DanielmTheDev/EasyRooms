@@ -20,7 +20,6 @@ public class OccupationsAdder : IOccupationsAdder
 
     public void AddToSpecificRoom(IEnumerable<Room> rooms, string roomName, params Row[] rows)
     {
-        //todo this method should get the room as parameter, instead of all the rooms and the roomname
         var specificRoom = rooms.Single(room => string.Equals(room.Name, roomName, StringComparison.OrdinalIgnoreCase));
         foreach (var row in rows)
         {

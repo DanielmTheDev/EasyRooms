@@ -1,5 +1,6 @@
 namespace EasyRooms.Model.Therapies.Implementations;
 
+// items contained in the specific therapies list are distributed before the others, giving them priority
 public class RoomSpecificTherapiesAdder : ITherapiesAdder
 {
     private readonly IOccupationsAdder _occupationsAdder;

@@ -56,6 +56,7 @@ public partial class App
             .AddTransient<IOccupationsAdder, OccupationsAdder>()
             .AddTransient<ITherapiesAdder, PreparationsAdder>()
             .AddTransient<ITherapiesAdder, PartnerTherapiesAdder>()
+            .AddTransient<ITherapiesAdder, CommentTherapiesAdder>()
             .AddTransient<ITherapiesAdder, RoomSpecificTherapiesAdder>()
             .AddTransient<ITherapiesAdder, LongTherapiesAdder>()
             .AddTransient<ITherapiesAdder, NormalTherapiesAdder>()
