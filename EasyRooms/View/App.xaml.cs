@@ -59,7 +59,7 @@ public partial class App
             .AddTransient<ITherapiesAdder, CommentTherapiesAdder>()
             .AddTransient<ITherapiesAdder, RoomSpecificTherapiesAdder>()
             .AddTransient<ITherapiesAdder, LongTherapiesAdder>()
-            .AddTransient<ITherapiesAdder, NormalTherapiesAdder>()
+            .AddTransient<ITherapiesAdder, AdjacentTherapiesAdder>()
             .AddSingleton<IPersistenceService, PersistenceService>()
             .AddSingleton<IMessageBoxShower, MessageBoxShower>()
             .AddSingleton<XpsUploadView>()

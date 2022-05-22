@@ -7,7 +7,7 @@ public class LongTherapiesAdder : ITherapiesAdder
     public LongTherapiesAdder(IOccupationsAdder occupationsAdder)
         => _occupationsAdder = occupationsAdder;
 
-    public void Add(IEnumerable<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
+    public void Add(IList<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
     {
         var longTherapyRows = orderedRows
             .Where(row => TherapyTypeProvider.IsLongTherapy(row.DurationAsTimeSpan))
