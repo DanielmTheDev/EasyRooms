@@ -10,7 +10,7 @@ public class CommentTherapiesAdder : ITherapiesAdder
     public CommentTherapiesAdder(IOccupationsAdder occupationsAdder)
         => _occupationsAdder = occupationsAdder;
 
-    public void Add(IEnumerable<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
+    public void Add(IList<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
     {
         var rowsWithRoomComment = orderedRows
             .Where(row => !string.IsNullOrEmpty(row.Comment)

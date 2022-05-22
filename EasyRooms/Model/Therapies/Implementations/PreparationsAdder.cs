@@ -9,7 +9,7 @@ internal class PreparationsAdder : ITherapiesAdder
     public PreparationsAdder(IOccupationsAdder occupationsAdder)
         => _occupationsAdder = occupationsAdder;
 
-    public void Add(IEnumerable<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
+    public void Add(IList<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
     {
         orderedRows
             .Where(row => TherapyTypeProvider.IsPreparation(row.TherapyShort))

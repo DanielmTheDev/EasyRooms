@@ -9,7 +9,7 @@ public class PartnerTherapiesAdder : ITherapiesAdder
     public PartnerTherapiesAdder(IOccupationsAdder occupationsAdder)
         => _occupationsAdder = occupationsAdder;
 
-    public void Add(IEnumerable<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
+    public void Add(IList<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
     {
         var groupedPartnerTherapies = GroupByTime(orderedRows, row => TherapyTypeProvider.IsPartnerTherapy(row.TherapyShort));
         var groupedAfterTherapies = GroupByTime(orderedRows, row => TherapyTypeProvider.IsAfterTherapy(row.TherapyShort));
