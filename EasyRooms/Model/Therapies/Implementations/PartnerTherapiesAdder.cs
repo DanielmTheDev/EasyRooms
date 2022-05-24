@@ -11,8 +11,8 @@ public class PartnerTherapiesAdder : ITherapiesAdder
 
     public void Add(IList<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
     {
-        var groupedPartnerTherapies = GroupByTime(orderedRows, row => TherapyTypeProvider.IsPartnerTherapy(row.TherapyShort));
-        var groupedAfterTherapies = GroupByTime(orderedRows, row => TherapyTypeProvider.IsAfterTherapy(row.TherapyShort));
+        var groupedPartnerTherapies = GroupByTime(orderedRows, row => TherapyTypeComparer.IsPartnerTherapy(row.TherapyShort));
+        var groupedAfterTherapies = GroupByTime(orderedRows, row => TherapyTypeComparer.IsAfterTherapy(row.TherapyShort));
 
         groupedPartnerTherapies.ForEach(partnerGroup =>
         {
@@ -26,8 +26,9 @@ public class PartnerTherapiesAdder : ITherapiesAdder
     private static List<Row> GetAllRowsToAdd(IGrouping<StartTimeWithDuration, Row> partnerGroup, IEnumerable<IGrouping<StartTimeWithDuration, Row>> groupedAfterTherapies)
     {
         var matchingAfterTherapies = GetMatchingAfterTherapies(partnerGroup.First().EndTime, groupedAfterTherapies.ToList());
-        var allRows = partnerGroup.Concat(matchingAfterTherapies).ToList();
-        return allRows;
+        return partnerGroup
+            .Concat(matchingAfterTherapies)
+            .ToList();
     }
 
     private static IEnumerable<Row> GetMatchingAfterTherapies(string endTime, IEnumerable<IGrouping<StartTimeWithDuration, Row>> groupedAfterTherapies)

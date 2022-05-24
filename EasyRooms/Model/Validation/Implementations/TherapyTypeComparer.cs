@@ -2,7 +2,7 @@ using EasyRooms.Model.Constants;
 
 namespace EasyRooms.Model.Validation.Implementations;
 
-public static class TherapyTypeProvider
+public static class TherapyTypeComparer
 {
     public static bool IsPartnerTherapy(string therapyShort)
         => string.Equals(therapyShort, CommonConstants.PartnerString, StringComparison.InvariantCultureIgnoreCase);

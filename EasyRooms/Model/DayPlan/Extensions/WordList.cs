@@ -5,20 +5,6 @@ namespace EasyRooms.Model.DayPlan.Extensions;
 
 public static class WordList
 {
-    public static IEnumerable<string> RemoveHomeVisitRows(this IEnumerable<string> words)
-    {
-        var strings = words.ToList();
-        var indicesOfHomeVisitEntries = Enumerable.Range(0, strings.Count)
-            .Where(i => string.Equals(strings[i], CommonConstants.HomeVisit, StringComparison.OrdinalIgnoreCase))
-            .ToList();
-
-        indicesOfHomeVisitEntries
-            .OrderByDescending(i => i)
-            .ToList()
-            .ForEach(index => strings.RemoveRange(index - 2, CommonConstants.ElementsPerRowWithHouseVisitEntry));
-        return strings;
-    }
-
     public static IEnumerable<string> RemovePauseRows(this IEnumerable<string> words)
     {
         var enumeratedWords = words.ToList();
