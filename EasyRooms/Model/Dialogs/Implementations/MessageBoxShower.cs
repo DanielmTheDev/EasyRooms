@@ -5,19 +5,29 @@ namespace EasyRooms.Model.Dialogs.Implementations;
 
 public class MessageBoxShower : IMessageBoxShower
 {
-    public void ShowSuccessMessage()
+    public void Success()
     {
-        const string messageBoxText = "Die Pläne wurden erfolgreich erstellt.";
+        const string text = "Die Pläne wurden erfolgreich erstellt.";
         const string caption = "Erfolgreich";
-        const MessageBoxButton button = MessageBoxButton.OK;
-        const MessageBoxImage icon = MessageBoxImage.None;
-        MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
+        ShowMessage(text, caption);
     }
 
-    public void ShowNoFreeRoomFoundMessage()
+    public void NoFreeRoomFound()
     {
-        const string messageBoxText = "Es konnte keine Lösung gefunden werden. Versuchen Sie bitte, die Pufferzeit in den Optionen zu verringern.";
+        const string text = "Es konnte keine Lösung gefunden werden. Versuchen Sie bitte, die Pufferzeit in den Optionen zu verringern.";
         const string caption = "Fehler";
+        ShowMessage(text, caption);
+    }
+
+    public void ValidationFailed()
+    {
+        const string text = "Es wurde ein falsches Ergebnis erzielt. Bitte melden Sie den benutzten Gesamtplan an den Hersteller.";
+        const string caption = "Fehler";
+        ShowMessage(text, caption);
+    }
+
+    private static void ShowMessage(string messageBoxText, string caption)
+    {
         const MessageBoxButton button = MessageBoxButton.OK;
         const MessageBoxImage icon = MessageBoxImage.None;
         MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);

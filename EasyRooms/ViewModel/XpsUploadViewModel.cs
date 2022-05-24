@@ -1,4 +1,5 @@
 ﻿using EasyRooms.Model.DayPlan.Interfaces;
+using EasyRooms.Model.DayPlan.Models;
 using EasyRooms.Model.Dialogs.Interfaces;
 using EasyRooms.Model.FileDialog.Interfaces;
 using EasyRooms.Model.Pdf.Interfaces;
@@ -50,6 +51,7 @@ public class XpsUploadViewModel : BindableBase
         _fileDialogOpener = fileDialogOpener;
         _validator = validator;
         _pdfWriter = pdfWriter;
+        _fileName = "C:\\Users\\dadam\\Downloads\\Plan_Vom_9.05.xps";
     }
 
     private void OpenFileDialog()
@@ -64,22 +66,31 @@ public class XpsUploadViewModel : BindableBase
     private void CalculateOccupations()
     {
         GuardFileName();
-        var rows = _dayPlanParser.ParseDayPlan(_fileName!);
+        var parsedPlan = _dayPlanParser.ParseRows(_fileName!);
         var roomNames = _persistenceService.SavedOptions.Rooms.ToRoomNames();
         var savedOptionsBuffer = _persistenceService.SavedOptions.Buffer;
         try
         {
-            var filledRooms = _occupationsFiller
-                .FillRoomOccupations(rows, roomNames, savedOptionsBuffer)
-                .ToList();
-            Validate(filledRooms);
-            _messageBoxShower.ShowSuccessMessage();
-            _pdfWriter.Write(filledRooms);
+            CreateResultPdf(parsedPlan, roomNames, savedOptionsBuffer);
+            _messageBoxShower.Success();
         }
         catch (NoFreeRoomException)
         {
-            _messageBoxShower.ShowNoFreeRoomFoundMessage();
+            _messageBoxShower.NoFreeRoomFound();
         }
+        catch (RoomsValidationException)
+        {
+            _messageBoxShower.ValidationFailed();
+        }
+    }
+
+    private void CreateResultPdf(ParsedPlan plan, RoomNames roomNames, int savedOptionsBuffer)
+    {
+        var filledRooms = _occupationsFiller
+            .FillRoomOccupations(plan.Rows, roomNames, savedOptionsBuffer)
+            .ToList();
+        Validate(filledRooms);
+        _pdfWriter.Write(filledRooms, plan.Date);
     }
 
     private void GuardFileName()
