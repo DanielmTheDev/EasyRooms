@@ -12,7 +12,7 @@ internal class PreparationsAdder : ITherapiesAdder
     public void Add(IList<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
     {
         orderedRows
-            .Where(row => TherapyTypeProvider.IsPreparation(row.TherapyShort))
+            .Where(row => TherapyTypeComparer.IsPreparation(row.TherapyShort))
             .ForEach(preparation =>
             {
                 _occupationsAdder.AddToSpecificRoom(rooms, string.Empty, preparation);

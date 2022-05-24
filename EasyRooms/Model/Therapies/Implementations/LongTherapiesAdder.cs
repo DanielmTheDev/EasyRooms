@@ -10,7 +10,7 @@ public class LongTherapiesAdder : ITherapiesAdder
     public void Add(IList<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
     {
         var longTherapyRows = orderedRows
-            .Where(row => TherapyTypeProvider.IsLongTherapy(row.DurationAsTimeSpan))
+            .Where(row => TherapyTypeComparer.IsLongTherapy(row.DurationAsTimeSpan))
             .ToList();
 
         longTherapyRows.ForEach(therapy =>
