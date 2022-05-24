@@ -1,5 +1,5 @@
 ### About this project 
-This project parses an .xps file from oldschool practice management program [Praxxo](https://www.praxxo.de/), distributing the therapies into the rooms configured in the options of the application and generates a .pdf file with the results.
+This application parses an .xps file from oldschool practice management program [Praxxo](https://www.praxxo.de/), distributing the therapies into the rooms configured in the options and generates a .pdf file with the results.
 
 ### Getting started 
 Clone the repository. To build, use
