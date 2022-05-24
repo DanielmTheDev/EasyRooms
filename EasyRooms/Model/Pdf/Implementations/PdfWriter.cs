@@ -12,9 +12,9 @@ public class PdfWriter : IPdfWriter
     public PdfWriter(IPdfCreator pdfCreator)
         => _pdfCreator = pdfCreator;
 
-    public void Write(IEnumerable<Room> rooms)
+    public void Write(IEnumerable<Room> rooms, DateOnly date)
     {
-        var pdf = _pdfCreator.Create(rooms);
+        var pdf = _pdfCreator.Create(rooms, date);
         const string path = @".\Pläne";
         DeleteDirectoryContents(path);
         WriteFile(pdf, path);

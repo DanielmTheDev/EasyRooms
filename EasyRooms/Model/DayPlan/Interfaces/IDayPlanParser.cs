@@ -1,6 +1,8 @@
-﻿namespace EasyRooms.Model.DayPlan.Interfaces;
+﻿using EasyRooms.Model.DayPlan.Models;
+
+namespace EasyRooms.Model.DayPlan.Interfaces;
 
 public interface IDayPlanParser
 {
-    IEnumerable<Row> ParseDayPlan(string path);
+    ParsedPlan ParseRows(string path);
 }

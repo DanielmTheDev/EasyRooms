@@ -1,5 +1,6 @@
 ﻿using EasyRooms.Model.DayPlan.Extensions;
 using EasyRooms.Model.DayPlan.Interfaces;
+using EasyRooms.Model.DayPlan.Models;
 using EasyRooms.Model.Rows.Interfaces;
 using EasyRooms.Model.XpsExtracting.Interfaces;
 
@@ -13,10 +14,13 @@ public class DayPlanParser : IDayPlanParser
     public DayPlanParser(IXpsWordsExtractor xpsWordsExtractor, IRowsCreator rowsCreator)
         => (_xpsWordsExtractor, _rowsCreator) = (xpsWordsExtractor, rowsCreator);
 
-    public IEnumerable<Row> ParseDayPlan(string path)
+    public ParsedPlan ParseRows(string path)
+        => CreateParsedPlan(ExtractWords(path));
+
+    private ParsedPlan CreateParsedPlan(IReadOnlyCollection<string> extractedWords)
     {
-        var words = _xpsWordsExtractor
-            .ExtractWords(path)
+        var date = DateOnly.Parse(extractedWords.First(word => DateOnly.TryParse(word, out _)));
+        var cleanedWords = extractedWords
             .RemoveHomeVisitRows()
             .RemovePageEntries()
             .RemovePauseRows()
@@ -26,6 +30,11 @@ public class DayPlanParser : IDayPlanParser
             .RemoveLegendEntries()
             .RemoveEndOfListEntry();
 
-        return _rowsCreator.CreateRows(words);
+        return new(date, _rowsCreator.CreateRows(cleanedWords));
     }
+
+    private List<string> ExtractWords(string path)
+        => _xpsWordsExtractor
+            .ExtractWords(path)
+            .ToList();
 }

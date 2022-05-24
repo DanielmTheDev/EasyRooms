@@ -17,18 +17,18 @@ public class PdfCreator : IPdfCreator
         _headerPrinter = headerPrinter;
     }
 
-    public PdfAggregate Create(IEnumerable<Room> rooms)
+    public PdfAggregate Create(IEnumerable<Room> rooms, DateOnly date)
     {
         var pdf = PdfAggregateCreator.Create("Gesamtplan");
         var therapyPlans = _plansCreator.Create(rooms);
-        therapyPlans.ForEach(plan => WritePdf(plan, pdf));
+        therapyPlans.ForEach(plan => WritePdf(plan, pdf, date));
         return pdf;
     }
 
-    private void WritePdf(TherapyPlan plan, PdfAggregate pdf)
+    private void WritePdf(TherapyPlan plan, PdfAggregate pdf, DateOnly date)
     {
         var page = pdf.Builder.AddPage(PageSize.A4);
-        _headerPrinter.PrintPageHeader(pdf, plan.Therapist, TherapyPlanConstants.PageHeaderOffset, page);
+        _headerPrinter.PrintPageHeader(pdf, plan.Therapist, TherapyPlanConstants.PageHeaderOffset, page, date);
         _headerPrinter.PrintColumnHeaders(pdf, TherapyPlanConstants.ColumnsHeaderOffset, page);
         PrintRows(plan, pdf, page);
     }
