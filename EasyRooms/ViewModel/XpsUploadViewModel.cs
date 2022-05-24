@@ -73,12 +73,16 @@ public class XpsUploadViewModel : BindableBase
                 .FillRoomOccupations(rows, roomNames, savedOptionsBuffer)
                 .ToList();
             Validate(filledRooms);
-            _messageBoxShower.ShowSuccessMessage();
+            _messageBoxShower.Success();
             _pdfWriter.Write(filledRooms);
         }
         catch (NoFreeRoomException)
         {
-            _messageBoxShower.ShowNoFreeRoomFoundMessage();
+            _messageBoxShower.NoFreeRoomFound();
+        }
+        catch (RoomsValidationException)
+        {
+            _messageBoxShower.ValidationFailed();
         }
     }
 
