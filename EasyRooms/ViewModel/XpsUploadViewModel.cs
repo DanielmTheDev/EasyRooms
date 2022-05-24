@@ -69,12 +69,8 @@ public class XpsUploadViewModel : BindableBase
         var savedOptionsBuffer = _persistenceService.SavedOptions.Buffer;
         try
         {
-            var filledRooms = _occupationsFiller
-                .FillRoomOccupations(rows, roomNames, savedOptionsBuffer)
-                .ToList();
-            Validate(filledRooms);
+            CreateResultPdf(rows, roomNames, savedOptionsBuffer);
             _messageBoxShower.Success();
-            _pdfWriter.Write(filledRooms);
         }
         catch (NoFreeRoomException)
         {
@@ -84,6 +80,15 @@ public class XpsUploadViewModel : BindableBase
         {
             _messageBoxShower.ValidationFailed();
         }
+    }
+
+    private void CreateResultPdf(IEnumerable<Row> rows, RoomNames roomNames, int savedOptionsBuffer)
+    {
+        var filledRooms = _occupationsFiller
+            .FillRoomOccupations(rows, roomNames, savedOptionsBuffer)
+            .ToList();
+        Validate(filledRooms);
+        _pdfWriter.Write(filledRooms);
     }
 
     private void GuardFileName()
