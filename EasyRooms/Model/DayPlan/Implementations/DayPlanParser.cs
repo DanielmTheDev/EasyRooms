@@ -19,7 +19,7 @@ public class DayPlanParser : IDayPlanParser
 
     private ParsedPlan CreateParsedPlan(IReadOnlyCollection<string> extractedWords)
     {
-        var date = DateOnly.Parse(extractedWords.First(word => DateOnly.TryParse(word, out _)));
+        var date = ParseDate(extractedWords);
         var cleanedWords = extractedWords
             .RemoveHomeVisitRows()
             .RemovePageEntries()
@@ -32,6 +32,11 @@ public class DayPlanParser : IDayPlanParser
 
         return new(date, _rowsCreator.CreateRows(cleanedWords));
     }
+
+    private static DateOnly ParseDate(IEnumerable<string> extractedWords)
+        => DateOnly.Parse(extractedWords
+            .Where(word => DateOnly.TryParse(word, out _))
+            .ToList()[1]);
 
     private List<string> ExtractWords(string path)
         => _xpsWordsExtractor
