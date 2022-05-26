@@ -9,9 +9,9 @@ public class TherapyFiller : ITherapyFiller
 
     public void AddAllTherapies(IList<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
     {
-        foreach (var massageAdder in _therapyAdders)
+        foreach (var therapiesAdder in _therapyAdders)
         {
-            massageAdder.Add(rooms, orderedRows, bufferInMinutes, roomNames);
+            therapiesAdder.Add(rooms, orderedRows, bufferInMinutes, roomNames);
         }
     }
 }

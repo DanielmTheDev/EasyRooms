@@ -29,7 +29,6 @@ public class XpsUploadViewModel : BindableBase
     private readonly IPdfWriter _pdfWriter;
     private readonly IPersistenceService _persistenceService;
     private readonly IMessageBoxShower _messageBoxShower;
-
     private string? _fileName;
 
     public XpsUploadViewModel(
@@ -45,7 +44,6 @@ public class XpsUploadViewModel : BindableBase
         ChooseFileCommand = new(OpenFileDialog);
         _persistenceService = persistenceService;
         _messageBoxShower = messageBoxShower;
-        _fileName = string.Empty;
         _occupationsFiller = occupationsFiller;
         _dayPlanParser = dayPlanParser;
         _fileDialogOpener = fileDialogOpener;

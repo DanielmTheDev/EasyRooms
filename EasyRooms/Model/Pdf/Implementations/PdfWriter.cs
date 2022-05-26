@@ -21,13 +21,18 @@ public class PdfWriter : IPdfWriter
     }
 
     private static void DeleteDirectoryContents(string path)
-        => new DirectoryInfo(path)
-            .EnumerateFiles()
-            .ForEach(file => file.Delete());
+    {
+        if(Directory.Exists(path))
+        {
+            new DirectoryInfo(path)
+                .EnumerateFiles()
+                .ForEach(file => file.Delete());
+        }
+    }
 
     private static void WriteFile(PdfAggregate pdf, string path)
     {
-        Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+        Directory.CreateDirectory(path);
         var build = pdf.Builder.Build();
         File.WriteAllBytes($@"{path}\{pdf.Name}.pdf", build);
     }
