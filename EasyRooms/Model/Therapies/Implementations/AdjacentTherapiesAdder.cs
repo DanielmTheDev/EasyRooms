@@ -11,23 +11,19 @@ public class AdjacentTherapiesAdder : ITherapiesAdder
 
     public void Add(IList<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
     {
-        var lookedAtAllRows = false;
-        var i = 0;
-        while (!lookedAtAllRows)
+        while (orderedRows.Count > 0)
         {
-            var connectedRows = GetAdjacentRowsWithSamePatient(orderedRows, i);
+            var connectedRows = GetAdjacentRowsWithSamePatient(orderedRows);
             _occupationsAdder.AddToFreeRoom(rooms, bufferInMinutes, connectedRows.ToArray());
             orderedRows.RemoveAll(row => connectedRows.Contains(row));
-            if (++i >= orderedRows.Count)
-                lookedAtAllRows = true;
         }
     }
 
-    private static IReadOnlyCollection<Row> GetAdjacentRowsWithSamePatient(IReadOnlyList<Row> orderedRows, int i)
+    private static IReadOnlyCollection<Row> GetAdjacentRowsWithSamePatient(IReadOnlyList<Row> orderedRows)
         => orderedRows
-            .Where(row => row.Patient == orderedRows[i].Patient)
+            .Where(row => row.Patient == orderedRows[0].Patient)
             .OrderBy(row => row.StartTime)
-            .Aggregate(new List<Row> { orderedRows[i] }, (acc, curr) =>
+            .Aggregate(new List<Row> { orderedRows[0] }, (acc, curr) =>
                 curr.StartTimeAsTimeSpan == acc.Last().StartTimeAsTimeSpan + acc.Last().DurationAsTimeSpan
                     ? acc.Concat(new[] { curr }).ToList()
                     : acc);

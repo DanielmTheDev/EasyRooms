@@ -49,7 +49,6 @@ public class XpsUploadViewModel : BindableBase
         _fileDialogOpener = fileDialogOpener;
         _validator = validator;
         _pdfWriter = pdfWriter;
-        _fileName = "c:\\Users\\MuckelbauerD\\Downloads\\Test 2. 27.05.xps";
     }
 
     private void OpenFileDialog()
