@@ -13,9 +13,10 @@ public class RoomListCreator : IRoomListCreator
 
     private static IList<Room> GetRoomsWithAddedEmptyOne(RoomNames roomNames)
     {
-        var roomsAsListWithEmpty = roomNames.AllRoomsAsList;
-        roomsAsListWithEmpty.Add(string.Empty);
-        return roomsAsListWithEmpty
+        var rooms = roomNames.AllRoomsAsList;
+        if(!rooms.Contains(string.Empty))
+            rooms.Add(string.Empty);
+        return rooms
             .Select(name => new Room(name))
             .ToList();
     }
