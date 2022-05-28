@@ -31,7 +31,6 @@ public class OptionsViewModel : BindableBase
         get => _persistenceService.SavedOptions.Buffer.ToString();
         set => _persistenceService.SavedOptions.Buffer = int.Parse(value);
     }
-
     public RelayCommand SaveRoomsCommand { get; }
 
     public OptionsViewModel(IPersistenceService persistenceService)

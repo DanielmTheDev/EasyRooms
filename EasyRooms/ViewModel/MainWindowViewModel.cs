@@ -1,8 +1,10 @@
-﻿using System.Windows;
-using EasyRooms.View;
-using EasyRooms.ViewModel.Commands;
+﻿
 
 #nullable disable
+using System.Windows;
+using EasyRooms.Model.Constants;
+using EasyRooms.View;
+using EasyRooms.ViewModel.Commands;
 namespace EasyRooms.ViewModel;
 
 public class MainWindowViewModel : BindableBase
@@ -12,7 +14,7 @@ public class MainWindowViewModel : BindableBase
     private readonly XpsUploadViewModel _xpsUploadViewModel;
     private readonly OptionsViewModel _optionsViewModel;
     private BindableBase _currentViewModel;
-    private string _navigationButtonContent = "Optionen";
+    private string _navigationButtonContent = NavigationConstants.Options;
 
     public BindableBase CurrentViewModel
     {
@@ -40,7 +42,7 @@ public class MainWindowViewModel : BindableBase
             ? _optionsViewModel
             : _xpsUploadViewModel;
         NavigationButtonContent = CurrentViewModel == _xpsUploadViewModel
-            ? "Optionen"
-            : "Zurück";
+            ? NavigationConstants.Options
+            : NavigationConstants.Return;
     }
 }

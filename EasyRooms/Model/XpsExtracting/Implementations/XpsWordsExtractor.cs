@@ -33,12 +33,7 @@ public class XpsWordsExtractor : IXpsWordsExtractor
                 var texts = new List<string>();
                 while (pageContentReader.Read())
                 {
-                    if (pageContentReader.Name != glyphsString)
-                    {
-                        continue;
-                    }
-
-                    if (!pageContentReader.HasAttributes)
+                    if (pageContentReader.Name != glyphsString || !pageContentReader.HasAttributes)
                     {
                         continue;
                     }
