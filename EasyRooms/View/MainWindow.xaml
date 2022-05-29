@@ -28,7 +28,7 @@
                 HorizontalAlignment="Right"  
                 Height="30"
                 MinWidth="120"
-                Foreground="#21130d"
+                Foreground="Azure"
                 Content="{Binding NavigationButtonContent}">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="15" ShadowDepth="0"/>
@@ -36,4 +36,7 @@
         </Button>
         <ContentControl Grid.Row="1" FontWeight="Bold" Content="{Binding CurrentViewModel}" />
     </Grid>
+    <Window.Background>
+        <ImageBrush ImageSource="/Assets/background.jpg"/>
+    </Window.Background>
 </Window>
