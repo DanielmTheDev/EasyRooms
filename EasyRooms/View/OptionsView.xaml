@@ -28,7 +28,13 @@
             <Label Style="{StaticResource OptionsLabel}" Content="Spezielle Massagen" />
             <TextBox Style="{StaticResource BigOptionsTextBox}" AcceptsReturn="True" Text="{Binding MassagesForSpecificRooms}"/>
 
-            <Button Command="{Binding SaveRoomsCommand}" Content="Speichern" Style="{StaticResource SaveButton}" />
+            <Button Command="{Binding SaveRoomsCommand}" Content="Speichern" Style="{StaticResource SaveButton}"
+                    Background="#58822d"
+                    Foreground="Azure">
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="15" ShadowDepth="0"/>
+                </Button.Effect>
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>
