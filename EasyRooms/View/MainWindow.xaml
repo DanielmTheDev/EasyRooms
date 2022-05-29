@@ -23,8 +23,20 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Command="{Binding SwitchToOptionsCommand}" Margin="0,0,20,0" MinWidth="120"
-                VerticalAlignment="Center" HorizontalAlignment="Right" Content="{Binding NavigationButtonContent}" />
-        <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}" />
+        <Button Grid.Row="0" Command="{Binding SwitchToOptionsCommand}" Margin="0,0,20,0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"  
+                Height="30"
+                MinWidth="120"
+                Foreground="Azure"
+                Content="{Binding NavigationButtonContent}">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="15" ShadowDepth="0"/>
+            </Button.Effect>
+        </Button>
+        <ContentControl Grid.Row="1" FontWeight="Bold" Content="{Binding CurrentViewModel}" />
     </Grid>
+    <Window.Background>
+        <ImageBrush ImageSource="/Assets/background.jpg"/>
+    </Window.Background>
 </Window>

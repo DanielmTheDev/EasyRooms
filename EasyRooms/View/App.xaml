@@ -21,5 +21,13 @@
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="MinWidth" Value="120" />
         </Style>
+        <LinearGradientBrush x:Key="GrayBlueGardientBrush"  
+                             StartPoint="0,0" EndPoint="1,1">  
+            <GradientStop Color="#58822d" Offset="1"/> 
+        </LinearGradientBrush>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource GrayBlueGardientBrush}"/>
+            <Setter Property="Width" Value="90"/>
+        </Style>
     </Application.Resources>
 </Application>

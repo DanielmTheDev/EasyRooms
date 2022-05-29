@@ -11,11 +11,23 @@
                     HorizontalAlignment="Center" VerticalAlignment="Center"
                     Margin="0, 0, 0, 20"
                     Height="30"
-                    MinWidth="120">Datei Auswählen</Button>
+                    MinWidth="120"
+                    Foreground="Azure">
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="15" ShadowDepth="0"/>
+                </Button.Effect>
+                <Bold>Datei Auswählen</Bold>
+            </Button>
             <Button Command="{Binding CalculateOccupationsCommand}" 
                     HorizontalAlignment="Center" VerticalAlignment="Center"
                     Height="30"
-                    MinWidth="120">Berechnen</Button>
+                    MinWidth="120"
+                    Foreground="Azure">
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="15" ShadowDepth="0"/>
+                </Button.Effect>
+                <Bold>Berechnen</Bold>
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>
