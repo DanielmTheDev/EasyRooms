@@ -13,20 +13,28 @@
 
         <StackPanel Grid.Column="0">
             <Label Style="{StaticResource OptionsLabel}" Content="Räume"/>
-            <TextBox Style="{StaticResource BigOptionsTextBox}" AcceptsReturn="True" Text="{Binding RoomsString}"/>
+            <TextBox Style="{StaticResource BigOptionsTextBox}" AcceptsReturn="True" Text="{Binding RoomsString}">
+                <TextBox.Effect><DropShadowEffect ShadowDepth="0" BlurRadius="15"/></TextBox.Effect>
+            </TextBox>
 
             <Label Style="{StaticResource OptionsLabel}" Content="Puffer"/>
-            <TextBox Style="{StaticResource BufferTextBox}" Text="{Binding Buffer}"/>
+            <TextBox Style="{StaticResource BufferTextBox}" Text="{Binding Buffer}">
+                <TextBox.Effect><DropShadowEffect ShadowDepth="0" BlurRadius="15"/></TextBox.Effect>
+            </TextBox>
         </StackPanel>
 
         <StackPanel Grid.Column="1">
             <Label Style="{StaticResource OptionsLabel}" Content="Partner Räume" />
-            <TextBox Style="{StaticResource BigOptionsTextBox}" AcceptsReturn="True" Text="{Binding PartnerRoomsString}"/>
+            <TextBox Style="{StaticResource BigOptionsTextBox}" AcceptsReturn="True" Text="{Binding PartnerRoomsString}">
+                <TextBox.Effect><DropShadowEffect ShadowDepth="0" BlurRadius="15"/></TextBox.Effect>
+            </TextBox>
         </StackPanel>
 
         <StackPanel Grid.Column="2">
             <Label Style="{StaticResource OptionsLabel}" Content="Spezielle Massagen" />
-            <TextBox Style="{StaticResource BigOptionsTextBox}" AcceptsReturn="True" Text="{Binding MassagesForSpecificRooms}"/>
+            <TextBox Style="{StaticResource BigOptionsTextBox}" AcceptsReturn="True" Text="{Binding MassagesForSpecificRooms}">
+                <TextBox.Effect><DropShadowEffect ShadowDepth="0" BlurRadius="15"/></TextBox.Effect>
+            </TextBox>
 
             <Button Command="{Binding SaveRoomsCommand}" Content="Speichern" Style="{StaticResource SaveButton}"
                     Background="#58822d"
