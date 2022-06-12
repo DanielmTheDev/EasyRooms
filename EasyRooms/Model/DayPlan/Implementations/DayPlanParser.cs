@@ -21,10 +21,9 @@ public class DayPlanParser : IDayPlanParser
     {
         var date = ParseDate(extractedWords);
         var cleanedWords = extractedWords
+            .RemoveIgnorableComments()
             .RemovePageEntries()
             .RemovePauseRows()
-            .RemoveAlmostEmptyRows()
-            .RemoveCommentaries()
             .RemoveHeaders()
             .RemoveLegendEntries()
             .RemoveEndOfListEntry();

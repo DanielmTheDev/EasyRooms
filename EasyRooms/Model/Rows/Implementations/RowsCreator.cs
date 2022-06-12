@@ -1,4 +1,5 @@
-﻿using EasyRooms.Model.Constants;
+﻿using EasyRooms.Model.CommonExtensions;
+using EasyRooms.Model.Constants;
 using EasyRooms.Model.Rows.Interfaces;
 
 namespace EasyRooms.Model.Rows.Implementations;
@@ -9,36 +10,50 @@ public class RowsCreator : IRowsCreator
     {
         var enumeratedWords = words.ToList();
         var rows = new List<Row>();
-        for (var i = 0; i < enumeratedWords.Count - 5; i += CommonConstants.ElementsPerRow)
+        while (enumeratedWords.Any())
         {
-            GuardDuration(enumeratedWords[i + 1]);
-            string comment;
-            if (RowContainsComment(enumeratedWords, i))
-            {
-                comment = enumeratedWords[i + 2];
-                enumeratedWords.RemoveAt(i + 2);
-            }
-            else
-            {
-                comment = string.Empty;
-            }
+            GuardDuration(enumeratedWords[1]);
+            var comment = GetAndRemoveRowComment(enumeratedWords);
+
             var newRow = new Row(
-                enumeratedWords[i].Trim('(', ')'),
-                enumeratedWords[i + 1],
-                enumeratedWords[i + 2],
-                enumeratedWords[i + 3],
-                enumeratedWords[i + 4],
-                enumeratedWords[i + 5],
+                enumeratedWords[0].Trim('(', ')'),
+                enumeratedWords[1],
+                enumeratedWords[2],
+                enumeratedWords[3],
+                enumeratedWords[4],
+                enumeratedWords[5],
                 comment);
             rows.Add(newRow);
+            enumeratedWords.RemoveRange(0, CommonConstants.ElementsPerRow);
         }
+
         return rows;
     }
 
-    private static bool RowContainsComment(IReadOnlyList<string> enumeratedWords, int i)
-        => TimeOnly.TryParse(enumeratedWords[i].Trim('(', ')'), out _)
-           && enumeratedWords.Count >= i + 7
-           && TimeOnly.TryParse(enumeratedWords[i + 7], out _);
+    private static string GetAndRemoveRowComment(List<string> enumeratedWords)
+    {
+        string comment;
+        if (NextRowContainsComment(enumeratedWords))
+        {
+            comment = enumeratedWords[8];
+            enumeratedWords.RemoveRange(6, 4);
+        }
+        else
+        {
+            comment = string.Empty;
+        }
+
+        return comment;
+    }
+
+    private static bool NextRowContainsComment(IReadOnlyList<string> enumeratedWords)
+        => enumeratedWords.Count == 10
+           || (enumeratedWords.Count > 10
+               && enumeratedWords[0].TryParseTimeTrimmed(out var currentRowsTime)
+               && enumeratedWords[6].TryParseTimeTrimmed(out var nextRowsTime)
+               && int.TryParse(enumeratedWords[1], out var currentRowsDuration)
+               && nextRowsTime < currentRowsTime.AddMinutes(currentRowsDuration)
+               && enumeratedWords[10].TryParseTimeTrimmed(out _));
 
     private static void GuardDuration(string duration)
     {
