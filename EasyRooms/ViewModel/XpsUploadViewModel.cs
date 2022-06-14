@@ -62,12 +62,12 @@ public class XpsUploadViewModel : BindableBase
 
     private void CalculateOccupations()
     {
-        GuardFileName();
-        var parsedPlan = _dayPlanParser.ParseRows(_fileName!);
-        var roomNames = _persistenceService.SavedOptions.Rooms.ToRoomNames();
-        var savedOptionsBuffer = _persistenceService.SavedOptions.Buffer;
         try
         {
+            GuardFileName();
+            var parsedPlan = _dayPlanParser.ParseRows(_fileName!);
+            var roomNames = _persistenceService.SavedOptions.Rooms.ToRoomNames();
+            var savedOptionsBuffer = _persistenceService.SavedOptions.Buffer;
             CreateResultPdf(parsedPlan, roomNames, savedOptionsBuffer);
             _messageBoxShower.Success();
         }
@@ -78,6 +78,10 @@ public class XpsUploadViewModel : BindableBase
         catch (RoomsValidationException)
         {
             _messageBoxShower.ValidationFailed();
+        }
+        catch (Exception e)
+        {
+            _messageBoxShower.UnknownError(e);
         }
     }
 

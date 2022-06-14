@@ -1,10 +1,23 @@
-﻿using System.Text.RegularExpressions;
+﻿using EasyRooms.Model.CommonExtensions;
 using EasyRooms.Model.Constants;
 
 namespace EasyRooms.Model.DayPlan.Extensions;
 
-public static class WordList
+public static class WordListPreparer
 {
+    public static IEnumerable<string> RemoveIgnorableComments(this IEnumerable<string> words)
+    {
+        var enumeratedWords = words.ToList();
+        var indicesOfIgnorableComments = Enumerable.Range(2, enumeratedWords.Count - 5)
+            .Where(i => enumeratedWords[i - 2].TryParseTimeTrimmed(out _)
+                        && int.TryParse(enumeratedWords[i - 1], out _)
+                        && enumeratedWords[i + 5].TryParseTimeTrimmed(out _));
+        indicesOfIgnorableComments
+            .OrderByDescending(i => i)
+            .ForEach(i => enumeratedWords.RemoveAt(i));
+        return enumeratedWords;
+    }
+
     public static IEnumerable<string> RemovePauseRows(this IEnumerable<string> words)
     {
         var enumeratedWords = words.ToList();
@@ -21,19 +34,6 @@ public static class WordList
                 var indexOfNextDateTime = IndexOfNextDateTime(enumeratedWords, index);
                 enumeratedWords.RemoveRange(indexOfPreviousDateTime, indexOfNextDateTime + 1 - indexOfPreviousDateTime);
             });
-        return enumeratedWords;
-    }
-
-    public static IEnumerable<string> RemoveAlmostEmptyRows(this IEnumerable<string> words)
-    {
-        var enumeratedWords = words.ToList();
-        var indicesOfAlmostEmptyRows = Enumerable.Range(0, enumeratedWords.Count)
-            .Where(i => IsTimeEntry(enumeratedWords[i]) && IsTimeEntry(enumeratedWords[i + 3])).ToList();
-
-        indicesOfAlmostEmptyRows
-            .OrderByDescending(i => i)
-            .ToList()
-            .ForEach(index => enumeratedWords.RemoveRange(index, 3));
         return enumeratedWords;
     }
 
@@ -65,21 +65,6 @@ public static class WordList
         return enumeratedWords;
     }
 
-    public static IEnumerable<string> RemoveCommentaries(this IEnumerable<string> words)
-    {
-        var enumeratedWords = words.ToList();
-        var commentaryIndices = enumeratedWords
-            .Select((word, i) => (word, index: i))
-            .Where(wordWithIndex => IsTimeEntry(wordWithIndex.word)
-                                    && IsTimeEntry(enumeratedWords[wordWithIndex.index + 4]))
-            .OrderByDescending(wordWithIndex => wordWithIndex.index)
-            .ToList();
-
-        commentaryIndices
-            .ForEach(commentary => enumeratedWords.RemoveRange(commentary.index, 4));
-        return enumeratedWords;
-    }
-
     public static IEnumerable<string> RemoveEndOfListEntry(this IEnumerable<string> words)
     {
         var enumeratedWords = words.ToList();
@@ -94,30 +79,29 @@ public static class WordList
         return enumeratedWords;
     }
 
-    private static int IndexOfNextDateTime(List<string> enumeratedWords, int index)
+    private static int IndexOfNextDateTime(IReadOnlyList<string> enumeratedWords, int index)
     {
         for (var i = index; i < enumeratedWords.Count; i++)
         {
-            if (DateTime.TryParse(enumeratedWords[i], out var _))
+            if (DateTime.TryParse(enumeratedWords[i], out _))
             {
                 return i - 1;
             }
         }
+
         throw new ArgumentException("No DateTime found after pause");
     }
 
-    private static int IndexOfPreviousDateTime(List<string> enumeratedWords, int index)
+    private static int IndexOfPreviousDateTime(IReadOnlyList<string> enumeratedWords, int index)
     {
         for (var i = index; i >= 0; i--)
         {
-            if (DateTime.TryParse(enumeratedWords[i], out var _))
+            if (DateTime.TryParse(enumeratedWords[i], out _))
             {
                 return i;
             }
         }
+
         throw new ArgumentException("No DateTime found before pause");
     }
-
-    private static bool IsTimeEntry(string word)
-        => Regex.IsMatch(word, @"\d\d\:\d\d");
 }

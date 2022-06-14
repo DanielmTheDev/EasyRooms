@@ -12,6 +12,9 @@ public class MessageBoxShower : IMessageBoxShower
         ShowMessage(text, caption);
     }
 
+    public void UnknownError(Exception exception)
+        => ShowMessage(exception.Message, "Unbekannter Fehler");
+
     public void NoFreeRoomFound()
     {
         const string text = "Es konnte keine Lösung gefunden werden. Versuchen Sie bitte, die Pufferzeit in den Optionen zu verringern.";
