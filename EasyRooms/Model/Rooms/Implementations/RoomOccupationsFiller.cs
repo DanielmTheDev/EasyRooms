@@ -30,5 +30,5 @@ public class RoomOccupationsFiller : IRoomOccupationsFiller
 
     private static IEnumerable<Row> OrderRows(IEnumerable<Row> rows)
         => rows.OrderBy(row => TimeSpan.Parse(row.StartTime))
-            .ThenBy(row => int.Parse(row.Duration));
+            .ThenBy(row => row.Duration);
 }

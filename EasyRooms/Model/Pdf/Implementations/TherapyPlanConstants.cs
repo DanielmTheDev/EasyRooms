@@ -3,7 +3,7 @@ namespace EasyRooms.Model.Pdf.Implementations;
 public static class TherapyPlanConstants
 {
     public static int FontSize => 11;
-    public static double ColumnWidth => 75d;
+    public static double ColumnWidth => 90d;
     public static double PageHeaderOffset => 40d;
     public static double ColumnsHeaderOffset => 60d;
     public static double InitialRowsOffset => 85d;

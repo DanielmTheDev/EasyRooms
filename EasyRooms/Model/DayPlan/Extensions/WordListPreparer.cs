@@ -10,30 +10,13 @@ public static class WordListPreparer
         var enumeratedWords = words.ToList();
         var indicesOfIgnorableComments = Enumerable.Range(2, enumeratedWords.Count - 5)
             .Where(i => enumeratedWords[i - 2].TryParseTimeTrimmed(out _)
-                        && int.TryParse(enumeratedWords[i - 1], out _)
-                        && enumeratedWords[i + 5].TryParseTimeTrimmed(out _));
+                        && enumeratedWords[i - 1].TryParseDuration(out _)
+                        && enumeratedWords[i + 5].TryParseTimeTrimmed(out _)
+                        && !enumeratedWords[i].EqualsInvariant(CommonConstants.HomeVisit)
+                        && !enumeratedWords[i].EqualsInvariant(CommonConstants.Pause));
         indicesOfIgnorableComments
             .OrderByDescending(i => i)
             .ForEach(i => enumeratedWords.RemoveAt(i));
-        return enumeratedWords;
-    }
-
-    public static IEnumerable<string> RemovePauseRows(this IEnumerable<string> words)
-    {
-        var enumeratedWords = words.ToList();
-        var indicesOfPauseEntries = Enumerable.Range(0, enumeratedWords.Count)
-            .Where(i => enumeratedWords[i].Contains(CommonConstants.Pause))
-            .ToList();
-
-        indicesOfPauseEntries
-            .OrderByDescending(i => i)
-            .ToList()
-            .ForEach(index =>
-            {
-                var indexOfPreviousDateTime = IndexOfPreviousDateTime(enumeratedWords, index);
-                var indexOfNextDateTime = IndexOfNextDateTime(enumeratedWords, index);
-                enumeratedWords.RemoveRange(indexOfPreviousDateTime, indexOfNextDateTime + 1 - indexOfPreviousDateTime);
-            });
         return enumeratedWords;
     }
 
@@ -77,31 +60,5 @@ public static class WordListPreparer
         var enumeratedWords = words.ToList();
         enumeratedWords.RemoveAll(entry => string.Equals(entry, CommonConstants.Legend, StringComparison.OrdinalIgnoreCase));
         return enumeratedWords;
-    }
-
-    private static int IndexOfNextDateTime(IReadOnlyList<string> enumeratedWords, int index)
-    {
-        for (var i = index; i < enumeratedWords.Count; i++)
-        {
-            if (DateTime.TryParse(enumeratedWords[i], out _))
-            {
-                return i - 1;
-            }
-        }
-
-        throw new ArgumentException("No DateTime found after pause");
-    }
-
-    private static int IndexOfPreviousDateTime(IReadOnlyList<string> enumeratedWords, int index)
-    {
-        for (var i = index; i >= 0; i--)
-        {
-            if (DateTime.TryParse(enumeratedWords[i], out _))
-            {
-                return i;
-            }
-        }
-
-        throw new ArgumentException("No DateTime found before pause");
     }
 }

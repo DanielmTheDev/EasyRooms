@@ -1,3 +1,3 @@
 namespace EasyRooms.Model.Therapies.Models;
 
-public record StartTimeWithDuration(string StartTime, string Duration);
+public record StartTimeWithDuration(string StartTime, int Duration);

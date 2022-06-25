@@ -12,28 +12,71 @@ public class RowsCreator : IRowsCreator
         var rows = new List<Row>();
         while (enumeratedWords.Any())
         {
+            Row newRow;
             GuardDuration(enumeratedWords[1]);
-            var comment = GetAndRemoveRowComment(enumeratedWords);
+            if (RowIsBlock(enumeratedWords))
+            {
+                newRow = ExtractBlockRow(enumeratedWords);
+                enumeratedWords.RemoveRange(0, 4);
+            }
+            else
+            {
+                var comment = GetAndRemoveComment(enumeratedWords);
+                newRow = ExtractNormalRow(enumeratedWords, comment);
+                enumeratedWords.RemoveRange(0, CommonConstants.ElementsPerRow);
+            }
 
-            var newRow = new Row(
-                enumeratedWords[0].Trim('(', ')'),
-                enumeratedWords[1],
-                enumeratedWords[2],
-                enumeratedWords[3],
-                enumeratedWords[4],
-                enumeratedWords[5],
-                comment);
             rows.Add(newRow);
-            enumeratedWords.RemoveRange(0, CommonConstants.ElementsPerRow);
         }
 
         return rows;
     }
 
-    private static string GetAndRemoveRowComment(List<string> enumeratedWords)
+    private static Row ExtractNormalRow(IReadOnlyList<string> enumeratedWords, string comment)
+        => new(
+            enumeratedWords[0].Trim('(', ')'),
+            enumeratedWords[1].ParseDuration(),
+            enumeratedWords[2],
+            enumeratedWords[3],
+            enumeratedWords[4],
+            enumeratedWords[5],
+            comment);
+
+    private static Row ExtractBlockRow(IReadOnlyList<string> enumeratedWords)
+        => new(
+            enumeratedWords[0],
+            enumeratedWords[1].ParseDuration(),
+            string.Empty,
+            string.Empty,
+            string.Empty,
+            enumeratedWords[3],
+            enumeratedWords[2]);
+
+    private static bool RowIsBlock(IReadOnlyList<string> enumeratedWords)
+        => enumeratedWords.Count == 4 || enumeratedWords[4].TryParseTimeTrimmed(out _);
+
+    private static bool NextRowIsComment(IReadOnlyList<string> enumeratedWords)
+        => enumeratedWords.Count == 10 && enumeratedWords[5] == enumeratedWords[9]
+           || enumeratedWords.Count > 10
+           && enumeratedWords[0].TryParseTimeTrimmed(out var currentRowsTime)
+           && enumeratedWords[6].TryParseTimeTrimmed(out var nextRowsTime)
+           && enumeratedWords[1].TryParseDuration(out var currentRowsDuration)
+           && enumeratedWords[5] == enumeratedWords[9]
+           && enumeratedWords[10].TryParseTimeTrimmed(out _)
+           && nextRowsTime < currentRowsTime.AddMinutes(currentRowsDuration);
+
+    private static bool IsHomeVisit(IReadOnlyList<string> enumeratedWords)
+        => enumeratedWords[2].EqualsInvariant(CommonConstants.HomeVisit);
+
+    private static string GetAndRemoveComment(List<string> enumeratedWords)
     {
         string comment;
-        if (NextRowContainsComment(enumeratedWords))
+        if (IsHomeVisit(enumeratedWords))
+        {
+            comment = enumeratedWords[2];
+            enumeratedWords.RemoveAt(2);
+        }
+        else if (NextRowIsComment(enumeratedWords))
         {
             comment = enumeratedWords[8];
             enumeratedWords.RemoveRange(6, 4);
@@ -46,20 +89,11 @@ public class RowsCreator : IRowsCreator
         return comment;
     }
 
-    private static bool NextRowContainsComment(IReadOnlyList<string> enumeratedWords)
-        => enumeratedWords.Count == 10
-           || (enumeratedWords.Count > 10
-               && enumeratedWords[0].TryParseTimeTrimmed(out var currentRowsTime)
-               && enumeratedWords[6].TryParseTimeTrimmed(out var nextRowsTime)
-               && int.TryParse(enumeratedWords[1], out var currentRowsDuration)
-               && nextRowsTime < currentRowsTime.AddMinutes(currentRowsDuration)
-               && enumeratedWords[10].TryParseTimeTrimmed(out _));
-
     private static void GuardDuration(string duration)
     {
-        if (!int.TryParse(duration, out _))
+        if (!duration.TryParseDuration(out _))
         {
-            throw new ArgumentException("Duration is not a number");
+            throw new ArgumentException($"Duration {duration} is not a number");
         }
     }
 }
