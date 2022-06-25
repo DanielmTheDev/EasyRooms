@@ -23,7 +23,6 @@ public class DayPlanParser : IDayPlanParser
         var cleanedWords = extractedWords
             .RemoveIgnorableComments()
             .RemovePageEntries()
-            .RemovePauseRows()
             .RemoveHeaders()
             .RemoveLegendEntries()
             .RemoveEndOfListEntry();

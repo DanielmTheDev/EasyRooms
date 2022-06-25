@@ -5,7 +5,6 @@ public static class CommonConstants
     public static string HomeVisit => "HB";
     public static string Pause => "PAUSE";
     public static int ElementsPerRow => 6;
-    public static int ElementsPerRowWithHouseVisitEntry => 7;
     public static string Page => "Seite";
     public static string DayPlan => "Tagesplan Gesamt";
     public static string EndOfList => "Ende der Liste";

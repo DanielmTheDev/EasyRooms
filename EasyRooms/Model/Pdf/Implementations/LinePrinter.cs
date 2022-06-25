@@ -32,5 +32,14 @@ public static class LinePrinter
     }
 
     private static double CalculateXOffset(int columnIndex)
-        => TherapyPlanConstants.InitialXOffset + TherapyPlanConstants.ColumnWidth * columnIndex;
+    {
+        var extraWidth = columnIndex switch
+        {
+            1  => -30d,
+            2 => -60d,
+            3 => 40d,
+            _ => 0d,
+        };
+        return TherapyPlanConstants.InitialXOffset + TherapyPlanConstants.ColumnWidth * columnIndex + extraWidth;
+    }
 }

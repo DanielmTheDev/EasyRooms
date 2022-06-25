@@ -79,9 +79,9 @@ public class XpsUploadViewModel : BindableBase
         {
             _messageBoxShower.ValidationFailed();
         }
-        catch (Exception e)
+        catch (Exception exception)
         {
-            _messageBoxShower.UnknownError(e);
+            _messageBoxShower.UnknownError(exception);
         }
     }
 

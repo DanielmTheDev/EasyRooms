@@ -3,19 +3,21 @@ using EasyRooms.Model.Constants;
 
 namespace EasyRooms.Model.Therapies.Implementations;
 
-//adds home visits to the empty room
-public class HomeVisitAdder : ITherapiesAdder
+public class NoRoomTherapiesAdder : ITherapiesAdder
 {
     private readonly IOccupationsAdder _occupationsAdder;
 
-    public HomeVisitAdder(IOccupationsAdder occupationsAdder)
+    public NoRoomTherapiesAdder(IOccupationsAdder occupationsAdder)
         => _occupationsAdder = occupationsAdder;
 
     public void Add(IList<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
     {
-        var homeVisitRows = orderedRows
-            .Where(row => string.Equals(row.Comment, CommonConstants.HomeVisit, StringComparison.InvariantCultureIgnoreCase));
-        homeVisitRows.ForEach(row =>
+        var noRoomTherapies = orderedRows
+            .Where(row =>
+                row.Comment.EqualsInvariant(CommonConstants.HomeVisit)
+                || row.TherapyShort.ContainsInvariant(CommonConstants.Pause)
+                || (row.TherapyShort is "" && row.TherapyLong is "" && row.Patient is ""));
+        noRoomTherapies.ForEach(row =>
         {
             _occupationsAdder.AddToSpecificRoom(rooms, string.Empty, row);
             orderedRows.Remove(row);

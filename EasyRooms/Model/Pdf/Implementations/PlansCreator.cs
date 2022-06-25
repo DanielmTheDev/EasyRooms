@@ -16,8 +16,8 @@ public class PlansCreator : IPlansCreator
     private static IEnumerable<TherapyPlanRow> ExtractTherapyRows(IEnumerable<Room> rooms)
         => rooms.SelectMany(room => room.Occupations
                 .Select(occupation => new TherapyPlanRow(
-                    occupation.StartTime.ToString(),
-                    (occupation.EndTime - occupation.StartTime).ToString(),
+                    occupation.StartTime.ToString("hh\\:mm"),
+                    (occupation.EndTime - occupation.StartTime).ToString("hh\\:mm"),
                     occupation.Comment,
                     occupation.TherapyShort,
                     occupation.TherapyLong,
