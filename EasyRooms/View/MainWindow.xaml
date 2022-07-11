@@ -17,13 +17,17 @@
         <DataTemplate DataType="{x:Type vm:XpsUploadViewModel}">
             <view:XpsUploadView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:BulkTestViewModel}">
+            <view:BulkTestView/>
+        </DataTemplate>
     </Window.Resources>
     <Grid Margin="0,20,0,36">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
-        <Button  Command="{Binding SwitchToOptionsCommand}" Margin="0,0,20,0"
+        <Button Command="{Binding SwitchToOptionsCommand}"
+                Margin="0,0,20,0"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Right"
                 Content="{Binding NavigationButtonContent}">
@@ -31,9 +35,20 @@
                 <DropShadowEffect BlurRadius="15" ShadowDepth="0"/>
             </Button.Effect>
         </Button>
+        <Button Grid.Row="0"
+                Visibility="{Binding BulkTestVisibility}"
+                Command="{Binding SwitchToBulkTestCommand}"
+                Margin="20,0,0,0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Content="Bulk Test">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="15" ShadowDepth="0"/>
+            </Button.Effect>
+        </Button>
         <ContentControl Grid.Row="1" FontWeight="Bold" Content="{Binding CurrentViewModel}" />
     </Grid>
-    
+
     <Window.Background>
         <ImageBrush ImageSource="/Assets/background.jpg" Opacity="0.5"/>
     </Window.Background>

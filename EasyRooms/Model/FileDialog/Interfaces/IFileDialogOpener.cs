@@ -2,5 +2,6 @@
 
 public interface IFileDialogOpener
 {
-    string GetFileNameFromDialog();
+    string GetFileName();
+    string GetDirectory();
 }

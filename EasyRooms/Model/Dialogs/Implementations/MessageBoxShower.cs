@@ -5,12 +5,11 @@ namespace EasyRooms.Model.Dialogs.Implementations;
 
 public class MessageBoxShower : IMessageBoxShower
 {
-    public void Success()
-    {
-        const string text = "Die Pläne wurden erfolgreich erstellt.";
-        const string caption = "Erfolgreich";
-        ShowMessage(text, caption);
-    }
+    public void Success(string text)
+        => ShowMessage(text, "Erfolgreich");
+
+    public void Error(string text)
+        => ShowErrorMessage(text, "Fehler");
 
     public void UnknownError(Exception exception)
         => ShowErrorMessage(exception.Message, "Unbekannter Fehler.");

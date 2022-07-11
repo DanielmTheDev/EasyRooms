@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
+using EasyRooms.Model.BulkCalculation;
 using EasyRooms.Model.DayPlan.Implementations;
 using EasyRooms.Model.DayPlan.Interfaces;
 using EasyRooms.Model.Dialogs.Implementations;
@@ -19,8 +21,11 @@ using EasyRooms.Model.Validation.Interfaces;
 using EasyRooms.Model.XpsExtracting.Implementations;
 using EasyRooms.Model.XpsExtracting.Interfaces;
 using EasyRooms.ViewModel;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
+#pragma warning disable CS8618
 
 namespace EasyRooms.View;
 
@@ -30,6 +35,7 @@ namespace EasyRooms.View;
 public partial class App
 {
     public IServiceProvider Services => _host.Services;
+    public IConfiguration Configuration { get; private set; }
     private readonly IHost _host;
 
     public App()
@@ -40,7 +46,8 @@ public partial class App
 
     private static void ConfigureServices(IServiceCollection services)
     {
-        services.AddTransient<IXpsWordsExtractor, XpsWordsExtractor>()
+        services
+            .AddTransient<IXpsWordsExtractor, XpsWordsExtractor>()
             .AddTransient<IRowsCreator, RowsCreator>()
             .AddTransient<IDayPlanParser, DayPlanParser>()
             .AddTransient<IRoomOccupationsFiller, RoomOccupationsFiller>()
@@ -61,17 +68,25 @@ public partial class App
             .AddTransient<ITherapiesAdder, RoomSpecificTherapiesAdder>()
             .AddTransient<ITherapiesAdder, LongTherapiesAdder>()
             .AddTransient<ITherapiesAdder, AdjacentTherapiesAdder>()
+            .AddTransient<IFilledRoomsProvider, FilledRoomsProvider>()
             .AddSingleton<IPersistenceService, PersistenceService>()
             .AddSingleton<IMessageBoxShower, MessageBoxShower>()
+            .AddSingleton<IBulkCalculator, BulkCalculator>()
             .AddSingleton<XpsUploadView>()
             .AddSingleton<XpsUploadViewModel>()
             .AddSingleton<OptionsViewModel>()
+            .AddSingleton<BulkTestViewModel>()
+            .AddSingleton<BulkTestView>()
             .AddSingleton<MainWindow>();
     }
 
     protected override async void OnStartup(StartupEventArgs e)
     {
         await _host.StartAsync();
+        var builder = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+        Configuration = builder.Build();
 
         var mainWindow = _host.Services.GetRequiredService<MainWindow>();
         mainWindow.Show();
