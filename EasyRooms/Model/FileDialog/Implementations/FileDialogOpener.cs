@@ -1,11 +1,12 @@
 ﻿using EasyRooms.Model.FileDialog.Interfaces;
 using Microsoft.Win32;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace EasyRooms.Model.FileDialog.Implementations;
 
 public class FileDialogOpener : IFileDialogOpener
 {
-    public string GetFileNameFromDialog()
+    public string GetFileName()
     {
         var dialog = new OpenFileDialog
         {
@@ -16,6 +17,16 @@ public class FileDialogOpener : IFileDialogOpener
         var result = dialog.ShowDialog();
 
         return result == true
+            ? dialog.FileName
+            : string.Empty;
+    }
+
+    public string GetDirectory()
+    {
+        var dialog = new CommonOpenFileDialog();
+        dialog.IsFolderPicker = true;
+        var result = dialog.ShowDialog();
+        return result == CommonFileDialogResult.Ok
             ? dialog.FileName
             : string.Empty;
     }
