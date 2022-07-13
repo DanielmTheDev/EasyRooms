@@ -69,6 +69,7 @@ public partial class App
             .AddTransient<ITherapiesAdder, LongTherapiesAdder>()
             .AddTransient<ITherapiesAdder, AdjacentTherapiesAdder>()
             .AddTransient<IFilledRoomsProvider, FilledRoomsProvider>()
+            .AddTransient<IAdjacentTherapiesExtractor, AdjacentTherapiesExtractor>()
             .AddSingleton<IPersistenceService, PersistenceService>()
             .AddSingleton<IMessageBoxShower, MessageBoxShower>()
             .AddSingleton<IBulkCalculator, BulkCalculator>()

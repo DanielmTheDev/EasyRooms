@@ -26,7 +26,8 @@ public class XpsUploadViewModel : BindableBase
     public XpsUploadViewModel(
         IFileDialogOpener fileDialogOpener,
         IPdfWriter pdfWriter,
-        IMessageBoxShower messageBoxShower, IFilledRoomsProvider filledRoomsProvider)
+        IMessageBoxShower messageBoxShower,
+        IFilledRoomsProvider filledRoomsProvider)
     {
         CalculateOccupationsCommand = new(CalculateOccupations, CanCalculateOccupations);
         ChooseFileCommand = new(OpenFileDialog);
