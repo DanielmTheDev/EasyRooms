@@ -11,16 +11,11 @@ public record Room(string Name)
     public bool IsOccupiedAt(TimeSpan startTime, TimeSpan endTime, int bufferInMinutes)
         => Occupations.Any(occupation =>
             startTime < GetEndTimeWithBuffer(occupation.EndTime, bufferInMinutes)
-            && endTime > occupation.StartTime);
+            && GetEndTimeWithBuffer(endTime, bufferInMinutes) > occupation.StartTime);
 
     private static TimeSpan GetEndTimeWithBuffer(TimeSpan endTime, int bufferInMinutes)
-    {
-        var minutes = TimeSpan.FromMinutes(bufferInMinutes);
-        return endTime.Add(minutes);
-    }
+        => endTime.Add(TimeSpan.FromMinutes(bufferInMinutes));
 
     public void OrderOccupations()
-    {
-        Occupations = Occupations.OrderBy(occupation => occupation.StartTime).ToList();
-    }
+        => Occupations = Occupations.OrderBy(occupation => occupation.StartTime).ToList();
 }
