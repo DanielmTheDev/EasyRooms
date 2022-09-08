@@ -45,7 +45,7 @@ public class PdfCreator : IPdfCreator
 
     private static void PrintRow(TherapyPlanRow row, int rowIndex, double yOffset, PdfAggregate pdfAggregate, PdfPageBuilder page)
     {
-        var rowStrings = new[] {row.StartTime, row.Duration, row.Comment, row.Room, row.TherapyShort, row.Patient};
-        LinePrinter.PrintLine(rowIndex, rowStrings, pdfAggregate.Font, yOffset, page);
+        var rowStrings = new[] { row.StartTime, row.Duration, row.Comment, row.Room, row.TherapyShort, row.Patient };
+        LinePrinter.PrintLine(rowIndex, rowStrings, pdfAggregate.Font, yOffset, page, row.ShouldHighlight);
     }
 }

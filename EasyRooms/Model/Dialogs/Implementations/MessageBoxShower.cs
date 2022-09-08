@@ -21,13 +21,6 @@ public class MessageBoxShower : IMessageBoxShower
         ShowErrorMessage(text, caption);
     }
 
-    public void ValidationFailed()
-    {
-        const string text = "Es wurde ein falsches Ergebnis erzielt. Bitte melden Sie den benutzten Gesamtplan an den Hersteller.";
-        const string caption = "Fehler";
-        ShowErrorMessage(text, caption);
-    }
-
     private static void ShowMessage(string text, string caption)
     {
         const MessageBoxButton button = MessageBoxButton.OK;

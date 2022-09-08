@@ -1,6 +1,6 @@
 using EasyRooms.Model.Constants;
 
-namespace EasyRooms.Model.Validation.Implementations;
+namespace EasyRooms.Model.Comparison.Implementations;
 
 public static class TherapyTypeComparer
 {

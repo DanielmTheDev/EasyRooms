@@ -8,7 +8,7 @@ public class RoomOccupationsFiller : IRoomOccupationsFiller
     private readonly ITherapyFiller _therapyFiller;
     private readonly IRoomListCreator _roomListCreator;
 
-    public RoomOccupationsFiller(ITherapyFiller therapyFiller,  IRoomListCreator roomListCreator)
+    public RoomOccupationsFiller(ITherapyFiller therapyFiller, IRoomListCreator roomListCreator)
     {
         _therapyFiller = therapyFiller;
         _roomListCreator = roomListCreator;
@@ -25,7 +25,28 @@ public class RoomOccupationsFiller : IRoomOccupationsFiller
         var rooms = _roomListCreator.CreateRooms(roomNames);
         _therapyFiller.AddAllTherapies(rooms, orderedRows, bufferInMinutes, roomNames);
         rooms.ForEach(room => room.OrderOccupations());
+        FillAllAdjacentProperties(rooms);
         return rooms;
+    }
+
+    private static void FillAllAdjacentProperties(IEnumerable<Room> rooms)
+        => rooms.ForEach(FillAdjacentProperties);
+
+    private static void FillAdjacentProperties(Room room)
+    {
+        for (var i = 1; i < room.Occupations.Count - 1; i++)
+        {
+            room.Occupations[i].TouchesAdjacent = TouchesPreviousOrNextOccupation(room, i);
+        }
+    }
+
+    private static bool TouchesPreviousOrNextOccupation(Room room, int i)
+        => TouchEachOther(room.Occupations[i], room.Occupations[i + 1]) || TouchEachOther(room.Occupations[i - 1], room.Occupations[i]);
+
+    private static bool TouchEachOther(Occupation occupation1, Occupation occupation2)
+    {
+        var haveSamePatient = occupation1.Patient.EqualsInvariant(occupation2.Patient);
+        return !haveSamePatient && occupation1.Touches(occupation2);
     }
 
     private static IEnumerable<Row> OrderRows(IEnumerable<Row> rows)

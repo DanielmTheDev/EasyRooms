@@ -6,5 +6,4 @@ public interface IMessageBoxShower
     void Error(string text);
     void UnknownError(Exception exception);
     void NoFreeRoomFound();
-    void ValidationFailed();
 }

@@ -1,3 +1,5 @@
+using EasyRooms.Model.Comparison.Implementations;
+
 namespace EasyRooms.Model.Therapies.Implementations;
 
 public class LongTherapiesAdder : ITherapiesAdder

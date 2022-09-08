@@ -10,7 +10,12 @@ public static class TherapyPlanConstants
     public static double InitialXOffset => 20d;
     public static double LineHeight => 25;
     public static int LineWidth => 600;
-    public static byte GreyRgbValue => 230;
     public static decimal BorderWidth => 0.01M;
     public static int BackgroundYOffset => 8;
+
+    public static byte GreyRgbValue => 230;
+    public static byte HighlightRedValue => 213;
+    public static byte HighlightGreenValue => 73;
+    public static byte HighlightBlueValue => 60;
+
 }

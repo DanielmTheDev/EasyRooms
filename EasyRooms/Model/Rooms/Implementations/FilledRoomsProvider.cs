@@ -3,8 +3,6 @@ using EasyRooms.Model.DayPlan.Models;
 using EasyRooms.Model.Persistence.Extensions;
 using EasyRooms.Model.Persistence.Interfaces;
 using EasyRooms.Model.Rooms.Interfaces;
-using EasyRooms.Model.Validation.Exceptions;
-using EasyRooms.Model.Validation.Interfaces;
 
 namespace EasyRooms.Model.Rooms.Implementations;
 
@@ -12,19 +10,16 @@ public class FilledRoomsProvider : IFilledRoomsProvider
 {
     private readonly IDayPlanParser _dayPlanParser;
     private readonly IRoomOccupationsFiller _occupationsFiller;
-    private readonly IRoomsValidator _validator;
     private readonly IPersistenceService _persistenceService;
 
     public FilledRoomsProvider(
         IPersistenceService persistenceService,
         IDayPlanParser dayPlanParser,
-        IRoomOccupationsFiller occupationsFiller,
-        IRoomsValidator validator)
+        IRoomOccupationsFiller occupationsFiller)
     {
         _persistenceService = persistenceService;
         _dayPlanParser = dayPlanParser;
         _occupationsFiller = occupationsFiller;
-        _validator = validator;
     }
 
     public RoomsWithDate Get(string fileName)
@@ -41,12 +36,6 @@ public class FilledRoomsProvider : IFilledRoomsProvider
         var filledRooms = _occupationsFiller
             .FillRoomOccupations(plan.Rows, roomNames, savedOptionsBuffer)
             .ToList();
-        Validate(filledRooms);
         return filledRooms;
     }
-
-    private void Validate(IEnumerable<Room> filledRooms)
-        => _ = _validator.IsValid(filledRooms, _persistenceService.SavedOptions.Rooms.ToRoomNames())
-            ? default(object)
-            : throw new RoomsValidationException();
 }
