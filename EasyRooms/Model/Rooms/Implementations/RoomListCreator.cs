@@ -11,6 +11,7 @@ public class RoomListCreator : IRoomListCreator
         return rooms;
     }
 
+    // Empty room is used for Hausbeusche, Pause and similar pseudo-therapies
     private static IList<Room> GetRoomsWithAddedEmptyOne(RoomNames roomNames)
     {
         var rooms = roomNames.AllRoomsAsList;
