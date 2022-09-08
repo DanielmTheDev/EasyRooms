@@ -17,7 +17,6 @@ using EasyRooms.Model.Rooms.Interfaces;
 using EasyRooms.Model.Rows.Implementations;
 using EasyRooms.Model.Rows.Interfaces;
 using EasyRooms.Model.Therapies.Implementations;
-using EasyRooms.Model.Validation.Interfaces;
 using EasyRooms.Model.XpsExtracting.Implementations;
 using EasyRooms.Model.XpsExtracting.Interfaces;
 using EasyRooms.ViewModel;
@@ -55,7 +54,6 @@ public partial class App
             .AddTransient<IFreeRoomFinder, FreeRoomFinder>()
             .AddTransient<ITherapyFiller, TherapyFiller>()
             .AddTransient<IRoomListCreator, RoomListCreator>()
-            .AddTransient<IRoomsValidator, RoomsValidator>()
             .AddTransient<IPdfWriter, PdfWriter>()
             .AddTransient<IPlansCreator, PlansCreator>()
             .AddTransient<IPdfCreator, PdfCreator>()
@@ -70,6 +68,7 @@ public partial class App
             .AddTransient<ITherapiesAdder, AdjacentTherapiesAdder>()
             .AddTransient<IFilledRoomsProvider, FilledRoomsProvider>()
             .AddTransient<IAdjacentTherapiesExtractor, AdjacentTherapiesExtractor>()
+            .AddTransient<IPlainListWriter, PlainListWriter>()
             .AddSingleton<IPersistenceService, PersistenceService>()
             .AddSingleton<IMessageBoxShower, MessageBoxShower>()
             .AddSingleton<IBulkCalculator, BulkCalculator>()

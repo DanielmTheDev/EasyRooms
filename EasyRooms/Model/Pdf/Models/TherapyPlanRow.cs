@@ -5,8 +5,8 @@ public record TherapyPlanRow(
     string Duration,
     string Comment,
     string TherapyShort,
-    string TherapyLong,
     string Patient,
     string Room,
-    string Therapist
+    string Therapist,
+    bool ShouldHighlight
 );

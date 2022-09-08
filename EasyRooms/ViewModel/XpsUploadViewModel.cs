@@ -1,9 +1,9 @@
 ﻿using EasyRooms.Model.Dialogs.Interfaces;
 using EasyRooms.Model.FileDialog.Interfaces;
 using EasyRooms.Model.Pdf.Interfaces;
+using EasyRooms.Model.Persistence.Interfaces;
 using EasyRooms.Model.Rooms.Exceptions;
 using EasyRooms.Model.Rooms.Interfaces;
-using EasyRooms.Model.Validation.Exceptions;
 using EasyRooms.ViewModel.Commands;
 
 // ReSharper disable UnusedAutoPropertyAccessor.Global
@@ -21,18 +21,21 @@ public class XpsUploadViewModel : BindableBase
     private readonly IPdfWriter _pdfWriter;
     private readonly IMessageBoxShower _messageBoxShower;
     private readonly IFilledRoomsProvider _filledRoomsProvider;
+    private readonly IPlainListWriter _plainListWriter;
     private string _fileName = string.Empty;
 
     public XpsUploadViewModel(
         IFileDialogOpener fileDialogOpener,
         IPdfWriter pdfWriter,
         IMessageBoxShower messageBoxShower,
-        IFilledRoomsProvider filledRoomsProvider)
+        IFilledRoomsProvider filledRoomsProvider,
+        IPlainListWriter plainListWriter)
     {
         CalculateOccupationsCommand = new(CalculateOccupations, CanCalculateOccupations);
         ChooseFileCommand = new(OpenFileDialog);
         _messageBoxShower = messageBoxShower;
         _filledRoomsProvider = filledRoomsProvider;
+        _plainListWriter = plainListWriter;
         _fileDialogOpener = fileDialogOpener;
         _pdfWriter = pdfWriter;
     }
@@ -52,16 +55,13 @@ public class XpsUploadViewModel : BindableBase
         {
             GuardFileName();
             var roomsWithDate = _filledRoomsProvider.Get(_fileName);
+            _plainListWriter.Write(roomsWithDate.Rooms);
             _pdfWriter.Write(roomsWithDate.Rooms, roomsWithDate.Date);
             _messageBoxShower.Success();
         }
         catch (NoFreeRoomException)
         {
             _messageBoxShower.NoFreeRoomFound();
-        }
-        catch (RoomsValidationException)
-        {
-            _messageBoxShower.ValidationFailed();
         }
         catch (Exception exception)
         {

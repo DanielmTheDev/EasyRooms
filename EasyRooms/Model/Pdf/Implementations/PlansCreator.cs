@@ -20,10 +20,10 @@ public class PlansCreator : IPlansCreator
                     (occupation.EndTime - occupation.StartTime).ToString("hh\\:mm"),
                     occupation.Comment,
                     occupation.TherapyShort,
-                    occupation.TherapyLong,
                     occupation.Patient,
                     room.Name,
-                    occupation.Therapist)))
+                    occupation.Therapist,
+                    occupation.TouchesAdjacent)))
             .OrderBy(row => row.Therapist)
             .ThenBy(row => row.StartTime);
 }

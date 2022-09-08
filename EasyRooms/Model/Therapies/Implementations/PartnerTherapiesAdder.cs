@@ -1,3 +1,4 @@
+using EasyRooms.Model.Comparison.Implementations;
 using EasyRooms.Model.Therapies.Models;
 
 namespace EasyRooms.Model.Therapies.Implementations;

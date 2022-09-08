@@ -14,6 +14,7 @@ public class Occupation
     public string TherapyLong { get; set; }
     public TimeSpan StartTime { get; set; }
     public TimeSpan EndTime { get; set; }
+    public bool TouchesAdjacent { get; set; }
 
     // ReSharper disable once UnusedMember.Global
     public Occupation()
@@ -24,7 +25,7 @@ public class Occupation
     {
     }
 
-    public Occupation(string therapist, string patient, string comment, string therapyShort, string therapyLong, TimeSpan startTime, TimeSpan endTime)
+    private Occupation(string therapist, string patient, string comment, string therapyShort, string therapyLong, TimeSpan startTime, TimeSpan endTime)
     {
         Therapist = therapist;
         Patient = patient;
@@ -34,4 +35,7 @@ public class Occupation
         StartTime = startTime;
         EndTime = endTime;
     }
+
+    public bool Touches(Occupation occupation2)
+        => EndTime == occupation2.StartTime;
 }

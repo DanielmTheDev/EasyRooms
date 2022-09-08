@@ -1,4 +1,6 @@
-﻿namespace EasyRooms.Model.Rooms.Models;
+﻿using EasyRooms.Model.Comparison.Implementations;
+
+namespace EasyRooms.Model.Rooms.Models;
 
 public record Room(string Name)
 {
@@ -9,12 +11,7 @@ public record Room(string Name)
         => Occupations.Add(occupation);
 
     public bool IsOccupiedAt(TimeSpan startTime, TimeSpan endTime, int bufferInMinutes)
-        => Occupations.Any(occupation =>
-            startTime < GetEndTimeWithBuffer(occupation.EndTime, bufferInMinutes)
-            && GetEndTimeWithBuffer(endTime, bufferInMinutes) > occupation.StartTime);
-
-    private static TimeSpan GetEndTimeWithBuffer(TimeSpan endTime, int bufferInMinutes)
-        => endTime.Add(TimeSpan.FromMinutes(bufferInMinutes));
+        => Occupations.Any(occupation => OverlapChecker.OccupationsOverlap(startTime, endTime, occupation, bufferInMinutes));
 
     public void OrderOccupations()
         => Occupations = Occupations.OrderBy(occupation => occupation.StartTime).ToList();
