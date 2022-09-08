@@ -14,10 +14,11 @@ public class RoomNames
 
     [JsonIgnore]
     public List<string> AllRoomsAsList => RoomsString.Split("\r\n").ToList();
+
     [JsonIgnore]
-    public List<string> PartnerRoomsRoomsAsList => PartnerRoomsString.Split("\r\n").ToList();
-    [JsonIgnore]
-    public List<string> MassagesForSpecificRoomsAsList => MassagesForSpecificRooms.Split("\r\n").ToList();
+    public List<string> PartnerRoomsRoomsAsList => PartnerRoomsString.Split("\r\n").Where(room => !string.IsNullOrEmpty(room)).ToList();
+
+    [JsonIgnore] public List<string> MassagesForSpecificRoomsAsList => MassagesForSpecificRooms.Split("\r\n").Where(room => !string.IsNullOrEmpty(room)).ToList();
 
 
     public RoomNames(
