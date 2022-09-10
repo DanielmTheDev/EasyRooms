@@ -36,7 +36,7 @@ public class OptionsViewModel : BindableBase
     public OptionsViewModel(IPersistenceService persistenceService)
     {
         _persistenceService = persistenceService;
-        SaveRoomsCommand = new RelayCommand(SaveRooms);
+        SaveRoomsCommand = new(SaveRooms);
     }
 
     private void SaveRooms()
