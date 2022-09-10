@@ -5,27 +5,19 @@ namespace EasyRooms.Model.Pdf.Implementations;
 
 public static class LinePrinter
 {
-    public static void PrintLine(int rowIndex, IReadOnlyList<string> wordsInRow, PdfDocumentBuilder.AddedFont font, double yOffset, PdfPageBuilder page, bool shouldHighlight = false)
+    public static void PrintLine(int rowIndex, IReadOnlyList<string> wordsInRow, PdfDocumentBuilder.AddedFont font, double yOffset, PdfPageBuilder page)
     {
-        ColorBackground(yOffset, rowIndex, page, shouldHighlight);
+        ColorBackground(yOffset, rowIndex, page);
         PrintWords(wordsInRow, font, yOffset, page);
     }
 
-    private static void ColorBackground(double yOffset, int rowIndex, PdfPageBuilder page, bool shouldHighlight)
+    private static void ColorBackground(double yOffset, int rowIndex, PdfPageBuilder page)
     {
-        if (rowIndex % 2 == 0 && !shouldHighlight)
+        if (rowIndex % 2 == 0)
             return;
-        SetColor(page, shouldHighlight);
+        page.SetTextAndFillColor(TherapyPlanConstants.GreyRgbValue, TherapyPlanConstants.GreyRgbValue, TherapyPlanConstants.GreyRgbValue);
         DrawBackground(yOffset, page);
         page.ResetColor();
-    }
-
-    private static void SetColor(PdfPageBuilder page, bool shouldHighlight)
-    {
-        var (red, green, blue) = shouldHighlight
-            ? (TherapyPlanConstants.HighlightRedValue, TherapyPlanConstants.HighlightGreenValue, TherapyPlanConstants.HighlightBlueValue)
-            : (TherapyPlanConstants.GreyRgbValue, TherapyPlanConstants.GreyRgbValue, TherapyPlanConstants.GreyRgbValue);
-        page.SetTextAndFillColor(red, green, blue);
     }
 
     private static void DrawBackground(double yOffset, PdfPageBuilder page)

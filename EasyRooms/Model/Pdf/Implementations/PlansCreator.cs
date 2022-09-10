@@ -21,9 +21,8 @@ public class PlansCreator : IPlansCreator
                     occupation.Comment,
                     occupation.TherapyShort,
                     occupation.Patient,
-                    room.Name,
-                    occupation.Therapist,
-                    occupation.TouchesAdjacent)))
+                    occupation.TouchesAdjacent ? $"* {room.Name}" : room.Name,
+                    occupation.Therapist)))
             .OrderBy(row => row.Therapist)
             .ThenBy(row => row.StartTime);
 }
