@@ -10,14 +10,14 @@ public class FilledRoomsProvider : IFilledRoomsProvider
 {
     private readonly IDayPlanParser _dayPlanParser;
     private readonly IRoomOccupationsFiller _occupationsFiller;
-    private readonly IPersistenceService _persistenceService;
+    private readonly IOptionsPersister _optionsPersister;
 
     public FilledRoomsProvider(
-        IPersistenceService persistenceService,
+        IOptionsPersister optionsPersister,
         IDayPlanParser dayPlanParser,
         IRoomOccupationsFiller occupationsFiller)
     {
-        _persistenceService = persistenceService;
+        _optionsPersister = optionsPersister;
         _dayPlanParser = dayPlanParser;
         _occupationsFiller = occupationsFiller;
     }
@@ -25,8 +25,8 @@ public class FilledRoomsProvider : IFilledRoomsProvider
     public RoomsWithDate Get(string fileName)
     {
         var parsedPlan = _dayPlanParser.ParseRows(fileName);
-        var roomNames = _persistenceService.SavedOptions.Rooms.ToRoomNames();
-        var savedOptionsBuffer = _persistenceService.SavedOptions.Buffer;
+        var roomNames = _optionsPersister.SavedOptions.Rooms.ToRoomNames();
+        var savedOptionsBuffer = _optionsPersister.SavedOptions.Buffer;
         var rooms = GetFilledRooms(parsedPlan, roomNames, savedOptionsBuffer);
         return new(rooms, parsedPlan.Date);
     }

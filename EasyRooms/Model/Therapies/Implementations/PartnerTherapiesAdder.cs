@@ -6,14 +6,18 @@ namespace EasyRooms.Model.Therapies.Implementations;
 public class PartnerTherapiesAdder : ITherapiesAdder
 {
     private readonly IOccupationsAdder _occupationsAdder;
+    private readonly ITherapyTypeComparer _comparer;
 
-    public PartnerTherapiesAdder(IOccupationsAdder occupationsAdder)
-        => _occupationsAdder = occupationsAdder;
+    public PartnerTherapiesAdder(IOccupationsAdder occupationsAdder, ITherapyTypeComparer comparer)
+    {
+        _occupationsAdder = occupationsAdder;
+        _comparer = comparer;
+    }
 
     public void Add(IList<Room> rooms, List<Row> orderedRows, int bufferInMinutes, RoomNames roomNames)
     {
-        var groupedPartnerTherapies = GroupByTime(orderedRows, row => TherapyTypeComparer.IsPartnerTherapy(row.TherapyShort));
-        var groupedAfterTherapies = GroupByTime(orderedRows, row => TherapyTypeComparer.IsAfterTherapy(row.TherapyShort));
+        var groupedPartnerTherapies = GroupByTime(orderedRows, row => _comparer.IsPartnerTherapy(row.TherapyShort));
+        var groupedAfterTherapies = GroupByTime(orderedRows, row => _comparer.IsAfterTherapy(row.TherapyShort));
 
         groupedPartnerTherapies.ForEach(partnerGroup =>
         {
@@ -34,8 +38,8 @@ public class PartnerTherapiesAdder : ITherapiesAdder
 
     private static IEnumerable<Row> GetMatchingAfterTherapies(string endTime, IEnumerable<IGrouping<StartTimeWithDuration, Row>> groupedAfterTherapies)
         => groupedAfterTherapies
-            .Single(rows => rows.Key.StartTime == endTime)
-            .ToList();
+            .SingleOrDefault(rows => rows.Key.StartTime == endTime)
+            ?.ToList() ?? Enumerable.Empty<Row>();
 
     private static List<IGrouping<StartTimeWithDuration, Row>> GroupByTime(IEnumerable<Row> orderedRows, Predicate<Row> predicate)
         => orderedRows

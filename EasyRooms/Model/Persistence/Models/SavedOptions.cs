@@ -2,6 +2,6 @@ namespace EasyRooms.Model.Persistence.Models;
 
 public class SavedOptions
 {
-    public SavedRooms Rooms { get; set; } = new();
+    public SavedRooms Rooms { get; } = new();
     public int Buffer { get; set; }
 }

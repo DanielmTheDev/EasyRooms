@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Windows;
 using EasyRooms.Model.BulkCalculation;
+using EasyRooms.Model.Comparison.Implementations;
 using EasyRooms.Model.DayPlan.Implementations;
 using EasyRooms.Model.DayPlan.Interfaces;
 using EasyRooms.Model.Dialogs.Implementations;
@@ -69,7 +70,8 @@ public partial class App
             .AddTransient<IFilledRoomsProvider, FilledRoomsProvider>()
             .AddTransient<IAdjacentTherapiesExtractor, AdjacentTherapiesExtractor>()
             .AddTransient<IPlainListWriter, PlainListWriter>()
-            .AddSingleton<IPersistenceService, PersistenceService>()
+            .AddTransient<ITherapyTypeComparer, TherapyTypeComparer>()
+            .AddSingleton<IOptionsPersister, OptionsPersister>()
             .AddSingleton<IMessageBoxShower, MessageBoxShower>()
             .AddSingleton<IBulkCalculator, BulkCalculator>()
             .AddSingleton<XpsUploadView>()

@@ -6,12 +6,12 @@ using JsonWriter = EasyRooms.Model.Json.JsonWriter;
 
 namespace EasyRooms.Model.Persistence.Implementations;
 
-public class PersistenceService : IPersistenceService
+public class OptionsPersister : IOptionsPersister
 {
     public SavedOptions SavedOptions { get; set; }
     private const string SaveFilePath = @".\saved_data\serializedRooms.json";
 
-    public PersistenceService()
+    public OptionsPersister()
         => SavedOptions = LoadOptions();
 
     public void SaveOptions()
