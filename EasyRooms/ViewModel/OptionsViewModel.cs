@@ -9,36 +9,41 @@ namespace EasyRooms.ViewModel;
 
 public class OptionsViewModel : BindableBase
 {
-    private readonly IPersistenceService _persistenceService;
+    private readonly IOptionsPersister _optionsPersister;
 
     public string RoomsString
     {
-        get => _persistenceService.SavedOptions.Rooms.Rooms;
-        set => _persistenceService.SavedOptions.Rooms.Rooms = value;
+        get => _optionsPersister.SavedOptions.Rooms.Rooms;
+        set => _optionsPersister.SavedOptions.Rooms.Rooms = value;
     }
     public string PartnerRoomsString
     {
-        get => _persistenceService.SavedOptions.Rooms.PartnerRooms;
-        set => _persistenceService.SavedOptions.Rooms.PartnerRooms = value;
+        get => _optionsPersister.SavedOptions.Rooms.PartnerRooms;
+        set => _optionsPersister.SavedOptions.Rooms.PartnerRooms = value;
+    }
+    public string PartnerTherapyName
+    {
+        get => _optionsPersister.SavedOptions.Rooms.PartnerTherapyName;
+        set => _optionsPersister.SavedOptions.Rooms.PartnerTherapyName = value;
     }
     public string MassagesForSpecificRooms
     {
-        get => _persistenceService.SavedOptions.Rooms.MassagesForSpecificRooms;
-        set => _persistenceService.SavedOptions.Rooms.MassagesForSpecificRooms = value;
+        get => _optionsPersister.SavedOptions.Rooms.MassagesForSpecificRooms;
+        set => _optionsPersister.SavedOptions.Rooms.MassagesForSpecificRooms = value;
     }
     public string Buffer
     {
-        get => _persistenceService.SavedOptions.Buffer.ToString();
-        set => _persistenceService.SavedOptions.Buffer = int.Parse(value);
+        get => _optionsPersister.SavedOptions.Buffer.ToString();
+        set => _optionsPersister.SavedOptions.Buffer = int.Parse(value);
     }
     public RelayCommand SaveRoomsCommand { get; }
 
-    public OptionsViewModel(IPersistenceService persistenceService)
+    public OptionsViewModel(IOptionsPersister optionsPersister)
     {
-        _persistenceService = persistenceService;
+        _optionsPersister = optionsPersister;
         SaveRoomsCommand = new(SaveRooms);
     }
 
     private void SaveRooms()
-        => _persistenceService.SaveOptions();
+        => _optionsPersister.SaveOptions();
 }

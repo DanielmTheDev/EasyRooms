@@ -28,6 +28,11 @@
             <TextBox Style="{StaticResource BigOptionsTextBox}" AcceptsReturn="True" Text="{Binding PartnerRoomsString}">
                 <TextBox.Effect><DropShadowEffect ShadowDepth="0" BlurRadius="15"/></TextBox.Effect>
             </TextBox>
+
+            <Label Style="{StaticResource OptionsLabel}" Content="Partner Therapie Name"/>
+            <TextBox Style="{StaticResource OneLineOptionsTextBox}" Text="{Binding PartnerTherapyName}">
+                <TextBox.Effect><DropShadowEffect ShadowDepth="0" BlurRadius="15"/></TextBox.Effect>
+            </TextBox>
         </StackPanel>
 
         <StackPanel Grid.Column="2">
